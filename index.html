@@ -57,7 +57,12 @@
             border-radius: 50%;
             border: 5px solid var(--primary);
             margin-bottom: 2rem;
-            animation: pulse 2s infinite;
+            animation: float 3s ease-in-out infinite, pulse 2s infinite;
+            transition: all 0.3s ease;
+        }
+        .logo:hover {
+            transform: scale(1.05) rotate(5deg);
+            filter: drop-shadow(0 0 10px rgba(88, 101, 242, 0.7));
         }
         h1 {
             font-size: 3.5rem;
@@ -85,6 +90,8 @@
             opacity: 0;
             transform: translateY(20px);
             animation: fadeInUp 0.8s ease-out forwards;
+            position: relative;
+            overflow: hidden;
         }
         .btn-primary {
             background: var(--primary);
@@ -109,6 +116,24 @@
         .btn:active {
             transform: translateY(0) scale(0.98);
         }
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.2),
+                transparent
+            );
+            transition: all 0.5s ease;
+        }
+        .btn:hover::after {
+            left: 100%;
+        }
         .features {
             background: var(--dark);
             position: relative;
@@ -121,10 +146,24 @@
             margin: 0 auto;
         }
         .section-title {
-            text-align: center;
             font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: var(--light);
+            margin-bottom: 2rem;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            position: relative;
+            display: inline-block;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 2px;
         }
         .features-grid {
             display: grid;
@@ -137,10 +176,34 @@
             padding: 30px;
             transition: all 0.3s ease;
             border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
         }
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom right,
+                rgba(88, 101, 242, 0.1),
+                rgba(87, 242, 135, 0.1),
+                rgba(254, 231, 92, 0.1),
+                rgba(235, 69, 158, 0.1)
+            );
+            transform: rotate(45deg);
+            opacity: 0;
+            transition: all 0.5s ease;
+        }
+        .feature-card:hover::before {
+            animation: slide 3s linear infinite;
+            opacity: 0.3;
+        }
+        @keyframes slide {
+            0% { transform: translateX(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) rotate(45deg); }
         }
         .feature-icon {
             font-size: 3rem;
@@ -172,24 +235,25 @@
             padding: 30px;
             margin-bottom: 30px;
             border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
         }
-        .category-title {
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            color: var(--primary);
+        .command-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
         }
         .command-list {
             list-style: none;
         }
         .command-item {
-            margin-bottom: 1rem;
-            padding: 15px;
+            margin-bottom: 0.5rem;
+            padding: 10px;
             background: rgba(255, 255, 255, 0.03);
-            border-radius: 8px;
-            transition: all 0.3s ease;
+            border-radius: 5px;
+            transition: all 0.2s ease;
         }
         .command-item:hover {
-            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(5px);
+            background: rgba(88, 101, 242, 0.1);
         }
         .command-name {
             font-weight: 600;
@@ -479,7 +543,7 @@
             transition: opacity 0.4s ease, transform 0.4s ease;
         }
 
-        .hero.hide, .features.hide {
+        .hero.hide, .features.hide, #commands.hide, #versions.hide {
             opacity: 0;
             pointer-events: none;
         }
@@ -553,13 +617,242 @@
                 min-height: 40px;
             }
         }
+
+        #versions {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow-y: auto;
+            background: var(--dark);
+            z-index: 1000;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+            pointer-events: none;
+        }
+
+        #versions.active {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: all;
+        }
+
+        .version-category {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .version-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .version-list {
+            list-style: none;
+        }
+
+        .version-list li {
+            margin-bottom: 0.5rem;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 5px;
+            transition: all 0.2s ease;
+        }
+
+        .version-list li:hover {
+            transform: translateX(5px);
+            background: rgba(88, 101, 242, 0.1);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        @keyframes glow {
+            0% { box-shadow: 0 0 5px rgba(88, 101, 242, 0.5); }
+            50% { box-shadow: 0 0 20px rgba(88, 101, 242, 0.8); }
+            100% { box-shadow: 0 0 5px rgba(88, 101, 242, 0.5); }
+        }
+        
+        @keyframes colorCycle {
+            0% { color: #5865F2; }
+            25% { color: #57F287; }
+            50% { color: #FEE75C; }
+            75% { color: #EB459E; }
+            100% { color: #5865F2; }
+        }
+        
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100vh;
+            background: linear-gradient(
+                45deg,
+                #23272A,
+                #2C2F33,
+                #23272A
+            );
+            background-size: 300% 300%;
+            animation: gradientBG 15s ease infinite;
+            z-index: -2;
+            opacity: 0.5;
+        }
+        
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: var(--primary);
+            opacity: 0;
+            z-index: 10;
+        }
+
+        /* Updated styles for View Commands to match Versions */
+        #commands {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow-y: auto;
+            background: var(--dark);
+            z-index: 1000;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+            pointer-events: none;
+        }
+
+        #commands.active {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: all;
+        }
+
+        .command-category {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .command-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .command-list {
+            list-style: none;
+        }
+
+        .command-item {
+            margin-bottom: 0.5rem;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 5px;
+            transition: all 0.2s ease;
+        }
+
+        .command-item:hover {
+            transform: translateX(5px);
+            background: rgba(88, 101, 242, 0.1);
+        }
+
+        .command-name {
+            font-weight: 600;
+            color: var(--secondary);
+        }
+
+        /* Keep existing animations and other styles */
+        .animate__animated {
+            animation-duration: 0.5s;
+        }
+
+        .animate-delay-1 {
+            animation-delay: 0.2s;
+        }
+
+        .animate-delay-2 {
+            animation-delay: 0.4s;
+        }
+
+        /* Updated styles for ALL section titles and category titles */
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+
+        .category-title {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            padding-bottom: 8px;
+        }
+
+        .category-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--secondary);
+            border-radius: 2px;
+        }
+
+        /* Version-specific titles */
+        .version-category .category-title {
+            color: var(--secondary);
+            font-size: 1.9rem;
+        }
+
+        .version-category .category-title::after {
+            background: var(--primary);
+        }
     </style>
 </head>
 <body>
     <section class="hero">
         <div style="position: relative; display: inline-block;">
             <img src="https://cdn.discordapp.com/avatars/1364942161707274301/33874cbdbb4017155e77e9b45c3b0e0c.webp?size=1024" alt="Ormi Logo" class="logo animate__animated animate__fadeInDown">
-            <!-- Ukryty przycisk (większy, ale całkowicie niewidoczny) -->
             <div id="hiddenMobileButton" style="
                 position: absolute;
                 bottom: -50px;
@@ -577,6 +870,7 @@
             <div>
                 <a href="https://discord.com/oauth2/authorize?client_id=1364942161707274301&permissions=2360593607&integration_type=0&scope=bot" class="btn btn-primary">Invite to Server</a>
                 <a href="#" id="viewCommandsBtn" class="btn btn-secondary">View Commands</a>
+                <a href="#" id="viewVersionsBtn" class="btn btn-secondary">Versions</a>
             </div>
             <div id="randomQuote"></div>
         </div>
@@ -616,6 +910,14 @@
                 </div>
             </button>
             <div class="categories-menu" id="categoriesMenu">
+                <a href="#information" class="category-link">
+                    <i class="fas fa-circle-info"></i>
+                    <span>Information</span>
+                </a>
+                <a href="#fun" class="category-link">
+                    <i class="fas fa-gamepad"></i>
+                    <span>Fun</span>
+                </a>
                 <a href="#moderation" class="category-link">
                     <i class="fas fa-shield-halved"></i>
                     <span>Moderation</span>
@@ -624,95 +926,175 @@
                     <i class="fas fa-music"></i>
                     <span>Music</span>
                 </a>
-                <a href="#information" class="category-link">
-                    <i class="fas fa-circle-info"></i>
-                    <span>Information</span>
-                </a>
-                <a href="#utilities" class="category-link">
+                <a href="#utility" class="category-link">
                     <i class="fas fa-screwdriver-wrench"></i>
-                    <span>Utilities</span>
+                    <span>Utility</span>
                 </a>
                 <a href="#configuration" class="category-link">
                     <i class="fas fa-gear"></i>
                     <span>Configuration</span>
                 </a>
-                </div>
             </div>
+        </div>
         <div class="container">
             <a href="#" id="backToMainBtn" class="btn btn-secondary" style="margin: 20px 0; display: block; width: fit-content;">Back to Main</a>
             <h2 class="section-title animate__animated animate__fadeIn">All Commands</h2>
             
+            <!-- Information -->
+            <div id="information" class="command-category animate__animated animate__fadeIn">
+                <h3 class="category-title">Information</h3>
+                <ul class="command-list">
+                    <li class="command-item"><span class="command-name">;userinfo</span> - Shows user information</li>
+                    <li class="command-item"><span class="command-name">;serverinfo</span> - Displays server statistics</li>
+                    <li class="command-item"><span class="command-name">;avatar</span> - Shows user avatar</li>
+                    <li class="command-item"><span class="command-name">;roleinfo</span> - Shows role information</li>
+                    <li class="command-item"><span class="command-name">;ping</span> - Shows bot latency</li>
+                </ul>
+            </div>
+
+            <!-- Fun -->
+            <div id="fun" class="command-category animate__animated animate__fadeIn animate-delay-1">
+                <h3 class="category-title">Fun</h3>
+                <ul class="command-list">
+                    <li class="command-item"><span class="command-name">;ship</span> - Ship two users together</li>
+                    <li class="command-item"><span class="command-name">;8ball</span> - Ask the magic 8-ball</li>
+                    <li class="command-item"><span class="command-name">;hug</span> - Send virtual hug</li>
+                    <li class="command-item"><span class="command-name">;rate</span> - Rate something 1-10</li>
+                    <li class="command-item"><span class="command-name">;rps</span> - Play rock-paper-scissors</li>
+                    <li class="command-item"><span class="command-name">;random</span> - Random number generator</li>
+                </ul>
+            </div>
+
             <!-- Moderation -->
-            <div id="moderation" class="command-category animate__animated animate__fadeIn">
+            <div id="moderation" class="command-category animate__animated animate__fadeIn animate-delay-2">
                 <h3 class="category-title">Moderation</h3>
                 <ul class="command-list">
-                    <li class="command-item"><span class="command-name">;kick</span> - Kicks a user from the server</li>
-                    <li class="command-item"><span class="command-name">;ban</span> - Bans a user (perm - permanent ban)</li>
+                    <li class="command-item"><span class="command-name">;kick</span> - Kicks a user</li>
+                    <li class="command-item"><span class="command-name">;ban</span> - Bans a user</li>
                     <li class="command-item"><span class="command-name">;unban</span> - Unbans a user</li>
-                    <li class="command-item"><span class="command-name">;mute</span> - Mutes a user for specified time</li>
-                    <li class="command-item"><span class="command-name">;unmute</span> - Restores speaking/writing permissions</li>
-                    <li class="command-item"><span class="command-name">;warn</span> - Gives a warning to user</li>
+                    <li class="command-item"><span class="command-name">;mute</span> - Mutes a user</li>
+                    <li class="command-item"><span class="command-name">;unmute</span> - Unmutes a user</li>
+                    <li class="command-item"><span class="command-name">;warn</span> - Warns a user</li>
                     <li class="command-item"><span class="command-name">;warnings</span> - Shows user warnings</li>
                     <li class="command-item"><span class="command-name">;clearwarns</span> - Clears user warnings</li>
-                    <li class="command-item"><span class="command-name">;purge</span> - Clears messages (default: 5)</li>
-                    <li class="command-item"><span class="command-name">;slowmode</span> - Sets slowmode (in seconds)</li>
+                    <li class="command-item"><span class="command-name">;delwarn</span> - Deletes specific warning</li>
+                    <li class="command-item"><span class="command-name">;purge</span> - Deletes messages</li>
+                    <li class="command-item"><span class="command-name">;slowmode</span> - Sets slowmode</li>
                     <li class="command-item"><span class="command-name">;lock</span> - Locks a channel</li>
                     <li class="command-item"><span class="command-name">;unlock</span> - Unlocks a channel</li>
-                    <li class="command-item"><span class="command-name">;nick</span> - Changes user nickname</li>
+                    <li class="command-item"><span class="command-name">;nick</span> - Changes nickname</li>
+                    <li class="command-item"><span class="command-name">;nuke</span> - Deletes all messages in channel</li>
                 </ul>
             </div>
 
             <!-- Music -->
-            <div id="music" class="command-category animate__animated animate__fadeIn animate-delay-1">
+            <div id="music" class="command-category animate__animated animate__fadeIn">
                 <h3 class="category-title">Music</h3>
                 <ul class="command-list">
-                    <li class="command-item"><span class="command-name">;play</span> - Plays music from YouTube</li>
+                    <li class="command-item"><span class="command-name">;play</span> - Plays music from YouTube/Spotify</li>
                     <li class="command-item"><span class="command-name">;skip</span> - Skips current track</li>
-                    <li class="command-item"><span class="command-name">;queue</span> - Shows queue</li>
+                    <li class="command-item"><span class="command-name">;queue</span> - Shows current queue</li>
                     <li class="command-item"><span class="command-name">;np</span> - Shows currently playing track</li>
+                    <li class="command-item"><span class="command-name">;stop</span> - Stops playback</li>
                     <li class="command-item"><span class="command-name">;join</span> - Joins voice channel</li>
                     <li class="command-item"><span class="command-name">;leave</span> - Leaves voice channel</li>
                 </ul>
             </div>
 
-            <!-- Information -->
-            <div id="information" class="command-category animate__animated animate__fadeIn animate-delay-2">
-                <h3 class="category-title">Information</h3>
+            <!-- Utility -->
+            <div id="utility" class="command-category animate__animated animate__fadeIn animate-delay-1">
+                <h3 class="category-title">Utility</h3>
                 <ul class="command-list">
-                    <li class="command-item"><span class="command-name">;userinfo</span> - Shows user information</li>
-                    <li class="command-item"><span class="command-name">;serverinfo</span> - Shows server information</li>
-                    <li class="command-item"><span class="command-name">;avatar</span> - Shows user avatar</li>
-                    <li class="command-item"><span class="command-name">;roleinfo</span> - Shows role information</li>
-                    <li class="command-item"><span class="command-name">;ping</span> - Shows bot ping</li>
-                </ul>
-            </div>
-
-            <!-- Utilities -->
-            <div id="utilities" class="command-category animate__animated animate__fadeIn">
-                <h3 class="category-title">Utilities</h3>
-                <ul class="command-list">
-                    <li class="command-item"><span class="command-name">;say</span> - Sends message as bot (admin only)</li>
-                    <li class="command-item"><span class="command-name">;embed</span> - Creates embed (admin only)</li>
-                    <li class="command-item"><span class="command-name">;invite</span> - Generates invite</li>
-                    <li class="command-item"><span class="command-name">;vote</span> - Creates yes/no poll</li>
-                    <li class="command-item"><span class="command-name">;random</span> - Generates random number</li>
-                    <li class="command-item"><span class="command-name">;8ball</span> - Ask magic 8-ball a question</li>
+                    <li class="command-item"><span class="command-name">;afk</span> - Sets AFK status</li>
+                    <li class="command-item"><span class="command-name">;snipe</span> - Shows last deleted message</li>
+                    <li class="command-item"><span class="command-name">;poll</span> - Creates yes/no poll</li>
+                    <li class="command-item"><span class="command-name">;invite</span> - Generates invite link</li>
+                    <li class="command-item"><span class="command-name">;embed</span> - Creates embed</li>
+                    <li class="command-item"><span class="command-name">;vote</span> - Creates poll</li>
                 </ul>
             </div>
 
             <!-- Configuration -->
-            <div id="configuration" class="command-category animate__animated animate__fadeIn animate-delay-1">
+            <div id="configuration" class="command-category animate__animated animate__fadeIn animate-delay-2">
                 <h3 class="category-title">Configuration</h3>
                 <ul class="command-list">
-                    <li class="command-item"><span class="command-name">;setlogchannel</span> - Sets log channel</li>
-                    <li class="command-item"><span class="command-name">;setdeletedlogchannel</span> - Sets deleted messages log channel</li>
-                    <li class="command-item"><span class="command-name">;setwelcomechannel</span> - Sets welcome channel</li>
-                    <li class="command-item"><span class="command-name">;setwelcomemessage</span> - Sets welcome message</li>
-                    <li class="command-item"><span class="command-name">;setmodrole</span> - Sets the moderator role (server owner only)</li>
-                    <li class="command-item"><span class="command-name">;setadminrole</span> - Sets the admin role (server owner only)</li>
+                    <li class="command-item"><span class="command-name">;slc</span> - Sets log channel</li>
+                    <li class="command-item"><span class="command-name">;sdlc</span> - Sets deleted messages log channel</li>
+                    <li class="command-item"><span class="command-name">;swc</span> - Sets welcome channel</li>
+                    <li class="command-item"><span class="command-name">;swm</span> - Sets welcome message</li>
+                    <li class="command-item"><span class="command-name">;say</span> - Sends message as bot</li>
                 </ul>
+            </div>
         </div>
-    </div>
+    </section>
+
+    <section id="versions">
+        <div class="container">
+            <a href="#" id="backToMainFromVersionsBtn" class="btn btn-secondary" style="margin: 20px 0; display: block; width: fit-content;">Back to Main</a>
+            <h2 class="section-title animate__animated animate__fadeIn">Version History</h2>
+            
+            <div class="version-category animate__animated animate__fadeIn">
+                <h3 class="category-title">v2.2.0 - Latest</h3>
+                <ul class="version-list">
+                    <li>Added mute role persistence</li>
+                    <li>Fixed music queue bugs</li>
+                    <li>Improved error logging</li>
+                </ul>
+            </div>
+
+            <div class="version-category animate__animated animate__fadeIn animate-delay-1">
+                <h3 class="category-title">v2.1.0</h3>
+                <ul class="version-list">
+                    <li>YouTube playback support</li>
+                    <li>Custom welcome messages</li>
+                    <li>Optimized database queries</li>
+                </ul>
+            </div>
+
+            <div class="version-category animate__animated animate__fadeIn animate-delay-2">
+                <h3 class="category-title">v2.0.0</h3>
+                <ul class="version-list">
+                    <li>Poll system</li>
+                    <li>Redesigned command handler</li>
+                </ul>
+            </div>
+
+            <div class="version-category animate__animated animate__fadeIn">
+                <h3 class="category-title">v1.3.0</h3>
+                <ul class="version-list">
+                    <li>Advanced moderation logs</li>
+                    <li>New purge command</li>
+                    <li>Bug fixes</li>
+                </ul>
+            </div>
+
+            <div class="version-category animate__animated animate__fadeIn animate-delay-1">
+                <h3 class="category-title">v1.2.0</h3>
+                <ul class="version-list">
+                    <li>Basic warn system</li>
+                    <li>Channel locking</li>
+                    <li>Stability improvements</li>
+                </ul>
+            </div>
+
+            <div class="version-category animate__animated animate__fadeIn animate-delay-2">
+                <h3 class="category-title">v1.1.0</h3>
+                <ul class="version-list">
+                    <li>AFK system</li>
+                    <li>Embed generator</li>
+                    <li>Help menu</li>
+                </ul>
+            </div>
+
+            <div class="version-category animate__animated animate__fadeIn">
+                <h3 class="category-title">v1.0.0</h3>
+                <ul class="version-list">
+                    <li>Initial bot release</li>
+                    <li>Core moderation commands</li>
+                    <li>Basic utilities</li>
+                </ul>
+            </div>
+        </div>
     </section>
 
     <footer>
@@ -782,7 +1164,6 @@
             
             if (!ticking) {
                 window.requestAnimationFrame(function() {
-                    // Płynne przesuwanie menu wraz z przewijaniem
                     menuToggle.style.transform = `translateY(${lastScrollPosition}px)`;
                     ticking = false;
                 });
@@ -793,11 +1174,9 @@
         document.getElementById('viewCommandsBtn').addEventListener('click', function(e) {
             e.preventDefault();
             
-            // Reset przewijania
             commandsSection.scrollTop = 0;
             menuToggle.style.transform = 'translateY(0)';
             
-            // Przełącz sekcje
             document.querySelector('.hero').classList.add('hide');
             document.querySelector('.features').classList.add('hide');
             document.getElementById('commands').classList.add('active');
@@ -829,7 +1208,7 @@
                 menu.classList.remove('active');
                 setTimeout(() => {
                     menu.style.display = 'none';
-                }, 300); // Czas trwania animacji (0.3s)
+                }, 300);
             }
         });
 
@@ -885,11 +1264,9 @@
             }
             
             if (secretCode === secretSequence) {
-                // Aktywuj easter egg
                 logo.style.animation = 'spin 2s linear infinite, colorChange 5s linear infinite';
                 logo.style.borderColor = 'var(--secondary)';
                 
-                // Wyłącz po 10 sekundach
                 setTimeout(() => {
                     logo.style.animation = 'pulse 2s infinite';
                     logo.style.borderColor = 'var(--primary)';
@@ -931,12 +1308,10 @@
             
             function type() {
                 if (i < text.length) {
-                    // Dodaj pojedynczą literę (uwzględniając emoji)
                     const char = text.charAt(i);
                     element.innerHTML += char;
                     i++;
                     
-                    // Szybsze pisanie spacji i znaków specjalnych
                     const delay = (char === ' ' || char === '!') ? speed / 2 : speed;
                     setTimeout(type, delay);
                 }
@@ -945,21 +1320,17 @@
             type();
         }
 
-        // Wybierz losowy cytat i uruchom animację
         const randomIndex = Math.floor(Math.random() * quotes.length);
-        typeWriter(quotes[randomIndex], randomQuote, 50); // 50ms na literę
+        typeWriter(quotes[randomIndex], randomQuote, 50);
 
-        // Ukryty przycisk dla urządzeń mobilnych
         const hiddenMobileButton = document.getElementById('hiddenMobileButton');
 
         if (isMobileDevice()) {
             hiddenMobileButton.style.display = 'block';
             
             hiddenMobileButton.addEventListener('click', () => {
-                // Animacja logo
                 logo.style.animation = 'spin 1s linear infinite, colorChange 3s linear infinite';
                 
-                // Komunikat
                 const feedback = document.createElement('div');
                 feedback.textContent = '🎉 Secret activated!';
                 feedback.style.position = 'fixed';
@@ -981,6 +1352,95 @@
         function isMobileDevice() {
             return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
         }
+
+        document.getElementById('viewVersionsBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.querySelector('.hero').classList.add('hide');
+            document.querySelector('.features').classList.add('hide');
+            document.getElementById('versions').classList.add('active');
+        });
+
+        document.getElementById('backToMainFromVersionsBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('versions').classList.remove('active');
+            document.querySelector('.hero').classList.remove('hide');
+            document.querySelector('.features').classList.remove('hide');
+        });
+
+        logo.addEventListener('click', function(e) {
+            createConfetti(e.clientX, e.clientY);
+        });
+
+        function createConfetti(x, y) {
+            const colors = ['#5865F2', '#57F287', '#FEE75C', '#EB459E', '#ED4245'];
+            
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.left = `${x}px`;
+                confetti.style.top = `${y}px`;
+                document.body.appendChild(confetti);
+                
+                const angle = Math.random() * Math.PI * 2;
+                const velocity = 5 + Math.random() * 5;
+                const rotation = Math.random() * 360;
+                
+                let posX = x;
+                let posY = y;
+                let opacity = 1;
+                let scale = 0.5 + Math.random();
+                
+                const animate = () => {
+                    posX += Math.cos(angle) * velocity;
+                    posY += Math.sin(angle) * velocity + 0.5;
+                    opacity -= 0.02;
+                    scale -= 0.01;
+                    
+                    confetti.style.left = `${posX}px`;
+                    confetti.style.top = `${posY}px`;
+                    confetti.style.opacity = opacity;
+                    confetti.style.transform = `rotate(${rotation}deg) scale(${scale})`;
+                    
+                    if (opacity > 0) {
+                        requestAnimationFrame(animate);
+                    } else {
+                        confetti.remove();
+                    }
+                };
+                
+                requestAnimationFrame(animate);
+            }
+        }
+
+        const versionItems = document.querySelectorAll('.version-list li');
+        versionItems.forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.boxShadow = '0 0 10px rgba(88, 101, 242, 0.5)';
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                this.style.boxShadow = 'none';
+            });
+        });
+
+        const versionTitles = document.querySelectorAll('.category-title');
+        versionTitles.forEach(title => {
+            const originalText = title.textContent;
+            title.textContent = '';
+            
+            let i = 0;
+            const type = () => {
+                if (i < originalText.length) {
+                    title.textContent += originalText.charAt(i);
+                    i++;
+                    setTimeout(type, 50);
+                }
+            };
+            
+            const delay = Array.from(versionTitles).indexOf(title) * 300;
+            setTimeout(type, delay);
+        });
     </script>
 </body>
 </html>
