@@ -10,6 +10,20 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <style>
+        /* Dodaj styl dla paska z komunikatem */
+        .alert-bar {
+            background-color: #ED4245;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            font-weight: 600;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 9999;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
         :root {
             --primary: #5865F2;
             --secondary: #57F287;
@@ -850,6 +864,11 @@
     </style>
 </head>
 <body>
+    <!-- Dodaj pasek z komunikatem -->
+    <div class="alert-bar animate__animated animate__fadeInDown">
+        ⚠️ Currently experiencing hosting issues. Working on a fix! ⚠️
+        <div style="font-size: 0.8em; opacity: 0.8; margin-top: 4px;">(Changing hosting provider)</div>
+    </div>
     <section class="hero">
         <div style="position: relative; display: inline-block;">
             <img src="https://cdn.discordapp.com/avatars/1364942161707274301/33874cbdbb4017155e77e9b45c3b0e0c.webp?size=1024" alt="Ormi Logo" class="logo animate__animated animate__fadeInDown">
