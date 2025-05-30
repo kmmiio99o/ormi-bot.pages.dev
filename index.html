@@ -864,12 +864,13 @@
     </style>
 </head>
 <body>
-    <!-- Dodaj pasek z komunikatem -->
-    <div class="alert-bar animate__animated animate__fadeInDown">
-        ⚠️ Currently experiencing hosting issues. Working on a fix! ⚠️
-        <div style="font-size: 0.8em; opacity: 0.8; margin-top: 4px;">(Changing hosting provider)</div>
-    </div>
+    <!-- Zmodyfikowany pasek z komunikatem - teraz w sekcji hero -->
     <section class="hero">
+        <div class="alert-bar animate__animated animate__fadeInDown" style="position: absolute; top: 0; width: 100%;">
+            ⚠️ Currently experiencing hosting issues. Working on a fix! ⚠️
+            <div style="font-size: 0.8em; opacity: 0.8; margin-top: 4px;">For any lost data I'm really sorry!</div>
+        </div>
+        
         <div style="position: relative; display: inline-block;">
             <img src="https://cdn.discordapp.com/avatars/1364942161707274301/33874cbdbb4017155e77e9b45c3b0e0c.webp?size=1024" alt="Ormi Logo" class="logo animate__animated animate__fadeInDown">
             <div id="hiddenMobileButton" style="
@@ -1006,20 +1007,6 @@
                 </ul>
             </div>
 
-            <!-- Music -->
-            <div id="music" class="command-category animate__animated animate__fadeIn">
-                <h3 class="category-title">Music</h3>
-                <ul class="command-list">
-                    <li class="command-item"><span class="command-name">;play</span> - Plays music from YouTube/Spotify</li>
-                    <li class="command-item"><span class="command-name">;skip</span> - Skips current track</li>
-                    <li class="command-item"><span class="command-name">;queue</span> - Shows current queue</li>
-                    <li class="command-item"><span class="command-name">;np</span> - Shows currently playing track</li>
-                    <li class="command-item"><span class="command-name">;stop</span> - Stops playback</li>
-                    <li class="command-item"><span class="command-name">;join</span> - Joins voice channel</li>
-                    <li class="command-item"><span class="command-name">;leave</span> - Leaves voice channel</li>
-                </ul>
-            </div>
-
             <!-- Utility -->
             <div id="utility" class="command-category animate__animated animate__fadeIn animate-delay-1">
                 <h3 class="category-title">Utility</h3>
@@ -1053,7 +1040,16 @@
             <h2 class="section-title animate__animated animate__fadeIn">Version History</h2>
             
             <div class="version-category animate__animated animate__fadeIn">
-                <h3 class="category-title">v2.2.0 - Latest</h3>
+                <h3 class="category-title">v2.3.0 - Latest</h3>
+                <ul class="version-list">
+                    <li>Removed music commands due to hosting limitations</li>
+                    <li>Preparing for new hosting provider migration</li>
+                    <li>Improved system stability</li>
+                </ul>
+            </div>
+
+            <div class="version-category animate__animated animate__fadeIn animate-delay-1">
+                <h3 class="category-title">v2.2.0</h3>
                 <ul class="version-list">
                     <li>Added mute role persistence</li>
                     <li>Fixed music queue bugs</li>
@@ -1061,7 +1057,7 @@
                 </ul>
             </div>
 
-            <div class="version-category animate__animated animate__fadeIn animate-delay-1">
+            <div class="version-category animate__animated animate__fadeIn animate-delay-2">
                 <h3 class="category-title">v2.1.0</h3>
                 <ul class="version-list">
                     <li>YouTube playback support</li>
@@ -1070,7 +1066,7 @@
                 </ul>
             </div>
 
-            <div class="version-category animate__animated animate__fadeIn animate-delay-2">
+            <div class="version-category animate__animated animate__fadeIn">
                 <h3 class="category-title">v2.0.0</h3>
                 <ul class="version-list">
                     <li>Poll system</li>
