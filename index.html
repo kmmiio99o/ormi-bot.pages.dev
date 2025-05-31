@@ -149,11 +149,27 @@
             left: 100%;
         }
         .features {
-            background: var(--dark);
+            background: linear-gradient(
+                135deg,
+                rgba(54, 57, 63, 0.9) 0%,
+                rgba(35, 39, 42, 0.9) 100%
+            );
             position: relative;
             z-index: 2;
             margin-top: 0;
             padding: 100px 20px;
+            overflow: hidden;
+        }
+        .features::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: #23272A;
+            opacity: 0.15;
+            z-index: -1;
         }
         .container {
             max-width: 1200px;
@@ -185,13 +201,19 @@
             gap: 30px;
         }
         .feature-card {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
             border-radius: 15px;
             padding: 30px;
             transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             position: relative;
             overflow: hidden;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            background: rgba(255, 255, 255, 0.15);
         }
         .feature-card::before {
             content: '';
@@ -866,12 +888,7 @@
 <body>
     <!-- Zmodyfikowany pasek z komunikatem - teraz w sekcji hero -->
     <section class="hero">
-        <div class="alert-bar animate__animated animate__fadeInDown" style="position: absolute; top: 0; width: 100%;">
-            ⚠️ Currently experiencing hosting issues. Working on a fix! ⚠️
-            <div style="font-size: 0.8em; opacity: 0.8; margin-top: 4px;">For any lost data I'm really sorry!</div>
-        </div>
-        
-        <div style="position: relative; display: inline-block;">
+       <div style="position: relative; display: inline-block;">
             <img src="https://cdn.discordapp.com/avatars/1364942161707274301/33874cbdbb4017155e77e9b45c3b0e0c.webp?size=1024" alt="Ormi Logo" class="logo animate__animated animate__fadeInDown">
             <div id="hiddenMobileButton" style="
                 position: absolute;
@@ -897,26 +914,26 @@
     </section>
 
     <section class="features">
-    <div class="container">
+        <div class="container">
             <h2 class="section-title animate__animated animate__fadeIn">Why Choose Ormi?</h2>
             <div class="features-grid">
                 <div class="feature-card animate__animated animate__fadeInUp">
-                    <div class="feature-icon">⚡</div>
-                    <h3 class="feature-title">Lightning Fast</h3>
-                    <p>Optimized for performance with minimal latency and quick response times.</p>
-        </div>
+                    <div class="feature-icon">🚀</div>
+                    <h3 class="feature-title">Powerful & Intuitive</h3>
+                    <p>Experience seamless server management with our user-friendly yet powerful tools that make moderation a breeze.</p>
+                </div>
                 <div class="feature-card animate__animated animate__fadeInUp animate-delay-1">
-                    <div class="feature-icon">🔧</div>
-                    <h3 class="feature-title">Easy to Use</h3>
-                    <p>Simple setup and intuitive commands make Ormi accessible to everyone.</p>
+                    <div class="feature-icon">❤️</div>
+                    <h3 class="feature-title">Community Focused</h3>
+                    <p>Built with love for Discord communities, offering features that enhance engagement and interaction.</p>
                 </div>
                 <div class="feature-card animate__animated animate__fadeInUp animate-delay-2">
-                    <div class="feature-icon">🎵</div>
-                    <h3 class="feature-title">Rich Feature Set</h3>
-                    <p>From moderation to games and integrations. It includes tools for moderation and entertainment.</p>
-                </div>
+                    <div class="feature-icon">✨</div>
+                    <h3 class="feature-title">Always Improving</h3>
+                    <p>Regular updates bring fresh features and improvements, keeping your server ahead of the curve.</p>
                 </div>
             </div>
+        </div>
     </section>
 
     <section id="commands">
@@ -942,10 +959,6 @@
                     <i class="fas fa-shield-halved"></i>
                     <span>Moderation</span>
                 </a>
-                <a href="#music" class="category-link">
-                    <i class="fas fa-music"></i>
-                    <span>Music</span>
-                </a>
                 <a href="#utility" class="category-link">
                     <i class="fas fa-screwdriver-wrench"></i>
                     <span>Utility</span>
@@ -953,6 +966,10 @@
                 <a href="#configuration" class="category-link">
                     <i class="fas fa-gear"></i>
                     <span>Configuration</span>
+                </a>
+                <a href="#roles" class="category-link">
+                    <i class="fas fa-user-tag"></i>
+                    <span>Roles</span>
                 </a>
             </div>
         </div>
@@ -1031,6 +1048,18 @@
                     <li class="command-item"><span class="command-name">;say</span> - Sends message as bot</li>
                 </ul>
             </div>
+
+            <!-- Nowa sekcja Roles na samym dole -->
+            <div id="roles" class="command-category animate__animated animate__fadeIn animate-delay-2">
+                <h3 class="category-title">Roles</h3>
+                <ul class="command-list">
+                    <li class="command-item"><span class="command-name">;addrole &lt;user&gt; &lt;role&gt;</span> - Adds role to user</li>
+                    <li class="command-item"><span class="command-name">;rmrole &lt;user&gt; &lt;role&gt;</span> - Removes role from user</li>
+                    <li class="command-item"><span class="command-name">;createrole &lt;name&gt; [color]</span> - Creates new role</li>
+                    <li class="command-item"><span class="command-name">;delrole &lt;role&gt;</span> - Deletes role</li>
+                    <li class="command-item"><span class="command-name">;editrole &lt;role&gt; &lt;new_name&gt; [color] [icon]</span> - Edits role properties</li>
+                </ul>
+            </div>
         </div>
     </section>
 
@@ -1039,8 +1068,20 @@
             <a href="#" id="backToMainFromVersionsBtn" class="btn btn-secondary" style="margin: 20px 0; display: block; width: fit-content;">Back to Main</a>
             <h2 class="section-title animate__animated animate__fadeIn">Version History</h2>
             
+            <!-- Nowa wersja -->
             <div class="version-category animate__animated animate__fadeIn">
-                <h3 class="category-title">v2.3.0 - Latest</h3>
+                <h3 class="category-title">v2.4.0 - Latest</h3>
+                <ul class="version-list">
+                    <li>Added new role management commands</li>
+                    <li>Successfully migrated to new hosting provider</li>
+                    <li>Performance improvements and optimizations</li>
+                    <li>Fixed minor bugs from previous version</li>
+                </ul>
+            </div>
+
+            <!-- Poprzednie wersje -->
+            <div class="version-category animate__animated animate__fadeIn animate-delay-1">
+                <h3 class="category-title">v2.3.0</h3>
                 <ul class="version-list">
                     <li>Removed music commands due to hosting limitations</li>
                     <li>Preparing for new hosting provider migration</li>
@@ -1048,7 +1089,7 @@
                 </ul>
             </div>
 
-            <div class="version-category animate__animated animate__fadeIn animate-delay-1">
+            <div class="version-category animate__animated animate__fadeIn animate-delay-2">
                 <h3 class="category-title">v2.2.0</h3>
                 <ul class="version-list">
                     <li>Added mute role persistence</li>
@@ -1057,7 +1098,7 @@
                 </ul>
             </div>
 
-            <div class="version-category animate__animated animate__fadeIn animate-delay-2">
+            <div class="version-category animate__animated animate__fadeIn animate-delay-3">
                 <h3 class="category-title">v2.1.0</h3>
                 <ul class="version-list">
                     <li>YouTube playback support</li>
@@ -1066,7 +1107,7 @@
                 </ul>
             </div>
 
-            <div class="version-category animate__animated animate__fadeIn">
+            <div class="version-category animate__animated animate__fadeIn animate-delay-4">
                 <h3 class="category-title">v2.0.0</h3>
                 <ul class="version-list">
                     <li>Poll system</li>
@@ -1074,7 +1115,7 @@
                 </ul>
             </div>
 
-            <div class="version-category animate__animated animate__fadeIn">
+            <div class="version-category animate__animated animate__fadeIn animate-delay-5">
                 <h3 class="category-title">v1.3.0</h3>
                 <ul class="version-list">
                     <li>Advanced moderation logs</li>
@@ -1083,7 +1124,7 @@
                 </ul>
             </div>
 
-            <div class="version-category animate__animated animate__fadeIn animate-delay-1">
+            <div class="version-category animate__animated animate__fadeIn animate-delay-6">
                 <h3 class="category-title">v1.2.0</h3>
                 <ul class="version-list">
                     <li>Basic warn system</li>
@@ -1092,7 +1133,7 @@
                 </ul>
             </div>
 
-            <div class="version-category animate__animated animate__fadeIn animate-delay-2">
+            <div class="version-category animate__animated animate__fadeIn animate-delay-7">
                 <h3 class="category-title">v1.1.0</h3>
                 <ul class="version-list">
                     <li>AFK system</li>
@@ -1101,7 +1142,7 @@
                 </ul>
             </div>
 
-            <div class="version-category animate__animated animate__fadeIn">
+            <div class="version-category animate__animated animate__fadeIn animate-delay-8">
                 <h3 class="category-title">v1.0.0</h3>
                 <ul class="version-list">
                     <li>Initial bot release</li>
