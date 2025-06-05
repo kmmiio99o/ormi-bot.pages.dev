@@ -639,6 +639,7 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            z-index: 1;
         }
 
         #closeTermsBtn:hover {
@@ -682,9 +683,8 @@
             transform: translateY(20px);
             transition: opacity 0.4s ease, transform 0.4s ease;
             pointer-events: none;
-            padding: 60px 20px 100px;
+            padding: 20px;
             box-sizing: border-box;
-            min-height: 150vh;
         }
 
         #versions.active {
@@ -693,40 +693,47 @@
             pointer-events: all;
         }
 
-        #versions .container {
-            min-height: calc(100vh - 160px);
-            position: relative;
-        }
-
         .version-category {
             background: rgba(255, 255, 255, 0.05);
             border-radius: 15px;
-            padding: 30px;
-            margin-bottom: 30px;
+            padding: 20px;
+            margin-bottom: 20px;
             border: 1px solid rgba(255, 255, 255, 0.1);
             transition: all 0.3s ease;
         }
 
         .version-category:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
 
         .version-list {
             list-style: none;
+            padding: 0;
+            margin: 0;
         }
 
         .version-list li {
-            margin-bottom: 0.5rem;
-            padding: 10px;
+            padding: 8px 12px;
+            margin-bottom: 5px;
             background: rgba(255, 255, 255, 0.03);
             border-radius: 5px;
             transition: all 0.2s ease;
         }
 
         .version-list li:hover {
-            transform: translateX(5px);
             background: rgba(88, 101, 242, 0.1);
+        }
+
+        /* Responsywność */
+        @media (max-width: 768px) {
+            #versions {
+                padding: 15px;
+            }
+            
+            .version-category {
+                padding: 15px;
+            }
         }
 
         @keyframes float {
@@ -1257,120 +1264,122 @@
         </div>
     </section>
 
-    <section id="versions" style="top: -80px;">
-        <div class="container" style="margin-top: 40px;">
-            <a href="#" id="backToMainFromVersionsBtn" class="btn btn-secondary" style="margin: 20px 0; display: block; width: fit-content;">Back to Main</a>
-            <h2 class="section-title">Version History</h2>
-            
-            <!-- Latest Version -->
-            <div class="command-category" style="background: rgba(88, 101, 242, 0.1); border-color: var(--primary);">
-                <div class="feature-icon" style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: var(--primary);">
-                    <i class="fas fa-star"></i>
-                </div>
-                <h3 class="category-title" style="text-align: center; color: var(--primary);">v2.4.0 - Latest</h3>
-                <ul class="command-list">
-                    <li class="command-item">Added new role management commands</li>
-                    <li class="command-item">Successfully migrated to new hosting provider</li>
-                    <li class="command-item">Performance improvements and optimizations</li>
-                    <li class="command-item">Fixed minor bugs from previous version</li>
-                </ul>
-            </div>
+    <section id="versions">
+        <div class="container" style="position: relative;">
+            <a href="#" id="backToMainFromVersionsBtn" class="btn btn-secondary" style="
+                position: absolute;
+                top: -50px;
+                left: 0;
+                z-index: 1;
+                margin: 20px 0;
+                display: block;
+                width: fit-content;
+            ">
+                Back to Main
+            </a>
 
-            <!-- Previous Versions -->
-            <div class="command-category" style="background: rgba(87, 242, 135, 0.1); border-color: var(--secondary);">
-                <div class="feature-icon" style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: var(--secondary);">
-                    <i class="fas fa-code-branch"></i>
-                </div>
-                <h3 class="category-title" style="text-align: center; color: var(--secondary);">v2.3.0</h3>
-                <ul class="command-list">
-                    <li class="command-item">Removed music commands due to hosting limitations</li>
-                    <li class="command-item">Preparing for new hosting provider migration</li>
-                    <li class="command-item">Improved system stability</li>
-                </ul>
-            </div>
+            <div style="margin-top: 20px;">
+                <h2 class="section-title" style="margin-top: 30px;">
+                    Version History
+                </h2>
 
-            <div class="command-category" style="background: rgba(235, 69, 158, 0.1); border-color: #EB459E;">
-                <div class="feature-icon" style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: #EB459E;">
-                    <i class="fas fa-history"></i>
+                <!-- Nowa wersja 2.5.0 -->
+                <div class="command-category animate__animated animate__fadeIn" style="background: rgba(88, 101, 242, 0.1); border-color: var(--primary);">
+                    <div class="feature-icon" style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: var(--primary);">
+                        <i class="fas fa-code-branch"></i>
+                    </div>
+                    <h3 class="category-title" style="text-align: center; color: var(--primary);">v2.5.0 - Latest</h3>
+                    <ul class="command-list">
+                        <li class="command-item">Added new command: <span class="command-name">;rr</span> (reaction roles)</li>
+                        <li class="command-item">New embed system with advanced customization</li>
+                        <li class="command-item">Performance optimizations and bug fixes</li>
+                    </ul>
                 </div>
-                <h3 class="category-title" style="text-align: center; color: #EB459E;">v2.2.0</h3>
-                <ul class="command-list">
-                    <li class="command-item">Added mute role persistence</li>
-                    <li class="command-item">Fixed music queue bugs</li>
-                    <li class="command-item">Improved error logging</li>
-                </ul>
-            </div>
 
-            <div class="command-category" style="background: rgba(254, 231, 92, 0.1); border-color: #FEE75C;">
-                <div class="feature-icon" style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: #FEE75C;">
-                    <i class="fas fa-bug"></i>
+                <!-- Wersja 2.4.0 -->
+                <div class="command-category animate__animated animate__fadeIn animate-delay-1" style="background: rgba(87, 242, 135, 0.1); border-color: var(--secondary);">
+                    <h3 class="category-title" style="text-align: center; color: var(--secondary);">v2.4.0</h3>
+                    <ul class="command-list">
+                        <li class="command-item">Added new role management commands</li>
+                        <li class="command-item">Successfully migrated to new hosting provider</li>
+                        <li class="command-item">Performance improvements and optimizations</li>
+                        <li class="command-item">Fixed minor bugs from previous version</li>
+                    </ul>
                 </div>
-                <h3 class="category-title" style="text-align: center; color: #FEE75C;">v2.1.0</h3>
-                <ul class="command-list">
-                    <li class="command-item">YouTube playback support</li>
-                    <li class="command-item">Custom welcome messages</li>
-                    <li class="command-item">Optimized database queries</li>
-                </ul>
-            </div>
 
-            <div class="command-category" style="background: rgba(237, 66, 69, 0.1); border-color: #ED4245;">
-                <div class="feature-icon" style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: #ED4245;">
-                    <i class="fas fa-poll"></i>
+                <!-- Wersja 2.3.0 -->
+                <div class="command-category animate__animated animate__fadeIn animate-delay-2" style="background: rgba(237, 66, 69, 0.1); border-color: #ED4245;">
+                    <h3 class="category-title" style="text-align: center; color: #ED4245;">v2.3.0</h3>
+                    <ul class="command-list">
+                        <li class="command-item">Removed music commands due to hosting limitations</li>
+                        <li class="command-item">Preparing for new hosting provider migration</li>
+                        <li class="command-item">Improved system stability</li>
+                    </ul>
                 </div>
-                <h3 class="category-title" style="text-align: center; color: #ED4245;">v2.0.0</h3>
-                <ul class="command-list">
-                    <li class="command-item">Poll system</li>
-                    <li class="command-item">Redesigned command handler</li>
-                </ul>
-            </div>
 
-            <!-- Older Versions -->
-            <div class="command-category" style="background: rgba(114, 137, 218, 0.1); border-color: #7289DA;">
-                <div class="feature-icon" style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: #7289DA;">
-                    <i class="fas fa-scroll"></i>
+                <!-- Wersja 2.2.0 -->
+                <div class="command-category animate__animated animate__fadeIn animate-delay-3" style="background: rgba(250, 166, 26, 0.1); border-color: #FAA61A;">
+                    <h3 class="category-title" style="text-align: center; color: #FAA61A;">v2.2.0</h3>
+                    <ul class="command-list">
+                        <li class="command-item">Added mute role persistence</li>
+                        <li class="command-item">Improved logging system</li>
+                    </ul>
                 </div>
-                <h3 class="category-title" style="text-align: center; color: #7289DA;">v1.3.0</h3>
-                <ul class="command-list">
-                    <li class="command-item">Advanced moderation logs</li>
-                    <li class="command-item">New purge command</li>
-                    <li class="command-item">Bug fixes</li>
-                </ul>
-            </div>
 
-            <div class="command-category" style="background: rgba(153, 170, 181, 0.1); border-color: #99AAB5;">
-                <div class="feature-icon" style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: #99AAB5;">
-                    <i class="fas fa-lock"></i>
+                <!-- Wersja 2.1.0 -->
+                <div class="command-category animate__animated animate__fadeIn animate-delay-4" style="background: rgba(235, 69, 158, 0.1); border-color: #EB459E;">
+                    <h3 class="category-title" style="text-align: center; color: #EB459E;">v2.1.0</h3>
+                    <ul class="command-list">
+                        <li class="command-item">YouTube playback support</li>
+                        <li class="command-item">New embed builder</li>
+                    </ul>
                 </div>
-                <h3 class="category-title" style="text-align: center; color: #99AAB5;">v1.2.0</h3>
-                <ul class="command-list">
-                    <li class="command-item">Basic warn system</li>
-                    <li class="command-item">Channel locking</li>
-                    <li class="command-item">Stability improvements</li>
-                </ul>
-            </div>
 
-            <div class="command-category" style="background: rgba(59, 165, 92, 0.1); border-color: #3BA55C;">
-                <div class="feature-icon" style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: #3BA55C;">
-                    <i class="fas fa-user-clock"></i>
+                <!-- Wersja 2.0.0 -->
+                <div class="command-category animate__animated animate__fadeIn animate-delay-5" style="background: rgba(88, 101, 242, 0.1); border-color: var(--primary);">
+                    <h3 class="category-title" style="text-align: center; color: var(--primary);">v2.0.0</h3>
+                    <ul class="command-list">
+                        <li class="command-item">Poll system</li>
+                        <li class="command-item">Redesigned command handler</li>
+                    </ul>
                 </div>
-                <h3 class="category-title" style="text-align: center; color: #3BA55C;">v1.1.0</h3>
-                <ul class="command-list">
-                    <li class="command-item">AFK system</li>
-                    <li class="command-item">Embed generator</li>
-                    <li class="command-item">Help menu</li>
-                </ul>
-            </div>
 
-            <div class="command-category" style="background: rgba(250, 166, 26, 0.1); border-color: #FAA61A;">
-                <div class="feature-icon" style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: #FAA61A;">
-                    <i class="fas fa-rocket"></i>
+                <!-- Wersja 1.3.0 -->
+                <div class="command-category animate__animated animate__fadeIn animate-delay-6" style="background: rgba(87, 242, 135, 0.1); border-color: var(--secondary);">
+                    <h3 class="category-title" style="text-align: center; color: var(--secondary);">v1.3.0</h3>
+                    <ul class="command-list">
+                        <li class="command-item">Advanced moderation logs</li>
+                        <li class="command-item">Custom welcome messages</li>
+                    </ul>
                 </div>
-                <h3 class="category-title" style="text-align: center; color: #FAA61A;">v1.0.0</h3>
-                <ul class="command-list">
-                    <li class="command-item">Initial bot release</li>
-                    <li class="command-item">Core moderation commands</li>
-                    <li class="command-item">Basic utilities</li>
-                </ul>
+
+                <!-- Wersja 1.2.0 -->
+                <div class="command-category animate__animated animate__fadeIn animate-delay-7" style="background: rgba(237, 66, 69, 0.1); border-color: #ED4245;">
+                    <h3 class="category-title" style="text-align: center; color: #ED4245;">v1.2.0</h3>
+                    <ul class="command-list">
+                        <li class="command-item">Basic warn system</li>
+                        <li class="command-item">Improved error handling</li>
+                    </ul>
+                </div>
+
+                <!-- Wersja 1.1.0 -->
+                <div class="command-category animate__animated animate__fadeIn animate-delay-8" style="background: rgba(250, 166, 26, 0.1); border-color: #FAA61A;">
+                    <h3 class="category-title" style="text-align: center; color: #FAA61A;">v1.1.0</h3>
+                    <ul class="command-list">
+                        <li class="command-item">AFK system</li>
+                        <li class="command-item">Bug fixes</li>
+                    </ul>
+                </div>
+
+                <!-- Wersja 1.0.0 -->
+                <div class="command-category animate__animated animate__fadeIn animate-delay-9" style="background: rgba(235, 69, 158, 0.1); border-color: #EB459E;">
+                    <h3 class="category-title" style="text-align: center; color: #EB459E;">v1.0.0</h3>
+                    <ul class="command-list">
+                        <li class="command-item">Initial bot release</li>
+                        <li class="command-item">Core moderation commands</li>
+                        <li class="command-item">Basic utilities</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
@@ -1494,6 +1503,7 @@
                 display: flex;
                 align-items: center;
                 gap: 8px;
+                z-index: 1;
             ">
                 <i class="fas fa-times"></i>
                 Close
@@ -1507,6 +1517,7 @@
                 text-transform: uppercase;
                 letter-spacing: 1px;
                 position: relative;
+                padding-top: 50px;
                 padding-bottom: 10px;
             ">
                 <i class="fas fa-file-contract" style="margin-right: 10px;"></i>
@@ -1604,18 +1615,63 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded'); // Debug 1
+            
+            const viewVersionsBtn = document.getElementById('viewVersionsBtn');
+            const versionsSection = document.getElementById('versions');
+            
+            console.log('View versions button:', viewVersionsBtn); // Debug 2
+            console.log('Versions section:', versionsSection); // Debug 3
+
+            if (viewVersionsBtn && versionsSection) {
+                viewVersionsBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    console.log('Versions button clicked'); // Debug 4
+                    
+                    // Ukryj główne sekcje
+                    document.querySelector('.hero').classList.add('hide');
+                    document.querySelector('.features').classList.add('hide');
+                    
+                    // Pokaż sekcję versions
+                    versionsSection.style.opacity = '1';
+                    versionsSection.style.transform = 'translateY(0)';
+                    versionsSection.style.pointerEvents = 'all';
+                    console.log('Versions section should be visible now'); // Debug 5
+                });
+            }
+
+            const backBtn = document.getElementById('backToMainFromVersionsBtn');
+            if (backBtn) {
+                backBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    console.log('Back button clicked'); // Debug 6
+                    
+                    // Ukryj sekcję versions
+                    versionsSection.style.opacity = '0';
+                    versionsSection.style.transform = 'translateY(20px)';
+                    versionsSection.style.pointerEvents = 'none';
+                    
+                    // Pokaż główne sekcje
+                    document.querySelector('.hero').classList.remove('hide');
+                    document.querySelector('.features').classList.remove('hide');
+                });
+            }
+
+            // Elementy interfejsu
             const viewCommandsBtn = document.getElementById('viewCommandsBtn');
             const commandsSection = document.getElementById('commands');
             const backToMainBtn = document.getElementById('backToMainBtn');
-            const viewVersionsBtn = document.getElementById('viewVersionsBtn');
-            const versionsSection = document.getElementById('versions');
             const backToMainFromVersionsBtn = document.getElementById('backToMainFromVersionsBtn');
             const aboutBtn = document.getElementById('aboutBtn');
             const aboutModal = document.getElementById('aboutModal');
             const backToMainFromAboutBtn = document.getElementById('backToMainFromAboutBtn');
             const heroSection = document.querySelector('.hero');
             const featuresSection = document.querySelector('.features');
+            const termsBtn = document.getElementById('termsBtn');
+            const termsModal = document.getElementById('termsModal');
+            const closeTermsBtn = document.getElementById('closeTermsBtn');
 
+            // Funkcje pomocnicze
             function hideAllSections() {
                 heroSection.classList.add('hide');
                 featuresSection.classList.add('hide');
@@ -1624,6 +1680,7 @@
                 if (aboutModal) aboutModal.classList.remove('active');
             }
 
+            // Obsługa przycisków
             if (viewCommandsBtn) {
                 viewCommandsBtn.addEventListener('click', function(e) {
                     e.preventDefault();
@@ -1676,10 +1733,6 @@
             }
 
             // Obsługa modala Terms of Service
-            const termsBtn = document.getElementById('termsBtn');
-            const termsModal = document.getElementById('termsModal');
-            const closeTermsBtn = document.getElementById('closeTermsBtn');
-
             if (termsBtn && termsModal) {
                 termsBtn.addEventListener('click', function(e) {
                     e.preventDefault();
@@ -1694,65 +1747,82 @@
                 });
             }
 
-            // Zamykanie modala po kliknięciu poza jego obszarem
             termsModal.addEventListener('click', function(e) {
                 if (e.target === termsModal) {
                     termsModal.classList.remove('active');
                 }
             });
+
+            // Status Discord
+            const DISCORD_ID = '879393496627306587';
+            const STATUS_COLORS = {
+                online: '#3ba55c',
+                idle: '#faa61a',
+                dnd: '#ed4245',
+                offline: '#747f8d'
+            };
+
+            async function updateDiscordStatus() {
+                try {
+                    const response = await fetch(`https://api.lanyard.rest/v1/users/${DISCORD_ID}`);
+                    const { data } = await response.json();
+                    
+                    const status = data.discord_status;
+                    const avatarContainer = document.querySelector('#developerAvatar').parentElement;
+                    
+                    avatarContainer.style.background = STATUS_COLORS[status] || STATUS_COLORS.offline;
+                    
+                    if (status === 'online') {
+                        avatarContainer.style.animation = 'pulse 1.5s infinite';
+                    } else {
+                        avatarContainer.style.animation = 'none';
+                    }
+                    
+                    document.getElementById('discordStatusText').textContent = 
+                        `Status: ${status.toUpperCase()}${status === 'dnd' ? ' (Do Not Disturb)' : ''}`;
+                    
+                } catch (error) {
+                    console.error('Error fetching status:', error);
+                }
+            }
+
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes pulse {
+                    0% { box-shadow: 0 0 0 0 rgba(59, 165, 92, 0.7); }
+                    70% { box-shadow: 0 0 0 10px rgba(59, 165, 92, 0); }
+                    100% { box-shadow: 0 0 0 0 rgba(59, 165, 92, 0); }
+                }
+            `;
+            document.head.appendChild(style);
+
+            updateDiscordStatus();
+            setInterval(updateDiscordStatus, 30000);
         });
 
-        // Konfiguracja
-        const DISCORD_ID = '879393496627306587'; // Twoje Discord ID
-        const STATUS_COLORS = {
-            online: '#3ba55c',
-            idle: '#faa61a',
-            dnd: '#ed4245',
-            offline: '#747f8d'
-        };
-
-        // Pobierz status
-        async function updateDiscordStatus() {
-            try {
-                const response = await fetch(`https://api.lanyard.rest/v1/users/${DISCORD_ID}`);
-                const { data } = await response.json();
-                
-                const status = data.discord_status;
-                const avatarContainer = document.querySelector('#developerAvatar').parentElement;
-                
-                // Ustaw kolor obramówki
-                avatarContainer.style.background = STATUS_COLORS[status] || STATUS_COLORS.offline;
-                
-                // Animacja dla online
-                if (status === 'online') {
-                    avatarContainer.style.animation = 'pulse 1.5s infinite';
-                } else {
-                    avatarContainer.style.animation = 'none';
-                }
-                
-                // Tekst statusu
-                document.getElementById('discordStatusText').textContent = 
-                    `Status: ${status.toUpperCase()}${status === 'dnd' ? ' (Do Not Disturb)' : ''}`;
-                
-            } catch (error) {
-                console.error('Error fetching status:', error);
-            }
+        function showVersions() {
+            document.getElementById('versions').style.cssText = `
+                opacity: 1;
+                transform: translateY(0);
+                pointer-events: all;
+            `;
+            document.querySelector('.hero').style.display = 'none';
+            document.querySelector('.features').style.display = 'none';
         }
 
-        // Dodaj animację do CSS
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes pulse {
-                0% { box-shadow: 0 0 0 0 rgba(59, 165, 92, 0.7); }
-                70% { box-shadow: 0 0 0 10px rgba(59, 165, 92, 0); }
-                100% { box-shadow: 0 0 0 0 rgba(59, 165, 92, 0); }
-            }
-        `;
-        document.head.appendChild(style);
+        function hideVersions() {
+            document.getElementById('versions').style.cssText = `
+                opacity: 0;
+                transform: translateY(20px);
+                pointer-events: none;
+            `;
+            document.querySelector('.hero').style.display = 'block';
+            document.querySelector('.features').style.display = 'block';
+        }
 
-        // Uruchom i aktualizuj co 30 sekund
-        updateDiscordStatus();
-        setInterval(updateDiscordStatus, 30000);
+        // Ręczne przypisanie eventów w HTML
+        // <a href="#" onclick="showVersions()">View Versions</a>
+        // <a href="#" onclick="hideVersions()">Back to Main</a>
     </script>
 </body>
 </html>
