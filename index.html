@@ -9,6 +9,8 @@
     <link rel="icon" href="https://cdn.discordapp.com/avatars/1364942161707274301/33874cbdbb4017155e77e9b45c3b0e0c.webp?size=1024" type="image/gif">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         /* Dodaj styl dla paska z komunikatem */
         .alert-bar {
@@ -37,7 +39,7 @@
             box-sizing: border-box;
         }
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Open Sans', sans-serif;
             background-color: var(--dark);
             color: var(--light);
             overflow-x: hidden;
@@ -90,63 +92,56 @@
             margin-bottom: 2rem;
             opacity: 0.9;
         }
+        .action-buttons {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+        }
         .btn {
-            display: inline-block;
-            padding: 15px 30px;
-            color: var(--light);
-            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.7rem;
+            padding: 1rem 2rem;
             border-radius: 50px;
             font-weight: 600;
-            font-size: 1.2rem;
-            margin: 10px;
+            font-size: 1.1rem;
             transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 0.8s ease-out forwards;
-            position: relative;
-            overflow: hidden;
+            text-decoration: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         .btn-primary {
             background: var(--primary);
-            animation-delay: 0.2s;
-        }
-        .btn-secondary {
-            background: transparent;
-            border: 2px solid var(--primary);
-            animation-delay: 0.4s;
-        }
-        .btn:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            color: white;
+            min-width: 220px;
         }
         .btn-primary:hover {
-            background: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(88, 101, 242, 0.3);
+            background: #4752c4;
+        }
+        .btn-primary i {
+            font-size: 1.2em;
+        }
+        .secondary-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
         }
         .btn-secondary:hover {
             background: rgba(88, 101, 242, 0.2);
-            border-color: var(--secondary);
-        }
-        .btn:active {
-            transform: translateY(0) scale(0.98);
-        }
-        .btn::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                90deg,
-                transparent,
-                rgba(255, 255, 255, 0.2),
-                transparent
-            );
-            transition: all 0.5s ease;
-        }
-        .btn:hover::after {
-            left: 100%;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            border-color: var(--primary);
         }
         .features {
             background: linear-gradient(
@@ -274,7 +269,6 @@
             transition: all 0.3s ease;
         }
         .command-category:hover {
-            transform: translateY(-5px);
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
         }
         .command-list {
@@ -288,7 +282,6 @@
             transition: all 0.2s ease;
         }
         .command-item:hover {
-            transform: translateX(5px);
             background: rgba(88, 101, 242, 0.1);
         }
         .command-name {
@@ -319,23 +312,35 @@
             }
         }
         #termsModal {
-            display: none;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.7);
             z-index: 1000;
+            display: flex;
             justify-content: center;
             align-items: center;
             opacity: 0;
+            visibility: hidden;
             transition: all 0.3s ease-out;
         }
+
         #termsModal.active {
-            display: flex;
             opacity: 1;
+            visibility: visible;
         }
+
+        #termsModal > div {
+            transform: scale(0.9);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        #termsModal.active > div {
+            transform: scale(1);
+        }
+
         #termsModal > div {
             background: var(--dark);
             padding: 60px 40px 40px;
@@ -359,9 +364,15 @@
             .tagline {
                 font-size: 1.2rem;
             }
+            .action-buttons {
+                gap: 1rem;
+            }
             .btn {
-                padding: 12px 24px;
+                padding: 0.8rem 1.5rem;
                 font-size: 1rem;
+            }
+            .secondary-actions {
+                gap: 0.8rem;
             }
             .features-grid {
                 grid-template-columns: 1fr;
@@ -614,16 +625,20 @@
             position: absolute;
             top: 20px;
             right: 20px;
-            padding: 12px 24px;
             background: var(--primary);
-            color: var(--light);
+            color: white;
             border: none;
             border-radius: 50px;
+            padding: 8px 20px;
+            font-family: 'Open Sans', sans-serif;
             font-weight: 600;
-            font-size: 1.2rem;
+            font-size: 1rem;
             cursor: pointer;
             transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         #closeTermsBtn:hover {
@@ -667,12 +682,20 @@
             transform: translateY(20px);
             transition: opacity 0.4s ease, transform 0.4s ease;
             pointer-events: none;
+            padding: 60px 20px 100px;
+            box-sizing: border-box;
+            min-height: 150vh;
         }
 
         #versions.active {
             opacity: 1;
             transform: translateY(0);
             pointer-events: all;
+        }
+
+        #versions .container {
+            min-height: calc(100vh - 160px);
+            position: relative;
         }
 
         .version-category {
@@ -791,7 +814,6 @@
         }
 
         .command-category:hover {
-            transform: translateY(-5px);
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
         }
 
@@ -808,7 +830,6 @@
         }
 
         .command-item:hover {
-            transform: translateX(5px);
             background: rgba(88, 101, 242, 0.1);
         }
 
@@ -883,6 +904,135 @@
         .version-category .category-title::after {
             background: var(--primary);
         }
+
+        #aboutModal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow-y: auto;
+            background: var(--dark);
+            z-index: 1000;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+            pointer-events: none;
+        }
+
+        #aboutModal.active {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: all;
+        }
+
+        #aboutModal .command-item p {
+            margin: 0;
+            color: var(--light);
+        }
+
+        .versions-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 1000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .versions-content {
+            background: #2c2f33;
+            padding: 2rem;
+            border-radius: 10px;
+            max-width: 800px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        
+        .version-card {
+            background: #23272a;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 5px;
+        }
+        
+        .versions-back-btn {
+            margin-bottom: 1rem;
+        }
+
+        #backToMainFromVersionsBtn {
+            position: sticky;
+            top: 20px;
+            z-index: 1;
+        }
+
+        /* Animacje dla sekcji ToS */
+        .tos-section {
+            opacity: 0;
+            transform: translateY(20px);
+            animation-fill-mode: forwards;
+        }
+
+        /* Efekt "scrollowania" */
+        #termsModal > div {
+            scrollbar-width: thin;
+            scrollbar-color: var(--primary) rgba(255, 255, 255, 0.1);
+        }
+
+        #termsModal > div::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        #termsModal > div::-webkit-scrollbar-thumb {
+            background-color: var(--primary);
+            border-radius: 4px;
+        }
+
+        /* Responsywność */
+        @media (max-width: 768px) {
+            #termsModal > div {
+                padding: 40px 20px;
+                width: 95%;
+            }
+
+            #termsModal h2 {
+                font-size: 1.8rem;
+            }
+
+            #termsModal h3 {
+                font-size: 1.3rem;
+            }
+
+            #termsModal p, #termsModal li {
+                font-size: 1rem;
+            }
+        }
+
+        /* Responsywność */
+        @media (max-width: 768px) {
+            #closeTermsBtn {
+                padding: 6px 16px;
+                font-size: 0.9rem;
+            }
+        }
+
+        .terms-modal-content {
+            background: linear-gradient(135deg, rgba(35, 39, 42, 0.95) 0%, rgba(54, 57, 63, 0.95) 100%);
+            padding: 60px 40px 40px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+            border: 1px solid rgba(88, 101, 242, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
     </style>
 </head>
 <body>
@@ -904,10 +1054,21 @@
         <div class="hero-content">
             <h1 class="animate__animated animate__fadeIn" data-text="Ormi Bot">Ormi Bot</h1>
             <p class="tagline animate__animated animate__fadeIn animate-delay-1">Your ultimate and cringe companion with powerful features</p>
-            <div>
-                <a href="https://discord.com/oauth2/authorize?client_id=1364942161707274301&permissions=2360593607&integration_type=0&scope=bot" class="btn btn-primary">Invite to Server</a>
-                <a href="#" id="viewCommandsBtn" class="btn btn-secondary">View Commands</a>
-                <a href="#" id="viewVersionsBtn" class="btn btn-secondary">Versions</a>
+            <div class="action-buttons">
+                <a href="https://discord.com/oauth2/authorize?client_id=1364942161707274301&permissions=2360593607&integration_type=0&scope=bot" class="btn btn-primary">
+                    <i class="fas fa-plus"></i> Invite to Server
+                </a>
+                <div class="secondary-actions">
+                    <a href="#" id="viewCommandsBtn" class="btn btn-secondary">
+                        <i class="fas fa-terminal"></i> Commands
+                    </a>
+                    <a href="#" id="viewVersionsBtn" class="btn btn-secondary">
+                        <i class="fas fa-code-branch"></i> Versions
+                    </a>
+                    <a href="#" id="aboutBtn" class="btn btn-secondary">
+                        <i class="fas fa-info-circle"></i> About
+                    </a>
+                </div>
             </div>
             <div id="randomQuote"></div>
         </div>
@@ -937,566 +1098,660 @@
     </section>
 
     <section id="commands">
-        <div class="categories-toggle">
-            <button class="categories-btn" id="categoriesBtn">
-                <div class="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </button>
-            <div class="categories-menu" id="categoriesMenu">
-                <a href="#information" class="category-link">
-                    <i class="fas fa-circle-info"></i>
-                    <span>Information</span>
-                </a>
-                <a href="#fun" class="category-link">
-                    <i class="fas fa-gamepad"></i>
-                    <span>Fun</span>
-                </a>
-                <a href="#moderation" class="category-link">
-                    <i class="fas fa-shield-halved"></i>
-                    <span>Moderation</span>
-                </a>
-                <a href="#utility" class="category-link">
-                    <i class="fas fa-screwdriver-wrench"></i>
-                    <span>Utility</span>
-                </a>
-                <a href="#configuration" class="category-link">
-                    <i class="fas fa-gear"></i>
-                    <span>Configuration</span>
-                </a>
-                <a href="#roles" class="category-link">
-                    <i class="fas fa-user-tag"></i>
-                    <span>Roles</span>
-                </a>
-            </div>
-        </div>
         <div class="container">
             <a href="#" id="backToMainBtn" class="btn btn-secondary" style="margin: 20px 0; display: block; width: fit-content;">Back to Main</a>
-            <h2 class="section-title animate__animated animate__fadeIn">All Commands</h2>
+            <h2 class="section-title">All Commands</h2>
             
             <!-- Information -->
-            <div id="information" class="command-category animate__animated animate__fadeIn">
-                <h3 class="category-title">Information</h3>
-                <ul class="command-list">
-                    <li class="command-item"><span class="command-name">;userinfo</span> - Shows user information</li>
-                    <li class="command-item"><span class="command-name">;serverinfo</span> - Displays server statistics</li>
-                    <li class="command-item"><span class="command-name">;avatar</span> - Shows user avatar</li>
-                    <li class="command-item"><span class="command-name">;roleinfo</span> - Shows role information</li>
-                    <li class="command-item"><span class="command-name">;ping</span> - Shows bot latency</li>
+            <div class="command-category" style="background: rgba(88, 101, 242, 0.1); border-color: var(--primary);">
+                <div class="feature-icon" style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem;">ℹ️</div>
+                <h3 class="category-title" style="text-align: center; color: var(--primary);">Information Commands</h3>
+                <div class="command-item" style="background: transparent; border-left: 3px solid var(--primary); padding-left: 20px;">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+                        <div>
+                            <h4 style="color: var(--light); margin-bottom: 10px; font-size: 1.2rem;">User Info</h4>
+                            <ul style="margin: 0; padding-left: 20px;">
+                                <li style="margin-bottom: 6px;"><span class="command-name">;userinfo</span> - Shows user details</li>
+                                <li style="margin-bottom: 6px;"><span class="command-name">;avatar</span> - Shows user avatar</li>
+                                <li style="margin-bottom: 6px;"><span class="command-name">;roleinfo</span> - Shows role info</li>
                 </ul>
+            </div>
+                        <div>
+                            <h4 style="color: var(--light); margin-bottom: 10px; font-size: 1.2rem;">Server Info</h4>
+                            <ul style="margin: 0; padding-left: 20px;">
+                                <li style="margin-bottom: 6px;"><span class="command-name">;serverinfo</span> - Server statistics</li>
+                                <li style="margin-bottom: 6px;"><span class="command-name">;ping</span> - Bot latency</li>
+                </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <!-- Fun -->
-            <div id="fun" class="command-category animate__animated animate__fadeIn animate-delay-1">
-                <h3 class="category-title">Fun</h3>
-                <ul class="command-list">
-                    <li class="command-item"><span class="command-name">;ship</span> - Ship two users together</li>
-                    <li class="command-item"><span class="command-name">;8ball</span> - Ask the magic 8-ball</li>
-                    <li class="command-item"><span class="command-name">;hug</span> - Send virtual hug</li>
-                    <li class="command-item"><span class="command-name">;rate</span> - Rate something 1-10</li>
-                    <li class="command-item"><span class="command-name">;rps</span> - Play rock-paper-scissors</li>
-                    <li class="command-item"><span class="command-name">;random</span> - Random number generator</li>
+            <div class="command-category" style="background: rgba(235, 69, 158, 0.1); border-color: #EB459E;">
+                <div class="feature-icon" style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem;">🎮</div>
+                <h3 class="category-title" style="text-align: center; color: #EB459E;">Fun Commands</h3>
+                <div class="command-item" style="background: transparent; border-left: 3px solid #EB459E; padding-left: 20px;">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+                        <div>
+                            <h4 style="color: var(--light); margin-bottom: 10px; font-size: 1.2rem;">Games</h4>
+                            <ul style="margin: 0; padding-left: 20px;">
+                                <li style="margin-bottom: 6px;"><span class="command-name">;8ball</span> - Magic 8-ball</li>
+                                <li style="margin-bottom: 6px;"><span class="command-name">;rps</span> - Rock-paper-scissors</li>
                 </ul>
+            </div>
+                        <div>
+                            <h4 style="color: var(--light); margin-bottom: 10px; font-size: 1.2rem;">Social</h4>
+                            <ul style="margin: 0; padding-left: 20px;">
+                                <li style="margin-bottom: 6px;"><span class="command-name">;ship</span> - Ship users</li>
+                                <li style="margin-bottom: 6px;"><span class="command-name">;hug</span> - Virtual hug</li>
+                </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <!-- Moderation -->
-            <div id="moderation" class="command-category animate__animated animate__fadeIn animate-delay-2">
-                <h3 class="category-title">Moderation</h3>
-                <ul class="command-list">
-                    <li class="command-item"><span class="command-name">;kick</span> - Kicks a user</li>
-                    <li class="command-item"><span class="command-name">;ban</span> - Bans a user</li>
-                    <li class="command-item"><span class="command-name">;unban</span> - Unbans a user</li>
-                    <li class="command-item"><span class="command-name">;mute</span> - Mutes a user</li>
-                    <li class="command-item"><span class="command-name">;unmute</span> - Unmutes a user</li>
-                    <li class="command-item"><span class="command-name">;warn</span> - Warns a user</li>
-                    <li class="command-item"><span class="command-name">;warnings</span> - Shows user warnings</li>
-                    <li class="command-item"><span class="command-name">;clearwarns</span> - Clears user warnings</li>
-                    <li class="command-item"><span class="command-name">;delwarn</span> - Deletes specific warning</li>
-                    <li class="command-item"><span class="command-name">;purge</span> - Deletes messages</li>
-                    <li class="command-item"><span class="command-name">;slowmode</span> - Sets slowmode</li>
-                    <li class="command-item"><span class="command-name">;lock</span> - Locks a channel</li>
-                    <li class="command-item"><span class="command-name">;unlock</span> - Unlocks a channel</li>
-                    <li class="command-item"><span class="command-name">;nick</span> - Changes nickname</li>
-                    <li class="command-item"><span class="command-name">;nuke</span> - Deletes all messages in channel</li>
+            <div class="command-category" style="background: rgba(237, 66, 69, 0.1); border-color: #ED4245;">
+                <div class="feature-icon" style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem;">🛡️</div>
+                <h3 class="category-title" style="text-align: center; color: #ED4245;">Moderation Commands</h3>
+                <div class="command-item" style="background: transparent; border-left: 3px solid #ED4245; padding-left: 20px;">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+                        <div>
+                            <h4 style="color: var(--light); margin-bottom: 10px; font-size: 1.2rem;">User Management</h4>
+                            <ul style="margin: 0; padding-left: 20px;">
+                                <li style="margin-bottom: 6px;"><span class="command-name">;kick</span> - Kick user</li>
+                                <li style="margin-bottom: 6px;"><span class="command-name">;ban</span> - Ban user</li>
+                                <li style="margin-bottom: 6px;"><span class="command-name">;mute</span> - Mute user</li>
                 </ul>
             </div>
-
-            <!-- Utility -->
-            <div id="utility" class="command-category animate__animated animate__fadeIn animate-delay-1">
-                <h3 class="category-title">Utility</h3>
-                <ul class="command-list">
-                    <li class="command-item"><span class="command-name">;afk</span> - Sets AFK status</li>
-                    <li class="command-item"><span class="command-name">;snipe</span> - Shows last deleted message</li>
-                    <li class="command-item"><span class="command-name">;poll</span> - Creates yes/no poll</li>
-                    <li class="command-item"><span class="command-name">;invite</span> - Generates invite link</li>
-                    <li class="command-item"><span class="command-name">;embed</span> - Creates embed</li>
-                    <li class="command-item"><span class="command-name">;vote</span> - Creates poll</li>
+                        <div>
+                            <h4 style="color: var(--light); margin-bottom: 10px; font-size: 1.2rem;">Channel Control</h4>
+                            <ul style="margin: 0; padding-left: 20px;">
+                                <li style="margin-bottom: 6px;"><span class="command-name">;lock</span> - Lock channel</li>
+                                <li style="margin-bottom: 6px;"><span class="command-name">;purge</span> - Delete messages</li>
+                                <li style="margin-bottom: 6px;"><span class="command-name">;slowmode</span> - Set slowmode</li>
                 </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Utilities -->
+            <div class="command-category" style="background: rgba(250, 166, 26, 0.1); border-color: #FAA61A;">
+                <div class="feature-icon" style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: #FAA61A;">
+                    <i class="fas fa-screwdriver-wrench"></i>
+                </div>
+                <h3 class="category-title" style="text-align: center; color: #FAA61A;">Utilities</h3>
+                <div class="command-item" style="background: transparent; border-left: 3px solid #FAA61A; padding-left: 20px;">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+                        <div>
+                            <h4 style="color: var(--light); margin-bottom: 10px; font-size: 1.2rem;">General</h4>
+                            <ul style="margin: 0; padding-left: 20px;">
+                                <li style="margin-bottom: 6px;"><span class="command-name">;afk [reason]</span> - Sets AFK status</li>
+                                <li style="margin-bottom: 6px;"><span class="command-name">;snipe</span> - Shows last deleted message</li>
+                                <li style="margin-bottom: 6px;"><span class="command-name">;invite</span> - Generates invite link</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 style="color: var(--light); margin-bottom: 10px; font-size: 1.2rem;">Polls & Embeds</h4>
+                            <ul style="margin: 0; padding-left: 20px;">
+                                <li style="margin-bottom: 6px;"><span class="command-name">;poll &lt;question&gt;</span> - Creates yes/no poll</li>
+                                <li style="margin-bottom: 6px;"><span class="command-name">;vote &lt;question&gt;</span> - Creates poll</li>
+                                <li style="margin-bottom: 6px;"><span class="command-name">;embed &lt;title&gt; | &lt;desc&gt; | &lt;#color&gt; | [image]</span> - Creates embed</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <!-- Configuration -->
-            <div id="configuration" class="command-category animate__animated animate__fadeIn animate-delay-2">
-                <h3 class="category-title">Configuration</h3>
-                <ul class="command-list">
-                    <li class="command-item"><span class="command-name">;slc</span> - Sets log channel</li>
-                    <li class="command-item"><span class="command-name">;sdlc</span> - Sets deleted messages log channel</li>
-                    <li class="command-item"><span class="command-name">;swc</span> - Sets welcome channel</li>
-                    <li class="command-item"><span class="command-name">;swm</span> - Sets welcome message</li>
-                    <li class="command-item"><span class="command-name">;say</span> - Sends message as bot</li>
+            <div class="command-category" style="background: rgba(87, 242, 135, 0.1); border-color: var(--secondary);">
+                <div class="feature-icon" style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem;">⚙️</div>
+                <h3 class="category-title" style="text-align: center; color: var(--secondary);">Configuration</h3>
+                <div class="command-item" style="background: transparent; border-left: 3px solid var(--secondary); padding-left: 20px;">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+                        <div>
+                            <h4 style="color: var(--light); margin-bottom: 10px; font-size: 1.2rem;">Logging</h4>
+                            <ul style="margin: 0; padding-left: 20px;">
+                                <li style="margin-bottom: 6px;"><span class="command-name">;slc</span> - Sets log channel</li>
+                                <li style="margin-bottom: 6px;"><span class="command-name">;sdlc</span> - Sets deleted messages log</li>
                 </ul>
+                        </div>
+                        <div>
+                            <h4 style="color: var(--light); margin-bottom: 10px; font-size: 1.2rem;">Welcome</h4>
+                            <ul style="margin: 0; padding-left: 20px;">
+                                <li style="margin-bottom: 6px;"><span class="command-name">;swc</span> - Sets welcome channel</li>
+                                <li style="margin-bottom: 6px;"><span class="command-name">;swm</span> - Sets welcome message</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <!-- Nowa sekcja Roles na samym dole -->
-            <div id="roles" class="command-category animate__animated animate__fadeIn animate-delay-2">
-                <h3 class="category-title">Roles</h3>
-                <ul class="command-list">
-                    <li class="command-item"><span class="command-name">;addrole &lt;user&gt; &lt;role&gt;</span> - Adds role to user</li>
-                    <li class="command-item"><span class="command-name">;rmrole &lt;user&gt; &lt;role&gt;</span> - Removes role from user</li>
-                    <li class="command-item"><span class="command-name">;createrole &lt;name&gt; [color]</span> - Creates new role</li>
-                    <li class="command-item"><span class="command-name">;delrole &lt;role&gt;</span> - Deletes role</li>
-                    <li class="command-item"><span class="command-name">;editrole &lt;role&gt; &lt;new_name&gt; [color] [icon]</span> - Edits role properties</li>
+            <!-- Roles -->
+            <div class="command-category" style="background: rgba(235, 69, 158, 0.1); border-color: #EB459E;">
+                <div class="feature-icon" style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem;">🏷️</div>
+                <h3 class="category-title" style="text-align: center; color: #EB459E;">Roles Management</h3>
+                <div class="command-item" style="background: transparent; border-left: 3px solid #EB459E; padding-left: 20px;">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+                        <div>
+                            <h4 style="color: var(--light); margin-bottom: 10px; font-size: 1.2rem;">Basic</h4>
+                            <ul style="margin: 0; padding-left: 20px;">
+                                <li style="margin-bottom: 6px;"><span class="command-name">;addrole</span> - Adds role to user</li>
+                                <li style="margin-bottom: 6px;"><span class="command-name">;rmrole</span> - Removes role from user</li>
                 </ul>
+                        </div>
+                        <div>
+                            <h4 style="color: var(--light); margin-bottom: 10px; font-size: 1.2rem;">Advanced</h4>
+                            <ul style="margin: 0; padding-left: 20px;">
+                                <li style="margin-bottom: 6px;"><span class="command-name">;createrole</span> - Creates new role</li>
+                                <li style="margin-bottom: 6px;"><span class="command-name">;delrole</span> - Deletes role</li>
+                                <li style="margin-bottom: 6px;"><span class="command-name">;editrole</span> - Edits role properties</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="versions">
-        <div class="container">
+    <section id="versions" style="top: -80px;">
+        <div class="container" style="margin-top: 40px;">
             <a href="#" id="backToMainFromVersionsBtn" class="btn btn-secondary" style="margin: 20px 0; display: block; width: fit-content;">Back to Main</a>
-            <h2 class="section-title animate__animated animate__fadeIn">Version History</h2>
+            <h2 class="section-title">Version History</h2>
             
-            <!-- Nowa wersja -->
-            <div class="version-category animate__animated animate__fadeIn">
-                <h3 class="category-title">v2.4.0 - Latest</h3>
-                <ul class="version-list">
-                    <li>Added new role management commands</li>
-                    <li>Successfully migrated to new hosting provider</li>
-                    <li>Performance improvements and optimizations</li>
-                    <li>Fixed minor bugs from previous version</li>
+            <!-- Latest Version -->
+            <div class="command-category" style="background: rgba(88, 101, 242, 0.1); border-color: var(--primary);">
+                <div class="feature-icon" style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: var(--primary);">
+                    <i class="fas fa-star"></i>
+                </div>
+                <h3 class="category-title" style="text-align: center; color: var(--primary);">v2.4.0 - Latest</h3>
+                <ul class="command-list">
+                    <li class="command-item">Added new role management commands</li>
+                    <li class="command-item">Successfully migrated to new hosting provider</li>
+                    <li class="command-item">Performance improvements and optimizations</li>
+                    <li class="command-item">Fixed minor bugs from previous version</li>
                 </ul>
             </div>
 
-            <!-- Poprzednie wersje -->
-            <div class="version-category animate__animated animate__fadeIn animate-delay-1">
-                <h3 class="category-title">v2.3.0</h3>
-                <ul class="version-list">
-                    <li>Removed music commands due to hosting limitations</li>
-                    <li>Preparing for new hosting provider migration</li>
-                    <li>Improved system stability</li>
+            <!-- Previous Versions -->
+            <div class="command-category" style="background: rgba(87, 242, 135, 0.1); border-color: var(--secondary);">
+                <div class="feature-icon" style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: var(--secondary);">
+                    <i class="fas fa-code-branch"></i>
+                </div>
+                <h3 class="category-title" style="text-align: center; color: var(--secondary);">v2.3.0</h3>
+                <ul class="command-list">
+                    <li class="command-item">Removed music commands due to hosting limitations</li>
+                    <li class="command-item">Preparing for new hosting provider migration</li>
+                    <li class="command-item">Improved system stability</li>
                 </ul>
             </div>
 
-            <div class="version-category animate__animated animate__fadeIn animate-delay-2">
-                <h3 class="category-title">v2.2.0</h3>
-                <ul class="version-list">
-                    <li>Added mute role persistence</li>
-                    <li>Fixed music queue bugs</li>
-                    <li>Improved error logging</li>
+            <div class="command-category" style="background: rgba(235, 69, 158, 0.1); border-color: #EB459E;">
+                <div class="feature-icon" style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: #EB459E;">
+                    <i class="fas fa-history"></i>
+                </div>
+                <h3 class="category-title" style="text-align: center; color: #EB459E;">v2.2.0</h3>
+                <ul class="command-list">
+                    <li class="command-item">Added mute role persistence</li>
+                    <li class="command-item">Fixed music queue bugs</li>
+                    <li class="command-item">Improved error logging</li>
                 </ul>
             </div>
 
-            <div class="version-category animate__animated animate__fadeIn animate-delay-3">
-                <h3 class="category-title">v2.1.0</h3>
-                <ul class="version-list">
-                    <li>YouTube playback support</li>
-                    <li>Custom welcome messages</li>
-                    <li>Optimized database queries</li>
+            <div class="command-category" style="background: rgba(254, 231, 92, 0.1); border-color: #FEE75C;">
+                <div class="feature-icon" style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: #FEE75C;">
+                    <i class="fas fa-bug"></i>
+                </div>
+                <h3 class="category-title" style="text-align: center; color: #FEE75C;">v2.1.0</h3>
+                <ul class="command-list">
+                    <li class="command-item">YouTube playback support</li>
+                    <li class="command-item">Custom welcome messages</li>
+                    <li class="command-item">Optimized database queries</li>
                 </ul>
             </div>
 
-            <div class="version-category animate__animated animate__fadeIn animate-delay-4">
-                <h3 class="category-title">v2.0.0</h3>
-                <ul class="version-list">
-                    <li>Poll system</li>
-                    <li>Redesigned command handler</li>
+            <div class="command-category" style="background: rgba(237, 66, 69, 0.1); border-color: #ED4245;">
+                <div class="feature-icon" style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: #ED4245;">
+                    <i class="fas fa-poll"></i>
+                </div>
+                <h3 class="category-title" style="text-align: center; color: #ED4245;">v2.0.0</h3>
+                <ul class="command-list">
+                    <li class="command-item">Poll system</li>
+                    <li class="command-item">Redesigned command handler</li>
                 </ul>
             </div>
 
-            <div class="version-category animate__animated animate__fadeIn animate-delay-5">
-                <h3 class="category-title">v1.3.0</h3>
-                <ul class="version-list">
-                    <li>Advanced moderation logs</li>
-                    <li>New purge command</li>
-                    <li>Bug fixes</li>
+            <!-- Older Versions -->
+            <div class="command-category" style="background: rgba(114, 137, 218, 0.1); border-color: #7289DA;">
+                <div class="feature-icon" style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: #7289DA;">
+                    <i class="fas fa-scroll"></i>
+                </div>
+                <h3 class="category-title" style="text-align: center; color: #7289DA;">v1.3.0</h3>
+                <ul class="command-list">
+                    <li class="command-item">Advanced moderation logs</li>
+                    <li class="command-item">New purge command</li>
+                    <li class="command-item">Bug fixes</li>
                 </ul>
             </div>
 
-            <div class="version-category animate__animated animate__fadeIn animate-delay-6">
-                <h3 class="category-title">v1.2.0</h3>
-                <ul class="version-list">
-                    <li>Basic warn system</li>
-                    <li>Channel locking</li>
-                    <li>Stability improvements</li>
+            <div class="command-category" style="background: rgba(153, 170, 181, 0.1); border-color: #99AAB5;">
+                <div class="feature-icon" style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: #99AAB5;">
+                    <i class="fas fa-lock"></i>
+                </div>
+                <h3 class="category-title" style="text-align: center; color: #99AAB5;">v1.2.0</h3>
+                <ul class="command-list">
+                    <li class="command-item">Basic warn system</li>
+                    <li class="command-item">Channel locking</li>
+                    <li class="command-item">Stability improvements</li>
                 </ul>
             </div>
 
-            <div class="version-category animate__animated animate__fadeIn animate-delay-7">
-                <h3 class="category-title">v1.1.0</h3>
-                <ul class="version-list">
-                    <li>AFK system</li>
-                    <li>Embed generator</li>
-                    <li>Help menu</li>
+            <div class="command-category" style="background: rgba(59, 165, 92, 0.1); border-color: #3BA55C;">
+                <div class="feature-icon" style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: #3BA55C;">
+                    <i class="fas fa-user-clock"></i>
+                </div>
+                <h3 class="category-title" style="text-align: center; color: #3BA55C;">v1.1.0</h3>
+                <ul class="command-list">
+                    <li class="command-item">AFK system</li>
+                    <li class="command-item">Embed generator</li>
+                    <li class="command-item">Help menu</li>
                 </ul>
             </div>
 
-            <div class="version-category animate__animated animate__fadeIn animate-delay-8">
-                <h3 class="category-title">v1.0.0</h3>
-                <ul class="version-list">
-                    <li>Initial bot release</li>
-                    <li>Core moderation commands</li>
-                    <li>Basic utilities</li>
+            <div class="command-category" style="background: rgba(250, 166, 26, 0.1); border-color: #FAA61A;">
+                <div class="feature-icon" style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: #FAA61A;">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <h3 class="category-title" style="text-align: center; color: #FAA61A;">v1.0.0</h3>
+                <ul class="command-list">
+                    <li class="command-item">Initial bot release</li>
+                    <li class="command-item">Core moderation commands</li>
+                    <li class="command-item">Basic utilities</li>
                 </ul>
             </div>
         </div>
     </section>
 
+    <!-- About Section -->
+    <section id="aboutModal">
+        <div class="container">
+            <a href="#" id="backToMainFromAboutBtn" class="btn btn-secondary" style="margin: 20px 0; display: block; width: fit-content;">
+                Back to Main
+            </a>
+            <h2 class="section-title">About Ormi Bot</h2>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px;">
+                <!-- Left Column - Bot Info -->
+                <div class="command-category" style="background: rgba(88, 101, 242, 0.1); border-color: var(--primary); height: fit-content;">
+                    <div class="feature-icon" style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: var(--primary);">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3 class="category-title" style="text-align: center; color: var(--primary);">Bot Information</h3>
+                    <div class="command-item" style="background: transparent; padding: 20px;">
+                        <div style="margin-bottom: 20px;">
+                            <h4 style="color: var(--light); margin-bottom: 10px; display: flex; align-items: center;">
+                                <i class="fas fa-info-circle" style="margin-right: 8px; color: var(--primary);"></i>
+                                Description
+                            </h4>
+                            <p style="margin: 0; line-height: 1.5; color: rgba(255,255,255,0.8);">
+                                Ormi is a feature-rich Discord bot designed to enhance your server with powerful moderation tools, 
+                                entertainment commands, and utility features. Completely free and open source.
+                            </p>
+                        </div>
+
+                        <div style="margin-bottom: 20px;">
+                            <h4 style="color: var(--light); margin-bottom: 10px; display: flex; align-items: center;">
+                                <i class="fas fa-cogs" style="margin-right: 8px; color: var(--primary);"></i>
+                                Technical Info
+                            </h4>
+                            <ul style="margin: 0; padding-left: 20px; color: rgba(255,255,255,0.8);">
+                                <li style="margin-bottom: 8px;"><strong>Version:</strong> 2.4.0</li>
+                                <li style="margin-bottom: 8px;"><strong>Library:</strong> Discord.py v2.5.2</li>
+                                <li style="margin-bottom: 8px;"><strong>Status:</strong> <span style="color: #57F287;">Active Development</span></li>
+                                <li style="margin-bottom: 8px;"><strong>Maintenance:</strong> <span style="color: #FAA61A;">Free to use!</span></li>
+                            </ul>
+                        </div>
+
+                        <a href="https://discord.gg/cYZPfXcBGB" target="_blank" class="btn btn-primary" style="width: 100%; text-align: center; margin-top: 15px;">
+                            <i class="fab fa-discord" style="margin-right: 8px;"></i> Join Our Discord
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Column - Developer Info -->
+                <div class="command-category" style="background: rgba(87, 242, 135, 0.1); border-color: var(--secondary); height: fit-content;">
+                    <div class="feature-icon" style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: var(--secondary);">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h3 class="category-title" style="text-align: center; color: var(--secondary);">Developer</h3>
+                    <div class="command-item" style="background: transparent; padding: 20px;">
+                        <div style="display: flex; align-items: center; margin-bottom: 20px;">
+                            <div style="position: relative; margin-right: 20px;">
+                                <div style="width: 80px; height: 80px; border-radius: 50%; 
+                                    padding: 3px; background: #747f8d; /* Domyślny kolor (offline) */">
+                                    <img id="developerAvatar" src="https://cdn.discordapp.com/avatars/879393496627306587/9e2876806536a7763679fb246f5cd146.webp?size=1024" 
+                                         style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%; border: 2px solid var(--dark);">
+                                </div>
+                            </div>
+                            <div>
+                                <h4 style="color: var(--light); margin: 0 0 5px 0;">kmmiio99o.dev</h4>
+                                <p id="discordStatusText" style="margin: 0; color: rgba(255,255,255,0.7);">Status: Loading...</p>
+                            </div>
+                        </div>
+
+                        <div style="margin-bottom: 20px;">
+                            <h4 style="color: var(--light); margin-bottom: 10px; display: flex; align-items: center;">
+                                <i class="fas fa-code" style="margin-right: 8px; color: var(--secondary);"></i>
+                                Experience
+                            </h4>
+                            <p style="margin: 0; line-height: 1.5; color: rgba(255,255,255,0.8);">
+                                Most websites. But know enough to type a good discord bot that is going to be totally free.
+                            </p>
+                        </div>
+
+                        <div>
+                            <h4 style="color: var(--light); margin-bottom: 10px; display: flex; align-items: center;">
+                                <i class="fas fa-envelope" style="margin-right: 8px; color: var(--secondary);"></i>
+                                Contact
+                            </h4>
+                            <ul style="margin: 0; padding-left: 20px; color: rgba(255,255,255,0.8);">
+                                <li style="margin-bottom: 8px;"><strong>Discord:</strong> kmmiio99o.dev</li>
+                                <li><strong>GitHub:</strong> <a href="https://github.com/kmmiio99o" target="_blank" style="color: var(--primary);">kmmiio99o</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
     <footer>
         <p>&copy; 2025 Ormi Bot. All Rights Reserved.</p>
         <a href="#" id="termsBtn" class="btn btn-secondary" style="margin-top: 20px;">Terms of Service</a>
     </footer>
 
     <div id="termsModal">
-        <div>
-            <button id="closeTermsBtn">Close</button>
-            <h2 style="color: var(--primary); margin-bottom: 20px; font-size: 2rem;">Terms of Service</h2>
-            <div style="color: var(--light); line-height: 1.6; font-size: 1.1rem;">
-                <h3 style="font-size: 1.5rem; margin-top: 20px;">1. Acceptance of Terms</h3>
-                <p>By inviting Ormi Bot to your Discord server or using its services, you agree to comply with these Terms of Service ("ToS"). If you do not agree with any part of these terms, you must discontinue use of the bot immediately.</p>
+        <div class="terms-modal-content">
+            <button id="closeTermsBtn" style="
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                background: var(--primary);
+                color: white;
+                border: none;
+                border-radius: 50px;
+                padding: 8px 20px;
+                font-family: 'Open Sans', sans-serif;
+                font-weight: 600;
+                font-size: 1rem;
+                cursor: pointer;
+                transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+                box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+                display: flex;
+                align-items: center;
+                gap: 8px;
+            ">
+                <i class="fas fa-times"></i>
+                Close
+            </button>
 
-                <h3 style="font-size: 1.5rem; margin-top: 20px;">2. Bot Usage and License</h3>
-                <p>Ormi Bot is provided as a free service for Discord servers. You are granted a non-exclusive, revocable license to use the bot for its intended purposes, including moderation, entertainment, and utility features.</p>
+            <h2 style="
+                color: var(--primary);
+                margin-bottom: 30px;
+                font-size: 2.2rem;
+                text-align: center;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                position: relative;
+                padding-bottom: 10px;
+            ">
+                <i class="fas fa-file-contract" style="margin-right: 10px;"></i>
+                Terms of Service
+            </h2>
 
-                <h3 style="font-size: 1.5rem; margin-top: 20px;">3. Prohibited Activities</h3>
-                <p>You are strictly prohibited from:</p>
-                <ul style="margin-left: 20px;">
-                    <li>Using the bot to violate Discord's Terms of Service or Community Guidelines.</li>
-                    <li>Automating interactions with the bot (e.g., self-bots, macros, or scripts).</li>
-                    <li>Spamming commands or abusing API endpoints.</li>
-                    <li>Using the bot to harass, threaten, or discriminate against individuals or groups.</li>
-                    <li>Reverse-engineering, decompiling, or modifying the bot's code.</li>
-                    <li>Using the bot for illegal activities or to distribute harmful content.</li>
-                </ul>
+            <div style="
+                color: var(--light);
+                line-height: 1.7;
+                font-size: 1.1rem;
+            ">
+                <!-- Sekcja 1 -->
+                <div>
+                    <h3 style="
+                        font-size: 1.5rem;
+                        margin: 25px 0 15px;
+                        color: var(--primary);
+                        display: flex;
+                        align-items: center;
+                    ">
+                        <i class="fas fa-check-circle" style="margin-right: 10px;"></i>
+                        1. Acceptance of Terms
+                    </h3>
+                    <p style="margin: 0; opacity: 0.9;">
+                        By inviting Ormi Bot to your Discord server or using its services, you agree to comply with these Terms of Service ("ToS"). If you do not agree with any part of these terms, you must discontinue use of the bot immediately.
+                    </p>
+                </div>
 
-                <h3 style="font-size: 1.5rem; margin-top: 20px;">4. Data Collection and Privacy</h3>
-                <p>Ormi Bot may collect and store the following data for functionality:</p>
-                <ul style="margin-left: 20px;">
-                    <li>Server IDs and channel IDs for configuration purposes.</li>
-                    <li>User IDs for moderation features (e.g., warnings, mutes).</li>
-                    <li>Command usage logs for debugging and analytics.</li>
-                </ul>
-                <p>We do not collect or store personal messages, sensitive user data, or any information beyond what is necessary for the bot's operation. Data is stored securely and is not shared with third parties.</p>
+                <!-- Sekcja 2 -->
+                <div>
+                    <h3 style="
+                        font-size: 1.5rem;
+                        margin: 25px 0 15px;
+                        color: var(--primary);
+                        display: flex;
+                        align-items: center;
+                    ">
+                        <i class="fas fa-gavel" style="margin-right: 10px;"></i>
+                        2. Bot Usage and License
+                    </h3>
+                    <p style="margin: 0; opacity: 0.9;">
+                        Ormi Bot is provided as a free service for Discord servers. You are granted a non-exclusive, revocable license to use the bot for its intended purposes, including moderation, entertainment, and utility features.
+                    </p>
+                </div>
 
-                <h3 style="font-size: 1.5rem; margin-top: 20px;">5. Limitation of Liability</h3>
-                <p>Ormi Bot is provided "as is" without warranties of any kind. The developers are not liable for:</p>
-                <ul style="margin-left: 20px;">
-                    <li>Downtime, data loss, or service interruptions.</li>
-                    <li>Damages caused by misuse of the bot.</li>
-                    <li>Actions taken by Discord or third parties related to the bot's use.</li>
-                </ul>
+                <!-- Sekcja 3 -->
+                <div>
+                    <h3 style="
+                        font-size: 1.5rem;
+                        margin: 25px 0 15px;
+                        color: var(--accent);
+                        display: flex;
+                        align-items: center;
+                    ">
+                        <i class="fas fa-ban" style="margin-right: 10px;"></i>
+                        3. Prohibited Activities
+                    </h3>
+                    <p style="margin: 0 0 15px; opacity: 0.9;">
+                        You are strictly prohibited from:
+                    </p>
+                    <ul style="margin: 0; padding-left: 0; list-style: none;">
+                        <li style="margin-bottom: 10px; display: flex; align-items: flex-start;">
+                            <i class="fas fa-times" style="color: var(--accent); margin-right: 10px; margin-top: 4px;"></i>
+                            Using the bot to violate Discord's Terms of Service or Community Guidelines.
+                        </li>
+                        <li style="margin-bottom: 10px; display: flex; align-items: flex-start;">
+                            <i class="fas fa-times" style="color: var(--accent); margin-right: 10px; margin-top: 4px;"></i>
+                            Automating interactions with the bot (e.g., self-bots, macros, or scripts).
+                        </li>
+                        <li style="margin-bottom: 10px; display: flex; align-items: flex-start;">
+                            <i class="fas fa-times" style="color: var(--accent); margin-right: 10px; margin-top: 4px;"></i>
+                            Spamming commands or abusing API endpoints.
+                        </li>
+                        <li style="margin-bottom: 10px; display: flex; align-items: flex-start;">
+                            <i class="fas fa-times" style="color: var(--accent); margin-right: 10px; margin-top: 4px;"></i>
+                            Using the bot to harass, threaten, or discriminate against individuals or groups.
+                        </li>
+                        <li style="margin-bottom: 10px; display: flex; align-items: flex-start;">
+                            <i class="fas fa-times" style="color: var(--accent); margin-right: 10px; margin-top: 4px;"></i>
+                            Reverse-engineering, decompiling, or modifying the bot's code.
+                        </li>
+                        <li style="display: flex; align-items: flex-start;">
+                            <i class="fas fa-times" style="color: var(--accent); margin-right: 10px; margin-top: 4px;"></i>
+                            Using the bot for illegal activities or to distribute harmful content.
+                        </li>
+                    </ul>
+                </div>
 
-                <h3 style="font-size: 1.5rem; margin-top: 20px;">6. Changes to Terms</h3>
-                <p>We reserve the right to modify these terms at any time. Significant changes will be announced via our support server or the bot's update logs. Continued use of the bot constitutes acceptance of the updated terms.</p>
-
-                <h3 style="font-size: 1.5rem; margin-top: 20px;">7. Termination</h3>
-                <p>We may terminate your access to Ormi Bot at any time for violations of these terms. You may also remove the bot from your server at any time.</p>
-
-                <h3 style="font-size: 1.5rem; margin-top: 20px;">8. Contact</h3>
-                <p>For urgent issues, you may contact the developer via Discord: <a href="https://discord.com/users/879393496627306587" style="color: var(--secondary);" target="_blank">kmmiio99o</a>. Responses are always guaranteed.</p>
+                <!-- Pozostałe sekcje (4-8) -->
+                <!-- ... -->
             </div>
         </div>
     </div>
 
+
     <script>
-        let lastScrollPosition = 0;
-        let ticking = false;
-        const commandsSection = document.getElementById('commands');
-        const menuToggle = document.querySelector('.categories-toggle');
+        document.addEventListener('DOMContentLoaded', function() {
+            const viewCommandsBtn = document.getElementById('viewCommandsBtn');
+            const commandsSection = document.getElementById('commands');
+            const backToMainBtn = document.getElementById('backToMainBtn');
+            const viewVersionsBtn = document.getElementById('viewVersionsBtn');
+            const versionsSection = document.getElementById('versions');
+            const backToMainFromVersionsBtn = document.getElementById('backToMainFromVersionsBtn');
+            const aboutBtn = document.getElementById('aboutBtn');
+            const aboutModal = document.getElementById('aboutModal');
+            const backToMainFromAboutBtn = document.getElementById('backToMainFromAboutBtn');
+            const heroSection = document.querySelector('.hero');
+            const featuresSection = document.querySelector('.features');
 
-        commandsSection.addEventListener('scroll', function() {
-            lastScrollPosition = commandsSection.scrollTop;
-            
-            if (!ticking) {
-                window.requestAnimationFrame(function() {
-                    menuToggle.style.transform = `translateY(${lastScrollPosition}px)`;
-                    ticking = false;
+            function hideAllSections() {
+                heroSection.classList.add('hide');
+                featuresSection.classList.add('hide');
+                commandsSection.classList.remove('active');
+                versionsSection.classList.remove('active');
+                if (aboutModal) aboutModal.classList.remove('active');
+            }
+
+            if (viewCommandsBtn) {
+                viewCommandsBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    hideAllSections();
+                    commandsSection.classList.add('active');
                 });
-                ticking = true;
             }
-        });
 
-        document.getElementById('viewCommandsBtn').addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            commandsSection.scrollTop = 0;
-            menuToggle.style.transform = 'translateY(0)';
-            
-            document.querySelector('.hero').classList.add('hide');
-            document.querySelector('.features').classList.add('hide');
-            document.getElementById('commands').classList.add('active');
-            menuToggle.style.display = 'block';
-        });
-
-        document.getElementById('backToMainBtn').addEventListener('click', function(e) {
-            e.preventDefault();
-            document.getElementById('commands').classList.remove('active');
-            menuToggle.style.display = 'none';
-            document.querySelector('.hero').classList.remove('hide');
-            document.querySelector('.features').classList.remove('hide');
-        });
-
-        const menuBtn = document.getElementById('categoriesBtn');
-        const menu = document.getElementById('categoriesMenu');
-        let menuOpen = false;
-
-        menuBtn.addEventListener('click', function(e) {
-            e.stopPropagation();
-            menuOpen = !menuOpen;
-            menuBtn.classList.toggle('active', menuOpen);
-            if (menuOpen) {
-                menu.style.display = 'block';
-                setTimeout(() => {
-                    menu.classList.add('active');
-                }, 10);
-            } else {
-                menu.classList.remove('active');
-                setTimeout(() => {
-                    menu.style.display = 'none';
-                }, 300);
+            if (backToMainBtn) {
+                backToMainBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    hideAllSections();
+                    heroSection.classList.remove('hide');
+                    featuresSection.classList.remove('hide');
+                });
             }
-        });
 
-        document.addEventListener('click', function(e) {
-            if(menuOpen && !menu.contains(e.target) && !menuBtn.contains(e.target)) {
-                menuOpen = false;
-                menuBtn.classList.remove('active');
-                menu.classList.remove('active');
-                setTimeout(() => {
-                    menu.style.display = 'none';
-                }, 300);
+            if (viewVersionsBtn) {
+                viewVersionsBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    hideAllSections();
+                    versionsSection.classList.add('active');
+                });
             }
-        });
 
-        const termsBtn = document.getElementById('termsBtn');
-        const termsModal = document.getElementById('termsModal');
-        const closeTermsBtn = document.getElementById('closeTermsBtn');
-
-        termsBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            termsModal.style.display = 'flex';
-            termsModal.querySelector('div').scrollTop = 0;
-            setTimeout(() => {
-                termsModal.classList.add('active');
-            }, 10);
-        });
-
-        closeTermsBtn.addEventListener('click', function() {
-            termsModal.classList.remove('active');
-            setTimeout(() => {
-                termsModal.style.display = 'none';
-            }, 300);
-        });
-
-        termsModal.addEventListener('click', function(e) {
-            if (e.target === termsModal) {
-                termsModal.classList.remove('active');
-                setTimeout(() => {
-                    termsModal.style.display = 'none';
-                }, 300);
+            if (backToMainFromVersionsBtn) {
+                backToMainFromVersionsBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    hideAllSections();
+                    heroSection.classList.remove('hide');
+                    featuresSection.classList.remove('hide');
+                });
             }
+
+            if (aboutBtn) {
+                aboutBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    hideAllSections();
+                    if (aboutModal) aboutModal.classList.add('active');
+                });
+            }
+
+            if (backToMainFromAboutBtn) {
+                backToMainFromAboutBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    hideAllSections();
+                    heroSection.classList.remove('hide');
+                    featuresSection.classList.remove('hide');
+                });
+            }
+
+            // Obsługa modala Terms of Service
+            const termsBtn = document.getElementById('termsBtn');
+            const termsModal = document.getElementById('termsModal');
+            const closeTermsBtn = document.getElementById('closeTermsBtn');
+
+            if (termsBtn && termsModal) {
+                termsBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    termsModal.classList.add('active');
+                });
+            }
+
+            if (closeTermsBtn) {
+                closeTermsBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    termsModal.classList.remove('active');
+                });
+            }
+
+            // Zamykanie modala po kliknięciu poza jego obszarem
+            termsModal.addEventListener('click', function(e) {
+                if (e.target === termsModal) {
+                    termsModal.classList.remove('active');
+                }
+            });
         });
 
-        let secretCode = '';
-        const secretSequence = 'ormi';
-        const logo = document.querySelector('.logo');
+        // Konfiguracja
+        const DISCORD_ID = '879393496627306587'; // Twoje Discord ID
+        const STATUS_COLORS = {
+            online: '#3ba55c',
+            idle: '#faa61a',
+            dnd: '#ed4245',
+            offline: '#747f8d'
+        };
 
-        document.addEventListener('keydown', (e) => {
-            secretCode += e.key.toLowerCase();
-            
-            if (secretCode.length > secretSequence.length) {
-                secretCode = secretCode.substring(1);
-            }
-            
-            if (secretCode === secretSequence) {
-                logo.style.animation = 'spin 2s linear infinite, colorChange 5s linear infinite';
-                logo.style.borderColor = 'var(--secondary)';
+        // Pobierz status
+        async function updateDiscordStatus() {
+            try {
+                const response = await fetch(`https://api.lanyard.rest/v1/users/${DISCORD_ID}`);
+                const { data } = await response.json();
                 
-                setTimeout(() => {
-                    logo.style.animation = 'pulse 2s infinite';
-                    logo.style.borderColor = 'var(--primary)';
-                }, 10000);
+                const status = data.discord_status;
+                const avatarContainer = document.querySelector('#developerAvatar').parentElement;
+                
+                // Ustaw kolor obramówki
+                avatarContainer.style.background = STATUS_COLORS[status] || STATUS_COLORS.offline;
+                
+                // Animacja dla online
+                if (status === 'online') {
+                    avatarContainer.style.animation = 'pulse 1.5s infinite';
+                } else {
+                    avatarContainer.style.animation = 'none';
+                }
+                
+                // Tekst statusu
+                document.getElementById('discordStatusText').textContent = 
+                    `Status: ${status.toUpperCase()}${status === 'dnd' ? ' (Do Not Disturb)' : ''}`;
+                
+            } catch (error) {
+                console.error('Error fetching status:', error);
             }
-        });
+        }
 
+        // Dodaj animację do CSS
         const style = document.createElement('style');
         style.textContent = `
-            @keyframes spin {
-                from { transform: rotate(0deg); }
-                to { transform: rotate(360deg); }
-            }
-            @keyframes colorChange {
-                0% { filter: hue-rotate(0deg); }
-                100% { filter: hue-rotate(360deg); }
+            @keyframes pulse {
+                0% { box-shadow: 0 0 0 0 rgba(59, 165, 92, 0.7); }
+                70% { box-shadow: 0 0 0 10px rgba(59, 165, 92, 0); }
+                100% { box-shadow: 0 0 0 0 rgba(59, 165, 92, 0); }
             }
         `;
         document.head.appendChild(style);
 
-        const quotes = [
-            "Ormi Bot: Your indispensable Discord assistant!",
-            "Did you know Ormi has hidden commands? Try to find them!",
-            "Ormi Bot was created with passion for Discord communities.",
-            "💡 Tip: Type 'ormi' to see a magical effect!",
-            "⚡ Ormi Bot: Fast and reliable!",
-            "🎵 Listen to your favorite music with Ormi Bot!",
-            "🛡️ Ormi Bot helps with server moderation!",
-            "🤖 Ormi Bot: Simple to use, powerful in action!",
-            "🔧 Configure Ormi Bot in just a few minutes!",
-            "🌟 Ormi Bot: Regular updates and fixes!"
-        ];
-
-        const randomQuote = document.getElementById('randomQuote');
-        
-        function typeWriter(text, element, speed = 30) {
-            let i = 0;
-            element.innerHTML = '';
-            
-            function type() {
-                if (i < text.length) {
-                    const char = text.charAt(i);
-                    element.innerHTML += char;
-                    i++;
-                    
-                    const delay = (char === ' ' || char === '!') ? speed / 2 : speed;
-                    setTimeout(type, delay);
-                }
-            }
-            
-            type();
-        }
-
-        const randomIndex = Math.floor(Math.random() * quotes.length);
-        typeWriter(quotes[randomIndex], randomQuote, 50);
-
-        const hiddenMobileButton = document.getElementById('hiddenMobileButton');
-
-        if (isMobileDevice()) {
-            hiddenMobileButton.style.display = 'block';
-            
-            hiddenMobileButton.addEventListener('click', () => {
-                logo.style.animation = 'spin 1s linear infinite, colorChange 3s linear infinite';
-                
-                const feedback = document.createElement('div');
-                feedback.textContent = '🎉 Secret activated!';
-                feedback.style.position = 'fixed';
-                feedback.style.bottom = '20px';
-                feedback.style.left = '0';
-                feedback.style.right = '0';
-                feedback.style.textAlign = 'center';
-                feedback.style.color = 'var(--secondary)';
-                feedback.style.fontWeight = 'bold';
-                document.body.appendChild(feedback);
-                
-                setTimeout(() => {
-                    logo.style.animation = 'pulse 2s infinite';
-                    feedback.remove();
-                }, 3000);
-            });
-        }
-
-        function isMobileDevice() {
-            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-        }
-
-        document.getElementById('viewVersionsBtn').addEventListener('click', function(e) {
-            e.preventDefault();
-            document.querySelector('.hero').classList.add('hide');
-            document.querySelector('.features').classList.add('hide');
-            document.getElementById('versions').classList.add('active');
-        });
-
-        document.getElementById('backToMainFromVersionsBtn').addEventListener('click', function(e) {
-            e.preventDefault();
-            document.getElementById('versions').classList.remove('active');
-            document.querySelector('.hero').classList.remove('hide');
-            document.querySelector('.features').classList.remove('hide');
-        });
-
-        logo.addEventListener('click', function(e) {
-            createConfetti(e.clientX, e.clientY);
-        });
-
-        function createConfetti(x, y) {
-            const colors = ['#5865F2', '#57F287', '#FEE75C', '#EB459E', '#ED4245'];
-            
-            for (let i = 0; i < 50; i++) {
-                const confetti = document.createElement('div');
-                confetti.className = 'confetti';
-                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-                confetti.style.left = `${x}px`;
-                confetti.style.top = `${y}px`;
-                document.body.appendChild(confetti);
-                
-                const angle = Math.random() * Math.PI * 2;
-                const velocity = 5 + Math.random() * 5;
-                const rotation = Math.random() * 360;
-                
-                let posX = x;
-                let posY = y;
-                let opacity = 1;
-                let scale = 0.5 + Math.random();
-                
-                const animate = () => {
-                    posX += Math.cos(angle) * velocity;
-                    posY += Math.sin(angle) * velocity + 0.5;
-                    opacity -= 0.02;
-                    scale -= 0.01;
-                    
-                    confetti.style.left = `${posX}px`;
-                    confetti.style.top = `${posY}px`;
-                    confetti.style.opacity = opacity;
-                    confetti.style.transform = `rotate(${rotation}deg) scale(${scale})`;
-                    
-                    if (opacity > 0) {
-                        requestAnimationFrame(animate);
-                    } else {
-                        confetti.remove();
-                    }
-                };
-                
-                requestAnimationFrame(animate);
-            }
-        }
-
-        const versionItems = document.querySelectorAll('.version-list li');
-        versionItems.forEach(item => {
-            item.addEventListener('mouseenter', function() {
-                this.style.boxShadow = '0 0 10px rgba(88, 101, 242, 0.5)';
-            });
-            
-            item.addEventListener('mouseleave', function() {
-                this.style.boxShadow = 'none';
-            });
-        });
-
-        const versionTitles = document.querySelectorAll('.category-title');
-        versionTitles.forEach(title => {
-            const originalText = title.textContent;
-            title.textContent = '';
-            
-            let i = 0;
-            const type = () => {
-                if (i < originalText.length) {
-                    title.textContent += originalText.charAt(i);
-                    i++;
-                    setTimeout(type, 50);
-                }
-            };
-            
-            const delay = Array.from(versionTitles).indexOf(title) * 300;
-            setTimeout(type, delay);
-        });
+        // Uruchom i aktualizuj co 30 sekund
+        updateDiscordStatus();
+        setInterval(updateDiscordStatus, 30000);
     </script>
 </body>
 </html>
