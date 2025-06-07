@@ -1145,6 +1145,7 @@
                             <ul style="margin: 0; padding-left: 20px;">
                                 <li style="margin-bottom: 6px;"><span class="command-name">;8ball</span> - Magic 8-ball</li>
                                 <li style="margin-bottom: 6px;"><span class="command-name">;rps</span> - Rock-paper-scissors</li>
+                                <li style="margin-bottom: 6px;"><span class="command-name">;random</span> - Random number generator</li>
                 </ul>
             </div>
                         <div>
@@ -1152,6 +1153,7 @@
                             <ul style="margin: 0; padding-left: 20px;">
                                 <li style="margin-bottom: 6px;"><span class="command-name">;ship</span> - Ship users</li>
                                 <li style="margin-bottom: 6px;"><span class="command-name">;hug</span> - Virtual hug</li>
+                                <li style="margin-bottom: 6px;"><span class="command-name">;rate</span> - Rate something 1-10</li>
                 </ul>
                         </div>
                     </div>
@@ -1178,34 +1180,38 @@
                                 <li style="margin-bottom: 6px;"><span class="command-name">;lock</span> - Lock channel</li>
                                 <li style="margin-bottom: 6px;"><span class="command-name">;purge</span> - Delete messages</li>
                                 <li style="margin-bottom: 6px;"><span class="command-name">;slowmode</span> - Set slowmode</li>
-                </ul>
+                            </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Utilities -->
-            <div class="command-category" style="background: rgba(250, 166, 26, 0.1); border-color: #FAA61A;">
-                <div class="feature-icon" style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: #FAA61A;">
-                    <i class="fas fa-screwdriver-wrench"></i>
-                </div>
-                <h3 class="category-title" style="text-align: center; color: #FAA61A;">Utilities</h3>
-                <div class="command-item" style="background: transparent; border-left: 3px solid #FAA61A; padding-left: 20px;">
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
-                        <div>
-                            <h4 style="color: var(--light); margin-bottom: 10px; font-size: 1.2rem;">General</h4>
-                            <ul style="margin: 0; padding-left: 20px;">
-                                <li style="margin-bottom: 6px;"><span class="command-name">;afk [reason]</span> - Sets AFK status</li>
-                                <li style="margin-bottom: 6px;"><span class="command-name">;snipe</span> - Shows last deleted message</li>
-                                <li style="margin-bottom: 6px;"><span class="command-name">;invite</span> - Generates invite link</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h4 style="color: var(--light); margin-bottom: 10px; font-size: 1.2rem;">Polls & Embeds</h4>
-                            <ul style="margin: 0; padding-left: 20px;">
-                                <li style="margin-bottom: 6px;"><span class="command-name">;vote &lt;question&gt;</span> - Creates poll</li>
-                                <li style="margin-bottom: 6px;"><span class="command-name">;embed &lt;title&gt; | &lt;desc&gt; | &lt;#color&gt; | [image]</span> - Creates embed</li>
-                            </ul>
+                <!-- Utilities -->
+                <div class="command-category" style="background: rgba(250, 166, 26, 0.1); border-color: #FAA61A;">
+                    <div class="feature-icon" style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: #FAA61A;">
+                        <i class="fas fa-screwdriver-wrench"></i>
+                    </div>
+                    <h3 class="category-title" style="text-align: center; color: #FAA61A;">Utilities</h3>
+                    <div class="command-item" style="background: transparent; border-left: 3px solid #FAA61A; padding-left: 20px;">
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+                            <div>
+                                <h4 style="color: var(--light); margin-bottom: 10px; font-size: 1.2rem;">General</h4>
+                                <ul style="margin: 0; padding-left: 20px;">
+                                    <li style="margin-bottom: 6px;"><span class="command-name">;afk [reason]</span> - Sets AFK status</li>
+                                    <li style="margin-bottom: 6px;"><span class="command-name">;snipe</span> - Shows last deleted message</li>
+                                    <li style="margin-bottom: 6px;"><span class="command-name">;invite</span> - Generates invite link</li>
+                                    <li style="margin-bottom: 6px;"><span class="command-name">;rmdm</span> - Sets a reminder</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 style="color: var(--light); margin-bottom: 10px; font-size: 1.2rem;">Polls & Embeds</h4>
+                                <ul style="margin: 0; padding-left: 20px;">
+                                    <li style="margin-bottom: 6px;"><span class="command-name">;vote</span> - Creates poll</li>
+                                    <li style="margin-bottom: 6px;"><span class="command-name">;embed</span> - Creates embed</li>
+                                    <li style="margin-bottom: 6px;"><span class="command-name">;translate</span> - Translates text</li>
+                                    <li style="margin-bottom: 6px;"><span class="command-name">;lastfm</span> - Shows Last.fm statistics</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1222,6 +1228,7 @@
                             <ul style="margin: 0; padding-left: 20px;">
                                 <li style="margin-bottom: 6px;"><span class="command-name">;slc</span> - Sets log channel</li>
                                 <li style="margin-bottom: 6px;"><span class="command-name">;sdlc</span> - Sets deleted messages log</li>
+                                <li style="margin-bottom: 6px;"><span class="command-name">;say</span> - Sends message as bot</li>
                 </ul>
                         </div>
                         <div>
@@ -1261,7 +1268,32 @@
                 </div>
             </div>
         </div>
-    </section>
+
+        <!-- Giveaway -->
+        <div class="command-category" style="background: rgba(254, 231, 92, 0.1); border-color: #FEE75C;">
+            <div class="feature-icon" style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: #FEE75C;">
+                <i class="fas fa-gift"></i>
+            </div>
+            <h3 class="category-title" style="text-align: center; color: #FEE75C;">Giveaway</h3>
+            <div class="command-item" style="background: transparent; border-left: 3px solid #FEE75C; padding-left: 20px;">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+                    <div>
+                        <h4 style="color: var(--light); margin-bottom: 10px; font-size: 1.2rem;">Giveaway</h4>
+                        <ul style="margin: 0; padding-left: 20px;">
+                            <li style="margin-bottom: 6px;"><span class="command-name">;giveaway</span> - Create a new giveaway</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 style="color: var(--light); margin-bottom: 10px; font-size: 1.2rem;">Management</h4>
+                        <ul style="margin: 0; padding-left: 20px;">
+                            <li style="margin-bottom: 6px;"><span class="command-name">;endgiveaway</span> - End an active giveaway</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
     <section id="versions">
         <div class="container" style="position: relative;">
@@ -1282,12 +1314,26 @@
                     Version History
                 </h2>
 
-                <!-- Nowa wersja 2.5.0 -->
+                <!-- Nowa wersja 2.12.0 -->
                 <div class="command-category animate__animated animate__fadeIn" style="background: rgba(88, 101, 242, 0.1); border-color: var(--primary);">
                     <div class="feature-icon" style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: var(--primary);">
-                        <i class="fas fa-code-branch"></i>
+                            <i class="fas fa-gift"></i>
+                        </div>
+                    <h3 class="category-title" style="text-align: center; color: var(--primary);">v2.12.0 - Latest</h3>
+                    <ul class="command-list">
+                        <li class="command-item">Added new command: <span class="command-name">;giveaway</span> (create giveaways)</li>
+                        <li class="command-item">Added new command: <span class="command-name">;endgiveaway</span> (end giveaways)</li>
+                        <li class="command-item">Added new command: <span class="command-name">;rmdm</span> (reminder system)</li>
+                        <li class="command-item">Added new command: <span class="command-name">;translate</span> (text translation)</li>
+                    </ul>
+                </div>
+
+                <!-- Wersja 2.5.0 -->
+                <div class="command-category animate__animated animate__fadeIn animate-delay-1" style="background: rgba(88, 101, 242, 0.1); border-color: var(--primary);">
+                    <div class="feature-icon" style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: var(--primary);">
+                        <i class="fas fa-code-merge"></i>
                     </div>
-                    <h3 class="category-title" style="text-align: center; color: var(--primary);">v2.5.0 - Latest</h3>
+                    <h3 class="category-title" style="text-align: center; color: var(--primary);">v2.5.0</h3>
                     <ul class="command-list">
                         <li class="command-item">Added new command: <span class="command-name">;rr</span> (reaction roles)</li>
                         <li class="command-item">New embed system with advanced customization</li>
@@ -1297,6 +1343,9 @@
 
                 <!-- Wersja 2.4.0 -->
                 <div class="command-category animate__animated animate__fadeIn animate-delay-1" style="background: rgba(87, 242, 135, 0.1); border-color: var(--secondary);">
+                    <div class="feature-icon" style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: var(--secondary);">
+                        <i class="fas fa-server"></i>
+                    </div>
                     <h3 class="category-title" style="text-align: center; color: var(--secondary);">v2.4.0</h3>
                     <ul class="command-list">
                         <li class="command-item">Added new role management commands</li>
@@ -1308,6 +1357,9 @@
 
                 <!-- Wersja 2.3.0 -->
                 <div class="command-category animate__animated animate__fadeIn animate-delay-2" style="background: rgba(237, 66, 69, 0.1); border-color: #ED4245;">
+                    <div class="feature-icon" style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: #ED4245;">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
                     <h3 class="category-title" style="text-align: center; color: #ED4245;">v2.3.0</h3>
                     <ul class="command-list">
                         <li class="command-item">Removed music commands due to hosting limitations</li>
@@ -1318,6 +1370,9 @@
 
                 <!-- Wersja 2.2.0 -->
                 <div class="command-category animate__animated animate__fadeIn animate-delay-3" style="background: rgba(250, 166, 26, 0.1); border-color: #FAA61A;">
+                    <div class="feature-icon" style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: #FAA61A;">
+                        <i class="fas fa-bell"></i>
+                    </div>
                     <h3 class="category-title" style="text-align: center; color: #FAA61A;">v2.2.0</h3>
                     <ul class="command-list">
                         <li class="command-item">Added mute role persistence</li>
@@ -1327,6 +1382,9 @@
 
                 <!-- Wersja 2.1.0 -->
                 <div class="command-category animate__animated animate__fadeIn animate-delay-4" style="background: rgba(235, 69, 158, 0.1); border-color: #EB459E;">
+                    <div class="feature-icon" style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: #EB459E;">
+                        <i class="fas fa-music"></i>
+                    </div>
                     <h3 class="category-title" style="text-align: center; color: #EB459E;">v2.1.0</h3>
                     <ul class="command-list">
                         <li class="command-item">YouTube playback support</li>
@@ -1336,6 +1394,9 @@
 
                 <!-- Wersja 2.0.0 -->
                 <div class="command-category animate__animated animate__fadeIn animate-delay-5" style="background: rgba(88, 101, 242, 0.1); border-color: var(--primary);">
+                    <div class="feature-icon" style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: var(--primary);">
+                        <i class="fas fa-poll"></i>
+                    </div>
                     <h3 class="category-title" style="text-align: center; color: var(--primary);">v2.0.0</h3>
                     <ul class="command-list">
                         <li class="command-item">Poll system</li>
@@ -1345,6 +1406,9 @@
 
                 <!-- Wersja 1.3.0 -->
                 <div class="command-category animate__animated animate__fadeIn animate-delay-6" style="background: rgba(87, 242, 135, 0.1); border-color: var(--secondary);">
+                    <div class="feature-icon" style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: var(--secondary);">
+                        <i class="fas fa-scroll"></i>
+                    </div>
                     <h3 class="category-title" style="text-align: center; color: var(--secondary);">v1.3.0</h3>
                     <ul class="command-list">
                         <li class="command-item">Advanced moderation logs</li>
@@ -1354,6 +1418,9 @@
 
                 <!-- Wersja 1.2.0 -->
                 <div class="command-category animate__animated animate__fadeIn animate-delay-7" style="background: rgba(237, 66, 69, 0.1); border-color: #ED4245;">
+                    <div class="feature-icon" style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: #ED4245;">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
                     <h3 class="category-title" style="text-align: center; color: #ED4245;">v1.2.0</h3>
                     <ul class="command-list">
                         <li class="command-item">Basic warn system</li>
@@ -1363,6 +1430,9 @@
 
                 <!-- Wersja 1.1.0 -->
                 <div class="command-category animate__animated animate__fadeIn animate-delay-8" style="background: rgba(250, 166, 26, 0.1); border-color: #FAA61A;">
+                    <div class="feature-icon" style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: #FAA61A;">
+                        <i class="fas fa-clock"></i>
+                    </div>
                     <h3 class="category-title" style="text-align: center; color: #FAA61A;">v1.1.0</h3>
                     <ul class="command-list">
                         <li class="command-item">AFK system</li>
@@ -1372,6 +1442,9 @@
 
                 <!-- Wersja 1.0.0 -->
                 <div class="command-category animate__animated animate__fadeIn animate-delay-9" style="background: rgba(235, 69, 158, 0.1); border-color: #EB459E;">
+                    <div class="feature-icon" style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: #EB459E;">
+                        <i class="fas fa-rocket"></i>
+                    </div>
                     <h3 class="category-title" style="text-align: center; color: #EB459E;">v1.0.0</h3>
                     <ul class="command-list">
                         <li class="command-item">Initial bot release</li>
@@ -1416,7 +1489,7 @@
                                 Technical Info
                             </h4>
                             <ul style="margin: 0; padding-left: 20px; color: rgba(255,255,255,0.8);">
-                                <li style="margin-bottom: 8px;"><strong>Version:</strong> 2.5.0</li>
+                                <li style="margin-bottom: 8px;"><strong>Version:</strong> 2.12.0</li>
                                 <li style="margin-bottom: 8px;"><strong>Library:</strong> Discord.py v2.5.2</li>
                                 <li style="margin-bottom: 8px;"><strong>Status:</strong> <span style="color: #57F287;">Active Development</span></li>
                                 <li style="margin-bottom: 8px;"><strong>Maintenance:</strong> <span style="color: #FAA61A;">Free to use!</span></li>
