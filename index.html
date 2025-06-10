@@ -1267,33 +1267,58 @@
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Giveaway -->
-        <div class="command-category" style="background: rgba(254, 231, 92, 0.1); border-color: #FEE75C;">
-            <div class="feature-icon" style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: #FEE75C;">
-                <i class="fas fa-gift"></i>
-            </div>
-            <h3 class="category-title" style="text-align: center; color: #FEE75C;">Giveaway</h3>
-            <div class="command-item" style="background: transparent; border-left: 3px solid #FEE75C; padding-left: 20px;">
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
-                    <div>
-                        <h4 style="color: var(--light); margin-bottom: 10px; font-size: 1.2rem;">Giveaway</h4>
-                        <ul style="margin: 0; padding-left: 20px;">
-                            <li style="margin-bottom: 6px;"><span class="command-name">;giveaway</span> - Create a new giveaway</li>
-                        </ul>
+            <!-- Giveaway -->
+            <div class="command-category" style="background: rgba(254, 231, 92, 0.1); border-color: #FEE75C;">
+                <div class="feature-icon" style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: #FEE75C;">
+                    <i class="fas fa-gift"></i>
+                </div>
+                <h3 class="category-title" style="text-align: center; color: #FEE75C;">Giveaway</h3>
+                <div class="command-item" style="background: transparent; border-left: 3px solid #FEE75C; padding-left: 20px;">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+                        <div>
+                            <h4 style="color: var(--light); margin-bottom: 10px; font-size: 1.2rem;">Giveaway</h4>
+                            <ul style="margin: 0; padding-left: 20px;">
+                                <li style="margin-bottom: 6px;"><span class="command-name">;giveaway</span> - Create a new giveaway</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 style="color: var(--light); margin-bottom: 10px; font-size: 1.2rem;">Management</h4>
+                            <ul style="margin: 0; padding-left: 20px;">
+                                <li style="margin-bottom: 6px;"><span class="command-name">;endgiveaway</span> - End an active giveaway</li>
+                            </ul>
+                        </div>
                     </div>
-                    <div>
-                        <h4 style="color: var(--light); margin-bottom: 10px; font-size: 1.2rem;">Management</h4>
-                        <ul style="margin: 0; padding-left: 20px;">
-                            <li style="margin-bottom: 6px;"><span class="command-name">;endgiveaway</span> - End an active giveaway</li>
-                        </ul>
+                </div>
+            </div>
+
+            <!-- Tickets -->
+            <div class="command-category" style="background: rgba(114, 137, 218, 0.1); border-color: #7289DA;">
+                <div class="feature-icon" style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: #7289DA;">
+                    <i class="fas fa-ticket-alt"></i>
+                </div>
+                <h3 class="category-title" style="text-align: center; color: #7289DA;">Ticket Commands</h3>
+                <div class="command-item" style="background: transparent; border-left: 3px solid #7289DA; padding-left: 20px;">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+                        <div>
+                            <h4 style="color: var(--light); margin-bottom: 10px; font-size: 1.2rem;">Setup</h4>
+                            <ul style="margin: 0; padding-left: 20px;">
+                                <li style="margin-bottom: 6px;"><span class="command-name">;ts</span> - Ticket system setup</li>
+                                <li style="margin-bottom: 6px;"><span class="command-name">;tlog</span> - Set ticket logs channel</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 style="color: var(--light); margin-bottom: 10px; font-size: 1.2rem;">Staff Management</h4>
+                            <ul style="margin: 0; padding-left: 20px;">
+                                <li style="margin-bottom: 6px;"><span class="command-name">;addstaff</span> - Add staff to ticket</li>
+                                <li style="margin-bottom: 6px;"><span class="command-name">;rmstaff</span> - Remove staff from ticket</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
     <section id="versions">
         <div class="container" style="position: relative;">
@@ -1314,12 +1339,24 @@
                     Version History
                 </h2>
 
-                <!-- Nowa wersja 2.12.0 -->
+                <!-- Nowa wersja 2.15.0 - NAJNOWSZA (na górze) -->
                 <div class="command-category animate__animated animate__fadeIn" style="background: rgba(88, 101, 242, 0.1); border-color: var(--primary);">
                     <div class="feature-icon" style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: var(--primary);">
-                            <i class="fas fa-gift"></i>
-                        </div>
-                    <h3 class="category-title" style="text-align: center; color: var(--primary);">v2.12.0 - Latest</h3>
+                        <i class="fas fa-ticket-alt"></i>
+                    </div>
+                    <h3 class="category-title" style="text-align: center; color: var(--primary);">v2.15.0 - Latest</h3>
+                    <ul class="command-list">
+                        <li class="command-item">Added new ticket commands: <span class="command-name">;ts</span> (ticket setup), <span class="command-name">;addstaff</span> (add staff to ticket), <span class="command-name">;rmstaff</span> (remove staff from ticket), <span class="command-name">;tlog</span> (ticket logs)</li>
+                        <li class="command-item">Optimized bot performance for hosting</li>
+                    </ul>
+                </div>
+
+                <!-- Wersja 2.12.0 -->
+                <div class="command-category animate__animated animate__fadeIn animate-delay-1" style="background: rgba(88, 101, 242, 0.1); border-color: var(--primary);">
+                    <div class="feature-icon" style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: var(--primary);">
+                        <i class="fas fa-gift"></i>
+                    </div>
+                    <h3 class="category-title" style="text-align: center; color: var(--primary);">v2.12.0</h3>
                     <ul class="command-list">
                         <li class="command-item">Added new command: <span class="command-name">;giveaway</span> (create giveaways)</li>
                         <li class="command-item">Added new command: <span class="command-name">;endgiveaway</span> (end giveaways)</li>
@@ -1489,7 +1526,7 @@
                                 Technical Info
                             </h4>
                             <ul style="margin: 0; padding-left: 20px; color: rgba(255,255,255,0.8);">
-                                <li style="margin-bottom: 8px;"><strong>Version:</strong> 2.12.0</li>
+                                <li style="margin-bottom: 8px;"><strong>Version:</strong> 2.15.0</li>
                                 <li style="margin-bottom: 8px;"><strong>Library:</strong> Discord.py v2.5.2</li>
                                 <li style="margin-bottom: 8px;"><strong>Status:</strong> <span style="color: #57F287;">Active Development</span></li>
                                 <li style="margin-bottom: 8px;"><strong>Maintenance:</strong> <span style="color: #FAA61A;">Free to use!</span></li>
@@ -1513,7 +1550,7 @@
                             <div style="position: relative; margin-right: 20px;">
                                 <div style="width: 80px; height: 80px; border-radius: 50%; 
                                     padding: 3px; background: #747f8d; /* Domyślny kolor (offline) */">
-                                    <img id="developerAvatar" src="https://cdn.discordapp.com/avatars/879393496627306587/9e2876806536a7763679fb246f5cd146.webp?size=1024" 
+                                    <img id="developerAvatar" src="https://cdn.discordapp.com/avatars/879393496627306587/5644836b36867981035f5158fdd1309b.webp?size=1024" 
                                          style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%; border: 2px solid var(--dark);">
                                 </div>
                             </div>
