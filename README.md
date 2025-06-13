@@ -109,7 +109,7 @@ Welcome to the official documentation for **Ormi Bot**, the ultimate Discord bot
 ## ❓ Support & Troubleshooting
 
 Encountering issues or have questions? We're here to help!
-- **Contact the Developer**: Reach out to `kmmiio99o` on Discord.
+- **Contact the Developer**: Reach out to `kmmiio99o.dev` on Discord.
 
 Your feedback is invaluable to us! 💙
 
