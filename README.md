@@ -7,7 +7,6 @@ Welcome to the official documentation for **Ormi Bot**, the ultimate Discord bot
 ## 🌟 Why Choose Ormi Bot?
 
 - **⚡ Blazing Fast Performance**: Optimized for minimal latency and instant responses.
-- **🎵 Seamless Music Streaming**: Play your favorite tracks from YouTube directly in your server.
 - **🛡️ Advanced Moderation Tools**: Keep your server safe with intuitive commands for kicks, bans, mutes, and more.
 - **🔧 Community Utilities**: Polls, random number generation, magic 8-ball, and other interactive features.
 - **⚙️ Easy Configuration**: Customize welcome messages, log channels, and roles effortlessly.
@@ -25,28 +24,85 @@ Welcome to the official documentation for **Ormi Bot**, the ultimate Discord bot
 
 ## 📜 Command Categories
 
-Ormi Bot offers a wide range of commands organized into intuitive categories. Here are some highlights:
+<details>
+<summary><strong>🛡️ Moderation</strong></summary>
 
-### 🛡️ Moderation
 - `;kick [user]` - Removes a user from the server.
 - `;ban [user]` - Permanently bans a user.
 - `;mute [user] [time]` - Temporarily restricts a user's ability to chat.
+- `;warn [user] [reason]` - Issues a warning to a user.
+- `;purge [amount]` - Deletes a specified number of messages.
+- `;lock` - Locks the current channel.
+- `;slowmode [time]` - Sets slowmode for the channel.
+- `;roleinfo [role]` - Displays information about a role.
+</details>
 
-### 🎵 Music
+<details>
+<summary><strong>🎵 Music</strong></summary>
+
 - `;play [song name]` - Plays a song from YouTube.
 - `;skip` - Skips the current track.
 - `;queue` - Displays the current playlist.
+- `;pause` - Pauses playback.
+- `;resume` - Resumes playback.
+- `;volume [1-100]` - Adjusts playback volume.
+</details>
 
-### 🔧 Utilities
+<details>
+<summary><strong>🔧 Utilities</strong></summary>
+
 - `;vote [question]` - Creates a yes/no poll.
 - `;random [min] [max]` - Generates a random number within a range.
 - `;8ball [question]` - Ask the magic 8-ball for advice!
+- `;ship [user1] [user2]` - Calculates compatibility between users.
+- `;hug [user]` - Sends a virtual hug.
+- `;rate [thing]` - Rates something on a scale of 1-10.
+- `;afk [reason]` - Sets your AFK status.
+- `;snipe` - Shows the last deleted message.
+- `;invite` - Generates an invite link for the server.
+- `;rmdm [time] [message]` - Sets a reminder.
+- `;translate [text]` - Translates text to another language.
+</details>
 
-### ⚙️ Configuration
+<details>
+<summary><strong>ℹ️ Information</strong></summary>
+
+- `;userinfo [user]` - Shows detailed information about a user.
+- `;avatar [user]` - Displays a user's avatar.
+- `;serverinfo` - Displays server statistics.
+- `;ping` - Shows bot latency.
+</details>
+
+<details>
+<summary><strong>⚙️ Configuration</strong></summary>
+
 - `;setwelcomechannel [channel]` - Sets the welcome channel.
 - `;setwelcomemessage [message]` - Customizes the welcome message.
+- `;setlogchannel [channel]` - Sets the moderation log channel.
+- `;setdeletedlog [channel]` - Sets the deleted messages log channel.
+- `;addrole [user] [role]` - Adds a role to a user.
+- `;rmrole [user] [role]` - Removes a role from a user.
+- `;createrole [name]` - Creates a new role.
+- `;delrole [role]` - Deletes a role.
+- `;editrole [role] [property] [value]` - Edits role properties.
+- `;rr` - Creates a reaction role panel.
+</details>
 
-For a full list of commands, visit the **"View Commands"** section on the website.
+<details>
+<summary><strong>🎁 Giveaway</strong></summary>
+
+- `;giveaway [duration] [prize]` - Starts a new giveaway.
+- `;endgiveaway [id]` - Ends an active giveaway.
+</details>
+
+<details>
+<summary><strong>🎫 Tickets</strong></summary>
+
+- `;ts` - Sets up the ticket system.
+- `;tlog [channel]` - Sets the ticket logs channel.
+- `;addstaff [user]` - Adds staff to a ticket.
+- `;rmstaff [user]` - Removes staff from a ticket.
+</details>
 
 ---
 
@@ -58,12 +114,5 @@ Encountering issues or have questions? We're here to help!
 Your feedback is invaluable to us! 💙
 
 ---
-
-## 🎁 Easter Egg
-
-Type the secret word `ormi` on the homepage to unlock a magical surprise! ✨
-
----
-
 © 2025 Ormi Bot. All Rights Reserved.  
 *Crafted with passion for the Discord community.*
