@@ -317,14 +317,14 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.8);
             z-index: 1000;
             display: flex;
             justify-content: center;
             align-items: center;
             opacity: 0;
             visibility: hidden;
-            transition: all 0.3s ease-out;
+            transition: all 0.3s ease;
         }
 
         #termsModal.active {
@@ -332,66 +332,108 @@
             visibility: visible;
         }
 
-        #termsModal > div {
-            transform: scale(0.9);
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        #termsModal.active > div {
-            transform: scale(1);
-        }
-
-        #termsModal > div {
-            background: var(--dark);
-            padding: 60px 40px 40px;
+        .terms-modal-content {
+            background: linear-gradient(135deg, #23272A, #2C2F33);
             border-radius: 15px;
+            padding: 60px 40px 40px;
             width: 90%;
-            max-width: 900px;
-            max-height: 90vh;
+            max-width: 800px;
+            max-height: 80vh;
             overflow-y: auto;
-            transform: translateY(20px);
-            transition: all 0.3s ease-out;
-            scroll-behavior: smooth;
             position: relative;
+            border: 1px solid var(--primary);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transform: translateY(20px);
+            transition: all 0.3s ease;
         }
-        #termsModal.active > div {
+
+        #termsModal.active .terms-modal-content {
             transform: translateY(0);
         }
+
+        #termsModal h2 {
+            color: var(--primary);
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 30px;
+            padding-top: 20px;
+        }
+
+        #termsModal h3 {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin: 25px 0 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        #termsModal h3 i {
+            margin-right: 10px;
+        }
+
+        #termsModal p {
+            margin: 0;
+            opacity: 0.9;
+            line-height: 1.7;
+        }
+
+        #termsModal ul {
+            margin: 0;
+            padding-left: 20px;
+            list-style: none;
+        }
+
+        #termsModal li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        #termsModal li::before {
+            content: "•";
+            color: var(--accent);
+            position: absolute;
+            left: 0;
+        }
+
+        #closeTermsBtn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 8px 20px;
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        #closeTermsBtn:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+        }
+
         @media (max-width: 768px) {
-            h1 {
-                font-size: 2.5rem;
+            .terms-modal-content {
+                padding: 40px 20px;
+                width: 95%;
             }
-            .tagline {
-                font-size: 1.2rem;
+
+            #termsModal h2 {
+                font-size: 1.8rem;
             }
-            .action-buttons {
-                gap: 1rem;
-            }
-            .btn {
-                padding: 0.8rem 1.5rem;
-                font-size: 1rem;
-            }
-            .secondary-actions {
-                gap: 0.8rem;
-            }
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
-            .command-category {
-                padding: 20px;
-            }
-            #commands {
-                padding: 60px 20px;
-            }
-            a, button, .btn, .categories-btn, .hamburger, #viewCommandsBtn, #backToMainBtn, #closeTermsBtn {
-                -webkit-tap-highlight-color: transparent !important;
-                outline: none !important;
-                user-select: none !important;
-            }
-            .hamburger span {
-                -webkit-tap-highlight-color: transparent !important;
+
+            #termsModal h3 {
+                font-size: 1.3rem;
             }
         }
+
         .commands-nav {
             position: fixed;
             top: 20px;
@@ -1040,6 +1082,67 @@
             border: 1px solid rgba(88, 101, 242, 0.3);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
+
+        /* Ulepszone style */
+        .terms-content {
+            color: rgba(255,255,255,0.85);
+            line-height: 1.8;
+        }
+
+        .terms-section {
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .terms-section:last-child {
+            border-bottom: none;
+        }
+
+        .terms-section h3 {
+            color: var(--primary);
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .terms-section h3 i {
+            margin-right: 12px;
+            font-size: 1.2em;
+        }
+
+        .terms-section p {
+            margin-bottom: 1rem;
+        }
+
+        .terms-section ul {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+        }
+
+        .terms-section li {
+            margin-bottom: 0.8rem;
+            position: relative;
+        }
+
+        .terms-section li::before {
+            content: "•";
+            color: var(--accent);
+            position: absolute;
+            left: -1.2rem;
+            font-size: 1.2em;
+        }
+
+        @media (max-width: 768px) {
+            .terms-section h3 {
+                font-size: 1.2rem;
+            }
+            
+            .terms-content {
+                font-size: 0.95rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1586,10 +1689,10 @@
                                 Technical Info
                             </h4>
                             <ul style="margin: 0; padding-left: 20px; color: rgba(255,255,255,0.8);">
-                                <li style="margin-bottom: 8px;"><strong>Version:</strong> 2.15.2</li>
+                                <li style="margin-bottom: 8px;"><strong>Version:</strong> 2.16.0 - Beta</li>
                                 <li style="margin-bottom: 8px;"><strong>Library:</strong> Discord.py v2.5.2</li>
                                 <li style="margin-bottom: 8px;"><strong>Status:</strong> <span style="color: #57F287;">Active Development</span></li>
-                                <li style="margin-bottom: 8px;"><strong>Maintenance:</strong> <span style="color: #FAA61A;">Free to use!</span></li>
+                                <li style="margin-bottom: 8px;"><strong>Maintenance:</strong> <span style="color: #FAA61A;">Exact schedule may vary.</span></li>
                             </ul>
                         </div>
 
@@ -1610,7 +1713,7 @@
                             <div style="position: relative; margin-right: 20px;">
                                 <div style="width: 80px; height: 80px; border-radius: 50%; 
                                     padding: 3px; background: #747f8d; /* Domyślny kolor (offline) */">
-                                    <img id="developerAvatar" src="https://cdn.discordapp.com/avatars/879393496627306587/5644836b36867981035f5158fdd1309b.webp?size=1024" 
+                                    <img id="developerAvatar" src="https://cdn.discordapp.com/avatars/879393496627306587/7f331d4cf741efe8ed2e7c1b32c789fe.webp?size=1024" 
                                          style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%; border: 2px solid var(--dark);">
                                 </div>
                             </div>
@@ -1654,158 +1757,274 @@
 
     <div id="termsModal">
         <div class="terms-modal-content">
-            <button id="closeTermsBtn" style="
-                position: absolute;
-                top: 20px;
-                right: 20px;
-                background: var(--primary);
-                color: white;
-                border: none;
-                border-radius: 50px;
-                padding: 8px 20px;
-                font-family: 'Open Sans', sans-serif;
-                font-weight: 600;
-                font-size: 1rem;
-                cursor: pointer;
-                transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-                box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
-                display: flex;
-                align-items: center;
-                gap: 8px;
-                z-index: 1;
-            ">
+            <button id="closeTermsBtn">
                 <i class="fas fa-times"></i>
                 Close
             </button>
 
-            <h2 style="
-                color: var(--primary);
-                margin-bottom: 30px;
-                font-size: 2.2rem;
-                text-align: center;
-                text-transform: uppercase;
-                letter-spacing: 1px;
-                position: relative;
-                padding-top: 50px;
-                padding-bottom: 10px;
-            ">
-                <i class="fas fa-file-contract" style="margin-right: 10px;"></i>
+            <h2>
+                <i class="fas fa-file-contract"></i>
                 Terms of Service
             </h2>
 
-            <div style="
-                color: var(--light);
-                line-height: 1.7;
-                font-size: 1.1rem;
-            ">
+            <div class="terms-content">
                 <!-- Sekcja 1 -->
-                <div>
-                    <h3 style="
-                        font-size: 1.5rem;
-                        margin: 25px 0 15px;
-                        color: var(--primary);
-                        display: flex;
-                        align-items: center;
-                    ">
-                        <i class="fas fa-check-circle" style="margin-right: 10px;"></i>
-                        1. Acceptance of Terms
+                <div class="terms-section">
+                    <h3>
+                        <i class="fas fa-check-circle"></i>
+                        1. Definitions and Acceptance
                     </h3>
-                    <p style="margin: 0; opacity: 0.9;">
-                        By inviting Ormi Bot to your Discord server or using its services, you agree to comply with these Terms of Service ("ToS"). If you do not agree with any part of these terms, you must discontinue use of the bot immediately.
+                    <p>
+                        These Terms of Service ("Agreement") constitute a legally binding agreement between you ("User") and the developers ("We", "Us") of Ormi Bot ("Service"). By accessing or using the Service, you acknowledge that you have read, understood, and agree to be bound by all terms contained herein.
                     </p>
                 </div>
 
                 <!-- Sekcja 2 -->
-                <div>
-                    <h3 style="
-                        font-size: 1.5rem;
-                        margin: 25px 0 15px;
-                        color: var(--primary);
-                        display: flex;
-                        align-items: center;
-                    ">
-                        <i class="fas fa-gavel" style="margin-right: 10px;"></i>
-                        2. Bot Usage and License
+                <div class="terms-section">
+                    <h3>
+                        <i class="fas fa-gavel"></i>
+                        2. License Grant and Restrictions
                     </h3>
-                    <p style="margin: 0; opacity: 0.9;">
-                        Ormi Bot is provided as a free service for Discord servers. You are granted a non-exclusive, revocable license to use the bot for its intended purposes, including moderation, entertainment, and utility features.
+                    <p>
+                        Subject to compliance with this Agreement, we grant you a limited, non-exclusive, non-transferable, revocable license to use the Service for its intended purposes within Discord platform. This license does not include:
                     </p>
-                </div>
-
-                <!-- Sekcja 3 -->
-                <div>
-                    <h3 style="
-                        font-size: 1.5rem;
-                        margin: 25px 0 15px;
-                        color: var(--accent);
-                        display: flex;
-                        align-items: center;
-                    ">
-                        <i class="fas fa-ban" style="margin-right: 10px;"></i>
-                        3. Prohibited Activities
-                    </h3>
-                    <p style="margin: 0 0 15px; opacity: 0.9;">
-                        You are strictly prohibited from:
-                    </p>
-                    <ul style="margin: 0; padding-left: 0; list-style: none;">
-                        <li style="margin-bottom: 10px; display: flex; align-items: flex-start;">
-                            <i class="fas fa-times" style="color: var(--accent); margin-right: 10px; margin-top: 4px;"></i>
-                            Using the bot to violate Discord's Terms of Service or Community Guidelines.
-                        </li>
-                        <li style="margin-bottom: 10px; display: flex; align-items: flex-start;">
-                            <i class="fas fa-times" style="color: var(--accent); margin-right: 10px; margin-top: 4px;"></i>
-                            Automating interactions with the bot (e.g., self-bots, macros, or scripts).
-                        </li>
-                        <li style="margin-bottom: 10px; display: flex; align-items: flex-start;">
-                            <i class="fas fa-times" style="color: var(--accent); margin-right: 10px; margin-top: 4px;"></i>
-                            Spamming commands or abusing API endpoints.
-                        </li>
-                        <li style="margin-bottom: 10px; display: flex; align-items: flex-start;">
-                            <i class="fas fa-times" style="color: var(--accent); margin-right: 10px; margin-top: 4px;"></i>
-                            Using the bot to harass, threaten, or discriminate against individuals or groups.
-                        </li>
-                        <li style="margin-bottom: 10px; display: flex; align-items: flex-start;">
-                            <i class="fas fa-times" style="color: var(--accent); margin-right: 10px; margin-top: 4px;"></i>
-                            Reverse-engineering, decompiling, or modifying the bot's code.
-                        </li>
-                        <li style="display: flex; align-items: flex-start;">
-                            <i class="fas fa-times" style="color: var(--accent); margin-right: 10px; margin-top: 4px;"></i>
-                            Using the bot for illegal activities or to distribute harmful content.
-                        </li>
+                    <ul>
+                        <li>Right to modify, reverse engineer, or create derivative works</li>
+                        <li>Commercial use without express written permission</li>
+                        <li>Distribution of the Service to third parties</li>
                     </ul>
                 </div>
 
-                <!-- Pozostałe sekcje (4-8) -->
-                <!-- ... -->
+                <!-- Sekcja 3 -->
+                <div class="terms-section">
+                    <h3>
+                        <i class="fas fa-ban"></i>
+                        3. Prohibited Conduct
+                    </h3>
+                    <p>
+                        You expressly agree not to engage in any of the following prohibited activities:
+                    </p>
+                    <ul>
+                        <li>Violate Discord's Terms of Service or Community Guidelines</li>
+                        <li>Use automated systems (bots, scripts, macros) to interact with the Service</li>
+                        <li>Exploit bugs or vulnerabilities for unauthorized access</li>
+                        <li>Harass, threaten, or discriminate against individuals or groups</li>
+                        <li>Distribute illegal, harmful, or NSFW content</li>
+                        <li>Impersonate the Service or its developers</li>
+                    </ul>
+                </div>
+
+                <!-- Sekcja 4 -->
+                <div class="terms-section">
+                    <h3>
+                        <i class="fas fa-shield-alt"></i>
+                        4. Data Protection and Privacy
+                    </h3>
+                    <p>
+                        The Service collects and processes the following data:
+                    </p>
+                    <ul>
+                        <li>Server IDs for configuration storage</li>
+                        <li>User IDs for command functionality</li>
+                        <li>Temporary message content for specific features</li>
+                    </ul>
+                    <p>
+                        All data is processed in accordance with our Privacy Policy and Discord's API Terms. We implement industry-standard security measures to protect your information.
+                    </p>
+                </div>
+
+                <!-- Sekcja 5 -->
+                <div class="terms-section">
+                    <h3>
+                        <i class="fas fa-exclamation-triangle"></i>
+                        5. Disclaimers and Limitations
+                    </h3>
+                    <p>
+                        THE SERVICE IS PROVIDED "AS IS" WITHOUT WARRANTIES OF ANY KIND. WE DISCLAIM ALL IMPLIED WARRANTIES INCLUDING MERCHANTABILITY, FITNESS FOR PARTICULAR PURPOSE, AND NON-INFRINGEMENT.
+                    </p>
+                    <p>
+                        In no event shall we be liable for any indirect, incidental, or consequential damages arising from use of the Service.
+                    </p>
+                </div>
+
+                <!-- Sekcja 6 -->
+                <div class="terms-section">
+                    <h3>
+                        <i class="fas fa-sync-alt"></i>
+                        6. Source Code Availability
+                    </h3>
+                    <p>
+                        Ormi Bot is currently not an open-source project. The source code is proprietary and not available for public viewing, modification, or distribution. We have no plans to make the bot open-source in the foreseeable future.
+                    </p>
+                </div>
+
+                <!-- Sekcja 7 -->
+                <div class="terms-section">
+                    <h3>
+                        <i class="fas fa-balance-scale"></i>
+                        7. Modifications and Termination
+                    </h3>
+                    <p>
+                        We reserve the right to:
+                    </p>
+                    <ul>
+                        <li>Modify these terms at our discretion</li>
+                        <li>Discontinue the Service with reasonable notice</li>
+                        <li>Terminate access for violations of this Agreement</li>
+                    </ul>
+                </div>
+
+                <!-- Sekcja 8 -->
+                <div class="terms-section">
+                    <h3>
+                        <i class="fas fa-gavel"></i>
+                        8. Governing Law
+                    </h3>
+                    <p>
+                        This Agreement shall be governed by and construed in accordance with the laws of [Your Country/State], without regard to its conflict of law provisions.
+                    </p>
+                </div>
             </div>
         </div>
     </div>
 
+    <style>
+        /* Ulepszone style */
+        .terms-content {
+            color: rgba(255,255,255,0.85);
+            line-height: 1.8;
+        }
+
+        .terms-section {
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .terms-section:last-child {
+            border-bottom: none;
+        }
+
+        .terms-section h3 {
+            color: var(--primary);
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .terms-section h3 i {
+            margin-right: 12px;
+            font-size: 1.2em;
+        }
+
+        .terms-section p {
+            margin-bottom: 1rem;
+        }
+
+        .terms-section ul {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+        }
+
+        .terms-section li {
+            margin-bottom: 0.8rem;
+            position: relative;
+        }
+
+        .terms-section li::before {
+            content: "•";
+            color: var(--accent);
+            position: absolute;
+            left: -1.2rem;
+            font-size: 1.2em;
+        }
+
+        @media (max-width: 768px) {
+            .terms-section h3 {
+                font-size: 1.2rem;
+            }
+            
+            .terms-content {
+                font-size: 0.95rem;
+            }
+        }
+    </style>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('DOM loaded'); // Debug 1
-            
+            // Zmienna do przechowywania pozycji scrolla
+            let scrollPosition = 0;
+
+            // Funkcja do blokowania scrolla
+            function disableScroll() {
+                // Zapamiętaj aktualną pozycję scrolla
+                scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+                
+                // Zablokuj scroll
+                document.body.style.overflow = 'hidden';
+                document.body.style.position = 'fixed';
+                document.body.style.width = '100%';
+                document.body.style.top = `-${scrollPosition}px`;
+            }
+
+            // Funkcja do odblokowania scrolla
+            function enableScroll() {
+                // Odblokuj scroll
+                document.body.style.overflow = '';
+                document.body.style.position = '';
+                document.body.style.width = '';
+                document.body.style.top = '';
+                
+                // Przywróć pozycję scrolla
+                window.scrollTo(0, scrollPosition);
+            }
+
+            // Obsługa modali
+            const modals = [
+                document.getElementById('termsModal'),
+                document.getElementById('commands'),
+                document.getElementById('versions'),
+                document.getElementById('aboutModal')
+            ].filter(modal => modal);
+
+            // Funkcja sprawdzająca czy którykolwiek modal jest aktywny
+            function isAnyModalActive() {
+                return modals.some(modal => modal.classList.contains('active'));
+            }
+
+            // Nasłuchiwacz zmian w modalach
+            const observer = new MutationObserver(function() {
+                if (isAnyModalActive()) {
+                    disableScroll();
+                } else {
+                    enableScroll();
+                }
+            });
+
+            // Konfiguracja obserwatora dla każdego modala
+            modals.forEach(modal => {
+                observer.observe(modal, {
+                    attributes: true,
+                    attributeFilter: ['class']
+                });
+            });
+
+            // Inicjalna weryfikacja stanu
+            if (isAnyModalActive()) {
+                disableScroll();
+            }
+
+            // Pozostała logika modali (niezmieniona)
             const viewVersionsBtn = document.getElementById('viewVersionsBtn');
             const versionsSection = document.getElementById('versions');
             
-            console.log('View versions button:', viewVersionsBtn); // Debug 2
-            console.log('Versions section:', versionsSection); // Debug 3
-
             if (viewVersionsBtn && versionsSection) {
                 viewVersionsBtn.addEventListener('click', function(e) {
                     e.preventDefault();
-                    console.log('Versions button clicked'); // Debug 4
-                    
-                    // Ukryj główne sekcje
                     document.querySelector('.hero').classList.add('hide');
                     document.querySelector('.features').classList.add('hide');
-                    
-                    // Pokaż sekcję versions
-                    versionsSection.style.opacity = '1';
-                    versionsSection.style.transform = 'translateY(0)';
-                    versionsSection.style.pointerEvents = 'all';
-                    console.log('Versions section should be visible now'); // Debug 5
+                    versionsSection.classList.add('active');
                 });
             }
 
@@ -1813,47 +2032,28 @@
             if (backBtn) {
                 backBtn.addEventListener('click', function(e) {
                     e.preventDefault();
-                    console.log('Back button clicked'); // Debug 6
-                    
-                    // Ukryj sekcję versions
-                    versionsSection.style.opacity = '0';
-                    versionsSection.style.transform = 'translateY(20px)';
-                    versionsSection.style.pointerEvents = 'none';
-                    
-                    // Pokaż główne sekcje
+                    versionsSection.classList.remove('active');
                     document.querySelector('.hero').classList.remove('hide');
                     document.querySelector('.features').classList.remove('hide');
                 });
             }
 
-            // Elementy interfejsu
+            // Obsługa innych modali (commands, about, terms)...
             const viewCommandsBtn = document.getElementById('viewCommandsBtn');
             const commandsSection = document.getElementById('commands');
             const backToMainBtn = document.getElementById('backToMainBtn');
-            const backToMainFromVersionsBtn = document.getElementById('backToMainFromVersionsBtn');
             const aboutBtn = document.getElementById('aboutBtn');
             const aboutModal = document.getElementById('aboutModal');
             const backToMainFromAboutBtn = document.getElementById('backToMainFromAboutBtn');
-            const heroSection = document.querySelector('.hero');
-            const featuresSection = document.querySelector('.features');
             const termsBtn = document.getElementById('termsBtn');
             const termsModal = document.getElementById('termsModal');
             const closeTermsBtn = document.getElementById('closeTermsBtn');
 
-            // Funkcje pomocnicze
-            function hideAllSections() {
-                heroSection.classList.add('hide');
-                featuresSection.classList.add('hide');
-                commandsSection.classList.remove('active');
-                versionsSection.classList.remove('active');
-                if (aboutModal) aboutModal.classList.remove('active');
-            }
-
-            // Obsługa przycisków
-            if (viewCommandsBtn) {
+            if (viewCommandsBtn && commandsSection) {
                 viewCommandsBtn.addEventListener('click', function(e) {
                     e.preventDefault();
-                    hideAllSections();
+                    document.querySelector('.hero').classList.add('hide');
+                    document.querySelector('.features').classList.add('hide');
                     commandsSection.classList.add('active');
                 });
             }
@@ -1861,47 +2061,30 @@
             if (backToMainBtn) {
                 backToMainBtn.addEventListener('click', function(e) {
                     e.preventDefault();
-                    hideAllSections();
-                    heroSection.classList.remove('hide');
-                    featuresSection.classList.remove('hide');
+                    commandsSection.classList.remove('active');
+                    document.querySelector('.hero').classList.remove('hide');
+                    document.querySelector('.features').classList.remove('hide');
                 });
             }
 
-            if (viewVersionsBtn) {
-                viewVersionsBtn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    hideAllSections();
-                    versionsSection.classList.add('active');
-                });
-            }
-
-            if (backToMainFromVersionsBtn) {
-                backToMainFromVersionsBtn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    hideAllSections();
-                    heroSection.classList.remove('hide');
-                    featuresSection.classList.remove('hide');
-                });
-            }
-
-            if (aboutBtn) {
+            if (aboutBtn && aboutModal) {
                 aboutBtn.addEventListener('click', function(e) {
                     e.preventDefault();
-                    hideAllSections();
-                    if (aboutModal) aboutModal.classList.add('active');
+                    document.querySelector('.hero').classList.add('hide');
+                    document.querySelector('.features').classList.add('hide');
+                    aboutModal.classList.add('active');
                 });
             }
 
             if (backToMainFromAboutBtn) {
                 backToMainFromAboutBtn.addEventListener('click', function(e) {
                     e.preventDefault();
-                    hideAllSections();
-                    heroSection.classList.remove('hide');
-                    featuresSection.classList.remove('hide');
+                    aboutModal.classList.remove('active');
+                    document.querySelector('.hero').classList.remove('hide');
+                    document.querySelector('.features').classList.remove('hide');
                 });
             }
 
-            // Obsługa modala Terms of Service
             if (termsBtn && termsModal) {
                 termsBtn.addEventListener('click', function(e) {
                     e.preventDefault();
