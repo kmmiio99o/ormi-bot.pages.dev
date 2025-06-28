@@ -1121,6 +1121,7 @@
                                 <li style="margin-bottom: 6px;"><span class="command-name">;userinfo</span> - Shows user details</li>
                                 <li style="margin-bottom: 6px;"><span class="command-name">;avatar</span> - Shows user avatar</li>
                                 <li style="margin-bottom: 6px;"><span class="command-name">;roleinfo</span> - Shows role info</li>
+                                <li style="margin-bottom: 6px;"><span class="command-name">;emojiinfo</span> - Displays emoji metadata (ID and creation date)</li>
                 </ul>
             </div>
                         <div>
@@ -1128,6 +1129,7 @@
                             <ul style="margin: 0; padding-left: 20px;">
                                 <li style="margin-bottom: 6px;"><span class="command-name">;serverinfo</span> - Server statistics</li>
                                 <li style="margin-bottom: 6px;"><span class="command-name">;ping</span> - Bot latency</li>
+                                <li style="margin-bottom: 6px;"><span class="command-name">;uptime</span> - Shows bot operational duration</li>
                 </ul>
                         </div>
                     </div>
@@ -1224,11 +1226,12 @@
                 <div class="command-item" style="background: transparent; border-left: 3px solid var(--secondary); padding-left: 20px;">
                     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
                         <div>
-                            <h4 style="color: var(--light); margin-bottom: 10px; font-size: 1.2rem;">Logging</h4>
+                            <h4 style="color: var(--light); margin-bottom: 10px; font-size: 1.2rem;">Configuration</h4>
                             <ul style="margin: 0; padding-left: 20px;">
                                 <li style="margin-bottom: 6px;"><span class="command-name">;slc</span> - Sets log channel</li>
                                 <li style="margin-bottom: 6px;"><span class="command-name">;sdlc</span> - Sets deleted messages log</li>
                                 <li style="margin-bottom: 6px;"><span class="command-name">;say</span> - Sends message as bot</li>
+                                <li style="margin-bottom: 6px;"><span class="command-name">;autorole</span> - Configures automatic role assignment for new members</li>
                 </ul>
                         </div>
                         <div>
@@ -1236,6 +1239,7 @@
                             <ul style="margin: 0; padding-left: 20px;">
                                 <li style="margin-bottom: 6px;"><span class="command-name">;swc</span> - Sets welcome channel</li>
                                 <li style="margin-bottom: 6px;"><span class="command-name">;swm</span> - Sets welcome message</li>
+                                <li style="margin-bottom: 6px;"><span class="command-name">;prefix</span> - Modifies bot command prefix for this server</li>
                             </ul>
                         </div>
                     </div>
@@ -1280,6 +1284,7 @@
                             <h4 style="color: var(--light); margin-bottom: 10px; font-size: 1.2rem;">Giveaway</h4>
                             <ul style="margin: 0; padding-left: 20px;">
                                 <li style="margin-bottom: 6px;"><span class="command-name">;giveaway</span> - Create a new giveaway</li>
+                                <li style="margin-bottom: 6px;"><span class="command-name">;greroll</span> - Reroll giveaway winner</li>
                             </ul>
                         </div>
                         <div>
@@ -1339,12 +1344,42 @@
                     Version History
                 </h2>
 
+                <!-- Wersja 2.16.0 Beta - Formalna z minusami -->
+                <div class="command-category animate__animated animate__fadeIn" style="background: rgba(254, 231, 92, 0.1); border-color: #FEE75C;">
+                    <div class="feature-icon" style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: #FEE75C;">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <h3 class="category-title" style="text-align: center; color: #FEE75C;">v2.16.0 - Beta Release</h3>
+                    <p style="text-align: center; color: #FEE75C; font-style: italic; margin-bottom: 1rem;">
+                        ⚠️ Beta Release Notice: Features may be unstable. We appreciate your feedback.
+                    </p>
+                    <p style="text-align: center; color: #FEE75C; font-size: 0.9rem; margin: -0.5rem 0 1rem 0;">
+                        (Due to time constraints during development, this release contains experimental features that require further testing)
+                    </p>
+                    
+                    <div class="command-item" style="background: transparent; border-left: 3px solid #FEE75C; padding-left: 20px; margin-bottom: 1rem;">
+                        <h4 style="color: var(--light); margin-bottom: 10px; font-size: 1.2rem;">Known issues:</h4>
+                        <ul style="margin: 0; padding-left: 20px;">
+                            <li style="margin-bottom: 6px;"><span class="command-name">• Stability:</span> Some features may behave unpredictably</li>
+                            <li style="margin-bottom: 6px;"><span class="command-name">• Performance:</span> Increased resource usage may cause delays</li>
+                        </ul>
+                    </div>
+
+                    <ul class="command-list">
+                        <li class="command-item">New command: <span class="command-name">;emojiinfo</span> - Displays emoji metadata (ID and creation date)</li>
+                        <li class="command-item">New command: <span class="command-name">;uptime</span> - Shows bot operational duration</li>
+                        <li class="command-item">New command: <span class="command-name">;greroll</span> - Re-selects giveaway winner</li>
+                        <li class="command-item">New command: <span class="command-name">;prefix</span> - Modifies bot command prefix for this server</li>
+                        <li class="command-item">New command: <span class="command-name">;autorole</span> - Configures automatic role assignment for new members</li>
+                    </ul>
+                </div>
+
                 <!-- Nowa wersja 2.15.2 - NAJNOWSZA (na górze) -->
                 <div class="command-category animate__animated animate__fadeIn" style="background: rgba(87, 242, 135, 0.1); border-color: var(--secondary);">
                     <div class="feature-icon" style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: var(--secondary);">
                         <i class="fas fa-bell"></i>
                     </div>
-                    <h3 class="category-title" style="text-align: center; color: var(--secondary);">v2.15.2 - Latest</h3>
+                    <h3 class="category-title" style="text-align: center; color: var(--secondary);">v2.15.2</h3>
                     <ul class="command-list">
                         <li class="command-item">Added DM notifications for <span class="command-name">;ban</span>, <span class="command-name">;mute</span>, and <span class="command-name">;warn</span> commands</li>
                         <li class="command-item">Improved user feedback for moderation actions</li>
