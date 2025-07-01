@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Dodaj styl dla paska z komunikatem */
         .alert-bar {
             background-color: #ED4245;
             color: white;
@@ -620,12 +619,11 @@
             font-size: 1.1rem;
         }
 
-        /* Ikony dla kategorii */
-        .fa-shield-halved { color: #f04747; } /* Moderation */
-        .fa-music { color: #57f287; } /* Music */
-        .fa-circle-info { color: #5865f2; } /* Information */
-        .fa-screwdriver-wrench { color: #faa61a; } /* Utilities */
-        .fa-gear { color: #eb459e; } /* Configuration */
+        .fa-shield-halved { color: #f04747; }
+        .fa-music { color: #57f287; }
+        .fa-circle-info { color: #5865f2; }
+        .fa-screwdriver-wrench { color: #faa61a; }
+        .fa-gear { color: #eb459e; }
 
         .hero, .features {
             transition: opacity 0.4s ease, transform 0.4s ease;
@@ -646,7 +644,6 @@
             animation: fadeInUp 0.8s ease-out 0.2s forwards;
         }
 
-        /* Animacja dla przycisku "View Commands" */
         .btn-secondary {
             animation: fadeInUp 0.8s ease-out 0.4s forwards;
         }
@@ -766,7 +763,6 @@
             background: rgba(88, 101, 242, 0.1);
         }
 
-        /* Responsywność */
         @media (max-width: 768px) {
             #versions {
                 padding: 15px;
@@ -830,7 +826,6 @@
             z-index: 10;
         }
 
-        /* Updated styles for View Commands to match Versions */
         #commands {
             position: fixed;
             top: 0;
@@ -886,7 +881,6 @@
             color: var(--secondary);
         }
 
-        /* Keep existing animations and other styles */
         .animate__animated {
             animation-duration: 0.5s;
         }
@@ -899,7 +893,6 @@
             animation-delay: 0.4s;
         }
 
-        /* Updated styles for ALL section titles and category titles */
         .section-title {
             font-size: 2.5rem;
             margin-bottom: 2rem;
@@ -943,7 +936,6 @@
             border-radius: 2px;
         }
 
-        /* Version-specific titles */
         .version-category .category-title {
             color: var(--secondary);
             font-size: 1.9rem;
@@ -1019,14 +1011,12 @@
             z-index: 1;
         }
 
-        /* Animacje dla sekcji ToS */
         .tos-section {
             opacity: 0;
             transform: translateY(20px);
             animation-fill-mode: forwards;
         }
 
-        /* Efekt "scrollowania" */
         #termsModal > div {
             scrollbar-width: thin;
             scrollbar-color: var(--primary) rgba(255, 255, 255, 0.1);
@@ -1041,7 +1031,6 @@
             border-radius: 4px;
         }
 
-        /* Responsywność */
         @media (max-width: 768px) {
             #termsModal > div {
                 padding: 40px 20px;
@@ -1082,7 +1071,6 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
 
-        /* Ulepszone style */
         .terms-content {
             color: rgba(255,255,255,0.85);
             line-height: 1.8;
@@ -1145,7 +1133,6 @@
     </style>
 </head>
 <body>
-    <!-- Zmodyfikowany pasek z komunikatem - teraz w sekcji hero -->
     <section class="hero">
        <div style="position: relative; display: inline-block;">
             <img src="https://cdn.discordapp.com/avatars/1364942161707274301/33874cbdbb4017155e77e9b45c3b0e0c.webp?size=1024" alt="Ormi Logo" class="logo animate__animated animate__fadeInDown">
@@ -1211,7 +1198,6 @@
             <a href="#" id="backToMainBtn" class="btn btn-secondary" style="margin: 20px 0; display: block; width: fit-content;">Back to Main</a>
             <h2 class="section-title">All Commands</h2>
             
-            <!-- Information -->
             <div class="command-category" style="background: rgba(88, 101, 242, 0.1); border-color: var(--primary);">
                 <div class="feature-icon" style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem;">ℹ️</div>
                 <h3 class="category-title" style="text-align: center; color: var(--primary);">Information Commands</h3>
@@ -1239,7 +1225,6 @@
                 </div>
             </div>
 
-            <!-- Fun -->
             <div class="command-category" style="background: rgba(235, 69, 158, 0.1); border-color: #EB459E;">
                 <div class="feature-icon" style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem;">🎮</div>
                 <h3 class="category-title" style="text-align: center; color: #EB459E;">Fun Commands</h3>
@@ -1266,7 +1251,6 @@
                 </div>
             </div>
 
-            <!-- Moderation -->
             <div class="command-category" style="background: rgba(237, 66, 69, 0.1); border-color: #ED4245;">
                 <div class="feature-icon" style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem;">🛡️</div>
                 <h3 class="category-title" style="text-align: center; color: #ED4245;">Moderation Commands</h3>
@@ -1292,8 +1276,7 @@
                     </div>
                 </div>
 
-                <!-- Utilities -->
-                <div class="command-category" style="background: rgba(250, 166, 26, 0.1); border-color: #FAA61A;">
+                    <div class="command-category" style="background: rgba(250, 166, 26, 0.1); border-color: #FAA61A;">
                     <div class="feature-icon" style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: #FAA61A;">
                         <i class="fas fa-screwdriver-wrench"></i>
                     </div>
@@ -1325,7 +1308,6 @@
                 </div>
             </div>
 
-            <!-- Configuration -->
             <div class="command-category" style="background: rgba(87, 242, 135, 0.1); border-color: var(--secondary);">
                 <div class="feature-icon" style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem;">⚙️</div>
                 <h3 class="category-title" style="text-align: center; color: var(--secondary);">Configuration</h3>
@@ -1352,7 +1334,6 @@
                 </div>
             </div>
 
-            <!-- Roles -->
             <div class="command-category" style="background: rgba(235, 69, 158, 0.1); border-color: #EB459E;">
                 <div class="feature-icon" style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem;">🏷️</div>
                 <h3 class="category-title" style="text-align: center; color: #EB459E;">Roles Management</h3>
@@ -1378,7 +1359,6 @@
                 </div>
             </div>
 
-            <!-- Giveaway -->
             <div class="command-category" style="background: rgba(254, 231, 92, 0.1); border-color: #FEE75C;">
                 <div class="feature-icon" style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: #FEE75C;">
                     <i class="fas fa-gift"></i>
@@ -1403,7 +1383,6 @@
                 </div>
             </div>
 
-            <!-- Tickets -->
             <div class="command-category" style="background: rgba(114, 137, 218, 0.1); border-color: #7289DA;">
                 <div class="feature-icon" style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: #7289DA;">
                     <i class="fas fa-ticket-alt"></i>
@@ -1450,7 +1429,6 @@
                     Version History
                 </h2>
 
-                <!-- Wersja 3.0.0 - Arctic Fox -->
                 <div class="command-category animate__animated animate__fadeIn" style="background: rgba(235, 69, 158, 0.1); border-color: rgba(235, 69, 158, 0.3);">
                     <div class="feature-icon" style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: #EB459E;">
                         <i class="fas fa-snowflake"></i>
@@ -1472,7 +1450,6 @@
                     </ul>
                 </div>
 
-                <!-- Wersja 2.16.0 Beta - Formalna z minusami -->
                 <div class="command-category animate__animated animate__fadeIn" style="background: rgba(254, 231, 92, 0.1); border-color: #FEE75C;">
                     <div class="feature-icon" style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: #FEE75C;">
                         <i class="fas fa-flask"></i>
@@ -1502,7 +1479,6 @@
                     </ul>
                 </div>
 
-                <!-- Nowa wersja 2.15.2 - NAJNOWSZA (na górze) -->
                 <div class="command-category animate__animated animate__fadeIn" style="background: rgba(87, 242, 135, 0.1); border-color: var(--secondary);">
                     <div class="feature-icon" style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: var(--secondary);">
                         <i class="fas fa-bell"></i>
@@ -1514,7 +1490,6 @@
                     </ul>
                 </div>
 
-                <!-- Wersja 2.15.1 -->
                 <div class="command-category animate__animated animate__fadeIn" style="background: rgba(88, 101, 242, 0.1); border-color: var(--primary);">
                     <div class="feature-icon" style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: var(--primary);">
                         <i class="fas fa-wrench"></i>
@@ -1527,7 +1502,6 @@
                     </ul>
                 </div>
 
-                <!-- Wersja 2.15.0 -->
                 <div class="command-category animate__animated animate__fadeIn animate-delay-1" style="background: rgba(88, 101, 242, 0.1); border-color: var(--primary);">
                     <div class="feature-icon" style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: var(--primary);">
                         <i class="fas fa-ticket-alt"></i>
@@ -1539,7 +1513,6 @@
                     </ul>
                 </div>
 
-                <!-- Wersja 2.12.0 -->
                 <div class="command-category animate__animated animate__fadeIn animate-delay-1" style="background: rgba(88, 101, 242, 0.1); border-color: var(--primary);">
                     <div class="feature-icon" style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: var(--primary);">
                         <i class="fas fa-gift"></i>
@@ -1553,7 +1526,6 @@
                     </ul>
                 </div>
 
-                <!-- Wersja 2.5.0 -->
                 <div class="command-category animate__animated animate__fadeIn animate-delay-1" style="background: rgba(88, 101, 242, 0.1); border-color: var(--primary);">
                     <div class="feature-icon" style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: var(--primary);">
                         <i class="fas fa-code-merge"></i>
@@ -1566,7 +1538,6 @@
                     </ul>
                 </div>
 
-                <!-- Wersja 2.4.0 -->
                 <div class="command-category animate__animated animate__fadeIn animate-delay-1" style="background: rgba(87, 242, 135, 0.1); border-color: var(--secondary);">
                     <div class="feature-icon" style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: var(--secondary);">
                         <i class="fas fa-server"></i>
@@ -1580,7 +1551,6 @@
                     </ul>
                 </div>
 
-                <!-- Wersja 2.3.0 -->
                 <div class="command-category animate__animated animate__fadeIn animate-delay-2" style="background: rgba(237, 66, 69, 0.1); border-color: #ED4245;">
                     <div class="feature-icon" style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: #ED4245;">
                         <i class="fas fa-exclamation-triangle"></i>
@@ -1593,7 +1563,6 @@
                     </ul>
                 </div>
 
-                <!-- Wersja 2.2.0 -->
                 <div class="command-category animate__animated animate__fadeIn animate-delay-3" style="background: rgba(250, 166, 26, 0.1); border-color: #FAA61A;">
                     <div class="feature-icon" style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: #FAA61A;">
                         <i class="fas fa-bell"></i>
@@ -1605,7 +1574,6 @@
                     </ul>
                 </div>
 
-                <!-- Wersja 2.1.0 -->
                 <div class="command-category animate__animated animate__fadeIn animate-delay-4" style="background: rgba(235, 69, 158, 0.1); border-color: #EB459E;">
                     <div class="feature-icon" style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: #EB459E;">
                         <i class="fas fa-music"></i>
@@ -1617,7 +1585,6 @@
                     </ul>
                 </div>
 
-                <!-- Wersja 2.0.0 -->
                 <div class="command-category animate__animated animate__fadeIn animate-delay-5" style="background: rgba(88, 101, 242, 0.1); border-color: var(--primary);">
                     <div class="feature-icon" style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: var(--primary);">
                         <i class="fas fa-poll"></i>
@@ -1629,7 +1596,6 @@
                     </ul>
                 </div>
 
-                <!-- Wersja 1.3.0 -->
                 <div class="command-category animate__animated animate__fadeIn animate-delay-6" style="background: rgba(87, 242, 135, 0.1); border-color: var(--secondary);">
                     <div class="feature-icon" style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: var(--secondary);">
                         <i class="fas fa-scroll"></i>
@@ -1641,7 +1607,6 @@
                     </ul>
                 </div>
 
-                <!-- Wersja 1.2.0 -->
                 <div class="command-category animate__animated animate__fadeIn animate-delay-7" style="background: rgba(237, 66, 69, 0.1); border-color: #ED4245;">
                     <div class="feature-icon" style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: #ED4245;">
                         <i class="fas fa-shield-alt"></i>
@@ -1653,7 +1618,6 @@
                     </ul>
                 </div>
 
-                <!-- Wersja 1.1.0 -->
                 <div class="command-category animate__animated animate__fadeIn animate-delay-8" style="background: rgba(250, 166, 26, 0.1); border-color: #FAA61A;">
                     <div class="feature-icon" style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: #FAA61A;">
                         <i class="fas fa-clock"></i>
@@ -1665,7 +1629,6 @@
                     </ul>
                 </div>
 
-                <!-- Wersja 1.0.0 -->
                 <div class="command-category animate__animated animate__fadeIn animate-delay-9" style="background: rgba(235, 69, 158, 0.1); border-color: #EB459E;">
                     <div class="feature-icon" style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: #EB459E;">
                         <i class="fas fa-rocket"></i>
@@ -1681,7 +1644,6 @@
         </div>
     </section>
 
-    <!-- About Section -->
     <section id="aboutModal">
         <div class="container">
             <a href="#" id="backToMainFromAboutBtn" class="btn btn-secondary" style="margin: 20px 0; display: block; width: fit-content;">
@@ -1690,7 +1652,6 @@
             <h2 class="section-title">About Ormi Bot</h2>
 
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px;">
-                <!-- Left Column - Bot Info -->
                 <div class="command-category" style="background: rgba(88, 101, 242, 0.1); border-color: var(--primary); height: fit-content;">
                     <div class="feature-icon" style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: var(--primary);">
                         <i class="fas fa-robot"></i>
@@ -1727,7 +1688,6 @@
                     </div>
                 </div>
 
-                <!-- Right Column - Developer Info -->
                 <div class="command-category" style="background: rgba(87, 242, 135, 0.1); border-color: var(--secondary); height: fit-content;">
                     <div class="feature-icon" style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: var(--secondary);">
                         <i class="fas fa-user-tie"></i>
@@ -1793,7 +1753,6 @@
             </h2>
 
             <div class="terms-content">
-                <!-- Sekcja 1 -->
                 <div class="terms-section">
                     <h3>
                         <i class="fas fa-check-circle"></i>
@@ -1804,7 +1763,6 @@
                     </p>
                 </div>
 
-                <!-- Sekcja 2 -->
                 <div class="terms-section">
                     <h3>
                         <i class="fas fa-gavel"></i>
@@ -1820,7 +1778,6 @@
                     </ul>
                 </div>
 
-                <!-- Sekcja 3 -->
                 <div class="terms-section">
                     <h3>
                         <i class="fas fa-ban"></i>
@@ -1839,7 +1796,6 @@
                     </ul>
                 </div>
 
-                <!-- Sekcja 4 -->
                 <div class="terms-section">
                     <h3>
                         <i class="fas fa-shield-alt"></i>
@@ -1858,7 +1814,6 @@
                     </p>
                 </div>
 
-                <!-- Sekcja 5 -->
                 <div class="terms-section">
                     <h3>
                         <i class="fas fa-exclamation-triangle"></i>
@@ -1872,7 +1827,6 @@
                     </p>
                 </div>
 
-                <!-- Sekcja 6 -->
                 <div class="terms-section">
                     <h3>
                         <i class="fas fa-sync-alt"></i>
@@ -1883,7 +1837,6 @@
                     </p>
                 </div>
 
-                <!-- Sekcja 7 -->
                 <div class="terms-section">
                     <h3>
                         <i class="fas fa-balance-scale"></i>
@@ -1899,7 +1852,6 @@
                     </ul>
                 </div>
 
-                <!-- Sekcja 8 -->
                 <div class="terms-section">
                     <h3>
                         <i class="fas fa-gavel"></i>
@@ -1914,7 +1866,6 @@
     </div>
 
     <style>
-        /* Ulepszone style */
         .terms-content {
             color: rgba(255,255,255,0.85);
             line-height: 1.8;
@@ -1978,12 +1929,9 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Zmienna do przechowywania pozycji scrolla
             let scrollPosition = 0;
 
-            // Funkcja do blokowania scrolla
             function disableScroll() {
-                // Zapamiętaj aktualną pozycję scrolla
                 scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
                 
                 // Zablokuj scroll
@@ -1993,7 +1941,6 @@
                 document.body.style.top = `-${scrollPosition}px`;
             }
 
-            // Funkcja do odblokowania scrolla
             function enableScroll() {
                 // Odblokuj scroll
                 document.body.style.overflow = '';
@@ -2001,11 +1948,9 @@
                 document.body.style.width = '';
                 document.body.style.top = '';
                 
-                // Przywróć pozycję scrolla
                 window.scrollTo(0, scrollPosition);
             }
 
-            // Obsługa modali
             const modals = [
                 document.getElementById('termsModal'),
                 document.getElementById('commands'),
@@ -2013,12 +1958,10 @@
                 document.getElementById('aboutModal')
             ].filter(modal => modal);
 
-            // Funkcja sprawdzająca czy którykolwiek modal jest aktywny
             function isAnyModalActive() {
                 return modals.some(modal => modal.classList.contains('active'));
             }
 
-            // Nasłuchiwacz zmian w modalach
             const observer = new MutationObserver(function() {
                 if (isAnyModalActive()) {
                     disableScroll();
@@ -2027,7 +1970,6 @@
                 }
             });
 
-            // Konfiguracja obserwatora dla każdego modala
             modals.forEach(modal => {
                 observer.observe(modal, {
                     attributes: true,
@@ -2035,12 +1977,10 @@
                 });
             });
 
-            // Inicjalna weryfikacja stanu
             if (isAnyModalActive()) {
                 disableScroll();
             }
 
-            // Pozostała logika modali (niezmieniona)
             const viewVersionsBtn = document.getElementById('viewVersionsBtn');
             const versionsSection = document.getElementById('versions');
             
@@ -2063,7 +2003,6 @@
                 });
             }
 
-            // Obsługa innych modali (commands, about, terms)...
             const viewCommandsBtn = document.getElementById('viewCommandsBtn');
             const commandsSection = document.getElementById('commands');
             const backToMainBtn = document.getElementById('backToMainBtn');
@@ -2130,7 +2069,6 @@
                 }
             });
 
-            // Status Discord
             const DISCORD_ID = '879393496627306587';
             const STATUS_COLORS = {
                 online: '#3ba55c',
@@ -2197,7 +2135,6 @@
             document.querySelector('.features').style.display = 'block';
         }
 
-        // Ręczne przypisanie eventów w HTML
         // <a href="#" onclick="showVersions()">View Versions</a>
         // <a href="#" onclick="hideVersions()">Back to Main</a>
     </script>
