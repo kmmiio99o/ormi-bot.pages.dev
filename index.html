@@ -11,19 +11,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        .alert-bar {
-            background-color: #ED4245;
-            color: white;
-            text-align: center;
-            padding: 10px;
-            font-weight: 600;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 9999;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-        }
         :root {
             --primary: #5865F2;
             --secondary: #57F287;
@@ -142,107 +129,105 @@
             border-color: var(--primary);
         }
         .features {
-            background: linear-gradient(
-                135deg,
-                rgba(54, 57, 63, 0.9) 0%,
-                rgba(35, 39, 42, 0.9) 100%
-            );
+            background: linear-gradient(135deg, rgba(35, 39, 42, 0.95) 0%, rgba(54, 57, 63, 0.95) 100%);
+            padding: 20px 0;
             position: relative;
-            z-index: 2;
-            margin-top: 0;
-            padding: 100px 20px;
             overflow: hidden;
         }
-        .features::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: #23272A;
-            opacity: 0.15;
-            z-index: -1;
-        }
-        .container {
+
+        .features__container {
             max-width: 1200px;
             margin: 0 auto;
+            position: relative;
+            z-index: 2;
         }
-        .section-title {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
+
+        .features__title {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-align: center;
+            color: var(--light);
+            position: relative;
+        }
+
+        .features__title-highlight {
             color: var(--primary);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
             position: relative;
             display: inline-block;
         }
-        .section-title::after {
+
+        .features__title-highlight::after {
             content: '';
             position: absolute;
             bottom: -10px;
             left: 0;
             width: 100%;
-            height: 4px;
+            height: 3px;
             background: linear-gradient(90deg, var(--primary), var(--secondary));
-            border-radius: 2px;
+            border-radius: 3px;
         }
-        .features-grid {
+
+        .features__subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 60px;
+        }
+
+        .features__grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
         }
-        .feature-card {
-            background: rgba(255, 255, 255, 0.1);
+
+        .features__card {
+            background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
-            border-radius: 15px;
-            padding: 30px;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+            padding: 40px 30px;
+            transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-            background: rgba(255, 255, 255, 0.15);
+
+        .features__card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            background: rgba(255, 255, 255, 0.1);
         }
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(
-                to bottom right,
-                rgba(88, 101, 242, 0.1),
-                rgba(87, 242, 135, 0.1),
-                rgba(254, 231, 92, 0.1),
-                rgba(235, 69, 158, 0.1)
-            );
-            transform: rotate(45deg);
-            opacity: 0;
-            transition: all 0.5s ease;
-        }
-        .feature-card:hover::before {
-            animation: slide 3s linear infinite;
-            opacity: 0.3;
-        }
-        @keyframes slide {
-            0% { transform: translateX(-100%) rotate(45deg); }
-            100% { transform: translateX(100%) rotate(45deg); }
-        }
-        .feature-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+
+        .features__card-icon {
+            font-size: 2.5rem;
             color: var(--primary);
+            margin-bottom: 20px;
         }
-        .feature-title {
+
+        .features__card-title {
             font-size: 1.5rem;
-            margin-bottom: 1rem;
+            margin-bottom: 15px;
             color: var(--light);
+        }
+
+        .features__card-desc {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+            margin-bottom: 0;
+        }
+
+        .features__card-hover {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(88, 101, 242, 0.1), rgba(87, 242, 135, 0.1));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .features__card:hover .features__card-hover {
+            opacity: 1;
         }
         #commands {
             position: fixed;
@@ -302,8 +287,6 @@
             100% { transform: scale(1); box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); }
         }
         .animate-delay-1 { animation-delay: 0.2s; }
-        .animate-delay-2 { animation-delay: 0.4s; }
-        .animate-delay-3 { animation-delay: 0.6s; }
         @supports (-moz-appearance:none) {
             h1 {
                 color: var(--primary);
@@ -431,85 +414,6 @@
                 font-size: 1.3rem;
             }
         }
-
-        .commands-nav {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1001;
-            transform: translateY(-100%);
-            opacity: 0;
-            transition: transform 0.4s ease, opacity 0.3s ease;
-        }
-        .commands-nav.visible {
-            transform: translateY(0);
-            opacity: 1;
-        }
-        .commands-nav-btn {
-            background: var(--primary);
-            color: var(--light);
-            border: none;
-            padding: 12px 16px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 1.1rem;
-            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        }
-        .commands-nav-btn:hover {
-            background: var(--secondary);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
-        }
-        .commands-nav-btn::before {
-            content: "≡";
-            font-size: 1.4rem;
-        }
-        .commands-nav-list {
-            position: absolute;
-            right: 0;
-            top: 100%;
-            background: rgba(25, 25, 25, 0.98);
-            backdrop-filter: blur(12px);
-            border-radius: 8px;
-            padding: 8px 0;
-            min-width: 220px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-            opacity: 0;
-            transform: translateY(-10px);
-            visibility: hidden;
-            transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
-            z-index: 1002;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        .commands-nav-list.active {
-            opacity: 1;
-            transform: translateY(0);
-            visibility: visible;
-        }
-        .commands-nav-list a {
-            display: block;
-            color: var(--light);
-            padding: 12px 20px;
-            text-decoration: none;
-            transition: all 0.2s ease;
-            font-size: 1rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        .commands-nav-list a:last-child {
-            border-bottom: none;
-        }
-        .commands-nav-list a:hover {
-            background: rgba(88, 101, 242, 0.15);
-            padding-left: 25px;
-        }
-        .commands-nav-btn.active::before {
-            content: "×";
-            font-size: 1.8rem;
-        }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(-10px); }
             to { opacity: 1; transform: translateY(0); }
@@ -518,107 +422,6 @@
             from { opacity: 1; transform: translateY(0); }
             to { opacity: 0; transform: translateY(-10px); }
         }
-        .categories-toggle {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1001;
-            display: none;
-            transition: transform 0.2s ease-out;
-        }
-
-        .categories-toggle.visible {
-            transform: translateY(0);
-            opacity: 1;
-        }
-
-        .categories-btn {
-            background: var(--primary);
-            border: none;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .hamburger {
-            width: 24px;
-            height: 18px;
-            position: relative;
-        }
-
-        .hamburger span {
-            display: block;
-            position: absolute;
-            height: 2px;
-            width: 100%;
-            background: white;
-            border-radius: 2px;
-            transition: all 0.3s ease;
-        }
-
-        .hamburger span:nth-child(1) { top: 0; }
-        .hamburger span:nth-child(2),
-        .hamburger span:nth-child(3) { top: 8px; }
-        .hamburger span:nth-child(4) { top: 16px; }
-
-        .categories-btn.active span:nth-child(1),
-        .categories-btn.active span:nth-child(4) {
-            width: 0;
-            opacity: 0;
-        }
-
-        .categories-btn.active span:nth-child(2) {
-            transform: rotate(45deg);
-        }
-
-        .categories-btn.active span:nth-child(3) {
-            transform: rotate(-45deg);
-        }
-
-        .categories-menu {
-            position: absolute;
-            right: 0;
-            top: 60px;
-            background: rgba(35, 39, 42, 0.95);
-            border-radius: 8px;
-            padding: 10px 0;
-            min-width: 200px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(-10px);
-            transition: all 0.3s ease;
-        }
-
-        .categories-menu.active {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-
-        .category-link {
-            display: flex;
-            align-items: center;
-            padding: 12px 20px;
-            color: white;
-            text-decoration: none;
-            transition: all 0.2s ease;
-        }
-
-        .category-link:hover {
-            background: rgba(88, 101, 242, 0.2);
-        }
-
-        .category-link i {
-            margin-right: 10px;
-            font-size: 1.1rem;
-        }
-
         .fa-shield-halved { color: #f04747; }
         .fa-music { color: #57f287; }
         .fa-circle-info { color: #5865f2; }
@@ -817,15 +620,6 @@
             100% { background-position: 0% 50%; }
         }
         
-        .confetti {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            background-color: var(--primary);
-            opacity: 0;
-            z-index: 10;
-        }
-
         #commands {
             position: fixed;
             top: 0;
@@ -916,7 +710,7 @@
         }
 
         .category-title {
-            font-size: 1.8rem;
+                font-size: 1.8rem;
             margin-bottom: 1.5rem;
             color: var(--light);
             text-transform: uppercase;
@@ -971,50 +765,10 @@
             color: var(--light);
         }
 
-        .versions-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.9);
-            z-index: 1000;
-            display: none;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .versions-content {
-            background: #2c2f33;
-            padding: 2rem;
-            border-radius: 10px;
-            max-width: 800px;
-            width: 90%;
-            max-height: 80vh;
-            overflow-y: auto;
-        }
-        
-        .version-card {
-            background: #23272a;
-            padding: 1rem;
-            margin: 1rem 0;
-            border-radius: 5px;
-        }
-        
-        .versions-back-btn {
-            margin-bottom: 1rem;
-        }
-
         #backToMainFromVersionsBtn {
             position: sticky;
             top: 20px;
             z-index: 1;
-        }
-
-        .tos-section {
-            opacity: 0;
-            transform: translateY(20px);
-            animation-fill-mode: forwards;
         }
 
         #termsModal > div {
@@ -1130,6 +884,31 @@
                 font-size: 0.95rem;
             }
         }
+        @media (max-width: 768px) {
+      footer .container {
+        flex-direction: column !important;
+        min-height: unset !important;
+        height: auto !important;
+        position: static !important;
+      }
+      footer .container > div[style*='position: absolute'] {
+        position: static !important;
+        left: unset !important;
+        top: unset !important;
+        transform: none !important;
+        margin: 10px 0 0 0 !important;
+        z-index: unset !important;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+      }
+      .footer-links {
+        margin-left: 0 !important;
+        margin-top: 10px !important;
+        justify-content: center !important;
+        width: 100%;
+      }
+    }
     </style>
 </head>
 <body>
@@ -1171,23 +950,47 @@
     </section>
 
     <section class="features">
-        <div class="container">
-            <h2 class="section-title animate__animated animate__fadeIn">Why Choose Ormi?</h2>
-            <div class="features-grid">
-                <div class="feature-card animate__animated animate__fadeInUp">
-                    <div class="feature-icon">🚀</div>
-                    <h3 class="feature-title">Powerful & Intuitive</h3>
-                    <p>Experience seamless server management with our user-friendly yet powerful tools that make moderation a breeze.</p>
+        <div class="features__container">
+            <h2 class="features__title">
+                <span class="features__title-highlight">Why Choose Ormi?</span>
+            </h2>
+            <p class="features__subtitle">Powerful features designed for your Discord server</p>
+            
+            <div class="features__grid">
+                <!-- Karta 1 -->
+                <div class="features__card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="features__card-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 class="features__card-title">Lightning Fast</h3>
+                    <p class="features__card-desc">
+                        Optimized for performance with minimal latency. Enjoy seamless interactions.
+                    </p>
+                    <div class="features__card-hover"></div>
                 </div>
-                <div class="feature-card animate__animated animate__fadeInUp animate-delay-1">
-                    <div class="feature-icon">❤️</div>
-                    <h3 class="feature-title">Community Focused</h3>
-                    <p>Built with love for Discord communities, offering features that enhance engagement and interaction.</p>
+
+                <!-- Karta 2 -->
+                <div class="features__card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="features__card-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3 class="features__card-title">Always Improving</h3>
+                    <p class="features__card-desc">
+                        Regular updates with new features and improvements based on your feedback.
+                    </p>
+                    <div class="features__card-hover"></div>
                 </div>
-                <div class="feature-card animate__animated animate__fadeInUp animate-delay-2">
-                    <div class="feature-icon">✨</div>
-                    <h3 class="feature-title">Always Improving</h3>
-                    <p>Regular updates bring fresh features and improvements, keeping your server ahead of the curve.</p>
+
+                <!-- Karta 3 -->
+                <div class="features__card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="features__card-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="features__card-title">Secure & Reliable</h3>
+                    <p class="features__card-desc">
+                        Built with security in mind to protect your server and data.
+                    </p>
+                    <div class="features__card-hover"></div>
                 </div>
             </div>
         </div>
@@ -1206,21 +1009,20 @@
                         <div>
                             <h4 style="color: var(--light); margin-bottom: 10px; font-size: 1.2rem;">User Info</h4>
                             <ul style="margin: 0; padding-left: 20px;">
-                                <li style="margin-bottom: 6px;"><span class="command-name">;userinfo</span> - Shows user details</li>
-                                <li style="margin-bottom: 6px;"><span class="command-name">;avatar</span> - Shows user avatar</li>
-                                <li style="margin-bottom: 6px;"><span class="command-name">;roleinfo</span> - Shows role info</li>
-                                <li style="margin-bottom: 6px;"><span class="command-name">;emojiinfo</span> - Displays emoji metadata (ID and creation date)</li>
-                                <li style="margin-bottom: 6px;"><span class="command-name">;hierarchy</span> - Shows server hierarchy (requires Timeout members permission)</li>
-                </ul>
-            </div>
+                                <li style="margin-bottom: 6px;"><span class="command-name">;userinfo [member]</span> - Shows user information</li>
+                                <li style="margin-bottom: 6px;"><span class="command-name">;avatar [member]</span> - Shows user avatar</li>
+                            </ul>
+                        </div>
                         <div>
                             <h4 style="color: var(--light); margin-bottom: 10px; font-size: 1.2rem;">Server Info</h4>
                             <ul style="margin: 0; padding-left: 20px;">
-                                <li style="margin-bottom: 6px;"><span class="command-name">;serverinfo</span> - Server statistics</li>
-                                <li style="margin-bottom: 6px;"><span class="command-name">;ping</span> - Bot latency</li>
-                                <li style="margin-bottom: 6px;"><span class="command-name">;uptime</span> - Shows bot operational duration</li>
+                                <li style="margin-bottom: 6px;"><span class="command-name">;serverinfo</span> - Displays server statistics</li>
+                                <li style="margin-bottom: 6px;"><span class="command-name">;roleinfo &lt;role&gt;</span> - Shows role information</li>
+                                <li style="margin-bottom: 6px;"><span class="command-name">;ping</span> - Shows bot latency</li>
+                                <li style="margin-bottom: 6px;"><span class="command-name">;emojiinfo</span> - Shows emoji information (ID, creation date)</li>
+                                <li style="margin-bottom: 6px;"><span class="command-name">;uptime</span> - Shows bot uptime</li>
                                 <li style="margin-bottom: 6px;"><span class="command-name">;recentjoins</span> - Shows recently joined members (last 10)</li>
-                </ul>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -1234,21 +1036,21 @@
                         <div>
                             <h4 style="color: var(--light); margin-bottom: 10px; font-size: 1.2rem;">Games</h4>
                             <ul style="margin: 0; padding-left: 20px;">
-                                <li style="margin-bottom: 6px;"><span class="command-name">;8ball</span> - Magic 8-ball</li>
-                                <li style="margin-bottom: 6px;"><span class="command-name">;rps</span> - Rock-paper-scissors</li>
-                                <li style="margin-bottom: 6px;"><span class="command-name">;random</span> - Random number generator</li>
-                                <li style="margin-bottom: 6px;"><span class="command-name">;slap</span> - Virtual slap action</li>
-                </ul>
-            </div>
+                                <li style="margin-bottom: 6px;"><span class="command-name">;8ball &lt;question&gt;</span> - Ask the magic 8-ball</li>
+                                <li style="margin-bottom: 6px;"><span class="command-name">;rps &lt;choice&gt;</span> - Play rock-paper-scissors</li>
+                                <li style="margin-bottom: 6px;"><span class="command-name">;random [min] [max]</span> - Random number generator</li>
+                            </ul>
+                        </div>
                         <div>
                             <h4 style="color: var(--light); margin-bottom: 10px; font-size: 1.2rem;">Social</h4>
                             <ul style="margin: 0; padding-left: 20px;">
-                                <li style="margin-bottom: 6px;"><span class="command-name">;ship</span> - Ship users</li>
-                                <li style="margin-bottom: 6px;"><span class="command-name">;hug</span> - Virtual hug</li>
-                                <li style="margin-bottom: 6px;"><span class="command-name">;rate</span> - Rate something 1-10</li>
+                                <li style="margin-bottom: 6px;"><span class="command-name">;ship &lt;user1&gt; &lt;user2&gt;</span> - Ship two users together</li>
+                                <li style="margin-bottom: 6px;"><span class="command-name">;hug &lt;member&gt;</span> - Send virtual hug</li>
+                                <li style="margin-bottom: 6px;"><span class="command-name">;rate &lt;thing&gt;</span> - Rate something 1-10</li>
+                                <li style="margin-bottom: 6px;"><span class="command-name">;slap &lt;user&gt;</span> - Virtual slap action</li>
                                 <li style="margin-bottom: 6px;"><span class="command-name">;howgay &lt;user&gt;</span> - Measures gay percentage</li>
                                 <li style="margin-bottom: 6px;"><span class="command-name">;simprate &lt;user&gt;</span> - Checks how much a user simps</li>
-                </ul>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -1262,51 +1064,66 @@
                         <div>
                             <h4 style="color: var(--light); margin-bottom: 10px; font-size: 1.2rem;">User Management</h4>
                             <ul style="margin: 0; padding-left: 20px;">
-                                <li style="margin-bottom: 6px;"><span class="command-name">;kick</span> - Kick user</li>
-                                <li style="margin-bottom: 6px;"><span class="command-name">;ban</span> - Ban user</li>
-                                <li style="margin-bottom: 6px;"><span class="command-name">;mute</span> - Mute user</li>
-                </ul>
-            </div>
+                                <li style="margin-bottom: 6px;"><span class="command-name">;kick &lt;user&gt; [reason]</span> - Kicks user</li>
+                                <li style="margin-bottom: 6px;"><span class="command-name">;ban &lt;user&gt; [duration] [reason]</span> - Bans user</li>
+                                <li style="margin-bottom: 6px;"><span class="command-name">;unban &lt;user_id&gt;</span> - Unbans user</li>
+                                <li style="margin-bottom: 6px;"><span class="command-name">;mute &lt;user&gt; [duration] [reason]</span> - Mutes user</li>
+                                <li style="margin-bottom: 6px;"><span class="command-name">;unmute &lt;user&gt;</span> - Unmutes user</li>
+                                <li style="margin-bottom: 6px;"><span class="command-name">;warn &lt;user&gt; [reason]</span> - Warns user</li>
+                                <li style="margin-bottom: 6px;"><span class="command-name">;warnings &lt;user&gt;</span> - Shows user warnings</li>
+                                <li style="margin-bottom: 6px;"><span class="command-name">;clearwarns &lt;user&gt;</span> - Clears user warnings</li>
+                                <li style="margin-bottom: 6px;"><span class="command-name">;delwarn &lt;case_id&gt;</span> - Deletes specific warning</li>
+                                <li style="margin-bottom: 6px;"><span class="command-name">;editcase &lt;case_id&gt;</span> - Edits existing case</li>
+                                <li style="margin-bottom: 6px;"><span class="command-name">;case &lt;case_id&gt;</span> - Gets info about case</li>
+                                <li style="margin-bottom: 6px;"><span class="command-name">;nick &lt;user&gt; [new_nick]</span> - Changes nickname</li>
+                            </ul>
+                        </div>
                         <div>
                             <h4 style="color: var(--light); margin-bottom: 10px; font-size: 1.2rem;">Channel Control</h4>
                             <ul style="margin: 0; padding-left: 20px;">
-                                <li style="margin-bottom: 6px;"><span class="command-name">;lock</span> - Lock channel</li>
-                                <li style="margin-bottom: 6px;"><span class="command-name">;purge</span> - Delete messages</li>
-                                <li style="margin-bottom: 6px;"><span class="command-name">;slowmode</span> - Set slowmode</li>
+                                <li style="margin-bottom: 6px;"><span class="command-name">;lock</span> - Locks channel</li>
+                                <li style="margin-bottom: 6px;"><span class="command-name">;unlock</span> - Unlocks channel</li>
+                                <li style="margin-bottom: 6px;"><span class="command-name">;purge [amount=5]</span> - Deletes messages</li>
+                                <li style="margin-bottom: 6px;"><span class="command-name">;slowmode &lt;seconds&gt;</span> - Sets slowmode</li>
+                                <li style="margin-bottom: 6px;"><span class="command-name">;nuke</span> - Deletes all messages in channel</li>
+                                <li style="margin-bottom: 6px;"><span class="command-name">;fg</span> - Toggles file/GIF permissions</li>
                             </ul>
-                            </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                    <div class="command-category" style="background: rgba(250, 166, 26, 0.1); border-color: #FAA61A;">
-                    <div class="feature-icon" style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: #FAA61A;">
-                        <i class="fas fa-screwdriver-wrench"></i>
-                    </div>
-                    <h3 class="category-title" style="text-align: center; color: #FAA61A;">Utilities</h3>
-                    <div class="command-item" style="background: transparent; border-left: 3px solid #FAA61A; padding-left: 20px;">
-                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
-                            <div>
-                                <h4 style="color: var(--light); margin-bottom: 10px; font-size: 1.2rem;">General</h4>
-                                <ul style="margin: 0; padding-left: 20px;">
-                                    <li style="margin-bottom: 6px;"><span class="command-name">;afk [reason]</span> - Sets AFK status</li>
-                                    <li style="margin-bottom: 6px;"><span class="command-name">;snipe</span> - Shows last deleted message</li>
-                                    <li style="margin-bottom: 6px;"><span class="command-name">;invite</span> - Generates invite link</li>
-                                    <li style="margin-bottom: 6px;"><span class="command-name">;rmdm</span> - Sets a reminder</li>
-                                    <li style="margin-bottom: 6px;"><span class="command-name">;qr</span> - Generates QR code from text</li>
-                                    <li style="margin-bottom: 6px;"><span class="command-name">;color &lt;name&gt;</span> - Shows color sample from HEX/name</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h4 style="color: var(--light); margin-bottom: 10px; font-size: 1.2rem;">Polls & Embeds</h4>
-                                <ul style="margin: 0; padding-left: 20px;">
-                                    <li style="margin-bottom: 6px;"><span class="command-name">;vote</span> - Creates poll</li>
-                                    <li style="margin-bottom: 6px;"><span class="command-name">;embed</span> - Creates embed</li>
-                                    <li style="margin-bottom: 6px;"><span class="command-name">;translate</span> - Translates text</li>
-                                    <li style="margin-bottom: 6px;"><span class="command-name">;lastfm</span> - Shows Last.fm statistics</li>
-                                    <li style="margin-bottom: 6px;"><span class="command-name">;ascii/span> - Converts text to ASCII art</li>
-                                </ul>
-                            </div>
+
+            <div class="command-category" style="background: rgba(250, 166, 26, 0.1); border-color: #FAA61A;">
+                <div class="feature-icon" style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: #FAA61A;">
+                    <i class="fas fa-screwdriver-wrench"></i>
+                </div>
+                <h3 class="category-title" style="text-align: center; color: #FAA61A;">Utility Commands</h3>
+                <div class="command-item" style="background: transparent; border-left: 3px solid #FAA61A; padding-left: 20px;">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+                        <div>
+                            <h4 style="color: var(--light); margin-bottom: 10px; font-size: 1.2rem;">General</h4>
+                            <ul style="margin: 0; padding-left: 20px;">
+                                <li style="margin-bottom: 6px;"><span class="command-name">;afk [reason]</span> - Sets AFK status</li>
+                                <li style="margin-bottom: 6px;"><span class="command-name">;snipe</span> - Shows last deleted message</li>
+                                <li style="margin-bottom: 6px;"><span class="command-name">;invite</span> - Generates invite link</li>
+                                <li style="margin-bottom: 6px;"><span class="command-name">;rmdm &lt;time&gt; &lt;message&gt;</span> - Sets a reminder</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 style="color: var(--light); margin-bottom: 10px; font-size: 1.2rem;">Embed & Polls</h4>
+                            <ul style="margin: 0; padding-left: 20px;">
+                                <li style="margin-bottom: 6px;"><span class="command-name">;embed &lt;title&gt; | &lt;desc&gt; | &lt;#color&gt; | [image] | [channel]</span> - Creates embed (admin only)</li>
+                                <li style="margin-bottom: 6px;"><span class="command-name">;vote &lt;question&gt;</span> - Creates poll</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 style="color: var(--light); margin-bottom: 10px; font-size: 1.2rem;">Text & Media</h4>
+                            <ul style="margin: 0; padding-left: 20px;">
+                                <li style="margin-bottom: 6px;"><span class="command-name">;lastfm &lt;username&gt;</span> - Shows user statistics from Last.fm</li>
+                                <li style="margin-bottom: 6px;"><span class="command-name">;qr &lt;text&gt;</span> - Generates QR code from text</li>
+                                <li style="margin-bottom: 6px;"><span class="command-name">;ascii &lt;text&gt;</span> - Converts text to ASCII art</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -1318,44 +1135,46 @@
                 <div class="command-item" style="background: transparent; border-left: 3px solid var(--secondary); padding-left: 20px;">
                     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
                         <div>
-                            <h4 style="color: var(--light); margin-bottom: 10px; font-size: 1.2rem;">Configuration</h4>
+                            <h4 style="color: var(--light); margin-bottom: 10px; font-size: 1.2rem;">Server Settings</h4>
                             <ul style="margin: 0; padding-left: 20px;">
-                                <li style="margin-bottom: 6px;"><span class="command-name">;slc</span> - Sets log channel</li>
-                                <li style="margin-bottom: 6px;"><span class="command-name">;sdlc</span> - Sets deleted messages log</li>
-                                <li style="margin-bottom: 6px;"><span class="command-name">;say</span> - Sends message as bot</li>
-                                <li style="margin-bottom: 6px;"><span class="command-name">;autorole</span> - Configures automatic role assignment for new members</li>
-                </ul>
+                                <li style="margin-bottom: 6px;"><span class="command-name">;prefix &lt;prefix&gt;</span> - Changes the bot prefix for this server</li>
+                                <li style="margin-bottom: 6px;"><span class="command-name">;slc &lt;channel&gt;</span> - Sets log channel</li>
+                                <li style="margin-bottom: 6px;"><span class="command-name">;sdlc &lt;channel&gt;</span> - Sets deleted messages log</li>
+                                <li style="margin-bottom: 6px;"><span class="command-name">;say &lt;message&gt;</span> - Sends message as bot</li>
+                                <li style="margin-bottom: 6px;"><span class="command-name">;autorole &lt;roleID/rolemention&gt;</span> - Sets auto-assigned role for new members</li>
+                            </ul>
                         </div>
                         <div>
                             <h4 style="color: var(--light); margin-bottom: 10px; font-size: 1.2rem;">Welcome</h4>
                             <ul style="margin: 0; padding-left: 20px;">
-                                <li style="margin-bottom: 6px;"><span class="command-name">;swc</span> - Sets welcome channel</li>
-                                <li style="margin-bottom: 6px;"><span class="command-name">;swm</span> - Sets welcome message</li>
-                                <li style="margin-bottom: 6px;"><span class="command-name">;prefix</span> - Modifies bot command prefix for this server</li>
+                                <li style="margin-bottom: 6px;"><span class="command-name">;swc &lt;channel&gt;</span> - Sets welcome channel</li>
+                                <li style="margin-bottom: 6px;"><span class="command-name">;swm &lt;message&gt;</span> - Sets welcome message</li>
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="command-category" style="background: rgba(235, 69, 158, 0.1); border-color: #EB459E;">
-                <div class="feature-icon" style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem;">🏷️</div>
-                <h3 class="category-title" style="text-align: center; color: #EB459E;">Roles Management</h3>
-                <div class="command-item" style="background: transparent; border-left: 3px solid #EB459E; padding-left: 20px;">
+            <div class="command-category" style="background: rgba(114, 137, 218, 0.1); border-color: #7289DA;">
+                <div class="feature-icon" style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: #7289DA;">
+                    <i class="fas fa-user-tag"></i>
+                </div>
+                <h3 class="category-title" style="text-align: center; color: #7289DA;">Roles Management</h3>
+                <div class="command-item" style="background: transparent; border-left: 3px solid #7289DA; padding-left: 20px;">
                     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
                         <div>
-                            <h4 style="color: var(--light); margin-bottom: 10px; font-size: 1.2rem;">Basic</h4>
+                            <h4 style="color: var(--light); margin-bottom: 10px; font-size: 1.2rem;">Role Actions</h4>
                             <ul style="margin: 0; padding-left: 20px;">
-                                <li style="margin-bottom: 6px;"><span class="command-name">;addrole</span> - Adds role to user</li>
-                                <li style="margin-bottom: 6px;"><span class="command-name">;rmrole</span> - Removes role from user</li>
-                                <li style="margin-bottom: 6px;"><span class="command-name">;createrole</span> - Creates new role</li>
-                </ul>
+                                <li style="margin-bottom: 6px;"><span class="command-name">;addrole &lt;user&gt; &lt;role&gt;</span> - Adds role to user</li>
+                                <li style="margin-bottom: 6px;"><span class="command-name">;rmrole &lt;user&gt; &lt;role&gt;</span> - Removes role from user</li>
+                                <li style="margin-bottom: 6px;"><span class="command-name">;createrole &lt;name&gt; [color]</span> - Creates new role</li>
+                                <li style="margin-bottom: 6px;"><span class="command-name">;delrole &lt;role&gt;</span> - Deletes a role</li>
+                                <li style="margin-bottom: 6px;"><span class="command-name">;editrole &lt;role&gt; &lt;new_name&gt; [color] [icon]</span> - Edits role properties</li>
+                            </ul>
                         </div>
                         <div>
-                            <h4 style="color: var(--light); margin-bottom: 10px; font-size: 1.2rem;">Advanced</h4>
+                            <h4 style="color: var(--light); margin-bottom: 10px; font-size: 1.2rem;">Reaction Roles</h4>
                             <ul style="margin: 0; padding-left: 20px;">
-                                <li style="margin-bottom: 6px;"><span class="command-name">;delrole</span> - Deletes role</li>
-                                <li style="margin-bottom: 6px;"><span class="command-name">;editrole</span> - Edits role properties</li>
                                 <li style="margin-bottom: 6px;"><span class="command-name">;rr</span> - Creates reaction role panel</li>
                             </ul>
                         </div>
@@ -1363,24 +1182,19 @@
                 </div>
             </div>
 
-            <div class="command-category" style="background: rgba(254, 231, 92, 0.1); border-color: #FEE75C;">
-                <div class="feature-icon" style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: #FEE75C;">
+            <div class="command-category" style="background: rgba(235, 69, 158, 0.1); border-color: #EB459E;">
+                <div class="feature-icon" style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: #EB459E;">
                     <i class="fas fa-gift"></i>
                 </div>
-                <h3 class="category-title" style="text-align: center; color: #FEE75C;">Giveaway</h3>
-                <div class="command-item" style="background: transparent; border-left: 3px solid #FEE75C; padding-left: 20px;">
+                <h3 class="category-title" style="text-align: center; color: #EB459E;">Giveaways</h3>
+                <div class="command-item" style="background: transparent; border-left: 3px solid #EB459E; padding-left: 20px;">
                     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
-                        <div>
-                            <h4 style="color: var(--light); margin-bottom: 10px; font-size: 1.2rem;">Giveaway</h4>
-                            <ul style="margin: 0; padding-left: 20px;">
-                                <li style="margin-bottom: 6px;"><span class="command-name">;giveaway</span> - Create a new giveaway</li>
-                                <li style="margin-bottom: 6px;"><span class="command-name">;greroll</span> - Reroll giveaway winner</li>
-                            </ul>
-                        </div>
                         <div>
                             <h4 style="color: var(--light); margin-bottom: 10px; font-size: 1.2rem;">Management</h4>
                             <ul style="margin: 0; padding-left: 20px;">
-                                <li style="margin-bottom: 6px;"><span class="command-name">;endgiveaway</span> - End an active giveaway</li>
+                                <li style="margin-bottom: 6px;"><span class="command-name">;giveaway &lt;duration&gt; &lt;prize&gt;</span> - Creates a new giveaway</li>
+                                <li style="margin-bottom: 6px;"><span class="command-name">;endgiveaway &lt;giveaway_id&gt;</span> - Ends a giveaway and picks winner</li>
+                                <li style="margin-bottom: 6px;"><span class="command-name">;greroll &lt;giveaway_id&gt;</span> - Rerolls a giveaway winner</li>
                             </ul>
                         </div>
                     </div>
@@ -1397,15 +1211,15 @@
                         <div>
                             <h4 style="color: var(--light); margin-bottom: 10px; font-size: 1.2rem;">Setup</h4>
                             <ul style="margin: 0; padding-left: 20px;">
-                                <li style="margin-bottom: 6px;"><span class="command-name">;ts</span> - Ticket system setup</li>
-                                <li style="margin-bottom: 6px;"><span class="command-name">;tlog</span> - Set ticket logs channel</li>
+                                <li style="margin-bottom: 6px;"><span class="command-name">;st &lt;channel&gt;</span> - Sets ticket channel</li>
+                                <li style="margin-bottom: 6px;"><span class="command-name">;tlog &lt;channel&gt;</span> - Sets ticket log channel</li>
                             </ul>
                         </div>
                         <div>
                             <h4 style="color: var(--light); margin-bottom: 10px; font-size: 1.2rem;">Staff Management</h4>
                             <ul style="margin: 0; padding-left: 20px;">
-                                <li style="margin-bottom: 6px;"><span class="command-name">;addstaff</span> - Add staff to ticket</li>
-                                <li style="margin-bottom: 6px;"><span class="command-name">;rmstaff</span> - Remove staff from ticket</li>
+                                <li style="margin-bottom: 6px;"><span class="command-name">;addstaff &lt;role&gt;</span> - Adds staff role to tickets</li>
+                                <li style="margin-bottom: 6px;"><span class="command-name">;rmstaff &lt;role&gt;</span> - Removes staff role from tickets</li>
                             </ul>
                         </div>
                     </div>
@@ -1420,7 +1234,7 @@
                 position: absolute;
                 top: -50px;
                 left: 0;
-                z-index: 1;
+            z-index: 1;
                 margin: 20px 0;
                 display: block;
                 width: fit-content;
@@ -1774,10 +1588,37 @@
         </div>
     </section>
 
-    
-    <footer>
-        <p>&copy; 2025 Ormi Bot. All Rights Reserved.</p>
-        <a href="#" id="termsBtn" class="btn btn-secondary" style="margin-top: 20px;">Terms of Service</a>
+    <footer style="background: rgba(30, 31, 34, 0.8); padding: 8px 0; margin-top: 50px;">
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center; position: relative; min-height: 70px;">
+            <div style="color: #b9bbbe; font-size: 0.9rem; margin-right: auto;">
+                © 2025 Ormi Bot. All rights reserved.
+            </div>
+            <div style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); z-index: 1;">
+                <a href="#" id="termsBtn" class="btn btn-secondary" 
+                   style="display: inline-flex; align-items: center; gap: 8px; 
+                          padding: 10px 20px; border-radius: 50px; font-weight: 600; 
+                          font-size: 1rem; transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); 
+                          text-decoration: none; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+                          background: rgba(255, 255, 255, 0.1); color: white; 
+                          border: 1px solid rgba(255, 255, 255, 0.2);"
+                   onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 12px rgba(0, 0, 0, 0.15)'; this.style.background='rgba(88, 101, 242, 0.2)'; this.style.borderColor='var(--primary)'"
+                   onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 6px rgba(0, 0, 0, 0.1)'; this.style.background='rgba(255, 255, 255, 0.1)'; this.style.borderColor='rgba(255, 255, 255, 0.2)';">
+                    <i class="fas fa-file-contract"></i>
+                    Terms of Service
+                </a>
+            </div>
+            <div class="footer-links" style="display: flex; gap: 15px; margin-left: auto;">
+                <a href="https://github.com/ormi-bot" target="_blank" style="color: #b9bbbe; font-size: 1.5rem;">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="#" style="color: #b9bbbe; font-size: 1.5rem; opacity: 0.7; cursor: not-allowed;">
+                    <i class="fas fa-book" title="Documentation (Coming Soon)"></i>
+                </a>
+                <a href="https://discord.gg/kaoruko-waguri" target="_blank" style="color: #b9bbbe; font-size: 1.5rem;">
+                    <i class="fab fa-discord"></i>
+                </a>
+            </div>
+        </div>
     </footer>
 
     <div id="termsModal">
@@ -1904,68 +1745,6 @@
             </div>
         </div>
     </div>
-
-    <style>
-        .terms-content {
-            color: rgba(255,255,255,0.85);
-            line-height: 1.8;
-        }
-
-        .terms-section {
-            margin-bottom: 2rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .terms-section:last-child {
-            border-bottom: none;
-        }
-
-        .terms-section h3 {
-            color: var(--primary);
-            font-size: 1.4rem;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-        }
-
-        .terms-section h3 i {
-            margin-right: 12px;
-            font-size: 1.2em;
-        }
-
-        .terms-section p {
-            margin-bottom: 1rem;
-        }
-
-        .terms-section ul {
-            margin: 1rem 0;
-            padding-left: 1.5rem;
-        }
-
-        .terms-section li {
-            margin-bottom: 0.8rem;
-            position: relative;
-        }
-
-        .terms-section li::before {
-            content: "•";
-            color: var(--accent);
-            position: absolute;
-            left: -1.2rem;
-            font-size: 1.2em;
-        }
-
-        @media (max-width: 768px) {
-            .terms-section h3 {
-                font-size: 1.2rem;
-            }
-            
-            .terms-content {
-                font-size: 0.95rem;
-            }
-        }
-    </style>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -2177,6 +1956,33 @@
 
         // <a href="#" onclick="showVersions()">View Versions</a>
         // <a href="#" onclick="hideVersions()">Back to Main</a>
+
+        // Obsługa modala Privacy Policy
+        document.addEventListener('DOMContentLoaded', function() {
+            const privacyBtn = document.getElementById('privacyBtn');
+            const privacyModal = document.getElementById('privacyModal');
+            const closePrivacyBtn = document.getElementById('closePrivacyBtn');
+
+            if (privacyBtn && privacyModal) {
+                privacyBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    privacyModal.classList.add('active');
+                });
+            }
+            if (closePrivacyBtn && privacyModal) {
+                closePrivacyBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    privacyModal.classList.remove('active');
+                });
+            }
+            if (privacyModal) {
+                privacyModal.addEventListener('click', function(e) {
+                    if (e.target === privacyModal) {
+                        privacyModal.classList.remove('active');
+                    }
+                });
+            }
+        });
     </script>
 </body>
 </html>
