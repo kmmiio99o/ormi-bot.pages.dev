@@ -909,6 +909,140 @@
         width: 100%;
       }
     }
+
+    #cancelFeedback:hover {
+        background: rgba(255, 255, 255, 0.2) !important;
+        transform: translateY(-2px);
+    }
+
+    #submitFeedback {
+        background: var(--primary);
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 600;
+    }
+
+    #submitFeedback:hover {
+        background: #4752c4;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    textarea#feedbackMessage:focus {
+        outline: none;
+        border-color: var(--primary) !important;
+        box-shadow: 0 0 0 2px rgba(88, 101, 242, 0.3);
+    }
+
+    /* Animacje dla modali */
+    @keyframes modalFadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes modalFadeOut {
+        from { opacity: 1; transform: translateY(0); }
+        to { opacity: 0; transform: translateY(20px); }
+    }
+
+    @keyframes successFadeIn {
+        from { opacity: 0; transform: translateY(-20px) scale(0.9); }
+        to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    @keyframes successFadeOut {
+        from { opacity: 1; transform: translateY(0) scale(1); }
+        to { opacity: 0; transform: translateY(-20px) scale(0.9); }
+    }
+
+    /* Styl dla przycisku feedbacku */
+    #feedbackBtn {
+        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        transform-origin: center;
+        cursor: pointer;
+    }
+
+    #feedbackBtn:hover {
+        transform: scale(1.1) rotate(5deg);
+        box-shadow: 0 6px 12px rgba(88, 101, 242, 0.3);
+    }
+
+    /* Nowe animacje */
+    @keyframes slideOutRight {
+        from { transform: translateX(0); opacity: 1; }
+        to { transform: translateX(100%); opacity: 0; }
+    }
+
+    @keyframes slideInLeft {
+        from { transform: translateX(-100%); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
+    }
+
+    @keyframes progressBar {
+        from { width: 100%; }
+        to { width: 0%; }
+    }
+
+    /* Styl dla paska postępu */
+    .success-progress-bar {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 4px;
+        background: linear-gradient(90deg, var(--secondary), #57F287);
+        animation: progressBar 3s linear forwards;
+    }
+
+    /* Styl dla małego powiadomienia */
+    .notification {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+    .notification.show {
+        opacity: 1;
+    }
+
+    @keyframes slideOutRight {
+        from { transform: translateX(0); opacity: 1; }
+        to { transform: translateX(100%); opacity: 0; }
+    }
+
+    @keyframes slideDown {
+        from { transform: translateY(0); opacity: 1; }
+        to { transform: translateY(20px); opacity: 0; }
+    }
+    .send-notification {
+    background: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; transform: translateY(0); }
+    to { opacity: 0; transform: translateY(-10px); }
+}
     </style>
 </head>
 <body>
@@ -1746,6 +1880,124 @@
         </div>
     </div>
 
+    <div style="position: absolute; top: 20px; right: 20px; z-index: 1000;">
+        <button id="feedbackBtn" style="background: var(--primary); color: white; border: none; border-radius: 50%; width: 50px; height: 50px; font-size: 1.5rem; cursor: pointer; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+            <i class="fas fa-comment-dots"></i>
+        </button>
+    </div>
+
+    <div id="feedbackModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); z-index: 1001; justify-content: center; align-items: center; backdrop-filter: blur(5px);">
+        <div style="
+            background: linear-gradient(135deg, rgba(35, 39, 42, 0.95) 0%, rgba(54, 57, 63, 0.95) 100%);
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 500px;
+            width: 90%;
+            border: 1px solid var(--primary);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+            animation: modalFadeIn 0.4s ease-out forwards;
+            position: relative;
+            overflow: hidden;
+        ">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;">
+                <h3 style="color: var(--primary); margin: 0; font-size: 1.6rem; font-weight: 700;">
+                    <i class="fas fa-comment-dots" style="margin-right: 12px;"></i>
+                    Share Your Feedback
+                </h3>
+            </div>
+            
+            <textarea id="feedbackMessage" placeholder="Tell us what you think about Ormi Bot..." style="
+                width: 100%;
+                padding: 18px;
+                border-radius: 10px;
+                border: 1px solid rgba(88, 101, 242, 0.3);
+                background: rgba(30, 31, 34, 0.5);
+                color: white;
+                margin-bottom: 25px;
+                min-height: 180px;
+                resize: none;
+                font-family: 'Open Sans', sans-serif;
+                font-size: 0.95rem;
+                transition: all 0.3s ease;
+            "></textarea>
+            
+            <div style="display: flex; justify-content: flex-end; gap: 15px;">
+                <button id="cancelFeedback" style="
+                    background: rgba(255, 255, 255, 0.1);
+                    color: white;
+                    border: 1px solid rgba(255, 255, 255, 0.2);
+                    padding: 14px 28px;
+                    border-radius: 50px;
+                    cursor: pointer;
+                    font-weight: 600;
+                    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                ">
+                    <i class="fas fa-times"></i>
+                    Cancel
+                </button>
+                <button id="submitFeedback" onclick="sendFeedback(document.getElementById('feedbackMessage').value.trim())">
+                    <i class="fas fa-paper-plane"></i> Send!
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal sukcesu -->
+    <div id="successModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); z-index: 1002; justify-content: center; align-items: center; backdrop-filter: blur(5px);">
+        <div style="
+            background: linear-gradient(135deg, rgba(35, 39, 42, 0.95) 0%, rgba(54, 57, 63, 0.95) 100%);
+            padding: 50px 40px;
+            border-radius: 20px;
+            max-width: 450px;
+            width: 90%;
+            border: 1px solid var(--secondary);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        ">
+            <div class="success-progress-bar"></div>
+            
+            <div style="font-size: 4rem; color: var(--secondary); margin-bottom: 20px; animation: slideInLeft 0.5s ease-out;">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            
+            <h3 style="color: var(--secondary); margin: 0 0 15px 0; font-size: 1.8rem; font-weight: 700; animation: slideInLeft 0.5s ease-out 0.1s both;">
+                Thank You!
+            </h3>
+            
+            <p style="color: rgba(255,255,255,0.8); margin-bottom: 30px; line-height: 1.6; animation: slideInLeft 0.5s ease-out 0.2s both;">
+                Your feedback has been successfully sent. We appreciate your input!
+            </p>
+            
+            <button id="closeSuccessModal" style="
+                background: var(--secondary);
+                color: #23272A;
+                border: none;
+                padding: 14px 28px;
+                border-radius: 50px;
+                cursor: pointer;
+                font-weight: 600;
+                transition: all 0.3s ease;
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                box-shadow: 0 4px 15px rgba(87, 242, 135, 0.3);
+                animation: slideInLeft 0.5s ease-out 0.3s both;
+            ">
+                <i class="fas fa-thumbs-up"></i>
+                Close
+            </button>
+        </div>
+    </div>
+
+    <div class="notification">
+        <p id="notificationMessage"></p>
+    </div>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             let scrollPosition = 0;
@@ -1932,57 +2184,65 @@
 
             updateDiscordStatus();
             setInterval(updateDiscordStatus, 30000);
+
+            // Funkcje do obsługi modali
+            function closeModalWithAnimation(modal) {
+                modal.style.animation = 'modalFadeOut 0.4s ease-out forwards';
+                setTimeout(() => {
+                    modal.style.display = 'none';
+                    modal.style.animation = 'modalFadeIn 0.4s ease-out';
+                }, 400);
+            }
+
+            function showSuccessModal() {
+                const notification = document.createElement('div');
+                notification.className = 'notification';
+                notification.textContent = 'Thank you for your feedback!';
+                document.body.appendChild(notification);
+
+                setTimeout(() => {
+                    notification.style.display = 'block';
+                }, 100);
+
+                setTimeout(() => {
+                    notification.remove();
+                    closeModalWithAnimation(document.getElementById('feedbackModal'));
+                }, 3000);
+            }
+            // Zamknij modal po kliknięciu poza nim
+            document.addEventListener('click', function(e) {
+                const feedbackModal = document.getElementById('feedbackModal');
+                const successModal = document.getElementById('successModal');
+                
+                if (feedbackModal && feedbackModal.style.display === 'flex' && e.target === feedbackModal) {
+                    closeModalWithAnimation(feedbackModal);
+                    feedbackMessage.value = '';
+                }
+                
+                if (successModal && successModal.style.display === 'flex' && e.target === successModal) {
+                    successModal.style.animation = 'slideOutRight 0.5s ease-out forwards';
+                    setTimeout(() => {
+                        successModal.style.display = 'none';
+                        successModal.style.animation = 'successFadeIn 0.4s ease-out';
+                    }, 500);
+                }
+            });
         });
 
-        function showVersions() {
-            document.getElementById('versions').style.cssText = `
-                opacity: 1;
-                transform: translateY(0);
-                pointer-events: all;
-            `;
-            document.querySelector('.hero').style.display = 'none';
-            document.querySelector('.features').style.display = 'none';
-        }
-
-        function hideVersions() {
-            document.getElementById('versions').style.cssText = `
-                opacity: 0;
-                transform: translateY(20px);
-                pointer-events: none;
-            `;
-            document.querySelector('.hero').style.display = 'block';
-            document.querySelector('.features').style.display = 'block';
-        }
-
-        // <a href="#" onclick="showVersions()">View Versions</a>
-        // <a href="#" onclick="hideVersions()">Back to Main</a>
-
-        // Obsługa modala Privacy Policy
-        document.addEventListener('DOMContentLoaded', function() {
-            const privacyBtn = document.getElementById('privacyBtn');
-            const privacyModal = document.getElementById('privacyModal');
-            const closePrivacyBtn = document.getElementById('closePrivacyBtn');
-
-            if (privacyBtn && privacyModal) {
-                privacyBtn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    privacyModal.classList.add('active');
-                });
-            }
-            if (closePrivacyBtn && privacyModal) {
-                closePrivacyBtn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    privacyModal.classList.remove('active');
-                });
-            }
-            if (privacyModal) {
-                privacyModal.addEventListener('click', function(e) {
-                    if (e.target === privacyModal) {
-                        privacyModal.classList.remove('active');
-                    }
-                });
+        document.addEventListener('keydown', function(e) {
+            // Blokuj F12, Ctrl+Shift+I, Ctrl+U
+            if (
+                e.key === 'F12' ||
+                (e.ctrlKey && e.shiftKey && e.key === 'I') ||
+                (e.ctrlKey && e.key === 'u')
+            ) {
+                e.preventDefault();
+                alert('DevTools are disabled for security reasons.');
             }
         });
+        console.log('%c⚠️ Stop! ⚠️', 'color: red; font-size: 20px; font-weight: bold;');
+    console.log('%cThis is a browser feature intended for developers. If someone told you to paste something here, don`t do it.', 'font-size: 16px;');
     </script>
+    <script src="feedback.js"></script>
 </body>
 </html>
