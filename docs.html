@@ -1,0 +1,1584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ormi-Bot Documentation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="src/dstyle.css">
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <div class="sidebar">
+        <h2><i class="fas fa-robot"></i> Ormi-Bot</h2>
+        
+        <!-- Welcome Category -->
+        <div class="category">
+            <div class="category-title">
+                <i class="fas fa-home"></i>
+                <span>Welcome</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="subcategories">
+                <div class="subcategory-content">
+                    <a href="#welcome" class="subcategory-link">About</a>
+                    <a href="#setup" class="subcategory-link">Setup Guide</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Moderation Commands -->
+        <div class="category">
+            <div class="category-title">
+                <i class="fas fa-shield-alt"></i> Moderation
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="subcategories">
+                <!-- Basic -->
+                <a href="#kick" class="subcategory-link">;kick</a>
+                <a href="#ban" class="subcategory-link">;ban</a>
+                <a href="#unban" class="subcategory-link">;unban</a>
+                <a href="#mute" class="subcategory-link">;mute</a>
+                <a href="#unmute" class="subcategory-link">;unmute</a>
+                
+                <!-- Warnings -->
+                <a href="#warn" class="subcategory-link">;warn</a>
+                <a href="#warnings" class="subcategory-link">;warnings</a>
+                <a href="#clearwarns" class="subcategory-link">;clearwarns</a>
+                <a href="#delwarn" class="subcategory-link">;delwarn</a>
+                
+                <!-- Tools -->
+                <a href="#purge" class="subcategory-link">;purge</a>
+                <a href="#nuke" class="subcategory-link">;nuke</a>
+                <a href="#lock" class="subcategory-link">;lock</a>
+                <a href="#unlock" class="subcategory-link">;unlock</a>
+                <a href="#slowmode" class="subcategory-link">;slowmode</a>
+                <a href="#fg" class="subcategory-link">;fg</a>
+                
+                <!-- Management -->
+                <a href="#nick" class="subcategory-link">;nick</a>
+                <a href="#case" class="subcategory-link">;case</a>
+                <a href="#editcase" class="subcategory-link">;editcase</a>
+            </div>
+        </div>
+
+        <!-- Fun Commands -->
+        <div class="category">
+            <div class="category-title">
+                <i class="fas fa-gamepad"></i> Fun
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="subcategories">
+                <a href="#ship" class="subcategory-link">;ship</a>
+                <a href="#8ball" class="subcategory-link">;8ball</a>
+                <a href="#hug" class="subcategory-link">;hug</a>
+                <a href="#rate" class="subcategory-link">;rate</a>
+                <a href="#rps" class="subcategory-link">;rps</a>
+                <a href="#random" class="subcategory-link">;random</a>
+                <a href="#slap" class="subcategory-link">;slap</a>
+                <a href="#simprate" class="subcategory-link">;simprate</a>
+                <a href="#howgay" class="subcategory-link">;howgay</a>
+            </div>
+        </div>
+
+        <!-- Utility Commands -->
+        <div class="category">
+            <div class="category-title">
+                <i class="fas fa-tools"></i> Utility
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="subcategories">
+                <a href="#afk" class="subcategory-link">;afk</a>
+                <a href="#snipe" class="subcategory-link">;snipe</a>
+                <a href="#invite" class="subcategory-link">;invite</a>
+                <a href="#embed" class="subcategory-link">;embed</a>
+                <a href="#vote" class="subcategory-link">;vote</a>
+                <a href="#lastfm" class="subcategory-link">;lastfm</a>
+                <a href="#rmdm" class="subcategory-link">;rmdm</a>
+                <a href="#qr" class="subcategory-link">;qr</a>
+                <a href="#ascii" class="subcategory-link">;ascii</a>
+                <a href="#color" class="subcategory-link">;color</a>
+                <a href="#remindme" class="subcategory-link">;remindme</a>
+                <a href="#poll" class="subcategory-link">;poll</a>
+                <a href="#avatar" class="subcategory-link">;avatar</a>
+            </div>
+        </div>
+
+        <!-- Configuration Commands Category -->
+        <div class="category">
+            <div class="category-title">
+                <i class="fas fa-cog"></i> Configuration
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="subcategories">
+                <a href="#prefix" class="subcategory-link">;prefix</a>
+                <a href="#slc" class="subcategory-link">;slc</a>
+                <a href="#sdlc" class="subcategory-link">;sdlc</a>
+                <a href="#swc" class="subcategory-link">;swc</a>
+                <a href="#swm" class="subcategory-link">;swm</a>
+                <a href="#say" class="subcategory-link">;say</a>
+                <a href="#autorole" class="subcategory-link">;autorole</a>
+            </div>
+        </div>
+
+        <!-- Role Commands Category -->
+        <div class="category">
+            <div class="category-title">
+                <i class="fas fa-user-tag"></i> Role Management
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="subcategories">
+                <a href="#addrole" class="subcategory-link">;addrole</a>
+                <a href="#rmrole" class="subcategory-link">;rmrole</a>
+                <a href="#createrole" class="subcategory-link">;createrole</a>
+                <a href="#delrole" class="subcategory-link">;delrole</a>
+                <a href="#editrole" class="subcategory-link">;editrole</a>
+                <a href="#rr" class="subcategory-link">;rr</a>
+            </div>
+        </div>
+
+        <!-- Giveaway Commands Category -->
+        <div class="category">
+            <div class="category-title">
+                <i class="fas fa-gift"></i> Giveaway
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="subcategories">
+                <a href="#giveaway" class="subcategory-link">;giveaway</a>
+                <a href="#endgiveaway" class="subcategory-link">;endgiveaway</a>
+                <a href="#greroll" class="subcategory-link">;greroll</a>
+            </div>
+        </div>
+
+        <!-- Ticket Commands Category -->
+        <div class="category">
+            <div class="category-title">
+                <i class="fas fa-ticket-alt"></i> Ticket
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="subcategories">
+                <a href="#st" class="subcategory-link">;st</a>
+                <a href="#addstaff" class="subcategory-link">;addstaff</a>
+                <a href="#rmstaff" class="subcategory-link">;rmstaff</a>
+                <a href="#tlog" class="subcategory-link">;tlog</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="main-content">
+        <!-- Welcome Section -->
+        <section id="welcome" class="section active">
+            <div class="welcome-header">
+                <h1>About Ormi-Bot</h1>
+            </div>
+            <div class="welcome-content">
+                <div class="about-description">
+                    <p>Ormi-Bot is a versatile Discord bot designed to enhance your server experience with moderation, fun, and utility features. Whether you're managing a community or just looking for some entertainment, Ormi-Bot has you covered.</p>
+                    <h3>Key Features:</h3>
+                    <ul>
+                        <li><strong>Moderation:</strong> Keep your server safe with commands like kick, ban, mute, and warn.</li>
+                        <li><strong>Fun:</strong> Engage your members with games like 8ball, meme generators, and more.</li>
+                        <li><strong>Utility:</strong> Simplify server management with tools like polls, reminders, and avatar displays.</li>
+                    </ul>
+                    <p>Ormi-Bot is easy to use and highly customizable, making it perfect for servers of all sizes.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Setup Section -->
+        <section id="setup" class="section">
+            <div class="command-header">
+                <h2>Setup Guide</h2>
+            </div>
+            <div class="command-content">
+                <h3>How to Add Ormi-Bot to Your Server:</h3>
+                <ol>
+                    <li>Click the <a href="https://discord.com/oauth2/authorize?client_id=YOUR_CLIENT_ID&permissions=8&scope=bot" target="_blank">Invite Link</a></li>
+                    <li>Select your server from the dropdown menu</li>
+                    <li>Authorize the bot with the required permissions</li>
+                    <li>Start using Ormi-Bot with the <span class="command-code">;help</span> command!</li>
+                </ol>
+                
+                <h3>Configuration Tips:</h3>
+                <ul>
+                    <li>Use <span class="command-code">;prefix</span> to change the bot's command prefix</li>
+                    <li>Customize moderation settings with <span class="command-code">;modsetup</span></li>
+                    <li>View all commands with <span class="command-code">;commands</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="section">
+            <div class="command-header">
+                <h2>Features <i class="fas fa-cogs"></i></h2>
+            </div>
+            <div class="command-content">
+                <div class="feature-item" data-aos="fade-right">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Moderation Tools</h3>
+                    <p>Keep your server safe with powerful moderation commands like kick, ban and mute.</p>
+                </div>
+                <div class="feature-item" data-aos="fade-right" data-aos-delay="100">
+                    <div class="feature-icon">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <h3>Fun & Games</h3>
+                    <p>Engage your community with fun commands like 8ball, meme, and rps.</p>
+                </div>
+                <div class="feature-item" data-aos="fade-right" data-aos-delay="200">
+                    <div class="feature-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>Utility</h3>
+                    <p>Make server management easier with utility commands like poll and remindme.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Support Section -->
+        <section id="support" class="section">
+            <div class="command-header">
+                <h2>Support <i class="fas fa-life-ring"></i></h2>
+            </div>
+            <div class="command-content">
+                <p>If you encounter any issues or have questions, feel free to reach out!</p>
+                <div class="support-options">
+                    <a href="https://discord.gg/example" target="_blank" class="support-button" data-aos="zoom-in">
+                        <i class="fab fa-discord"></i> Discord Server
+                    </a>
+                    <a href="mailto:support@ormibot.com" class="support-button" data-aos="zoom-in" data-aos-delay="100">
+                        <i class="fas fa-envelope"></i> Email Us
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Fun Commands Category -->
+        <section id="fun" class="section">
+            <div class="command-header">
+                <h2><i class="fas fa-gamepad"></i> Fun Commands</h2>
+            </div>
+        </section>
+
+        <!-- Ship Command -->
+        <section id="ship" class="section">
+            <div class="command-header">
+                <h2>;ship</h2>
+                <span class="command-permission">No permissions required</span>
+            </div>
+            <div class="command-content">
+                <p>Calculates compatibility between two users with a fun percentage score. Perfect for lighthearted community interactions.</p>
+                <div class="command-usage">
+                    <h3>Usage:</h3>
+                    <span class="command-code">;ship @user1 @user2</span>
+                </div>
+                <div class="command-example">
+                    <h3>Examples:</h3>
+                    <span class="command-code">;ship @UserA @UserB</span><br>
+                    <span class="command-code">;ship @BestFriend @Crush</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8ball Command -->
+        <section id="8ball" class="section">
+            <div class="command-header">
+                <h2>;8ball</h2>
+                <span class="command-permission">No permissions required</span>
+            </div>
+            <div class="command-content">
+                <p>Provides mysterious answers to your yes/no questions. Great for decision-making games.</p>
+                <div class="command-usage">
+                    <h3>Usage:</h3>
+                    <span class="command-code">;8ball [question]</span>
+                </div>
+                <div class="command-example">
+                    <h3>Examples:</h3>
+                    <span class="command-code">;8ball Will I win the lottery?</span><br>
+                    <span class="command-code">;8ball Should I order pizza tonight?</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Hug Command -->
+        <section id="hug" class="section">
+            <div class="command-header">
+                <h2>;hug</h2>
+                <span class="command-permission">No permissions required</span>
+            </div>
+            <div class="command-content">
+                <p>Sends a warm virtual hug with cute animations. Boosts server positivity.</p>
+                <div class="command-usage">
+                    <h3>Usage:</h3>
+                    <span class="command-code">;hug @user</span>
+                </div>
+                <div class="command-example">
+                    <h3>Examples:</h3>
+                    <span class="command-code">;hug @BestFriend</span><br>
+                    <span class="command-code">;hug @NewMember</span> (welcome gesture)
+                </div>
+            </div>
+        </section>
+
+        <!-- Rate Command -->
+        <section id="rate" class="section">
+            <div class="command-header">
+                <h2>;rate</h2>
+                <span class="command-permission">No permissions required</span>
+            </div>
+            <div class="command-content">
+                <p>Gives a completely arbitrary 1-10 rating to anything. Pure fun with no logic.</p>
+                <div class="command-usage">
+                    <h3>Usage:</h3>
+                    <span class="command-code">;rate [thing]</span>
+                </div>
+                <div class="command-example">
+                    <h3>Examples:</h3>
+                    <span class="command-code">;rate my outfit</span><br>
+                    <span class="command-code">;rate pineapple on pizza</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- RPS Command -->
+        <section id="rps" class="section">
+            <div class="command-header">
+                <h2>;rps</h2>
+                <span class="command-permission">No permissions required</span>
+            </div>
+            <div class="command-content">
+                <p>Classic rock-paper-scissors game against the bot. Supports standard choices and custom variants.</p>
+                <div class="command-usage">
+                    <h3>Usage:</h3>
+                    <span class="command-code">;rps [rock/paper/scissors]</span>
+                </div>
+                <div class="command-example">
+                    <h3>Examples:</h3>
+                    <span class="command-code">;rps rock</span><br>
+                </div>
+            </div>
+        </section>
+
+        <!-- Random Command -->
+        <section id="random" class="section">
+            <div class="command-header">
+                <h2>;random</h2>
+                <span class="command-permission">No permissions required</span>
+            </div>
+            <div class="command-content">
+                <p>Generates random numbers for decisions, games, or giveaways. Customize your range.</p>
+                <div class="command-usage">
+                    <h3>Usage:</h3>
+                    <span class="command-code">;random [min] [max]</span>
+                </div>
+                <div class="command-example">
+                    <h3>Examples:</h3>
+                    <span class="command-code">;random 1 10</span> (basic range)<br>
+                    <span class="command-code">;random 100 1000</span> (custom range)
+                </div>
+            </div>
+        </section>
+
+        <!-- Slap Command -->
+        <section id="slap" class="section">
+            <div class="command-header">
+                <h2>;slap</h2>
+                <span class="command-permission">No permissions required</span>
+            </div>
+            <div class="command-content">
+                <p>Delivers a virtual slap with fun animations. For joking interactions between friends.</p>
+                <div class="command-usage">
+                    <h3>Usage:</h3>
+                    <span class="command-code">;slap @user</span>
+                </div>
+                <div class="command-example">
+                    <h3>Examples:</h3>
+                    <span class="command-code">;slap @Friend</span> (playful joke)<br>
+                    <span class="command-code">;slap @Rival</span> (friendly competition)
+                </div>
+            </div>
+        </section>
+
+        <!-- Simprate Command -->
+        <section id="simprate" class="section">
+            <div class="command-header">
+                <h2>;simprate</h2>
+                <span class="command-permission">No permissions required</span>
+            </div>
+            <div class="command-content">
+                <p>Measures someone's 'simp' level with a humorous percentage. All in good fun.</p>
+                <div class="command-usage">
+                    <h3>Usage:</h3>
+                    <span class="command-code">;simprate @user</span>
+                </div>
+                <div class="command-example">
+                    <h3>Examples:</h3>
+                    <span class="command-code">;simprate @Friend</span><br>
+                    <span class="command-code">;simprate @Yourself</span> (self-roast)
+                </div>
+            </div>
+        </section>
+
+        <!-- Howgay Command -->
+        <section id="howgay" class="section">
+            <div class="command-header">
+                <h2>;howgay</h2>
+                <span class="command-permission">No permissions required</span>
+            </div>
+            <div class="command-content">
+                <p>Generates a random 'gay percentage' score for fun. Not scientifically accurate.</p>
+                <div class="command-usage">
+                    <h3>Usage:</h3>
+                    <span class="command-code">;howgay @user</span>
+                </div>
+                <div class="command-example">
+                    <h3>Examples:</h3>
+                    <span class="command-code">;howgay @Friend</span><br>
+                    <span class="command-code">;howgay @RainbowUser</span>
+                </div>
+                <div class="command-note">
+                    <h3>Note:</h3>
+                    <p>This is purely for entertainment. Always use respectfully.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Moderation Commands Category -->
+        <section id="moderation" class="section">
+            <div class="command-header">
+                <h2><i class="fas fa-shield-alt"></i> Moderation Commands</h2>
+            </div>
+        </section>
+
+        <!-- Kick Command -->
+        <section id="kick" class="section">
+            <div class="command-header">
+                <h2>;kick</h2>
+                <span class="command-permission">Required Permissions: Kick Members</span>
+            </div>
+            <div class="command-content">
+                <p>Removes a member from the server temporarily. The user can rejoin with a valid invite link. Ideal for dealing with rule violations that don't require permanent removal.</p>
+                <div class="command-usage">
+                    <h3>Usage:</h3>
+                    <span class="command-code">;kick @user [reason]</span>
+                </div>
+                <div class="command-example">
+                    <h3>Examples:</h3>
+                    <span class="command-code">;kick @Spammer Flooding general chat</span><br>
+                    <span class="command-code">;kick @Troll Repeated off-topic posts</span>
+                </div>
+                <div class="command-note">
+                    <h3>Best Practice:</h3>
+                    <p>Always provide a clear reason for transparency. Use <span class="command-code">;ban</span> for more severe cases.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ban Command -->
+        <section id="ban" class="section">
+            <div class="command-header">
+                <h2>;ban</h2>
+                <span class="command-permission">Required Permissions: Ban Members</span>
+            </div>
+            <div class="command-content">
+                <p>Permanently removes a user from the server. This action should be reserved for serious violations like harassment, scams, or malicious behavior.</p>
+                <div class="command-usage">
+                    <h3>Usage:</h3>
+                    <span class="command-code">;ban @user [reason]</span>
+                </div>
+                <div class="command-example">
+                    <h3>Examples:</h3>
+                    <span class="command-code">;ban @Scammer Attempted phishing</span><br>
+                    <span class="command-code">;ban @Hacker Exploiting server vulnerabilities</span>
+                </div>
+                <div class="command-note">
+                    <h3>Note:</h3>
+                    <p>Bans can be reversed with <span class="command-code">;unban UserID</span>. Always document the reason in your moderation logs.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mute Command -->
+        <section id="mute" class="section">
+            <div class="command-header">
+                <h2>;mute</h2>
+                <span class="command-permission">Required Permissions: Moderate Members</span>
+            </div>
+            <div class="command-content">
+                <p>Temporarily restricts a user's ability to send messages. Useful for de-escalating conflicts or preventing spam during heated discussions.</p>
+                <div class="command-usage">
+                    <h3>Usage:</h3>
+                    <span class="command-code">;mute @user [duration] [reason]</span>
+                </div>
+                <div class="command-example">
+                    <h3>Examples:</h3>
+                    <span class="command-code">;mute @NoisyUser 30m Excessive caps usage</span><br>
+                    <span class="command-code">;mute @Flamer 2h Personal attacks in #general</span>
+                </div>
+                <div class="command-note">
+                    <h3>Tip:</h3>
+                    <p>Combine with a private message explaining the mute. Use <span class="command-code">;unmute @user</span> to remove restrictions early.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Warn Command -->
+        <section id="warn" class="section">
+            <div class="command-header">
+                <h2>;warn</h2>
+                <span class="command-permission">Required Permissions: Kick Members</span>
+            </div>
+            <div class="command-content">
+                <p>Issues a formal warning that's tracked in the user's record. Warnings help document patterns of behavior and can trigger automatic actions at certain thresholds.</p>
+                <div class="command-usage">
+                    <h3>Usage:</h3>
+                    <span class="command-code">;warn @user [reason]</span>
+                </div>
+                <div class="command-example">
+                    <h3>Examples:</h3>
+                    <span class="command-code">;warn @NewUser Minor language violation</span><br>
+                    <span class="command-code">;warn @Roleplayer NSFW content in SFW channels</span>
+                </div>
+                <div class="command-note">
+                    <h3>Tracking:</h3>
+                    <p>View a user's warning history with <span class="command-code">;warnings @user</span> and manage warnings using <span class="command-code">;delwarn</span> or <span class="command-code">;clearwarns</span>.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Purge Command -->
+        <section id="purge" class="section">
+            <div class="command-header">
+                <h2>;purge</h2>
+                <span class="command-permission">Required Permissions: Manage Messages</span>
+            </div>
+            <div class="command-content">
+                <p>Bulk deletes messages from a channel. Perfect for cleaning up spam, off-topic discussions, or bot command clutter.</p>
+                <div class="command-usage">
+                    <h3>Usage:</h3>
+                    <span class="command-code">;purge [amount]</span>
+                </div>
+                <div class="command-example">
+                    <h3>Examples:</h3>
+                    <span class="command-code">;purge 20</span><br>
+                    <span class="command-code">;purge 100</span>
+                </div>
+                <div class="command-note">
+                    <h3>Limitations:</h3>
+                    <p>Can only delete messages up to 14 days old. For complete channel cleanup, use <span class="command-code">;nuke</span>.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Utility Commands Category -->
+        <section id="utility" class="section">
+            <div class="command-header">
+                <h2><i class="fas fa-tools"></i> Utility Commands</h2>
+            </div>
+        </section>
+
+        <!-- Remindme Command -->
+        <section id="remindme" class="section">
+            <div class="command-header">
+                <h2>;remindme</h2>
+                <span class="command-permission">No permissions required</span>
+            </div>
+            <div class="command-content">
+                <p>Sets personalized reminders that ping you after a specified time. Works in both DMs and servers.</p>
+                <div class="command-usage">
+                    <h3>Usage:</h3>
+                    <span class="command-code">;remindme [time] [message]</span>
+                </div>
+                <div class="command-example">
+                    <h3>Examples:</h3>
+                    <span class="command-code">;remindme 2h Check the laundry</span><br>
+                    <span class="command-code">;remindme 30m Meeting starts soon</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Poll Command -->
+        <section id="poll" class="section">
+            <div class="command-header">
+                <h2>;poll</h2>
+                <span class="command-permission">No permissions required</span>
+            </div>
+            <div class="command-content">
+                <p>Creates advanced polls with multiple options and automatic reaction voting.</p>
+                <div class="command-usage">
+                    <h3>Usage:</h3>
+                    <span class="command-code">;poll "Question" "Option1" "Option2" ...</span>
+                </div>
+                <div class="command-example">
+                    <h3>Examples:</h3>
+                    <span class="command-code">;poll "Favorite color?" "Red" "Blue" "Green"</span><br>
+                    <span class="command-code">;poll "Best day for event" "Friday" "Saturday"</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Avatar Command -->
+        <section id="avatar" class="section">
+            <div class="command-header">
+                <h2>;avatar</h2>
+                <span class="command-permission">No permissions required</span>
+            </div>
+            <div class="command-content">
+                <p>Displays a user's avatar in high resolution with options to download.</p>
+                <div class="command-usage">
+                    <h3>Usage:</h3>
+                    <span class="command-code">;avatar [@user]</span>
+                </div>
+                <div class="command-example">
+                    <h3>Examples:</h3>
+                    <span class="command-code">;avatar</span> (your avatar)<br>
+                    <span class="command-code">;avatar @User</span> (someone else's avatar)
+                </div>
+            </div>
+        </section>
+
+        <!-- Unban Command -->
+        <section id="unban" class="section">
+            <div class="command-header">
+                <h2>;unban</h2>
+                <span class="command-permission">Required Permissions: Ban Members</span>
+            </div>
+            <div class="command-content">
+                <p>Reverses a permanent ban, allowing the user to rejoin the server. Essential for correcting mistakes or welcoming reformed community members.</p>
+                <div class="command-usage">
+                    <h3>Usage:</h3>
+                    <span class="command-code">;unban UserID [reason]</span>
+                </div>
+                <div class="command-example">
+                    <h3>Examples:</h3>
+                    <span class="command-code">;unban 123456789012345678 Mistaken identity</span><br>
+                    <span class="command-code">;unban 987654321098765432 After appeal review</span>
+                </div>
+                <div class="command-note">
+                    <h3>Note:</h3>
+                    <p>Requires the user's Discord ID, not their username. Find IDs in your server's ban list or audit logs.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Unmute Command -->
+        <section id="unmute" class="section">
+            <div class="command-header">
+                <h2>;unmute</h2>
+                <span class="command-permission">Required Permissions: Moderate Members</span>
+            </div>
+            <div class="command-content">
+                <p>Removes message restrictions from a muted user before their timeout expires. Use when a user demonstrates improved behavior.</p>
+                <div class="command-usage">
+                    <h3>Usage:</h3>
+                    <span class="command-code">;unmute @user [reason]</span>
+                </div>
+                <div class="command-example">
+                    <h3>Examples:</h3>
+                    <span class="command-code">;unmute @NoisyUser Apology accepted</span><br>
+                    <span class="command-code">;unmute @Flamer Mediation successful</span>
+                </div>
+                <div class="command-note">
+                    <h3>Tip:</h3>
+                    <p>Consider sending a DM explaining why the mute was lifted to encourage positive behavior.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Warnings Command -->
+        <section id="warnings" class="section">
+            <div class="command-header">
+                <h2>;warnings</h2>
+                <span class="command-permission">Required Permissions: Kick Members</span>
+            </div>
+            <div class="command-content">
+                <p>Displays all warnings for a member.</p>
+                <div class="command-usage">
+                    <h3>Usage:</h3>
+                    <span class="command-code">;warnings @user</span>
+                </div>
+                <div class="command-example">
+                    <h3>Example:</h3>
+                    <span class="command-code">;warnings @RuleBreaker</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Clearwarns Command -->
+        <section id="clearwarns" class="section">
+            <div class="command-header">
+                <h2>;clearwarns</h2>
+                <span class="command-permission">Required Permissions: Kick Members</span>
+            </div>
+            <div class="command-content">
+                <p>Clears all warnings for a member.</p>
+                <div class="command-usage">
+                    <h3>Usage:</h3>
+                    <span class="command-code">;clearwarns @user</span>
+                </div>
+                <div class="command-example">
+                    <h3>Example:</h3>
+                    <span class="command-code">;clearwarns @RuleBreaker</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Delwarn Command -->
+        <section id="delwarn" class="section">
+            <div class="command-header">
+                <h2>;delwarn</h2>
+                <span class="command-permission">Required Permissions: Kick Members</span>
+            </div>
+            <div class="command-content">
+                <p>Deletes a specific warning by ID.</p>
+                <div class="command-usage">
+                    <h3>Usage:</h3>
+                    <span class="command-code">;delwarn @user [warningID]</span>
+                </div>
+                <div class="command-example">
+                    <h3>Example:</h3>
+                    <span class="command-code">;delwarn @RuleBreaker 3</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Nuke Command -->
+        <section id="nuke" class="section">
+            <div class="command-header">
+                <h2>;nuke</h2>
+                <span class="command-permission">Required Permissions: Manage Channels</span>
+            </div>
+            <div class="command-content">
+                <p>Completely resets a channel by deleting all messages and creating a clean slate. Automatically creates a backup of deleted content for moderation review.</p>
+                <div class="command-usage">
+                    <h3>Usage:</h3>
+                    <span class="command-code">;nuke</span>
+                </div>
+                <div class="command-example">
+                    <h3>When to use:</h3>
+                    <span class="command-code">;nuke</span> (after major spam attack)<br>
+                    <span class="command-code">;nuke</span> (to reset off-topic discussions)
+                </div>
+                <div class="command-note">
+                    <h3>Important:</h3>
+                    <p>This action is irreversible. Consider using <span class="command-code">;purge</span> for partial cleanups.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Lock Command -->
+        <section id="lock" class="section">
+            <div class="command-header">
+                <h2>;lock</h2>
+                <span class="command-permission">Required Permissions: Manage Channels</span>
+            </div>
+            <div class="command-content">
+                <p>Temporarily prevents all users from sending messages in a channel. Ideal for emergency situations or scheduled maintenance.</p>
+                <div class="command-usage">
+                    <h3>Usage:</h3>
+                    <span class="command-code">;lock [reason]</span>
+                </div>
+                <div class="command-example">
+                    <h3>Examples:</h3>
+                    <span class="command-code">;lock Server maintenance in progress</span><br>
+                    <span class="command-code">;lock Pausing discussion during investigation</span>
+                </div>
+                <div class="command-note">
+                    <h3>Best Practice:</h3>
+                    <p>Always pair with an explanatory pinned message. Use <span class="command-code">;unlock</span> to restore access.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Unlock Command -->
+        <section id="unlock" class="section">
+            <div class="command-header">
+                <h2>;unlock</h2>
+                <span class="command-permission">Required Permissions: Manage Channels</span>
+            </div>
+            <div class="command-content">
+                <p>Unlocks a previously locked channel.</p>
+                <div class="command-usage">
+                    <h3>Usage:</h3>
+                    <span class="command-code">;unlock</span>
+                </div>
+                <div class="command-example">
+                    <h3>Example:</h3>
+                    <span class="command-code">;unlock</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slowmode Command -->
+        <section id="slowmode" class="section">
+            <div class="command-header">
+                <h2>;slowmode</h2>
+                <span class="command-permission">Required Permissions: Manage Channels</span>
+            </div>
+            <div class="command-content">
+                <p>Controls how frequently users can send messages in a channel. Helps prevent spam during active events or discussions.</p>
+                <div class="command-usage">
+                    <h3>Usage:</h3>
+                    <span class="command-code">;slowmode [seconds]</span>
+                </div>
+                <div class="command-example">
+                    <h3>Recommended Settings:</h3>
+                    <span class="command-code">;slowmode 5</span> (for active Q&A)<br>
+                    <span class="command-code">;slowmode 30</span> (for event channels)<br>
+                    <span class="command-code">;slowmode 0</span> (to disable)
+                </div>
+                <div class="command-note">
+                    <h3>Tip:</h3>
+                    <p>Combine with <span class="command-code">;lock</span> for complete conversation control during crises.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FG Command -->
+        <section id="fg" class="section">
+            <div class="command-header">
+                <h2>;fg</h2>
+                <span class="command-permission">Required Permissions: Ban Members</span>
+            </div>
+            <div class="command-content">
+                <p>Simulates a ban with a dramatic fake kick message. Designed for harmless pranks with trusted community members.</p>
+                <div class="command-usage">
+                    <h3>Usage:</h3>
+                    <span class="command-code">;fg @user</span>
+                </div>
+                <div class="command-example">
+                    <h3>Appropriate Use:</h3>
+                    <span class="command-code">;fg @BestFriend</span> (April Fools' joke)<br>
+                    <span class="command-code">;fg @RegularUser</span> (with prior consent)
+                </div>
+                <div class="command-note">
+                    <h3>Warning:</h3>
+                    <p>Never use this command during actual moderation actions - it undermines trust.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Nick Command -->
+        <section id="nick" class="section">
+            <div class="command-header">
+                <h2>;nick</h2>
+                <span class="command-permission">Required Permissions: Manage Nicknames</span>
+            </div>
+            <div class="command-content">
+                <p>Modifies a user's server-specific nickname. Useful for enforcing naming conventions or playful community events.</p>
+                <div class="command-usage">
+                    <h3>Usage:</h3>
+                    <span class="command-code">;nick @user [newNickname]</span>
+                </div>
+                <div class="command-example">
+                    <h3>Common Scenarios:</h3>
+                    <span class="command-code">;nick @User123 ProperName</span> (enforcing rules)<br>
+                    <span class="command-code">;nick @Streamer [LIVE] StreamerName</span> (event tagging)
+                </div>
+                <div class="command-note">
+                    <h3>Etiquette:</h3>
+                    <p>Always respect identity - avoid forced nicknames that might offend.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Case Command -->
+        <section id="case" class="section">
+            <div class="command-header">
+                <h2>;case</h2>
+                <span class="command-permission">Required Permissions: Kick Members</span>
+            </div>
+            <div class="command-content">
+                <p>Displays detailed information about a specific moderation action from your server's logs. Essential for reviewing past incidents and maintaining transparency.</p>
+                <div class="command-usage">
+                    <h3>Usage:</h3>
+                    <span class="command-code">;case [caseID]</span>
+                </div>
+                <div class="command-example">
+                    <h3>Examples:</h3>
+                    <span class="command-code">;case 42</span> (view standard moderation case)<br>
+                    <span class="command-code">;case DM-15</span> (view DM-related incident)
+                </div>
+                <div class="command-note">
+                    <h3>Note:</h3>
+                    <p>Case IDs are automatically generated and can be found in audit logs or warning messages. Use <span class="command-code">;editcase</span> to update details.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Editcase Command -->
+        <section id="editcase" class="section">
+            <div class="command-header">
+                <h2>;editcase</h2>
+                <span class="command-permission">Required Permissions: Kick Members</span>
+            </div>
+            <div class="command-content">
+                <p>Modifies the details of an existing moderation record. Use to correct errors or add additional context to past actions.</p>
+                <div class="command-usage">
+                    <h3>Usage:</h3>
+                    <span class="command-code">;editcase [caseID] [newReason]</span>
+                </div>
+                <div class="command-example">
+                    <h3>Common Scenarios:</h3>
+                    <span class="command-code">;editcase 42 Updated evidence link</span><br>
+                    <span class="command-code">;editcase DM-15 Added user apology transcript</span>
+                </div>
+                <div class="command-note">
+                    <h3>Audit Trail:</h3>
+                    <p>All edits are logged with the moderator's name and timestamp. Avoid changing the original reason without documentation.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- AFK Command -->
+        <section id="afk" class="section">
+            <div class="command-header">
+                <h2>;afk</h2>
+                <span class="command-permission">No permissions required</span>
+            </div>
+            <div class="command-content">
+                <p>Sets your status as AFK (Away From Keyboard) with an optional reason. Automatically removes when you send a message.</p>
+                <div class="command-usage">
+                    <h3>Usage:</h3>
+                    <span class="command-code">;afk [reason]</span>
+                </div>
+                <div class="command-example">
+                    <h3>Examples:</h3>
+                    <span class="command-code">;afk Taking a break</span><br>
+                    <span class="command-code">;afk Sleeping</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Snipe Command -->
+        <section id="snipe" class="section">
+            <div class="command-header">
+                <h2>;snipe</h2>
+                <span class="command-permission">No permissions required</span>
+            </div>
+            <div class="command-content">
+                <p>Displays the most recently deleted message in the current channel. Useful for moderation.</p>
+                <div class="command-usage">
+                    <h3>Usage:</h3>
+                    <span class="command-code">;snipe</span>
+                </div>
+                <div class="command-note">
+                    <h3>Note:</h3>
+                    <p>Only works for messages deleted within the last 5 minutes.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Invite Command -->
+        <section id="invite" class="section">
+            <div class="command-header">
+                <h2>;invite</h2>
+                <span class="command-permission">No permissions required</span>
+            </div>
+            <div class="command-content">
+                <p>Generates a permanent invite link to your server with default permissions.</p>
+                <div class="command-usage">
+                    <h3>Usage:</h3>
+                    <span class="command-code">;invite</span>
+                </div>
+                <div class="command-note">
+                    <h3>Tip:</h3>
+                    <p>Admins can create custom invite links with specific permissions in Discord settings.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Embed Command -->
+        <section id="embed" class="section">
+            <div class="command-header">
+                <h2>;embed</h2>
+                <span class="command-permission">Required Permissions: Manage Messages</span>
+            </div>
+            <div class="command-content">
+                <p>Creates rich embedded messages with custom titles, descriptions, colors and images.</p>
+                <div class="command-usage">
+                    <h3>Usage:</h3>
+                    <span class="command-code">;embed "Title" | "Description" | #HEXColor | [imageURL] | [channel]</span>
+                </div>
+                <div class="command-example">
+                    <h3>Example:</h3>
+                    <span class="command-code">;embed "Rules" | "1. Be respectful" | #FF0000 | #announcements</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Vote Command -->
+        <section id="vote" class="section">
+            <div class="command-header">
+                <h2>;vote</h2>
+                <span class="command-permission">No permissions required</span>
+            </div>
+            <div class="command-content">
+                <p>Creates a simple yes/no poll with reactions for quick community feedback.</p>
+                <div class="command-usage">
+                    <h3>Usage:</h3>
+                    <span class="command-code">;vote [question]</span>
+                </div>
+                <div class="command-example">
+                    <h3>Example:</h3>
+                    <span class="command-code">;vote Should we add more game channels?</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Lastfm Command -->
+        <section id="lastfm" class="section">
+            <div class="command-header">
+                <h2>;lastfm</h2>
+                <span class="command-permission">No permissions required</span>
+            </div>
+            <div class="command-content">
+                <p>Displays music statistics from Last.fm including recent tracks and top artists.</p>
+                <div class="command-usage">
+                    <h3>Usage:</h3>
+                    <span class="command-code">;lastfm [username]</span>
+                </div>
+                <div class="command-example">
+                    <h3>Examples:</h3>
+                    <span class="command-code">;lastfm DJOrmi</span><br>
+                    <span class="command-code">;lastfm</span> (for linked accounts)
+                </div>
+            </div>
+        </section>
+
+        <!-- Rmdm Command -->
+        <section id="rmdm" class="section">
+            <div class="command-header">
+                <h2>;rmdm</h2>
+                <span class="command-permission">No permissions required</span>
+            </div>
+            <div class="command-content">
+                <p>Sets a reminder that will be sent to you via DM after the specified time.</p>
+                <div class="command-usage">
+                    <h3>Usage:</h3>
+                    <span class="command-code">;rmdm [time] [message]</span>
+                </div>
+                <div class="command-example">
+                    <h3>Examples:</h3>
+                    <span class="command-code">;rmdm 2h Check the oven</span><br>
+                    <span class="command-code">;rmdm 30m Take medication</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- QR Command -->
+        <section id="qr" class="section">
+            <div class="command-header">
+                <h2>;qr</h2>
+                <span class="command-permission">No permissions required</span>
+            </div>
+            <div class="command-content">
+                <p>Generates a QR code from text or URLs for easy sharing and scanning.</p>
+                <div class="command-usage">
+                    <h3>Usage:</h3>
+                    <span class="command-code">;qr [text]</span>
+                </div>
+                <div class="command-example">
+                    <h3>Examples:</h3>
+                    <span class="command-code">;qr https://discord.gg/example</span><br>
+                    <span class="command-code">;qr My secret note</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ASCII Command -->
+        <section id="ascii" class="section">
+            <div class="command-header">
+                <h2>;ascii</h2>
+                <span class="command-permission">No permissions required</span>
+            </div>
+            <div class="command-content">
+                <p>Converts text to stylized ASCII art for decorative messages.</p>
+                <div class="command-usage">
+                    <h3>Usage:</h3>
+                    <span class="command-code">;ascii [text]</span>
+                </div>
+                <div class="command-example">
+                    <h3>Example:</h3>
+                    <span class="command-code">;ascii Hello</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Color Command -->
+        <section id="color" class="section">
+            <div class="command-header">
+                <h2>;color</h2>
+                <span class="command-permission">No permissions required</span>
+            </div>
+            <div class="command-content">
+                <p>Displays a visual sample of a color from its HEX code or name.</p>
+                <div class="command-usage">
+                    <h3>Usage:</h3>
+                    <span class="command-code">;color [HEX/name]</span>
+                </div>
+                <div class="command-example">
+                    <h3>Examples:</h3>
+                    <span class="command-code">;color #FF5733</span><br>
+                    <span class="command-code">;color royalblue</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Configuration Commands Category -->
+        <section id="configuration" class="section">
+            <div class="command-header">
+                <h2><i class="fas fa-cog"></i> Configuration Commands</h2>
+            </div>
+        </section>
+
+        <!-- Prefix Command -->
+        <section id="prefix" class="section">
+            <div class="command-header">
+                <h2>;prefix</h2>
+                <span class="command-permission">Required Permissions: Administrator</span>
+            </div>
+            <div class="command-content">
+                <p>Changes the bot's command prefix for this server. The prefix must be 1-3 characters long.</p>
+                <div class="command-usage">
+                    <h3>Usage:</h3>
+                    <span class="command-code">;prefix [new_prefix]</span>
+                </div>
+                <div class="command-example">
+                    <h3>Examples:</h3>
+                    <span class="command-code">;prefix !</span><br>
+                    <span class="command-code">;prefix ?</span>
+                </div>
+                <div class="command-note">
+                    <h3>Note:</h3>
+                    <p>Prefix changes does not change prefix in ;help.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLC Command -->
+        <section id="slc" class="section">
+            <div class="command-header">
+                <h2>;slc</h2>
+                <span class="command-permission">Required Permissions: Administrator</span>
+            </div>
+            <div class="command-content">
+                <p>Sets the channel where moderation logs will be recorded. Essential for server administration.</p>
+                <div class="command-usage">
+                    <h3>Usage:</h3>
+                    <span class="command-code">;slc #channel</span>
+                </div>
+                <div class="command-example">
+                    <h3>Example:</h3>
+                    <span class="command-code">;slc #mod-logs</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- SDLC Command -->
+        <section id="sdlc" class="section">
+            <div class="command-header">
+                <h2>;sdlc</h2>
+                <span class="command-permission">Required Permissions: Administrator</span>
+            </div>
+            <div class="command-content">
+                <p>Configures where deleted message logs will be archived. Helps track rule violations.</p>
+                <div class="command-usage">
+                    <h3>Usage:</h3>
+                    <span class="command-code">;sdlc #channel</span>
+                </div>
+                <div class="command-example">
+                    <h3>Example:</h3>
+                    <span class="command-code">;sdlc #deleted-logs</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- SWC Command -->
+        <section id="swc" class="section">
+            <div class="command-header">
+                <h2>;swc</h2>
+                <span class="command-permission">Required Permissions: Administrator</span>
+            </div>
+            <div class="command-content">
+                <p>Designates the channel where welcome messages will be posted for new members.</p>
+                <div class="command-usage">
+                    <h3>Usage:</h3>
+                    <span class="command-code">;swc #channel</span>
+                </div>
+                <div class="command-example">
+                    <h3>Example:</h3>
+                    <span class="command-code">;swc #welcome</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- SWM Command -->
+        <section id="swm" class="section">
+            <div class="command-header">
+                <h2>;swm</h2>
+                <span class="command-permission">Required Permissions: Administrator</span>
+            </div>
+            <div class="command-content">
+                <p>Customizes the welcome message template. Supports variables like {user} and {server}.</p>
+                <div class="command-usage">
+                    <h3>Usage:</h3>
+                    <span class="command-code">;swm [message]</span>
+                </div>
+                <div class="command-example">
+                    <h3>Examples:</h3>
+                    <span class="command-code">;swm Welcome {user} to {server}!</span><br>
+                    <span class="command-code">;swm Enjoy your stay, {user}! Read rules in #rules</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Say Command -->
+        <section id="say" class="section">
+            <div class="command-header">
+                <h2>;say</h2>
+                <span class="command-permission">Required Permissions: Administrator</span>
+            </div>
+            <div class="command-content">
+                <p>Makes the bot send a message as if it wrote it. Supports embeds and formatting.</p>
+                <div class="command-usage">
+                    <h3>Usage:</h3>
+                    <span class="command-code">;say [message]</span>
+                </div>
+                <div class="command-example">
+                    <h3>Examples:</h3>
+                    <span class="command-code">;say Hello everyone!</span><br>
+                    <span class="command-code">;say **Announcement:** Server maintenance tonight</span>
+                </div>
+                <div class="command-note">
+                    <h3>Warning:</h3>
+                    <p>Use responsibly - all messages are logged with the executor's name.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Autorole Command -->
+        <section id="autorole" class="section">
+            <div class="command-header">
+                <h2>;autorole</h2>
+                <span class="command-permission">Required Permissions: Administrator</span>
+            </div>
+            <div class="command-content">
+                <p>Sets a role to be automatically assigned to new members. The bot must have Manage Roles permission.</p>
+                <div class="command-usage">
+                    <h3>Usage:</h3>
+                    <span class="command-code">;autorole @role</span>
+                </div>
+                <div class="command-example">
+                    <h3>Examples:</h3>
+                    <span class="command-code">;autorole @Member</span><br>
+                    <span class="command-code">;autorole 123456789012345678</span> (using role ID)
+                </div>
+                <div class="command-note">
+                    <h3>Important:</h3>
+                    <p>The bot's role must be higher than the target role in the hierarchy.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Role Commands Category -->
+        <section id="role-management" class="section">
+            <div class="command-header">
+                <h2><i class="fas fa-user-tag"></i> Role Management Commands</h2>
+            </div>
+        </section>
+
+        <!-- Addrole Command -->
+        <section id="addrole" class="section">
+            <div class="command-header">
+                <h2>;addrole</h2>
+                <span class="command-permission">Required Permissions: Manage Roles</span>
+            </div>
+            <div class="command-content">
+                <p>Adds a specified role to a user. The bot's highest role must be above the target role.</p>
+                <div class="command-usage">
+                    <h3>Usage:</h3>
+                    <span class="command-code">;addrole @user @role</span>
+                </div>
+                <div class="command-example">
+                    <h3>Examples:</h3>
+                    <span class="command-code">;addrole @User @VIP</span><br>
+                    <span class="command-code">;addrole 123456789012345678 987654321098765432</span> (using IDs)
+                </div>
+            </div>
+        </section>
+
+        <!-- Rmrole Command -->
+        <section id="rmrole" class="section">
+            <div class="command-header">
+                <h2>;rmrole</h2>
+                <span class="command-permission">Required Permissions: Manage Roles</span>
+            </div>
+            <div class="command-content">
+                <p>Removes a specified role from a user. Cannot remove roles higher than bot's highest role.</p>
+                <div class="command-usage">
+                    <h3>Usage:</h3>
+                    <span class="command-code">;rmrole @user @role</span>
+                </div>
+                <div class="command-example">
+                    <h3>Examples:</h3>
+                    <span class="command-code">;rmrole @User @Muted</span><br>
+                    <span class="command-code">;rmrole 123456789012345678 987654321098765432</span> (using IDs)
+                </div>
+            </div>
+        </section>
+
+        <!-- Createrole Command -->
+        <section id="createrole" class="section">
+            <div class="command-header">
+                <h2>;createrole</h2>
+                <span class="command-permission">Required Permissions: Manage Roles</span>
+            </div>
+            <div class="command-content">
+                <p>Creates a new role with optional color (hex format). The new role will be at the bottom of hierarchy.</p>
+                <div class="command-usage">
+                    <h3>Usage:</h3>
+                    <span class="command-code">;createrole "Role Name" [#color]</span>
+                </div>
+                <div class="command-example">
+                    <h3>Examples:</h3>
+                    <span class="command-code">;createrole "VIP"</span><br>
+                    <span class="command-code">;createrole "Moderator" #FF0000</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Delrole Command -->
+        <section id="delrole" class="section">
+            <div class="command-header">
+                <h2>;delrole</h2>
+                <span class="command-permission">Required Permissions: Manage Roles</span>
+            </div>
+            <div class="command-content">
+                <p>Permanently deletes a role from the server. This action cannot be undone.</p>
+                <div class="command-usage">
+                    <h3>Usage:</h3>
+                    <span class="command-code">;delrole @role</span>
+                </div>
+                <div class="command-example">
+                    <h3>Examples:</h3>
+                    <span class="command-code">;delrole @OldRole</span><br>
+                    <span class="command-code">;delrole 123456789012345678</span> (using role ID)
+                </div>
+                <div class="command-note">
+                    <h3>Warning:</h3>
+                    <p>All role permissions and assignments will be permanently lost.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Editrole Command -->
+        <section id="editrole" class="section">
+            <div class="command-header">
+                <h2>;editrole</h2>
+                <span class="command-permission">Required Permissions: Manage Roles</span>
+            </div>
+            <div class="command-content">
+                <p>Modifies role properties including name, color, and icon. At least one parameter must be specified.</p>
+                <div class="command-usage">
+                    <h3>Usage:</h3>
+                    <span class="command-code">;editrole @role "New Name" [#color] [iconURL]</span>
+                </div>
+                <div class="command-example">
+                    <h3>Examples:</h3>
+                    <span class="command-code">;editrole @Role "Updated Name"</span><br>
+                    <span class="command-code">;editrole @Role "" #00FF00</span> (changes only color)<br>
+                    <span class="command-code">;editrole @Role "" "" https://example.com/icon.png</span> (changes only icon)
+                </div>
+            </div>
+        </section>
+
+        <!-- RR Command -->
+        <section id="rr" class="section">
+            <div class="command-header">
+                <h2>;rr</h2>
+                <span class="command-permission">Required Permissions: Manage Roles</span>
+            </div>
+            <div class="command-content">
+                <p>Creates a reaction role panel where users can self-assign roles by reacting to a message.</p>
+                <div class="command-usage">
+                    <h3>Usage:</h3>
+                    <span class="command-code">;rr "Title" "Description" @role1 :emoji1: @role2 :emoji2:</span>
+                </div>
+                <div class="command-example">
+                    <h3>Example:</h3>
+                    <span class="command-code">;rr "Get Roles" "React to get access" @Games :game_die: @Movies :film_frames:</span>
+                </div>
+                <div class="command-note">
+                    <h3>Note:</h3>
+                    <p>The bot must have permission to add reactions and manage messages in the channel.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Giveaway Commands Category -->
+        <section id="giveaway" class="section">
+            <div class="command-header">
+                <h2>;giveaway</h2>
+                <span class="command-permission">Required Permissions: Manage Messages</span>
+            </div>
+            <div class="command-content">
+                <p>Creates a new giveaway with a specified duration and prize. Participants can join by reacting to the message.</p>
+                <div class="command-usage">
+                    <h3>Usage:</h3>
+                    <span class="command-code">;giveaway [duration] [prize]</span>
+                </div>
+                <div class="command-example">
+                    <h3>Examples:</h3>
+                    <span class="command-code">;giveaway 1d Discord Nitro</span><br>
+                    <span class="command-code">;giveaway 2h Custom Role</span>
+                </div>
+                <div class="command-note">
+                    <h3>Note:</h3>
+                    <p>Duration can be specified in minutes (m), hours (h), or days (d).</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Endgiveaway Command -->
+        <section id="endgiveaway" class="section">
+            <div class="command-header">
+                <h2>;endgiveaway</h2>
+                <span class="command-permission">Required Permissions: Manage Messages</span>
+            </div>
+            <div class="command-content">
+                <p>Ends a giveaway early and selects a winner. The giveaway ID can be found in the giveaway message.</p>
+                <div class="command-usage">
+                    <h3>Usage:</h3>
+                    <span class="command-code">;endgiveaway [giveaway_id]</span>
+                </div>
+                <div class="command-example">
+                    <h3>Example:</h3>
+                    <span class="command-code">;endgiveaway 123456789012345678</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Greroll Command -->
+        <section id="greroll" class="section">
+            <div class="command-header">
+                <h2>;greroll</h2>
+                <span class="command-permission">Required Permissions: Manage Messages</span>
+            </div>
+            <div class="command-content">
+                <p>Rerolls the winner of a completed giveaway. Useful if the original winner is unavailable.</p>
+                <div class="command-usage">
+                    <h3>Usage:</h3>
+                    <span class="command-code">;greroll [giveaway_id]</span>
+                </div>
+                <div class="command-example">
+                    <h3>Example:</h3>
+                    <span class="command-code">;greroll 123456789012345678</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ticket Commands Category -->
+        <section id="ticket" class="section">
+            <div class="command-header">
+                <h2><i class="fas fa-ticket-alt"></i> Ticket Commands</h2>
+            </div>
+        </section>
+
+        <!-- ST Command -->
+        <section id="st" class="section">
+            <div class="command-header">
+                <h2>;st</h2>
+                <span class="command-permission">Required Permissions: Administrator</span>
+            </div>
+            <div class="command-content">
+                <p>Sets the channel where users can create new tickets by reacting to a message.</p>
+                <div class="command-usage">
+                    <h3>Usage:</h3>
+                    <span class="command-code">;st #channel</span>
+                </div>
+                <div class="command-example">
+                    <h3>Example:</h3>
+                    <span class="command-code">;st #create-ticket</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Addstaff Command -->
+        <section id="addstaff" class="section">
+            <div class="command-header">
+                <h2>;addstaff</h2>
+                <span class="command-permission">Required Permissions: Administrator</span>
+            </div>
+            <div class="command-content">
+                <p>Adds a role to the list of staff roles that can view and manage tickets.</p>
+                <div class="command-usage">
+                    <h3>Usage:</h3>
+                    <span class="command-code">;addstaff @role</span>
+                </div>
+                <div class="command-example">
+                    <h3>Example:</h3>
+                    <span class="command-code">;addstaff @Moderator</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Rmstaff Command -->
+        <section id="rmstaff" class="section">
+            <div class="command-header">
+                <h2>;rmstaff</h2>
+                <span class="command-permission">Required Permissions: Administrator</span>
+            </div>
+            <div class="command-content">
+                <p>Removes a role from the list of staff roles that can view and manage tickets.</p>
+                <div class="command-usage">
+                    <h3>Usage:</h3>
+                    <span class="command-code">;rmstaff @role</span>
+                </div>
+                <div class="command-example">
+                    <h3>Example:</h3>
+                    <span class="command-code">;rmstaff @Trial-Mod</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tlog Command -->
+        <section id="tlog" class="section">
+            <div class="command-header">
+                <h2>;tlog</h2>
+                <span class="command-permission">Required Permissions: Administrator</span>
+            </div>
+            <div class="command-content">
+                <p>Sets the channel where logs of closed tickets will be sent for record-keeping.</p>
+                <div class="command-usage">
+                    <h3>Usage:</h3>
+                    <span class="command-code">;tlog #channel</span>
+                </div>
+                <div class="command-example">
+                    <h3>Example:</h3>
+                    <span class="command-code">;tlog #ticket-logs</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Additional command sections would continue here... -->
+    </div>
+
+    <script src="src/dscript.js"></script>
+    <!-- Add AOS (Animate On Scroll) Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+    </script>
+</body>
+</html>

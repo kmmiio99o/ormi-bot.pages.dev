@@ -1,0 +1,738 @@
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        /* Nowe kolory dla jaśniejszego motywu */
+        :root {
+          --primary-color: #4a6bff;
+          --secondary-color: #6c8eff;
+          --background-color: #f5f7ff;
+          --sidebar-bg: #ffffff;
+          --text-color: #333333;
+          --text-light: #666666;
+          --border-color: #e0e3ff;
+          --card-bg: #ffffff;
+          --hover-bg: #f0f2ff;
+          --active-bg: #e0e5ff;
+        }
+
+        body {
+            line-height: 1.6;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            display: flex;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Sidebar - enhanced */
+        .sidebar {
+            width: 300px; /* Nieco szerszy */
+            min-width: 300px;
+            background: var(--sidebar-bg);
+            color: #e0e0e0;
+            padding: 1.5rem 1rem;
+            position: fixed;
+            height: 100vh;
+            border-right: 1px solid #2a2a2a;
+            box-shadow: 2px 0 15px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
+        }
+
+        .sidebar h2 {
+            margin-bottom: 1.5rem;
+            text-align: center;
+            color: #6e8efb;
+            font-size: 1.4rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid #2a2a2a;
+            font-weight: 700;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            margin: 0.5rem 0;
+            border-bottom: 1px solid #2a2a2a;
+        }
+
+        .sidebar ul li:last-child {
+            border-bottom: none;
+        }
+
+        .sidebar ul li a {
+            color: #e0e0e0;
+            text-decoration: none;
+            padding: 0.75rem 1rem;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+            font-size: clamp(0.9rem, 1vw, 1.1rem);
+        }
+
+        .sidebar ul li a:hover {
+            background: rgba(110, 142, 251, 0.15);
+            transform: translateX(5px);
+        }
+
+        .sidebar ul li a.active {
+            background: rgba(110, 142, 251, 0.25);
+            color: #6e8efb;
+            font-weight: bold;
+            border-left: 3px solid #6e8efb;
+        }
+
+        .sidebar ul li a i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+            color: #6e8efb;
+        }
+
+        /* Main content */
+        .main-content {
+            margin-left: 280px;
+            padding: 2rem;
+            flex: 1;
+            max-width: 100%;
+            width: calc(100% - 280px);
+        }
+
+        /* Sections */
+        .section {
+            background: #121212;
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid #333;
+            display: none;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .section.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section h2 {
+            color: #6e8efb;
+            margin-bottom: 1.5rem;
+            font-size: clamp(1.5rem, 2vw, 2rem);
+            border-bottom: 1px solid #333;
+            padding-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        /* Code blocks */
+        pre {
+            background: #0d0d0d;
+            border: 1px solid #333;
+            border-radius: 4px;
+            padding: 1rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+
+        code {
+            color: #e0e0e0;
+            font-family: 'Courier New', monospace;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            background: #121212;
+            color: #e0e0e0;
+            margin-top: 2rem;
+            border-top: 1px solid #333;
+        }
+
+        /* Responsiveness */
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+                z-index: 1000;
+                width: 280px;
+            }
+            .sidebar.active {
+                transform: translateX(0);
+            }
+            .main-content {
+                margin-left: 0;
+                width: 100%;
+                padding: 1.5rem;
+            }
+        }
+
+        /* Dodatkowe style dla sekcji komend */
+        .command-category {
+            margin-bottom: 2.5rem;
+            border-left: 3px solid #6e8efb;
+            padding-left: 1rem;
+        }
+
+        .command-category h3 {
+            color: #6e8efb;
+            margin-bottom: 1rem;
+            font-size: clamp(1.2rem, 1.5vw, 1.5rem);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .command {
+            background: #0d0d0d;
+            border-radius: 4px;
+            padding: 1.2rem;
+            margin: 0.8rem 0;
+            border: 1px solid #333;
+        }
+
+        .command-name {
+            color: #6e8efb;
+            font-weight: 600;
+            font-size: clamp(1rem, 1.1vw, 1.2rem);
+            margin-bottom: 0.3rem;
+        }
+
+        .command-usage {
+            color: #e0e0e0;
+            font-family: 'Courier New', monospace;
+            margin: 0.5rem 0;
+            background: #000;
+            padding: 0.3rem 0.5rem;
+            border-radius: 3px;
+            display: inline-block;
+            font-size: clamp(0.85rem, 0.9vw, 1rem);
+        }
+
+        .command-desc {
+            margin: 0.5rem 0;
+            line-height: 1.5;
+            font-size: clamp(0.9rem, 1vw, 1.1rem);
+        }
+
+        .command-permissions {
+            font-size: clamp(0.8rem, 0.85vw, 0.9rem);
+            color: #aaa;
+            margin-top: 0.5rem;
+            font-style: italic;
+        }
+
+        /* Responsiveness for larger screens */
+        @media (min-width: 1600px) {
+            .main-content {
+                padding: 3rem 4rem;
+            }
+            
+            .section {
+                padding: 3rem;
+            }
+            
+            .command {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (min-width: 2000px) {
+            .sidebar {
+                width: 320px;
+                min-width: 320px;
+            }
+            
+            .main-content {
+                margin-left: 320px;
+                width: calc(100% - 320px);
+                max-width: 1400px;
+            }
+        }
+
+        /* Naprawione style dla całego panelu bocznego */
+.sidebar {
+    width: 280px;
+    background: #121212;
+    color: #e0e0e0;
+    padding: 1.5rem 1rem;
+    position: fixed;
+    height: 100vh;
+    border-right: 1px solid #2a2a2a;
+    overflow-y: auto;
+}
+
+/* Kategorie - naprawione */
+.category {
+    margin-bottom: 0.5rem;
+    border-radius: 6px;
+    overflow: hidden;
+    background: rgba(30, 30, 30, 0.3);
+}
+
+.category-title {
+    padding: 0.8rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    color: #e0e0e0;
+    font-weight: 500;
+}
+
+.category-title:hover {
+    background: rgba(110, 142, 251, 0.1);
+}
+
+.category-title i.fa-chevron-right {
+    transition: transform 0.3s ease;
+}
+
+.category.active .category-title i.fa-chevron-right {
+    transform: rotate(90deg);
+}
+
+/* Podkategorie - całkowicie naprawione */
+.subcategories {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    background: rgba(20, 20, 20, 0.2);
+}
+
+.category.active .subcategories {
+    max-height: 1000px;
+    padding: 0.5rem;
+}
+
+.subcategory {
+    background: rgba(40, 40, 40, 0.3);
+    margin: 0.3rem 0;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.subcategory-title {
+    padding: 0.7rem 1rem;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color: #e0e0e0;
+    font-size: 0.9rem;
+}
+
+.subcategory-title:hover {
+    background: rgba(110, 142, 251, 0.1);
+}
+
+.subcategory-title i {
+    margin-right: 10px;
+    color: #6e8efb;
+    width: 20px;
+    text-align: center;
+}
+
+/* Lista komend - naprawiona */
+.commands-list {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    padding-left: 0;
+    margin: 0;
+    background: rgba(30, 30, 30, 0.3);
+}
+
+.subcategory.active .commands-list {
+    max-height: 1000px;
+    padding: 0.5rem 0;
+}
+
+/* Style dla WSZYSTKICH linków komend */
+.command-link {
+    display: block;
+    padding: 0.6rem 1rem 0.6rem 2.5rem;
+    color: #b0b0b0;
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s ease;
+    border-left: 2px solid transparent;
+}
+
+.command-link:hover {
+    color: #e0e0e0;
+    background: rgba(110, 142, 251, 0.1);
+}
+
+.command-link.active {
+    color: #6e8efb;
+    border-left: 2px solid #6e8efb;
+    background: rgba(110, 142, 251, 0.15);
+    font-weight: 500;
+}
+
+/* Dodatkowe style dla ikon w komendach */
+.command-link i {
+    margin-right: 8px;
+    width: 18px;
+    text-align: center;
+}
+
+/* Style dla panelu bocznego */
+.sidebar {
+    width: 250px;
+    background: #1e1e1e;
+    padding: 1rem;
+    color: #e0e0e0;
+    font-family: 'Open Sans', sans-serif;
+}
+
+/* Style dla kategorii */
+.category {
+    margin-bottom: 0.5rem;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.category-title {
+    padding: 0.8rem 1rem;
+    background: #2a2a2a;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.category-title:hover {
+    background: #333;
+}
+
+.category-title i.fa-chevron-down {
+    transition: transform 0.3s ease;
+    font-size: 0.8rem;
+}
+
+.category.active .category-title i.fa-chevron-down {
+    transform: rotate(180deg);
+}
+
+/* Style dla podkategorii */
+.subcategories {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    background: #252525;
+}
+
+.category.active .subcategories {
+    max-height: 500px; /* Wystarczająco duża wartość */
+}
+
+.subcategory-link {
+    display: block;
+    padding: 0.6rem 1rem 0.6rem 2rem;
+    color: #b0b0b0;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+}
+
+.subcategory-link:hover {
+    background: rgba(110, 142, 251, 0.1);
+    color: #e0e0e0;
+}
+
+.subcategory-link.active {
+    color: #6e8efb;
+    background: rgba(110, 142, 251, 0.15);
+    border-left: 2px solid #6e8efb;
+}
+
+/* Style dla sekcji komend */
+.section {
+    display: none;
+    padding: 2rem;
+    background: #1e1e1e;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+}
+
+.section.active {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+.command-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #333;
+}
+
+.command-permission {
+    font-size: 0.8rem;
+    color: #6e8efb;
+    background: rgba(110, 142, 251, 0.1);
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+}
+
+.command-usage, .command-example {
+    margin: 1.5rem 0;
+}
+
+.command-usage h3, .command-example h3 {
+    color: #6e8efb;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+code {
+    display: inline-block;
+    background: #0d0d0d;
+    padding: 0.8rem 1rem;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    color: #e0e0e0;
+    margin: 0.3rem 0;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Animacje i interakcje */
+.category-title {
+    transition: all 0.3s ease;
+    cursor: pointer;
+    user-select: none;
+}
+
+.category-title:hover {
+    background: #333 !important;
+}
+
+.subcategories {
+    transition: max-height 0.3s ease;
+    overflow: hidden;
+}
+
+.subcategory-link {
+    transition: all 0.2s ease;
+}
+
+/* Efekty aktywnego stanu */
+.category.active .category-title {
+    background: #2a2a2a;
+}
+
+.subcategory-link.active {
+    background: rgba(110, 142, 251, 0.25) !important;
+    color: #6e8efb !important;
+    border-left: 3px solid #6e8efb;
+    font-weight: 600;
+}
+
+/* Welcome Section Styling */
+.welcome-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.welcome-header h1 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.about-description {
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.about-description h3 {
+    margin-top: 1.5rem;
+    color: #444;
+}
+
+.about-description ul, .about-description ol {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+}
+
+.about-description li {
+    margin-bottom: 0.5rem;
+}
+
+/* Setup Section Styling */
+.command-content ol, .command-content ul {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+}
+
+.command-content li {
+    margin-bottom: 0.5rem;
+}
+
+.command-content {
+    margin-top: 1rem;
+    line-height: 1.6;
+}
+
+.command-usage, .command-example, .command-note {
+    margin: 1rem 0;
+}
+
+.command-usage code, .command-example code {
+    background: #f5f5f5;
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    font-family: monospace;
+}
+
+.command-note {
+    font-style: italic;
+    color: #666;
+}
+
+.command-code {
+    display: inline-block;
+    background: #f0f2ff;
+    color: #333;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    font-size: 0.9rem;
+    margin: 0.1rem 0;
+    border: 1px solid #d0d5ff;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.category .subcategories {
+    max-height: 0 !important; /* Wymusza zamknięcie */
+}
+.category.active .subcategories {
+    max-height: 1000px !important; /* Pozwala otworzyć */
+}
+
+.subcategories {
+    overflow: hidden;
+    transition: transform 0.3s ease, opacity 0.2s ease;
+    transform-origin: top;
+    transform: scaleY(0);
+    opacity: 0;
+    height: auto;
+    max-height: none !important;
+}
+
+.category.active .subcategories {
+    transform: scaleY(1);
+    opacity: 1;
+}
+
+.subcategory-content {
+    padding: 5px 0;
+}
+
+.subcategory-link {
+    white-space: normal;
+    display: block;
+    transform: translateZ(0); /* Przyspiesza renderowanie */
+}
+
+/* Animacje dla kategorii */
+.subcategories {
+  overflow: hidden;
+  transition: 
+    transform 0.3s ease-out,
+    opacity 0.2s ease,
+    max-height 0.4s ease-out;
+  transform-origin: top;
+  max-height: 0;
+  opacity: 0;
+  transform: scaleY(0.8);
+}
+
+.category.active .subcategories {
+  max-height: 1000px; /* Wartość większa niż potrzebna */
+  opacity: 1;
+  transform: scaleY(1);
+}
+
+.subcategory-link {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: block;
+  transition: all 0.2s;
+}
+
+.command {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background: #1e1e1e;
+    border-radius: 6px;
+    border-left: 3px solid #6e8efb;
+}
+
+.command-name {
+    color: #6e8efb;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.command-desc {
+    margin-bottom: 0.8rem;
+    color: #d0d0d0;
+}
+
+.command {
+    scroll-margin-top: 20px; /* Zapobiega przycinaniu przy przewijaniu */
+}
+
+.command:target {
+    animation: highlight 1.5s ease;
+}
+
+@keyframes highlight {
+    from { background: rgba(110, 142, 251, 0.3); }
+    to { background: transparent; }
+}
+
+/* Styl dla aktywnego linku w sidebarze */
+.subcategory-link.active {
+    background: rgba(110, 142, 251, 0.2) !important;
+    color: #6e8efb !important;
+    border-left: 2px solid #6e8efb;
+    font-weight: 600;
+}
+
+/* Gwarantuje, że podkategorie są widoczne gdy kategoria jest aktywna */
+.category.active .subcategories {
+    max-height: 1000px !important;
+    opacity: 1 !important;
+}
+
+/* Resetuje domyślne style, które mogą blokować interakcję */
+.category {
+    cursor: pointer;
+    user-select: none;
+}
