@@ -193,20 +193,66 @@
                 <h2>Setup Guide</h2>
             </div>
             <div class="command-content">
-                <h3>How to Add Ormi-Bot to Your Server:</h3>
-                <ol>
-                    <li>Click the <a href="https://discord.com/oauth2/authorize?client_id=YOUR_CLIENT_ID&permissions=8&scope=bot" target="_blank">Invite Link</a></li>
-                    <li>Select your server from the dropdown menu</li>
-                    <li>Authorize the bot with the required permissions</li>
-                    <li>Start using Ormi-Bot with the <span class="command-code">;help</span> command!</li>
-                </ol>
+                <h3>Get Ormi-Bot in 3 Simple Steps</h3>
                 
-                <h3>Configuration Tips:</h3>
-                <ul>
-                    <li>Use <span class="command-code">;prefix</span> to change the bot's command prefix</li>
-                    <li>Customize moderation settings with <span class="command-code">;modsetup</span></li>
-                    <li>View all commands with <span class="command-code">;commands</span></li>
-                </ul>
+                <div class="setup-step">
+                    <div class="button-group">
+                        <a href="https://discord.com/oauth2/authorize?client_id=YOUR_CLIENT_ID&permissions=8&scope=bot" 
+                           target="_blank" 
+                           class="btn btn-primary"
+                           id="inviteButton">
+                            <i class="fas fa-robot"></i> Add to Server
+                        </a>
+                        <a href="https://discord.gg/example" 
+                           target="_blank" 
+                           class="btn btn-secondary">
+                            <i class="fas fa-question-circle"></i> Need Help?
+                        </a>
+                    </div>
+                    <p class="note">
+                        <i class="fas fa-exclamation-circle"></i> Requires "Manage Server" permission
+                    </p>
+                </div>
+
+                <div class="setup-step">
+                    <h4>2. Configure Permissions</h4>
+                    <p>After inviting, verify the bot has these critical permissions:</p>
+                    <ul>
+                        <li><strong>Moderation:</strong> Kick, Ban, Manage Messages</li>
+                        <li><strong>Utility:</strong> Manage Roles, Manage Channels</li>
+                        <li><strong>General:</strong> Read Messages, Send Messages</li>
+                    </ul>
+                </div>
+
+                <div class="setup-step">
+                    <h4>3. Basic Configuration</h4>
+                    <p>Run these essential commands to set up your server:</p>
+                    <div class="command-usage">
+                        <span class="command-code">;prefix !</span> - Change command prefix<br>
+                        <span class="command-code">;slc #mod-logs</span> - Set moderation log channel<br>
+                        <span class="command-code">;swc #welcome</span> - Set welcome channel
+                    </div>
+                </div>
+
+                <div class="setup-step">
+                    <h4>4. Test the Bot</h4>
+                    <p>Verify everything works with these test commands:</p>
+                    <div class="command-usage">
+                        <span class="command-code">;help</span> - View all commands<br>
+                        <span class="command-code">;ping</span> - Check bot latency<br>
+                        <span class="command-code">;serverinfo</span> - View server details
+                    </div>
+                </div>
+
+                <div class="setup-step">
+                    <h4>5. Advanced Setup (Optional to use)</h4>
+                    <p>Customize further with these features:</p>
+                    <ul>
+                        <li>Reaction roles (<span class="command-code">;rr</span>)</li>
+                        <li>Auto-moderation (<span class="command-code">;automod</span>)</li>
+                        <li>Ticket system (<span class="command-code">;ticket setup</span>)</li>
+                    </ul>
+                </div>
             </div>
         </section>
 

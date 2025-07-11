@@ -1,25 +1,90 @@
         // Skrypt do rozwijania kategorii
+        // Ulepszona obsługa sidebaru
         document.addEventListener('DOMContentLoaded', function() {
+            const categories = document.querySelectorAll('.category');
+            
+            // Funkcja do płynnego otwierania/zamykania
+            const toggleCategory = (category, open) => {
+                const subcat = category.querySelector('.subcategories');
+                const chevron = category.querySelector('.fa-chevron-down');
+                
+                // Anuluj oczekujące timeouty
+                if (subcat._closeTimeout) {
+                    clearTimeout(subcat._closeTimeout);
+                    delete subcat._closeTimeout;
+                }
+
+                if (open) {
+                    // Przygotowanie do otwarcia
+                    subcat.style.display = 'block';
+                    subcat.style.maxHeight = '0';
+                    subcat.style.opacity = '0';
+                    subcat.style.transition = 'none';
+                    
+                    // Wymuszamy przeliczenie stylów
+                    void subcat.offsetHeight;
+                    
+                    // Ustawiamy transition i rozpoczynamy animację
+                    subcat.style.transition = 'max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease';
+                    subcat.style.maxHeight = subcat.scrollHeight + 'px';
+                    subcat.style.opacity = '1';
+                    
+                    if (chevron) chevron.style.transform = 'rotate(180deg)';
+                    category.classList.add('active');
+                } else {
+                    // Przygotowanie do zamknięcia
+                    subcat.style.maxHeight = subcat.scrollHeight + 'px';
+                    subcat.style.opacity = '1';
+                    subcat.style.transition = 'none';
+                    
+                    // Wymuszamy przeliczenie stylów
+                    void subcat.offsetHeight;
+                    
+                    // Ustawiamy transition i rozpoczynamy animację
+                    subcat.style.transition = 'max-height 0.25s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.15s ease';
+                    subcat.style.maxHeight = '0';
+                    subcat.style.opacity = '0';
+                    
+                    if (chevron) chevron.style.transform = 'rotate(0deg)';
+                    
+                    // Po zakończeniu animacji ukrywamy element
+                    subcat._closeTimeout = setTimeout(() => {
+                        if (subcat.style.maxHeight === '0px') {
+                            subcat.style.display = 'none';
+                            category.classList.remove('active');
+                        }
+                    }, 250);
+                }
+            };
+
+            // Inicjalizacja - otwórz pierwszą kategorię
+            if (categories.length > 0) {
+                toggleCategory(categories[0], true);
+                
+                const firstLink = categories[0].querySelector('.subcategory-link');
+                if (firstLink) {
+                    firstLink.classList.add('active');
+                    const targetSection = document.querySelector(firstLink.getAttribute('href'));
+                    if (targetSection) targetSection.classList.add('active');
+                }
+            }
+
             // Obsługa kliknięć w kategorie
-            document.querySelectorAll('.category-title').forEach(title => {
-                title.addEventListener('click', function() {
-                    const category = this.closest('.category');
+            categories.forEach(category => {
+                const title = category.querySelector('.category-title');
+                title.addEventListener('click', function(e) {
+                    e.stopPropagation();
                     const isActive = category.classList.contains('active');
                     
-                    // Zamknij wszystkie kategorie
-                    document.querySelectorAll('.category').forEach(c => {
-                        c.classList.remove('active');
-                        c.querySelector('.subcategories').style.maxHeight = '0';
-                        c.querySelector('.fa-chevron-down').style.transform = 'rotate(0deg)';
+                    // Zamknij wszystkie inne kategorie
+                    categories.forEach(c => {
+                        if (c !== category && c.classList.contains('active')) {
+                            toggleCategory(c, false);
+                        }
                     });
 
-                    // Toggle tylko jeśli kategoria nie była aktywna
-                    if (!isActive) {
-                        category.classList.add('active');
-                        const subcategories = category.querySelector('.subcategories');
-                        subcategories.style.maxHeight = subcategories.scrollHeight + 'px';
-                        this.querySelector('.fa-chevron-down').style.transform = 'rotate(180deg)';
-                    }
+                    // Toggle obecnej kategorii
+                    toggleCategory(category, !isActive);
                 });
             });
 
@@ -29,32 +94,31 @@
                     e.preventDefault();
                     const targetId = this.getAttribute('href');
                     
-                    // Reset wszystkich linków i sekcji
+                    // Reset aktywnych elementów
                     document.querySelectorAll('.subcategory-link').forEach(l => l.classList.remove('active'));
                     document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
                     
-                    // Aktywuj obecny link i sekcję
+                    // Ustaw aktywny element
                     this.classList.add('active');
                     const targetSection = document.querySelector(targetId);
                     if (targetSection) {
                         targetSection.classList.add('active');
-                        targetSection.scrollIntoView({ behavior: 'smooth' });
+                        targetSection.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
                     }
                 });
             });
 
-            // Inicjalizacja - otwórz pierwszą kategorię i pierwszą komendę
-            const firstCategory = document.querySelector('.category');
-            if (firstCategory) {
-                firstCategory.querySelector('.subcategories').style.maxHeight = '0';
-                firstCategory.querySelector('.fa-chevron-down').style.transform = 'rotate(0deg)';
-                
-                const firstCommand = firstCategory.querySelector('.subcategory-link');
-                if (firstCommand) {
-                    firstCommand.classList.add('active');
-                    document.querySelector(firstCommand.getAttribute('href')).classList.add('active');
-                }
+            // Obsługa responsywności
+            function handleResize() {
+                document.querySelectorAll('.category.active .subcategories').forEach(subcat => {
+                    subcat.style.maxHeight = subcat.scrollHeight + 'px';
+                });
             }
+
+            window.addEventListener('resize', handleResize);
         });
 
 function adjustSidebarItems() {
@@ -148,3 +212,10 @@ function fix8Ball() {
 
 // Wywołaj funkcję po załadowaniu strony
 document.addEventListener('DOMContentLoaded', fix8Ball);
+
+document.getElementById('inviteButton')?.addEventListener('click', function() {
+    this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Redirecting...';
+    setTimeout(() => {
+        this.innerHTML = '<i class="fas fa-check"></i> Success!';
+    }, 1500);
+});
