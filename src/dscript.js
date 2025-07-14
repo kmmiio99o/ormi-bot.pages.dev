@@ -101,17 +101,44 @@
                     e.preventDefault();
                     const targetId = this.getAttribute('href');
                     
+                    // Zamknij menu hamburger (jeśli jest otwarte)
+                    const sidebar = document.querySelector('.sidebar');
+                    const toggleBtn = document.querySelector('.mobile-menu-toggle');
+                    if (window.innerWidth <= 768 && sidebar.classList.contains('active')) {
+                        sidebar.classList.remove('active');
+                    }
+                    
                     document.querySelectorAll('.subcategory-link').forEach(l => l.classList.remove('active'));
                     document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
                     
                     this.classList.add('active');
+                    
                     const targetSection = document.querySelector(targetId);
                     if (targetSection) {
                         targetSection.classList.add('active');
-                        targetSection.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
+                        
+                        const offset = 20;
+                        const targetPosition = targetSection.offsetTop - offset;
+                        
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
                         });
+                    }
+                });
+            });
+
+            document.querySelectorAll('.category-title').forEach(title => {
+                title.addEventListener('click', () => {
+                    const category = title.closest('.category');
+                    const subcategories = category.querySelector('.subcategories');
+                    
+                    category.classList.toggle('active');
+                    
+                    if (category.classList.contains('active')) {
+                        setTimeout(() => {
+                            subcategories.scrollTop = 0;
+                        }, 10);
                     }
                 });
             });
@@ -212,12 +239,25 @@ document.addEventListener('DOMContentLoaded', () => {
     const toggleBtn = document.querySelector('.mobile-menu-toggle');
     const sidebar = document.querySelector('.sidebar');
 
-    toggleBtn.addEventListener('click', () => {
+    // Otwieranie/zamykanie menu
+    toggleBtn.addEventListener('click', (e) => {
+        e.stopPropagation(); // Zapobiega zamknięciu przy kliknięciu w przycisk
         sidebar.classList.toggle('active');
     });
 
-    document.querySelectorAll('.command-item').forEach(item => {
-        item.addEventListener('click', () => {
+    // Zamykanie menu po kliknięciu gdziekolwiek poza nim
+    document.addEventListener('click', (e) => {
+        if (window.innerWidth <= 768 && 
+            sidebar.classList.contains('active') && 
+            !sidebar.contains(e.target) && 
+            e.target !== toggleBtn) {
+            sidebar.classList.remove('active');
+        }
+    });
+
+    // Zamykanie menu po kliknięciu w link
+    document.querySelectorAll('.subcategory-link').forEach(link => {
+        link.addEventListener('click', () => {
             if (window.innerWidth <= 768) {
                 sidebar.classList.remove('active');
             }
@@ -259,4 +299,31 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.section').forEach(section => {
     observer.observe(section);
+});
+
+function setupBackToTopButton() {
+    const backToTopButton = document.createElement('div');
+    backToTopButton.className = 'back-to-top';
+    backToTopButton.innerHTML = '↑';
+    document.body.appendChild(backToTopButton);
+
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            backToTopButton.classList.add('show');
+        } else {
+            backToTopButton.classList.remove('show');
+        }
+    });
+
+    backToTopButton.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+}
+
+// Wywołanie funkcji po załadowaniu strony
+document.addEventListener('DOMContentLoaded', () => {
+    setupBackToTopButton();
 });
