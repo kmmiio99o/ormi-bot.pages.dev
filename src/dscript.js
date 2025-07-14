@@ -2,90 +2,103 @@
         // Ulepszona obsługa sidebaru
         document.addEventListener('DOMContentLoaded', function() {
             const categories = document.querySelectorAll('.category');
-            
-            // Funkcja do płynnego otwierania/zamykania
-            const toggleCategory = (category, open) => {
-                const subcat = category.querySelector('.subcategories');
-                const chevron = category.querySelector('.fa-chevron-down');
-                
-                // Anuluj oczekujące timeouty
-                if (subcat._closeTimeout) {
-                    clearTimeout(subcat._closeTimeout);
-                    delete subcat._closeTimeout;
-                }
+            let activeAnimation = null;
 
-                if (open) {
-                    // Przygotowanie do otwarcia
-                    subcat.style.display = 'block';
-                    subcat.style.maxHeight = '0';
-                    subcat.style.opacity = '0';
-                    subcat.style.transition = 'none';
-                    
-                    // Wymuszamy przeliczenie stylów
-                    void subcat.offsetHeight;
-                    
-                    // Ustawiamy transition i rozpoczynamy animację
-                    subcat.style.transition = 'max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease';
-                    subcat.style.maxHeight = subcat.scrollHeight + 'px';
-                    subcat.style.opacity = '1';
-                    
-                    if (chevron) chevron.style.transform = 'rotate(180deg)';
-                    category.classList.add('active');
-                } else {
-                    // Przygotowanie do zamknięcia
-                    subcat.style.maxHeight = subcat.scrollHeight + 'px';
-                    subcat.style.opacity = '1';
-                    subcat.style.transition = 'none';
-                    
-                    // Wymuszamy przeliczenie stylów
-                    void subcat.offsetHeight;
-                    
-                    // Ustawiamy transition i rozpoczynamy animację
-                    subcat.style.transition = 'max-height 0.25s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.15s ease';
-                    subcat.style.maxHeight = '0';
-                    subcat.style.opacity = '0';
-                    
-                    if (chevron) chevron.style.transform = 'rotate(0deg)';
-                    
-                    // Po zakończeniu animacji ukrywamy element
-                    subcat._closeTimeout = setTimeout(() => {
-                        if (subcat.style.maxHeight === '0px') {
-                            subcat.style.display = 'none';
-                            category.classList.remove('active');
-                        }
-                    }, 250);
-                }
-            };
-
-            // Inicjalizacja - otwórz pierwszą kategorię
-            if (categories.length > 0) {
-                toggleCategory(categories[0], true);
-                
-                const firstLink = categories[0].querySelector('.subcategory-link');
-                if (firstLink) {
-                    firstLink.classList.add('active');
-                    const targetSection = document.querySelector(firstLink.getAttribute('href'));
-                    if (targetSection) targetSection.classList.add('active');
-                }
-            }
-
-            // Obsługa kliknięć w kategorie
             categories.forEach(category => {
                 const title = category.querySelector('.category-title');
-                title.addEventListener('click', function(e) {
-                    e.stopPropagation();
+                const subcat = category.querySelector('.subcategories');
+                const chevron = title.querySelector('.fa-chevron-down');
+
+                title.addEventListener('click', async function() {
+                    // Anuluj istniejącą animację jeśli jest w trakcie
+                    if (activeAnimation) {
+                        activeAnimation.cancel();
+                    }
+
                     const isActive = category.classList.contains('active');
                     
                     // Zamknij wszystkie inne kategorie
                     categories.forEach(c => {
                         if (c !== category && c.classList.contains('active')) {
-                            toggleCategory(c, false);
+                            animateCategoryClose(c);
                         }
                     });
 
                     // Toggle obecnej kategorii
-                    toggleCategory(category, !isActive);
+                    if (isActive) {
+                        await animateCategoryClose(category);
+                    } else {
+                        await animateCategoryOpen(category);
+                    }
                 });
+
+                async function animateCategoryOpen(cat) {
+                    const sub = cat.querySelector('.subcategories');
+                    const chev = cat.querySelector('.fa-chevron-down');
+                    
+                    sub.style.display = 'block';
+                    sub.style.overflow = 'hidden';
+                    
+                    const openAnim = sub.animate([
+                        { 
+                            opacity: 0,
+                            maxHeight: '0px',
+                            transform: 'scaleY(0.9)'
+                        },
+                        { 
+                            opacity: 1,
+                            maxHeight: `${sub.scrollHeight}px`,
+                            transform: 'scaleY(1)'
+                        }
+                    ], {
+                        duration: 300,
+                        easing: 'cubic-bezier(0.2, 0.7, 0.4, 1)',
+                        fill: 'forwards'
+                    });
+
+                    chev?.animate([
+                        { transform: 'rotate(0deg)' },
+                        { transform: 'rotate(180deg)' }
+                    ], { duration: 300, easing: 'ease-out' });
+
+                    activeAnimation = openAnim;
+                    await openAnim.finished;
+                    cat.classList.add('active');
+                    activeAnimation = null;
+                }
+
+                async function animateCategoryClose(cat) {
+                    const sub = cat.querySelector('.subcategories');
+                    const chev = cat.querySelector('.fa-chevron-down');
+                    
+                    const closeAnim = sub.animate([
+                        { 
+                            opacity: 1,
+                            maxHeight: `${sub.scrollHeight}px`,
+                            transform: 'scaleY(1)'
+                        },
+                        { 
+                            opacity: 0,
+                            maxHeight: '0px',
+                            transform: 'scaleY(0.95)'
+                        }
+                    ], {
+                        duration: 250,
+                        easing: 'cubic-bezier(0.4, 0, 0.6, 1)',
+                        fill: 'forwards'
+                    });
+
+                    chev?.animate([
+                        { transform: 'rotate(180deg)' },
+                        { transform: 'rotate(0deg)' }
+                    ], { duration: 250, easing: 'ease-in' });
+
+                    activeAnimation = closeAnim;
+                    await closeAnim.finished;
+                    sub.style.display = 'none';
+                    cat.classList.remove('active');
+                    activeAnimation = null;
+                }
             });
 
             // Obsługa kliknięć w komendy
@@ -218,4 +231,64 @@ document.getElementById('inviteButton')?.addEventListener('click', function() {
     setTimeout(() => {
         this.innerHTML = '<i class="fas fa-check"></i> Success!';
     }, 1500);
+});
+
+// Hamburger menu
+document.addEventListener('DOMContentLoaded', () => {
+    const toggleBtn = document.querySelector('.mobile-menu-toggle');
+    const sidebar = document.querySelector('.sidebar');
+
+    toggleBtn.addEventListener('click', () => {
+        sidebar.classList.toggle('active');
+    });
+
+    // Zamknij menu po kliknięciu na komendę (opcjonalne)
+    document.querySelectorAll('.command-item').forEach(item => {
+        item.addEventListener('click', () => {
+            if (window.innerWidth <= 768) {
+                sidebar.classList.remove('active');
+            }
+        });
+    });
+});
+
+// Dodaj do istniejącego kodu mobile menu
+let lastScroll = 0;
+const mobileButton = document.querySelector('.floating-ball');
+
+window.addEventListener('scroll', () => {
+    const currentScroll = window.pageYOffset;
+    
+    if (currentScroll > lastScroll) {
+        // Scroll w dół
+        document.body.classList.add('scrolling-down');
+        document.body.classList.remove('scrolling-up');
+    } else {
+        // Scroll w górę
+        document.body.classList.add('scrolling-up');
+        document.body.classList.remove('scrolling-down');
+    }
+    
+    // Reset przy braku scrolla
+    if (currentScroll <= 10) {
+        document.body.classList.remove('scrolling-down', 'scrolling-up');
+    }
+    
+    lastScroll = currentScroll;
+});
+
+// Dodaj obserwator sekcji komend
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            mobileButton.classList.add('highlight-command');
+            setTimeout(() => {
+                mobileButton.classList.remove('highlight-command');
+            }, 2000);
+        }
+    });
+}, { threshold: 0.5 });
+
+document.querySelectorAll('.section').forEach(section => {
+    observer.observe(section);
 });
