@@ -34,6 +34,40 @@
         <meta property="og:image" content="https://imgur.com/WxQ9ZB1" />
         <meta property="og:url" content="https://ormi-bot.pages.dev" />
         <meta property="og:type" content="website" />
+                <!-- Add this right before your existing script -->
+                <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+        
+                <script>
+                    // Wait for both DOM and all resources to load
+                    document.addEventListener('DOMContentLoaded', function() {
+                        // Confetti configuration
+                        const count = 200;
+                        const defaults = {
+                            origin: { y: 0.7 },
+                            spread: 90,
+                            ticks: 100,
+                            gravity: 1,
+                            decay: 0.94,
+                            startVelocity: 25,
+                            colors: ['#ff4d4d', '#ff1a1a', '#e6a502', '#5a8f3d', '#5865f2']
+                        };
+        
+                        function fire(particleRatio, opts) {
+                            confetti({
+                                ...defaults,
+                                ...opts,
+                                particleCount: Math.floor(count * particleRatio)
+                            });
+                        }
+        
+                        // Fire confetti in sequence
+                        fire(0.25, { spread: 26, startVelocity: 55 });
+                        fire(0.2, { spread: 60 });
+                        fire(0.35, { spread: 100, decay: 0.91, scalar: 0.8 });
+                        fire(0.1, { spread: 120, startVelocity: 25, decay: 0.92, scalar: 1.2 });
+                        fire(0.1, { spread: 120, startVelocity: 45 });
+                    });
+                </script>
         <style>
             :root {
                 --primary: #5865f2;
@@ -1082,21 +1116,59 @@
         </style>
     </head>
     <body style="overflow: auto">
-        <div
-            style="
-                background-color: #ff4d4d;
-                color: white;
-                text-align: center;
-                padding: 12px;
-                font-size: 18px;
-                font-family: &quot;Open Sans&quot;, sans-serif;
-                font-weight: 600;
-            "
-        >
-            ✨ Under Construction! The bot is being rebuilt from the ground up
-            for a faster, smoother experience. Expect exciting improvements
-            soon! 🛠️
+        <div style="
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, #2b5876, #4e4376);
+            color: white;
+            text-align: center;
+            padding: 12px;
+            font-size: 16px;
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 600;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+        ">
+            <div style="display: flex; flex-direction: column; gap: 4px; text-align: left;">
+                <span style="font-size: 1.1em; font-weight: 700;">🎉 4-Month Anniversary Special!</span>
+                <span style="font-size: 0.9em; opacity: 0.9;">
+                    Completely rebuilt from scratch • 32% faster • Slash commands • Open-source on GitHub
+                </span>
+            </div>
+            <a href="https://github.com/kmmiio99o/ormi-bot" 
+               style="
+                   background: #24292e;
+                   color: white;
+                   padding: 6px 12px;
+                   border-radius: 4px;
+                   text-decoration: none;
+                   font-weight: 600;
+                   display: inline-flex;
+                   align-items: center;
+                   gap: 5px;
+                   transition: transform 0.2s;
+                   white-space: nowrap;
+               "
+               onmouseover="this.style.transform='scale(1.05)'"
+               onmouseout="this.style.transform='scale(1)'"
+               target="_blank">
+                <i class="fab fa-github"></i>
+                View on GitHub
+            </a>
         </div>
+
+        <!-- Add margin to first content element to prevent overlap -->
+        <style>
+            .hero {
+                margin-top: 60px !important;
+            }
+        </style>
         <!-- Zamiast overflow: hidden -->
         <section class="hero">
             <div style="position: relative; display: inline-block">
@@ -2230,6 +2302,76 @@
                         Version History
                     </h2>
 
+                    <div
+                        class="command-category animate__animated animate__fadeIn"
+                        style="
+                            background: rgba(210, 146, 68, 0.1);
+                            border: 2px solid #d29244;
+                        "
+                    >
+                        <div
+                            class="feature-icon"
+                            style="
+                                font-size: 2.5rem;
+                                text-align: center;
+                                margin-bottom: 1.5rem;
+                                color: #d29244;
+                            "
+                        >
+                            <i
+                                class="fas fa-sun"
+                                style="font-size: 1.8em; margin-right: -0.5em; color: #e6a502;"
+                            ></i
+                            ><i
+                                class="fas fa-cactus"
+                                style="
+                                    font-size: 0.8em;
+                                    position: relative;
+                                    left: -0.7em;
+                                    top: 0.6em;
+                                    color: #5a8f3d;
+                                "
+                            ></i>
+                            <i
+                                class="fas fa-flask"
+                                style="
+                                    font-size: 0.8em;
+                                    position: relative;
+                                    left: 0.5em;
+                                    top: 0.3em;
+                                    color: #d29244;
+                                "
+                            ></i>
+                        </div>
+                        <h3
+                            class="category-title"
+                            style="text-align: center; color: #d29244;"
+                        >
+                            V10.0.0 Experimental Beta - Desert Mirage
+                        </h3>
+                        <p
+                            style="
+                                text-align: center;
+                                color: #e6a502;
+                                font-size: 0.9rem;
+                                margin: -0.5rem 0 0.5rem 0;
+                                font-weight: 600;
+                            "
+                        >
+                            Beta Release
+                        </p>
+                        <ul class="command-list">
+                            <li class="command-item">
+                                <strong>Total rewrite of the codebase</strong> — fewer commands for now, but more will be added over time.
+                            </li>
+                            <li class="command-item">
+                                <strong>Removed prefix commands</strong> — replaced with slash commands for easier use (prefix commands may return in the future).
+                            </li>
+                            <li class="command-item">
+                                <strong>Performance improvements</strong> — reduced RAM usage by 32% for smoother operation.
+                            </li>
+                        </ul>
+                    </div>
                     <div
                         class="command-category animate__animated animate__fadeIn"
                         style="
@@ -3513,19 +3655,20 @@
                                     "
                                 >
                                     <li style="margin-bottom: 8px">
-                                        <strong>Version:</strong> 3.3.2 - Arctic
-                                        Thunder Fix+
+                                        <strong>Version:</strong> V10.0.0 Experimental Beta - Desert Mirage 
                                         <span
                                             style="
-                                                color: #eb459e;
+                                                color: #faa61a; /* Discord's warning yellow */
                                                 font-size: 0.85em;
                                                 font-weight: 700;
-                                                text-shadow: 0 0 8px
-                                                    rgba(235, 69, 158, 0.4);
+                                                text-shadow: 0 0 8px rgba(250, 166, 26, 0.4);
                                                 letter-spacing: 0.5px;
+                                                background: rgba(250, 166, 26, 0.1);
+                                                padding: 2px 6px;
+                                                border-radius: 4px;
+                                                border: 1px solid rgba(250, 166, 26, 0.3);
                                             "
-                                            >(Stable Release)</span
-                                        >
+                                            >(Beta Release)</span>
                                     </li>
                                     <li style="margin-bottom: 8px">
                                         <strong>Library:</strong> Discord.py
