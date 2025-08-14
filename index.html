@@ -29,7 +29,7 @@
             --border-color: rgba(255, 255, 255, 0.1);
             --transition-speed: 0.3s;
         }
-
+    
         * {
             margin: 0;
             padding: 0;
@@ -37,7 +37,7 @@
             -webkit-tap-highlight-color: transparent !important;
             tap-highlight-color: transparent !important;
         }
-
+    
         body {
             font-family: 'Open Sans', sans-serif;
             background: linear-gradient(135deg, var(--darker), var(--dark));
@@ -46,7 +46,7 @@
             overflow-x: hidden;
             overflow-y: scroll;
         }
-
+    
         h1,
         h2,
         h3,
@@ -54,19 +54,19 @@
         .tagline {
             font-family: 'Poppins', sans-serif;
         }
-
+    
         a {
             text-decoration: none;
             color: inherit;
         }
-
+    
         .container {
             width: 90%;
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 15px;
         }
-
+    
         /* Header Styles */
         header {
             padding: 20px 0;
@@ -78,18 +78,18 @@
             backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--border-color);
         }
-
+    
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-
+    
         .logo-container {
             display: flex;
             align-items: center;
         }
-
+    
         .logo {
             width: 40px;
             height: 40px;
@@ -97,19 +97,19 @@
             margin-right: 10px;
             border: 2px solid var(--primary);
         }
-
+    
         .logo-text {
             font-size: 1.5rem;
             font-weight: 700;
             color: var(--light);
         }
-
+    
         .nav-links {
             display: flex;
             list-style: none;
             gap: 25px;
         }
-
+    
         .nav-links a {
             color: var(--light);
             opacity: 0.8;
@@ -118,12 +118,12 @@
             align-items: center;
             gap: 5px;
         }
-
+    
         .nav-links a:hover {
             opacity: 1;
             color: var(--primary);
         }
-
+    
         /* Hero Section */
         .hero {
             min-height: 100vh;
@@ -134,7 +134,7 @@
             position: relative;
             overflow: hidden;
         }
-
+    
         .hero::before {
             content: "";
             position: absolute;
@@ -145,14 +145,14 @@
             background: radial-gradient(circle at center, rgba(88, 101, 242, 0.1) 0%, transparent 70%);
             z-index: -1;
         }
-
+    
         .hero-content {
             max-width: 800px;
             margin: 0 auto;
             position: relative;
             z-index: 2;
         }
-
+    
         .hero-logo {
             width: 150px;
             height: 150px;
@@ -160,54 +160,58 @@
             margin: 0 auto 20px;
             border: 3px solid var(--primary);
             box-shadow: 0 0 30px rgba(88, 101, 242, 0.3);
+            /* Removed animation-delay: 0.1s; */
         }
-
+    
         .hero-title {
             font-size: 3.5rem;
             margin-bottom: 1rem;
             color: var(--light);
             position: relative;
             display: inline-block;
+            /* Removed animation-delay: 0.3s; */
         }
-
+    
         .tagline {
             font-size: 1.5rem;
             margin-bottom: 2rem;
             opacity: 0.9;
+            /* Removed animation-delay: 0.5s; */
         }
-
+    
         .action-buttons {
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 15px;
+            /* Removed animation-delay: 0.7s; */
         }
-
+    
         /* Features Section */
         .features {
             padding: 80px 0;
             background-color: var(--darker);
         }
-
+    
         .section-title {
             text-align: center;
             font-size: 2.5rem;
             margin-bottom: 1rem;
         }
-
+    
         .section-subtitle {
             text-align: center;
             font-size: 1.2rem;
             color: var(--gray);
             margin-bottom: 50px;
         }
-
+    
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
         }
-
+    
         .feature-card {
             background: var(--card-bg);
             border-radius: 12px;
@@ -215,24 +219,34 @@
             text-align: center;
             border: 1px solid var(--border-color);
             transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+            /* Added animation class with delay */
+            animation-delay: 0.1s;
         }
-
+    
+        .feature-card:nth-child(2) {
+            animation-delay: 0.3s;
+        }
+    
+        .feature-card:nth-child(3) {
+            animation-delay: 0.5s;
+        }
+    
         .feature-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
         }
-
+    
         .feature-icon {
             font-size: 3rem;
             margin-bottom: 20px;
             color: var(--primary);
         }
-
+    
         .feature-title {
             font-size: 1.5rem;
             margin-bottom: 15px;
         }
-
+    
         /* Footer */
         footer {
             background-color: var(--darker);
@@ -241,7 +255,7 @@
             border-top: 1px solid var(--border-color);
             margin-top: 50px;
         }
-
+    
         .footer-links {
             display: flex;
             justify-content: center;
@@ -249,40 +263,40 @@
             gap: 20px;
             margin-bottom: 20px;
         }
-
+    
         .footer-link {
             color: var(--gray);
             transition: color var(--transition-speed);
             font-size: 0.9rem;
         }
-
+    
         .footer-link:hover {
             color: var(--light);
         }
-
+    
         .social-links {
             display: flex;
             justify-content: center;
             gap: 20px;
             margin-bottom: 20px;
         }
-
+    
         .social-link {
             color: var(--gray);
             font-size: 1.5rem;
             transition: color var(--transition-speed);
         }
-
+    
         .social-link:hover {
             color: var(--light);
         }
-
+    
         .copyright {
             color: var(--gray);
             font-size: 0.9rem;
             margin: 0;
         }
-
+    
         /* Buttons */
         .btn {
             display: inline-flex;
@@ -299,30 +313,34 @@
             gap: 8px;
             -webkit-tap-highlight-color: transparent;
         }
-
+    
         .btn-primary {
             background-color: var(--primary);
             color: white;
             box-shadow: 0 4px 14px 0 rgba(88, 101, 242, 0.39);
         }
-
+    
         .btn-primary:hover {
             background-color: var(--primary-hover);
             transform: translateY(-2px);
             box-shadow: 0 6px 16px 0 rgba(88, 101, 242, 0.5);
+            /* Added pulse animation */
+            animation: animate__pulse 0.5s ease-in-out;
         }
-
+    
         .btn-secondary {
             background-color: transparent;
             color: var(--light);
             border: 1px solid var(--border-color);
         }
-
+    
         .btn-secondary:hover {
             background-color: rgba(255, 255, 255, 0.1);
             border-color: rgba(255, 255, 255, 0.3);
+            /* Added pulse animation */
+            animation: animate__pulse 0.5s ease-in-out;
         }
-
+    
         /* Modal Styles */
         .modal {
             display: none;
@@ -337,12 +355,12 @@
             opacity: 0;
             transition: opacity 0.3s ease;
         }
-
+    
         .modal.active {
             display: block;
             opacity: 1;
         }
-
+    
         .modal-content {
             background-color: var(--dark);
             margin: 5% auto;
@@ -356,15 +374,15 @@
             position: relative;
             animation: modalSlideIn 0.4s ease-out forwards;
         }
-
+    
         .modal.active .modal-content {
             animation: modalSlideIn 0.4s ease-out forwards;
         }
-
+    
         .modal:not(.active) .modal-content {
             animation: modalSlideOut 0.4s ease-out forwards;
         }
-
+    
         /* Modal Close Button - */
         .close-modal {
             display: flex;
@@ -389,21 +407,21 @@
             outline: none;
             box-shadow: none;
         }
-
-            .close-modal::before {
-                display: block;
-                font-size: 28px;
-                font-weight: 300;
-                line-height: 1;
-                width: 100%;
-                height: 100%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                position: relative;
-                top: -1px;
-            }
-
+    
+        .close-modal::before {
+            display: block;
+            font-size: 28px;
+            font-weight: 300;
+            line-height: 1;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            top: -1px;
+        }
+    
         /* Hover and Focus States */
         .close-modal:hover,
         .close-modal:focus {
@@ -412,7 +430,7 @@
             color: var(--light);
             transform: scale(1.1);
         }
-
+    
         .modal-header {
             padding: 20px 30px;
             border-bottom: 1px solid var(--border-color);
@@ -420,17 +438,17 @@
             align-items: center;
             justify-content: space-between;
         }
-
+    
         .modal-title {
             font-size: 1.8rem;
             margin: 0;
             color: var(--light);
         }
-
+    
         .modal-body {
             padding: 30px;
         }
-
+    
         /* Commands Modal Specific Styles */
         #commandsModalContent .command-category {
             background: rgba(30, 31, 34, 0.6);
@@ -440,7 +458,7 @@
             border: 1px solid var(--border-color);
             animation-duration: 0.8s;
         }
-
+    
         #commandsModalContent .category-title {
             text-align: center;
             margin-bottom: 15px;
@@ -450,12 +468,12 @@
             justify-content: center;
             gap: 10px;
         }
-
+    
         #commandsModalContent .command-list {
             list-style: none;
             padding-left: 0;
         }
-
+    
         #commandsModalContent .command-item {
             margin-bottom: 12px;
             padding: 12px 15px;
@@ -464,25 +482,25 @@
             display: flex;
             align-items: flex-start;
         }
-
+    
         #commandsModalContent .command-icon {
             margin-right: 12px;
             color: var(--primary);
             min-width: 20px;
         }
-
+    
         #commandsModalContent .command-name {
             font-weight: 600;
             color: var(--secondary);
         }
-
+    
         /* About Modal Specific Styles */
         #aboutModalContent .about-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
         }
-
+    
         #aboutModalContent .about-card {
             background: rgba(30, 31, 34, 0.6);
             border-radius: 12px;
@@ -490,36 +508,36 @@
             border: 1px solid var(--border-color);
             height: 100%;
         }
-
+    
         #aboutModalContent .about-icon {
             font-size: 2.5rem;
             text-align: center;
             margin-bottom: 1.5rem;
             color: var(--primary);
         }
-
+    
         #aboutModalContent .about-title {
             text-align: center;
             margin-bottom: 20px;
             font-size: 1.5rem;
         }
-
+    
         #aboutModalContent .about-content p {
             color: rgba(255, 255, 255, 0.8);
             line-height: 1.6;
             margin-bottom: 15px;
         }
-
+    
         #aboutModalContent .about-content ul {
             margin: 15px 0;
             padding-left: 20px;
             color: rgba(255, 255, 255, 0.8);
         }
-
+    
         #aboutModalContent .about-content li {
             margin-bottom: 8px;
         }
-
+    
         /* Version History Modal Specific Styles */
         #versionsModalContent .command-category {
             background: rgba(30, 31, 34, 0.6);
@@ -529,83 +547,98 @@
             border: 1px solid var(--border-color);
             animation-duration: 0.8s;
         }
-
+    
         #versionsModalContent .category-title {
             text-align: center;
             margin-bottom: 15px;
             font-size: 1.6rem;
         }
-
+    
         #versionsModalContent .command-list {
             list-style: none;
             padding-left: 0;
         }
-
+    
         #versionsModalContent .command-item {
             margin-bottom: 12px;
             padding: 12px 15px;
             background: rgba(255, 255, 255, 0.05);
             border-radius: 8px;
         }
-
+    
         #versionsModalContent .command-name {
             font-weight: 600;
             color: var(--secondary);
         }
-
+    
         #versionsModalContent .feature-icon {
             font-size: 2.5rem;
             text-align: center;
             margin-bottom: 1.5rem;
             color: var(--primary);
         }
-
+    
         /* Terms of Service Modal */
         #tosModalContent h3 {
             color: var(--primary);
             margin-top: 1.5rem;
             margin-bottom: 0.5rem;
         }
-
+    
         #tosModalContent p {
             margin-bottom: 1rem;
             line-height: 1.6;
         }
-
+    
         #tosModalContent ul {
             margin-bottom: 1rem;
             padding-left: 1.5rem;
         }
-
+    
         #tosModalContent li {
             margin-bottom: 0.5rem;
         }
-
+    
         /* Animations */
         @keyframes modalSlideIn {
             from {
                 transform: translateY(-50px);
                 opacity: 0;
             }
-
+    
             to {
                 transform: translateY(0);
                 opacity: 1;
             }
         }
-
+    
         @keyframes modalSlideOut {
             from {
                 transform: translateY(0);
                 opacity: 1;
             }
-
+    
             to {
                 transform: translateY(-50px);
                 opacity: 0;
             }
         }
-
+    
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 30px rgba(88, 101, 242, 0.3);
+            }
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 0 45px rgba(88, 101, 242, 0.6);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 30px rgba(88, 101, 242, 0.3);
+            }
+        }
+    
         /* Hamburger Menu */
         .hamburger {
             display: none;
@@ -621,6 +654,7 @@
             /* Add this line to center items */
             align-items: center;
         }
+    
         .hamburger span {
             width: 100%;
             height: 3px;
@@ -633,24 +667,23 @@
             /* Add display block for consistent behavior */
             display: block;
         }
-
+    
         /* --- Hamburger Animation for Symmetric X --- */
         /* Target spans inside the .hamburger button when it has the .active class */
         .hamburger.active span:nth-child(1) {
             transform: translateY(10px) rotate(45deg);
         }
-
+    
         .hamburger.active span:nth-child(2) {
             opacity: 0;
             transform: scaleX(0);
         }
-
+    
         .hamburger.active span:nth-child(3) {
             transform: translateY(-10px) rotate(-45deg);
         }
+    
         /* --- End Hamburger Animation --- */
-
-
         /* Full-screen Overlay Mobile Menu */
         .mobile-menu {
             position: fixed;
@@ -676,12 +709,12 @@
             align-items: center;
             /* Center items horizontally */
         }
-
+    
         .mobile-menu.active {
             opacity: 1;
             visibility: visible;
         }
-
+    
         .mobile-menu-links {
             list-style: none;
             padding: 0;
@@ -690,13 +723,13 @@
             max-width: 300px;
             /* Limit width for better readability */
         }
-
+    
         .mobile-menu-links li {
             margin-bottom: 25px;
             /* Increase spacing */
             width: 100%;
         }
-
+    
         .mobile-menu-links a {
             color: var(--light);
             font-size: 1.4rem;
@@ -717,7 +750,7 @@
             border: 1px solid var(--border-color);
             /* Add border */
         }
-
+    
         .mobile-menu-links a:hover {
             background-color: rgba(88, 101, 242, 0.2);
             /* Discord Blurple highlight */
@@ -725,9 +758,10 @@
             /* Change border on hover */
             transform: translateY(-3px);
             /* Slight lift on hover */
+            /* Added pulse animation */
+            animation: animate__pulse 0.5s ease-in-out;
         }
 
-        /* Add to Discord Button in Mobile Menu */
         .mobile-menu .btn-primary {
             width: 100%;
             max-width: 300px;
@@ -737,34 +771,32 @@
             justify-content: center;
             /* Center button text */
         }
-
+    
         /* --- END IMPROVED MOBILE MENU STYLES --- */
-
-
         /* Responsive Design */
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
             }
-
+    
             .hamburger {
                 display: flex;
             }
-
+    
             h1 {
                 font-size: 2.5rem;
             }
-
+    
             .tagline {
                 font-size: 1.2rem;
             }
-
+    
             .hero-logo {
                 width: 120px;
                 /* Slightly smaller on mobile */
                 height: 120px;
             }
-
+    
             .action-buttons {
                 flex-direction: column;
                 width: 100%;
@@ -772,176 +804,156 @@
                 /* Limit button width */
                 margin: 0 auto;
             }
-
+    
             .btn {
                 width: 100%;
             }
-
+    
             .section-title {
                 font-size: 2rem;
             }
-
-            /* Modal adjustments for mobile */
+    
             .modal-content {
                 width: 95%;
                 margin: 5% auto;
-                /* Center vertically with margin */
                 max-height: 90vh;
-                /* Use more vertical space */
             }
-
+    
             .modal-header,
             .modal-body {
                 padding: 15px 20px;
             }
-
+    
             .modal-title {
                 font-size: 1.5rem;
-                /* Smaller title on mobile */
             }
-
+    
             .footer-links {
                 flex-direction: column;
                 gap: 10px;
             }
-
+    
             .social-links {
                 flex-wrap: wrap;
             }
-
-            /* Mobile-specific modal content adjustments */
+    
             #commandsModalContent .command-category,
             #aboutModalContent .about-card,
             #versionsModalContent .command-category {
                 padding: 20px 15px;
-                /* Reduce padding */
             }
-
+    
             #commandsModalContent .category-title,
             #aboutModalContent .about-title,
             #versionsModalContent .category-title {
                 font-size: 1.4rem;
-                /* Smaller category titles */
             }
-
+    
             #commandsModalContent .command-item,
             #versionsModalContent .command-item {
                 padding: 10px 12px;
-                /* Reduce padding */
                 font-size: 0.95rem;
-                /* Slightly smaller text */
             }
-
+    
             #commandsModalContent .command-name,
             #versionsModalContent .command-name {
                 font-size: 1rem;
-                /* Ensure command names are readable */
             }
-
-            /* Version History Specific Mobile Adjustments */
+    
             #versionsModalContent .feature-icon {
                 font-size: 2rem;
-                /* Smaller icon */
             }
-
+    
             #versionsModalContent .feature-icon .fas {
                 font-size: 1.5em !important;
-                /* Override inline styles */
             }
-
-            /* About Modal Specific Mobile Adjustments */
+    
             #aboutModalContent .about-icon {
                 font-size: 2rem;
-                /* Smaller icon */
             }
-
+    
             #aboutModalContent .about-content p,
             #aboutModalContent .about-content li {
                 font-size: 0.95rem;
-                /* Slightly smaller text */
             }
-
+    
             #aboutModalContent .about-content h4 {
                 font-size: 1.1rem;
-                /* Smaller subheadings */
             }
-
-            /* TOS Modal Specific Mobile Adjustments */
+    
             #tosModalContent h3 {
                 font-size: 1.3rem;
-                /* Smaller headings */
             }
-
+    
             #tosModalContent p,
             #tosModalContent li {
                 font-size: 0.95rem;
-                /* Slightly smaller text */
             }
-
         }
-
+    
         @media (max-width: 480px) {
             .hero-title {
                 font-size: 2rem;
             }
-
+    
             .tagline {
                 font-size: 1rem;
             }
-
+    
             .section-title {
                 font-size: 1.8rem;
             }
-
+    
             .feature-title {
                 font-size: 1.3rem;
             }
-
+    
             .btn {
                 padding: 10px 15px;
                 font-size: 0.9rem;
             }
-
+    
             .logo {
                 width: 35px;
                 height: 35px;
             }
-
+    
             .logo-text {
                 font-size: 1.3rem;
             }
-
+    
             .hero-logo {
-                width: 100px;
-                height: 100px;
+                width: 150px;
+                height: 150px;
+                border-radius: 50%;
+                margin: 0 auto 20px;
+                border: 3px solid var(--primary);
+                box-shadow: 0 0 30px rgba(88, 101, 242, 0.3);
             }
-
+    
             .modal-title {
                 font-size: 1.3rem;
             }
-
+    
             .modal-header,
             .modal-body {
                 padding: 12px 15px;
             }
-
+    
             .section-subtitle {
                 font-size: 1rem;
             }
-
+    
             .feature-card {
                 padding: 20px 15px;
-                /* Reduce padding */
             }
-
+    
             .feature-icon {
                 font-size: 2.5rem;
-                /* Smaller icon */
             }
-
+    
             .feature-title {
                 font-size: 1.2rem;
-                /* Smaller title */
             }
         }
     </style>
@@ -976,21 +988,26 @@
             <li><a href="docs.html" id="mobileViewDocsBtn"><i class="fas fa-book"></i> Docs</a></li>
             <li><a href="#" id="mobileAboutBtnModal"><i class="fas fa-info-circle"></i> About</a></li>
             <li><a href="#" id="mobileViewVersionsBtnModal"><i class="fas fa-code-branch"></i> Versions</a></li>
+            <li><a href="#" id="tosModal"><i class="fas fa-file-contract"></i>Terms Of Service</a></li>
         </ul>
-        <!-- Add to Discord Button inside Mobile Menu -->
-        <a href="https://discord.com/oauth2/authorize?client_id=1364942161707274301" class="btn btn-primary"
-            target="_blank" id="mobileAddToDiscordBtn">
-            <i class="fas fa-plus-circle"></i> Add to Discord
-        </a>
     </div>
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <img src="https://cdn.discordapp.com/avatars/1364942161707274301/33874cbdbb4017155e77e9b45c3b0e0c.webp?size=1024"
-                alt="Ormi Bot Logo" class="hero-logo">
-            <h1 class="hero-title">Ormi Bot</h1>
-            <p class="tagline">Enhance your Discord server with powerful tools and features</p>
-            <div class="action-buttons">
+            <img loading="lazy"
+                src="https://cdn.discordapp.com/avatars/1364942161707274301/33874cbdbb4017155e77e9b45c3b0e0c.webp?size=1024"
+                alt="Ormi Bot Logo" class="hero-logo animate__animated animate__pulse animate__infinite">
+            <h1 class="hero-title ">Ormi Bot</h1>
+            <p class="tagline ">Enhance your Discord server with powerful tools and
+                features</p>
+            <div class="action-buttons ">
+                <!-- Added new buttons here -->
+                <a href="#" class="btn btn-secondary" id="commandsBtnHero">
+                    <i class="fas fa-terminal"></i> Commands
+                </a>
+                <a href="#" class="btn btn-secondary" id="aboutBtnHero">
+                    <i class="fas fa-info-circle"></i> About
+                </a>
                 <a href="https://discord.com/oauth2/authorize?client_id=1364942161707274301" class="btn btn-primary"
                     target="_blank">
                     <i class="fas fa-plus-circle"></i> Add to Discord
@@ -1009,7 +1026,7 @@
                         <i class="fas fa-gavel"></i>
                     </div>
                     <h3 class="feature-title">Advanced Moderation</h3>
-                    <p>Keep your server safe with powerful moderation tools including auto-moderation, logging, and
+                    <p>Keep your server safe with powerful moderation tools including logging, warn system, and
                         more.</p>
                 </div>
                 <div class="feature-card animate__animated animate__fadeIn animate-delay-1">
@@ -1024,7 +1041,7 @@
                         <i class="fas fa-cog"></i>
                     </div>
                     <h3 class="feature-title">Customization</h3>
-                    <p>Personalize your bot experience with customizable prefixes, roles, and responses.</p>
+                    <p>Personalize your bot experience with customizable prefixes, roles, and welcome message.</p>
                 </div>
             </div>
         </div>
@@ -1040,6 +1057,7 @@
             <p class="copyright">© 2025 Ormi Bot. All rights reserved.</p>
         </div>
     </footer>
+    <!-- Modals (Commands, About, Versions, TOS) remain unchanged -->
     <!-- Commands Modal -->
     <div id="commandsModal" class="modal">
         <div class="modal-content">
@@ -1558,50 +1576,168 @@
                 <button class="close-modal" aria-label="Close terms of service modal">&times;</button>
             </div>
             <div class="modal-body" id="tosModalContent">
-                <h3>1. Acceptance of Terms</h3>
-                <p>By inviting Ormi Bot to your Discord server or using its features, you agree to be bound by these
-                    Terms of Service. If you do not agree to these terms, please do not use the bot.</p>
-                <h3>2. Description of Service</h3>
-                <p>Ormi Bot is a Discord bot that provides various features including moderation, entertainment, utility
-                    commands, and more. The service is provided free of charge.</p>
-                <h3>3. User Responsibilities</h3>
-                <ul>
-                    <li>You are responsible for your use of the bot and any consequences thereof.</li>
-                    <li>You must comply with Discord's Terms of Service and Community Guidelines.</li>
-                    <li>You must not use the bot for any illegal or unauthorized purposes.</li>
-                    <li>You must not attempt to disrupt or interfere with the bot's functionality.</li>
-                </ul>
-                <h3>4. Prohibited Uses</h3>
-                <p>Users are prohibited from:</p>
-                <ul>
-                    <li>Attempting to hack or exploit the bot.</li>
-                    <li>Using the bot to spam or harass other users.</li>
-                    <li>Distributing content that violates Discord's policies.</li>
-                    <li>Using the bot in a manner that violates any applicable laws.</li>
-                </ul>
-                <h3>5. Data Collection and Privacy</h3>
-                <p>We collect and store data as necessary for the bot's functionality. This may include user IDs, server
-                    IDs, and command usage data. For detailed information about our data practices, please review our
-                    Privacy Policy.</p>
-                <h3>6. Modifications to Service</h3>
-                <p>We reserve the right to modify or discontinue the bot at any time without notice. We may also update
-                    these Terms of Service from time to time.</p>
-                <h3>7. Disclaimer of Warranties</h3>
-                <p>The bot is provided "as is" without any warranties of any kind. We do not guarantee that the bot will
-                    be available at all times or that it will function without errors.</p>
-                <h3>8. Limitation of Liability</h3>
-                <p>In no event shall the developers be liable for any indirect, incidental, special, consequential or
-                    punitive damages resulting from your use of the bot.</p>
-                <h3>9. Changes to Terms</h3>
-                <p>We reserve the right to modify these terms at any time. Continued use of the bot after such changes
-                    constitutes your acceptance of the new terms.</p>
-                <h3>10. Contact Information</h3>
-                <p>If you have any questions about these Terms of Service, please contact us through our support server
-                    or via Discord: kmmiio99o.dev</p>
-                <p style="margin-top: 20px; font-style: italic;">Last Updated: December 2024</p>
-            </div>
-        </div>
-    </div>
+                <div class="terms-content">
+                    <div class="terms-section">
+                        <h3>
+                            <i class="fas fa-check-circle"></i>
+                            1. Definitions and Acceptance
+                        </h3>
+                        <p>
+                            These Terms of Service ("Agreement") constitute a
+                            legally binding agreement between you ("User") and
+                            the developers ("We", "Us") of Ormi Bot ("Service").
+                            By accessing or using the Service, you acknowledge
+                            that you have read, understood, and agree to be
+                            bound by all terms contained herein.
+                        </p>
+                    </div>
+                
+                    <div class="terms-section">
+                        <h3>
+                            <i class="fas fa-gavel"></i>
+                            2. License Grant and Restrictions
+                        </h3>
+                        <p>
+                            Subject to compliance with this Agreement, we grant
+                            you a limited, non-exclusive, non-transferable,
+                            revocable license to use the Service for its
+                            intended purposes within Discord platform. This
+                            license does not include:
+                        </p>
+                        <ul>
+                            <li>
+                                Right to modify, reverse engineer, or create
+                                derivative works
+                            </li>
+                            <li>
+                                Commercial use without express written
+                                permission
+                            </li>
+                            <li>
+                                Distribution of the Service to third parties
+                            </li>
+                        </ul>
+                    </div>
+                
+                    <div class="terms-section">
+                        <h3>
+                            <i class="fas fa-ban"></i>
+                            3. Prohibited Conduct
+                        </h3>
+                        <p>
+                            You expressly agree not to engage in any of the
+                            following prohibited activities:
+                        </p>
+                        <ul>
+                            <li>
+                                Violate Discord's Terms of Service or Community
+                                Guidelines
+                            </li>
+                            <li>
+                                Use automated systems (bots, scripts, macros) to
+                                interact with the Service
+                            </li>
+                            <li>
+                                Exploit bugs or vulnerabilities for unauthorized
+                                access
+                            </li>
+                            <li>
+                                Harass, threaten, or discriminate against
+                                individuals or groups
+                            </li>
+                            <li>
+                                Distribute illegal, harmful, or NSFW content
+                            </li>
+                            <li>Impersonate the Service or its developers</li>
+                        </ul>
+                    </div>
+                
+                    <div class="terms-section">
+                        <h3>
+                            <i class="fas fa-shield-alt"></i>
+                            4. Data Protection and Privacy
+                        </h3>
+                        <p>
+                            The Service collects and processes the following
+                            data:
+                        </p>
+                        <ul>
+                            <li>Server IDs for configuration storage</li>
+                            <li>User IDs for command functionality</li>
+                            <li>
+                                Temporary message content for specific features
+                            </li>
+                        </ul>
+                        <p>
+                            All data is processed in accordance with our Privacy
+                            Policy and Discord's API Terms. We implement
+                            industry-standard security measures to protect your
+                            information.
+                        </p>
+                    </div>
+                
+                    <div class="terms-section">
+                        <h3>
+                            <i class="fas fa-exclamation-triangle"></i>
+                            5. Disclaimers and Limitations
+                        </h3>
+                        <p>
+                            THE SERVICE IS PROVIDED "AS IS" WITHOUT WARRANTIES
+                            OF ANY KIND. WE DISCLAIM ALL IMPLIED WARRANTIES
+                            INCLUDING MERCHANTABILITY, FITNESS FOR PARTICULAR
+                            PURPOSE, AND NON-INFRINGEMENT.
+                        </p>
+                        <p>
+                            In no event shall we be liable for any indirect,
+                            incidental, or consequential damages arising from
+                            use of the Service.
+                        </p>
+                    </div>
+                
+                    <div class="terms-section">
+                        <h3>
+                            <i class="fas fa-sync-alt"></i>
+                            6. Source Code Availability
+                        </h3>
+                        <p>
+                            Ormi Bot is an open-source project. The source code
+                            is proprietary and available for public viewing,
+                            modification, or constributing.
+                        </p>
+                    </div>
+                
+                    <div class="terms-section">
+                        <h3>
+                            <i class="fas fa-balance-scale"></i>
+                            7. Modifications and Termination
+                        </h3>
+                        <p>We reserve the right to:</p>
+                        <ul>
+                            <li>Modify these terms at our discretion</li>
+                            <li>
+                                Discontinue the Service with reasonable notice
+                            </li>
+                            <li>
+                                Terminate access for violations of this
+                                Agreement
+                            </li>
+                        </ul>
+                    </div>
+                
+                    <div class="terms-section">
+                        <h3>
+                            <i class="fas fa-gavel"></i>
+                            8. Governing Law
+                        </h3>
+                        <p>
+                            This Agreement shall be governed by and construed in
+                            accordance with the laws of [Your Country/State],
+                            without regard to its conflict of law provisions.
+                        </p>
+                    </div>
+                </div>
+                </div>
+                </div>
     <!-- End of Terms of Service Modal -->
     <script>
         // - MODAL FUNCTIONALITY -
@@ -1610,109 +1746,218 @@
         const aboutModal = document.getElementById('aboutModal');
         const versionsModal = document.getElementById('versionsModal');
         const tosModal = document.getElementById('tosModal');
+
         // Buttons to open modals (desktop)
         const viewCommandsBtnsModal = document.querySelectorAll('#viewCommandsBtnModal');
         const viewAboutBtnModal = document.getElementById('aboutBtnModal');
         const viewVersionsBtnModal = document.getElementById('viewVersionsBtnModal');
         const tosBtnModal = document.getElementById('tosBtnModal');
-        // Buttons to open modals (mobile)
+
+        // Buttons to open modals (mobile - original links)
         const mobileViewCommandsBtnModal = document.getElementById('mobileViewCommandsBtnModal');
         const mobileAboutBtnModal = document.getElementById('mobileAboutBtnModal');
         const mobileViewVersionsBtnModal = document.getElementById('mobileViewVersionsBtnModal');
+
+        // Buttons to open modals (mobile - NEW hero buttons section)
+        const mobileCommandsBtnHero = document.getElementById('mobileCommandsBtnHero');
+        const mobileAboutBtnHero = document.getElementById('mobileAboutBtnHero');
+
         // Close buttons (X)
         const closeButtons = document.querySelectorAll('.close-modal');
+
         // Mobile menu elements
         const hamburger = document.getElementById('hamburger');
         const mobileMenu = document.getElementById('mobileMenu');
-        // Function to open a modal
+
+        // --- Animation Constants ---
+        const MODAL_ANIMATION_DURATION = 400; // Match CSS animation duration (0.4s)
+
+        // --- Function to open a modal ---
         function openModal(modalElement) {
             if (modalElement) {
-                modalElement.classList.add('active');
-                document.body.style.overflow = 'hidden'; // Prevent background scroll
-                mobileMenu.classList.remove('active'); // Close mobile menu if open
-                hamburger.classList.remove('active'); // Reset hamburger icon
-            }
-        }
-        // Function to close a modal
-        function closeModal(modalElement) {
-            if (modalElement) {
-                modalElement.classList.remove('active');
-                // Use a small delay to allow the animation to finish before enabling scroll
-                setTimeout(() => {
-                    document.body.style.overflow = 'auto'; // Re-enable background scroll
-                }, 400); // Match CSS transition duration
-            }
-        }
-        // Toggle mobile menu
-        hamburger.addEventListener('click', () => {
-            mobileMenu.classList.toggle('active');
-            hamburger.classList.toggle('active'); // Animate hamburger icon
-        });
+                // Ensure any previous closing animation classes are removed
+                modalElement.classList.remove('closing');
 
-        // Close mobile menu when clicking outside
+                // Add active class to display the modal
+                modalElement.classList.add('active');
+
+                // Prevent background scroll
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        // --- Function to close a modal WITH animation ---
+        function closeModal(modalElement) {
+            if (modalElement && modalElement.classList.contains('active')) {
+                // Add a class to potentially trigger specific closing styles if needed
+                modalElement.classList.add('closing');
+
+                // Trigger the slide-out animation by adding the class
+                const modalContent = modalElement.querySelector('.modal-content');
+                if (modalContent) {
+                    // Remove any potential incoming animation class
+                    modalContent.classList.remove('animate__slideInDown'); // Or whatever the open animation class was
+                    // Add the closing animation class
+                    // Assuming you have a corresponding animate.css class like animate__slideOutUp
+                    // If not, you can add a custom class or use the existing keyframes differently
+                    // Let's use the custom keyframes defined in your CSS for closing
+
+                    // Remove the incoming animation class if it exists
+                    if (modalContent.style.animationName === 'modalSlideIn') {
+                        modalContent.style.animation = 'none';
+                    }
+                    // Apply the closing animation using the existing keyframes
+                    modalContent.style.animation = `modalSlideOut ${MODAL_ANIMATION_DURATION}ms ease-out forwards`;
+
+
+                    // Wait for the animation to finish before hiding the modal
+                    setTimeout(() => {
+                        modalElement.classList.remove('active');
+                        modalElement.classList.remove('closing');
+                        // Re-enable background scroll
+                        document.body.style.overflow = 'auto';
+                        // Reset animation style to allow re-opening animation
+                        modalContent.style.animation = '';
+                    }, MODAL_ANIMATION_DURATION);
+                } else {
+                    // Fallback if .modal-content is not found
+                    modalElement.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            }
+        }
+
+
+        // --- Toggle mobile menu ---
+        if (hamburger) {
+            hamburger.addEventListener('click', () => {
+                if (mobileMenu) {
+                    mobileMenu.classList.toggle('active');
+                    hamburger.classList.toggle('active'); // Animate hamburger icon
+                }
+            });
+        }
+
+        // --- Close mobile menu when clicking outside ---
         document.addEventListener('click', (event) => {
             // Check if click is outside the menu and hamburger, and menu is active
-            if (!mobileMenu.contains(event.target) && !hamburger.contains(event.target) && mobileMenu.classList.contains('active')) {
+            if (mobileMenu && hamburger &&
+                !mobileMenu.contains(event.target) &&
+                !hamburger.contains(event.target) &&
+                mobileMenu.classList.contains('active')) {
                 mobileMenu.classList.remove('active');
-                hamburger.classList.remove('active'); // Reset hamburger icon
+                if (hamburger) hamburger.classList.remove('active'); // Reset hamburger icon
             }
         });
 
-        // Close mobile menu if a link inside it is clicked
-        const mobileMenuLinks = document.querySelectorAll('.mobile-menu-links a');
-        mobileMenuLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.remove('active');
-                hamburger.classList.remove('active'); // Reset hamburger icon
+        // --- Close mobile menu or modal if a link inside the mobile menu is clicked ---
+        // Use event delegation for potentially better performance
+        if (mobileMenu) {
+            mobileMenu.addEventListener('click', (e) => {
+                if (e.target.tagName === 'A' && e.target.closest('.mobile-menu-links')) {
+                    // It's a link inside the mobile menu links list
+                    // Close the menu regardless of whether it opens a modal or is a direct link
+                    mobileMenu.classList.remove('active');
+                    if (hamburger) hamburger.classList.remove('active');
+                    // Note: Modal opening is handled by its specific button listeners below
+                    // Prevent default only if it's a modal link handled by JS
+                    const linkId = e.target.id;
+                    if (linkId && (linkId.includes('Modal') || linkId.includes('BtnHero'))) {
+                        e.preventDefault(); // Prevent default for JS-handled modal links
+                    }
+                }
             });
-        });
+        }
 
-        // Event Listeners for Opening Modals (Desktop)
-        viewCommandsBtnsModal.forEach(btn => {
-            btn.addEventListener('click', function (e) {
+
+        // --- Event Listeners for Opening Modals ---
+
+        // --- Desktop ---
+        if (viewCommandsBtnsModal) {
+            viewCommandsBtnsModal.forEach(btn => {
+                btn.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    openModal(commandsModal);
+                });
+            });
+        }
+        if (viewAboutBtnModal) {
+            viewAboutBtnModal.addEventListener('click', function (e) {
+                e.preventDefault();
+                openModal(aboutModal);
+            });
+        }
+        if (viewVersionsBtnModal) {
+            viewVersionsBtnModal.addEventListener('click', function (e) {
+                e.preventDefault();
+                openModal(versionsModal);
+            });
+        }
+        if (tosBtnModal) {
+            tosBtnModal.addEventListener('click', function (e) {
+                e.preventDefault();
+                openModal(tosModal);
+            });
+        }
+
+        // --- Mobile (Original Menu Links) ---
+        if (mobileViewCommandsBtnModal) {
+            mobileViewCommandsBtnModal.addEventListener('click', function (e) {
                 e.preventDefault();
                 openModal(commandsModal);
             });
-        });
-        viewAboutBtnModal.addEventListener('click', function (e) {
-            e.preventDefault();
-            openModal(aboutModal);
-        });
-        viewVersionsBtnModal.addEventListener('click', function (e) {
-            e.preventDefault();
-            openModal(versionsModal);
-        });
-        tosBtnModal.addEventListener('click', function (e) {
-            e.preventDefault();
-            openModal(tosModal);
-        });
-        // Event Listeners for Opening Modals (Mobile)
-        mobileViewCommandsBtnModal.addEventListener('click', function (e) {
-            e.preventDefault();
-            openModal(commandsModal);
-        });
-        mobileAboutBtnModal.addEventListener('click', function (e) {
-            e.preventDefault();
-            openModal(aboutModal);
-        });
-        mobileViewVersionsBtnModal.addEventListener('click', function (e) {
-            e.preventDefault();
-            openModal(versionsModal);
-        });
-        // Event Listeners for Closing Modals (X button)
-        closeButtons.forEach(button => {
-            button.addEventListener('click', function () {
-                // Find the closest parent modal
-                const modal = this.closest('.modal');
-                closeModal(modal);
+        }
+        if (mobileAboutBtnModal) {
+            mobileAboutBtnModal.addEventListener('click', function (e) {
+                e.preventDefault();
+                openModal(aboutModal);
             });
-        });
-        // Close modal if user clicks outside the modal content
+        }
+        if (mobileViewVersionsBtnModal) {
+            mobileViewVersionsBtnModal.addEventListener('click', function (e) {
+                e.preventDefault();
+                openModal(versionsModal);
+            });
+        }
+
+        // --- Mobile (NEW Hero Buttons in Menu) ---
+        if (mobileCommandsBtnHero) {
+            mobileCommandsBtnHero.addEventListener('click', function (e) {
+                e.preventDefault();
+                openModal(commandsModal);
+            });
+        }
+        if (mobileAboutBtnHero) {
+            mobileAboutBtnHero.addEventListener('click', function (e) {
+                e.preventDefault();
+                openModal(aboutModal);
+            });
+        }
+
+        // --- Event Listeners for Closing Modals ---
+        // --- (X button) ---
+        if (closeButtons && closeButtons.length > 0) {
+            closeButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    // Find the closest parent modal
+                    const modal = this.closest('.modal');
+                    if (modal) {
+                        closeModal(modal);
+                    }
+                });
+            });
+        } else {
+            console.warn("No close buttons found with class '.close-modal'");
+        }
+
+        // --- Clicking outside the modal content ---
         window.addEventListener('click', function (event) {
-            if (event.target.classList.contains('modal')) {
+            // Check if the clicked element is the modal background itself (and it's active)
+            if (event.target && event.target.classList.contains('modal') && event.target.classList.contains('active')) {
                 closeModal(event.target);
             }
         });
+
         // - END MODAL FUNCTIONALITY -
 
         // - Discord Status Update using Lanyard API -
@@ -1723,6 +1968,7 @@
             dnd: "#ed4245",
             offline: "#747f8d"
         };
+
         async function updateDiscordStatus() {
             try {
                 const response = await fetch(`https://api.lanyard.rest/v1/users/${DISCORD_ID}`);
@@ -1757,6 +2003,7 @@
                 }
             }
         }
+
         // Initial call and interval
         updateDiscordStatus();
         setInterval(updateDiscordStatus, 30000); // Update every 30 seconds
