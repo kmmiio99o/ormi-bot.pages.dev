@@ -11,7 +11,7 @@
     <meta property="og:description" content="Ormi Bot is a versatile Discord bot with many features!" />
     <meta property="og:image" content="https://i.imgur.com/WxQ9ZB1.png" />
     <meta property="og:url" content="https://ormi-bot.pages.dev" />
-    <meta property="og:type" content="website" />\
+    <meta property="og:type" content="website" />
     <link rel="stylesheet" href="src/style.css">
 </head>
 
@@ -63,7 +63,7 @@
                     <i class="fas fa-file-contract"></i>
                     Terms of Service
                 </a>
-                <a href="https://discord.com/oauth2/authorize?client_id=1364942161707274301" class="btn btn-primary"
+                <a href="https://discord.com/oauth2/authorize?client_id=1364942161707274301&permissions=1374859365590&integration_type=0&scope=bot+applications.commands" class="btn btn-primary"
                     target="_blank">
                     <i class="fab fa-discord"></i>
                     Add to Discord
@@ -118,34 +118,51 @@
             </div>
             <div class="modal-body" id="commandsModalContent">
                 <div class="command-category">
+                    <h3 class="category-title"><i class="fas fa-info-circle"></i> Information</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+                        <div>
+                            <ul style="margin: 0; padding-left: 20px">
+                                <li style="margin-bottom: 6px"><span class="command-name">/userinfo [member]</span> - Shows detailed information about a user</li>
+                                <li style="margin-bottom: 6px"><span class="command-name">/serverinfo</span> - Displays comprehensive server statistics and details</li>
+                                <li style="margin-bottom: 6px"><span class="command-name">/ping</span> - Shows bot latency and connection quality with animations</li>
+                                <li style="margin-bottom: 6px"><span class="command-name">/uptime</span> - Shows how long the bot has been online with cute formatting</li>
+                                <li style="margin-bottom: 6px"><span class="command-name">/avatar [member]</span> - Shows user avatar with direct link</li>
+                                <li style="margin-bottom: 6px"><span class="command-name">/roleinfo &lt;role&gt;</span> - Shows detailed information about a role</li>
+                                <li style="margin-bottom: 6px"><span class="command-name">/emojiinfo &lt;emoji&gt;</span> - Shows emoji information (ID, creation date)</li>
+                                <li style="margin-bottom: 6px"><span class="command-name">/recentjoins</span> - Shows recently joined members (last 10)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="command-category">
                     <h3 class="category-title"><i class="fas fa-user-shield"></i> Moderation</h3>
                     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
                         <div>
-                            <h4 style="color: var(--light); margin-bottom: 10px; font-size: 1.2rem;">User Management
-                            </h4>
                             <ul style="margin: 0; padding-left: 20px">
-                                <li style="margin-bottom: 6px"><span class="command-name">/kick <user> [reason]</span> -
-                                    Kicks user</li>
-                                <li style="margin-bottom: 6px"><span class="command-name">/ban <user> [reason]</span> -
-                                    Bans user</li>
-                                <li style="margin-bottom: 6px"><span class="command-name">/unban <user_id></span> -
-                                    Unbans user</li>
-                                <li style="margin-bottom: 6px"><span class="command-name">/timeout <user>
-                                            <duration> [reason]</span> - Times out user</li>
-                                <li style="margin-bottom: 6px"><span class="command-name">/untimeout <user></span> -
-                                    Removes timeout from user</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h4 style="color: var(--light); margin-bottom: 10px; font-size: 1.2rem;">Channel Management
-                            </h4>
-                            <ul style="margin: 0; padding-left: 20px">
-                                <li style="margin-bottom: 6px"><span class="command-name">/lock</span> - Locks channel
-                                </li>
-                                <li style="margin-bottom: 6px"><span class="command-name">/unlock</span> - Unlocks
-                                    channel</li>
-                                <li style="margin-bottom: 6px"><span class="command-name">/clear [amount=5]</span> -
-                                    Deletes messages</li>
+                                <li style="margin-bottom: 6px"><span class="command-name">/kick &lt;member&gt; [reason]</span> - Kicks a user from the server with confirmation</li>
+                                <li style="margin-bottom: 6px"><span class="command-name">/ban &lt;user_id&gt; [duration] [reason]</span> - Bans a user from the server permanently or temporarily</li>
+                                <li style="margin-bottom: 6px"><span class="command-name">/unban &lt;user_id&gt;</span> - Unbans a previously banned user</li>
+                                <li style="margin-bottom: 6px"><span class="command-name">/softban &lt;member&gt; [days] [reason]</span> - Bans and immediately unbans to delete messages</li>
+                                <li style="margin-bottom: 6px"><span class="command-name">/mute &lt;member&gt; [duration] [reason]</span> - Mutes a user for a specified time with timer</li>
+                                <li style="margin-bottom: 6px"><span class="command-name">/unmute &lt;member&gt;</span> - Unmutes a user with confirmation</li>
+                                <li style="margin-bottom: 6px"><span class="command-name">/warn &lt;member&gt; [reason]</span> - Gives a warning to a user with case ID</li>
+                                <li style="margin-bottom: 6px"><span class="command-name">/warnings &lt;member&gt;</span> - Shows a user's warnings with detailed info</li>
+                                <li style="margin-bottom: 6px"><span class="command-name">/clearwarns &lt;member&gt;</span> - Clears a user's warnings with confirmation</li>
+                                <li style="margin-bottom: 6px"><span class="command-name">/delwarn &lt;case_id&gt;</span> - Deletes a specific warning with verification</li>
+                                <li style="margin-bottom: 6px"><span class="command-name">/editcase &lt;case_id&gt; &lt;new_reason&gt;</span> - Edits the reason for a specific warning</li>
+                                <li style="margin-bottom: 6px"><span class="command-name">/case &lt;case_id&gt;</span> - Shows details about a specific warning</li>
+                                <li style="margin-bottom: 6px"><span class="command-name">/purge &lt;amount&gt; [user]</span> - Deletes messages (1-100) with user filter</li>
+                                <li style="margin-bottom: 6px"><span class="command-name">/slowmode &lt;seconds&gt;</span> - Sets slowmode for the channel (0-21600)</li>
+                                <li style="margin-bottom: 6px"><span class="command-name">/lock [reason]</span> - Locks the channel to prevent sending messages</li>
+                                <li style="margin-bottom: 6px"><span class="command-name">/unlock [reason]</span> - Unlocks a previously locked channel</li>
+                                <li style="margin-bottom: 6px"><span class="command-name">/nick &lt;member&gt; [nickname]</span> - Changes a user's nickname with preview</li>
+                                <li style="margin-bottom: 6px"><span class="command-name">/nuke</span> - Deletes all messages in the channel with safety check</li>
+                                <li style="margin-bottom: 6px"><span class="command-name">/fg [channel]</span> - Toggles file and GIF sending permissions for a channel</li>
+                                <li style="margin-bottom: 6px"><span class="command-name">/voicekick &lt;member&gt; [reason]</span> - Kicks a user from voice channel</li>
+                                <li style="margin-bottom: 6px"><span class="command-name">/voiceban &lt;member&gt; [reason]</span> - Prevents user from joining voice channels</li>
+                                <li style="margin-bottom: 6px"><span class="command-name">/voiceunban &lt;member&gt; [reason]</span> - Allows user to join voice channels again</li>
+                                <li style="margin-bottom: 6px"><span class="command-name">/massban &lt;ids&gt; [reason]</span> - Bans multiple users at once</li>
+                                <li style="margin-bottom: 6px"><span class="command-name">/hierarchy</span> - Shows server power hierarchy with visual ranking</li>
                             </ul>
                         </div>
                     </div>
@@ -155,22 +172,36 @@
                     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
                         <div>
                             <ul style="margin: 0; padding-left: 20px">
-                                <li style="margin-bottom: 6px"><span class="command-name">/meme</span> - Get a random
-                                    meme</li>
-                                <li style="margin-bottom: 6px"><span class="command-name">/joke</span> - Get a random
-                                    joke</li>
-                                <li style="margin-bottom: 6px"><span class="command-name">/coinflip</span> - Flip a coin
-                                </li>
-                                <li style="margin-bottom: 6px"><span class="command-name">/roll [sides=6]</span> - Roll
-                                    a dice</li>
-                                <li style="margin-bottom: 6px"><span class="command-name">/8ball <question></span> - Ask
-                                    the magic 8ball</li>
-                                <li style="margin-bottom: 6px"><span class="command-name">/ship <user1>
-                                            <user2></span> - Ship two users together</li>
-                                <li style="margin-bottom: 6px"><span class="command-name">/hug <member></span> - Send
-                                    virtual hug</li>
-                                <li style="margin-bottom: 6px"><span class="command-name">/slap <member></span> -
-                                    Virtual slap action</li>
+                                <li style="margin-bottom: 6px"><span class="command-name">/rate &lt;thing&gt;</span> - Rates something 1-10 with animated stars ✨</li>
+                                <li style="margin-bottom: 6px"><span class="command-name">/rps &lt;rock|paper|scissors&gt;</span> - Play rock-paper-scissors with cute animations</li>
+                                <li style="margin-bottom: 6px"><span class="command-name">/8ball &lt;question&gt;</span> - Ask the magic 8-ball a question with mystical responses</li>
+                                <li style="margin-bottom: 6px"><span class="command-name">/ascii &lt;text&gt;</span> - Converts text to beautiful ASCII art</li>
+                                <li style="margin-bottom: 6px"><span class="command-name">/random [min] [max]</span> - Generates random number with cute visualization</li>
+                                <li style="margin-bottom: 6px"><span class="command-name">/ship &lt;user1&gt; &lt;user2&gt;</span> - Ship two users together with compatibility percentage</li>
+                                <li style="margin-bottom: 6px"><span class="command-name">/howgay &lt;user&gt;</span> - Measures gay percentage with fun meter animation</li>
+                                <li style="margin-bottom: 6px"><span class="command-name">/simprate &lt;user&gt;</span> - Checks how much a user simps with cute rating</li>
+                                <li style="margin-bottom: 6px"><span class="command-name">/meme</span> - Get a random meme</li>
+                                <li style="margin-bottom: 6px"><span class="command-name">/joke</span> - Get a random joke</li>
+                                <li style="margin-bottom: 6px"><span class="command-name">/coinflip</span> - Flip a coin</li>
+                                <li style="margin-bottom: 6px"><span class="command-name">/roll [sides=6]</span> - Roll a dice</li>
+                                <li style="margin-bottom: 6px"><span class="command-name">/hug &lt;member&gt;</span> - Send virtual hug</li>
+                                <li style="margin-bottom: 6px"><span class="command-name">/slap &lt;member&gt;</span> - Virtual slap action</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="command-category">
+                    <h3 class="category-title"><i class="fas fa-cog"></i> Configuration</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+                        <div>
+                            <ul style="margin: 0; padding-left: 20px">
+                                <li style="margin-bottom: 6px"><span class="command-name">/prefix &lt;prefix&gt;</span> - Changes the bot prefix for this server</li>
+                                <li style="margin-bottom: 6px"><span class="command-name">/slc &lt;channel&gt;</span> - Sets log channel for moderation actions</li>
+                                <li style="margin-bottom: 6px"><span class="command-name">/sdlc &lt;channel&gt;</span> - Sets deleted messages log channel</li>
+                                <li style="margin-bottom: 6px"><span class="command-name">/swc &lt;channel&gt;</span> - Sets welcome channel for new members</li>
+                                <li style="margin-bottom: 6px"><span class="command-name">/swm &lt;message&gt;</span> - Sets welcome message for new members</li>
+                                <li style="margin-bottom: 6px"><span class="command-name">/autorole &lt;role&gt;</span> - Sets role for new members automatically</li>
+                                <li style="margin-bottom: 6px"><span class="command-name">/color &lt;hex&gt;</span> - Shows color sample from HEX code</li>
                             </ul>
                         </div>
                     </div>
@@ -180,16 +211,10 @@
                     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
                         <div>
                             <ul style="margin: 0; padding-left: 20px">
-                                <li style="margin-bottom: 6px"><span class="command-name">/ping</span> - Check bot
-                                    latency</li>
-                                <li style="margin-bottom: 6px"><span class="command-name">/serverinfo</span> - Get
-                                    server information</li>
-                                <li style="margin-bottom: 6px"><span class="command-name">/userinfo [user]</span> - Get
-                                    user information</li>
-                                <li style="margin-bottom: 6px"><span class="command-name">/avatar [user]</span> - Get
-                                    user avatar</li>
-                                <li style="margin-bottom: 6px"><span class="command-name">/help</span> - Show this help
-                                    message</li>
+                                <li style="margin-bottom: 6px"><span class="command-name">/afk [reason]</span> - Sets your AFK status. The bot will notify users who mention you.</li>
+                                <li style="margin-bottom: 6px"><span class="command-name">/snipe</span> - Shows the last deleted message in the current channel.</li>
+                                <li style="margin-bottom: 6px"><span class="command-name">/invite</span> - Generates an invite link for the bot.</li>
+                                <li style="margin-bottom: 6px"><span class="command-name">/vote &lt;question&gt; &lt;options&gt;</span> - Creates a poll. Separate options with | (e.g., Option1 | Option2).</li>
                             </ul>
                         </div>
                     </div>
@@ -232,8 +257,8 @@
                                         style="margin-right: 8px; color: var(--primary);"></i>Technical Info
                                 </h4>
                                 <ul style="margin: 0; padding-left: 20px; color: rgba(255, 255, 255, 0.8);">
-                                    <li style="margin-bottom: 8px"><strong>Version:</strong> V10.0.0 Experimental Beta -
-                                        Desert Mirage <span style="color: #faa61a">(Beta)</span></li>
+                                    <li style="margin-bottom: 8px"><strong>Version:</strong> V11.1.0 Beta -
+                                        Midnight Starlight <span style="color: #faa61a">(Beta)</span></li>
                                     <li style="margin-bottom: 8px"><strong>Library:</strong> discord.js</li>
                                     <li style="margin-bottom: 8px"><strong>Hosting:</strong> <span
                                             style="color: #faa61a">Bot is fully operational and ready for use.</span>
@@ -303,7 +328,44 @@
             </div>
             <div class="modal-body" id="versionsModalContent">
                 <div style="margin-top: 20px">
-                    <h2 class="section-title" style="margin-top: 30px">Version History</h2>
+                    <div class="command-category animate__animated animate__fadeIn"
+                        style="background: rgba(114, 137, 218, 0.1); border: 2px solid #7289da;">
+                        <div class="feature-icon" style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: #7289da;">
+                            <i class="fas fa-moon" style="font-size: 1.8em; margin-right: -0.5em; color: #99aab5;"></i>
+                            <i class="fas fa-star"
+                                style="font-size: 0.8em; position: relative; left: -0.7em; top: 0.6em; color: #f8c300;"></i>
+                            <i class="fas fa-code"
+                                style="font-size: 0.8em; position: relative; left: 0.5em; top: 0.3em; color: #7289da;"></i>
+                        </div>
+                        <h3 class="category-title" style="text-align: center; color: #7289da;">V11.1.1 - Midnight Starlight</h3>
+                        <p style="text-align: center; color: #99aab5; font-size: 0.9rem; margin: -0.5rem 0 0.5rem 0; font-weight: 600;">
+                            Hotfix <span style="color: #faa61a">(Beta)</span></p>
+                        <ul class="command-list">
+                            <li class="command-item"><strong>Improved /help command appearance</strong> — redesigned interface for better
+                                readability and user experience</li>
+                        </ul>
+                    </div>
+                        <div class="command-category animate__animated animate__fadeIn"
+                        style="background: rgba(114, 137, 218, 0.1); border: 2px solid #7289da;">
+                        <div class="feature-icon"
+                            style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: #7289da;">
+                            <i class="fas fa-moon" style="font-size: 1.8em; margin-right: -0.5em; color: #99aab5;"></i>
+                            <i class="fas fa-star"
+                                style="font-size: 0.8em; position: relative; left: -0.7em; top: 0.6em; color: #f8c300;"></i>
+                            <i class="fas fa-code"
+                                style="font-size: 0.8em; position: relative; left: 0.5em; top: 0.3em; color: #7289da;"></i>
+                        </div>
+                        <h3 class="category-title" style="text-align: center; color: #7289da;">V11.1.0 - Midnight Starlight</h3>
+                        <p
+                            style="text-align: center; color: #99aab5; font-size: 0.9rem; margin: -0.5rem 0 0.5rem 0; font-weight: 600;">
+                            Feauters Update <span style="color: #faa61a">(Beta)</span></p>
+                        <ul class="command-list">
+                            <li class="command-item"><strong>Complete rewrite of the website</strong> — modernized design and improved user experience</li>
+                            <li class="command-item"><strong>New commands added</strong> — /ship, /howgay, /simprate with fun interactive features</li>
+                            <li class="command-item"><strong>Improved /rate command</strong> — now with animated star ratings and better visuals</li>
+                            <li class="command-item"><strong>Fixed /help command</strong> — properly displays all available commands now</li>
+                        </ul>
+                    </div>
                     <div class="command-category animate__animated animate__fadeIn"
                         style="background: rgba(210, 146, 68, 0.1); border: 2px solid #d29244;">
                         <div class="feature-icon"
@@ -342,7 +404,7 @@
                             Thunder Fix+</h3>
                         <p
                             style="text-align: center; color: #57f287; font-size: 0.9rem; margin: -0.5rem 0 0.5rem 0; font-weight: 600;">
-                            Latest Release</p>
+                            Stable Release</p>
                         <ul class="command-list">
                             <li class="command-item">Bot is now <span class="command-name">open-source</span>! Available
                                 on GitHub for contributions</li>
