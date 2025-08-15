@@ -1,0 +1,26 @@
+.banner {
+  background-color: red;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000; /* Ensure it's on top of other elements */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.banner p {
+  margin: 0;
+}
+
+/* Style for mobile devices */
+@media (max-width: 768px) {
+  .banner {
+    font-size: 14px;
+    padding: 8px;
+  }
+}
