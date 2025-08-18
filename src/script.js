@@ -22,12 +22,13 @@ const hamburger = document.getElementById("hamburger");
 const mobileMenu = document.getElementById("mobileMenu");
 const MODAL_ANIMATION_DURATION = 400;
 
+document.addEventListener("click", (e) => {}, true);
+
 function openModal(modalElement) {
   if (modalElement) {
     modalElement.classList.remove("closing");
 
     modalElement.classList.add("active");
-
     document.body.style.overflow = "hidden";
   }
 }
@@ -39,7 +40,6 @@ function closeModal(modalElement) {
     const modalContent = modalElement.querySelector(".modal-content");
     if (modalContent) {
       modalContent.classList.remove("animate__slideInDown");
-
       if (modalContent.style.animationName === "modalSlideIn") {
         modalContent.style.animation = "none";
       }
@@ -234,7 +234,8 @@ tosButtons.forEach((button) => {
   if (button) {
     button.addEventListener("click", function (e) {
       e.preventDefault();
-      tosModal.classList.add("active");
+      e.stopPropagation(); // Stop event propagation
+      openModal(tosModal);
     });
   }
 });

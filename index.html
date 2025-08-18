@@ -26,10 +26,10 @@
                 <span class="logo-text">Ormi Bot</span>
             </div>
             <ul class="nav-links">
-                <li><a href="#" id="viewCommandsBtnModal"><i class="fas fa-terminal"></i> Commands</a></li>
+                <li><a href="#" id="viewCommandsBtnModal" data-modal="commandsModal"><i class="fas fa-terminal"></i> Commands</a></li>
                 <li><a href="docs.html" id="viewDocsBtn"><i class="fas fa-book"></i> Docs</a></li>
-                <li><a href="#" id="aboutBtnModal"><i class="fas fa-info-circle"></i> About</a></li>
-                <li><a href="#" id="viewVersionsBtnModal"><i class="fas fa-code-branch"></i> Versions</a></li>
+                <li><a href="#" id="aboutBtnModal" data-modal="aboutModal"><i class="fas fa-info-circle"></i> About</a></li>
+                <li><a href="#" id="viewVersionsBtnModal" data-modal="versionsModal"><i class="fas fa-code-branch"></i> Versions</a></li>
             </ul>
             <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu">
                 <span></span>
@@ -40,11 +40,11 @@
     </header>
     <div class="mobile-menu" id="mobileMenu">
         <ul class="mobile-menu-links">
-            <li><a href="#" id="mobileViewCommandsBtnModal"><i class="fas fa-terminal"></i> Commands</a></li>
+            <li><a href="#" id="mobileViewCommandsBtnModal" data-modal="commandsModal"><i class="fas fa-terminal"></i> Commands</a></li>
             <li><a href="docs.html" id="mobileViewDocsBtn"><i class="fas fa-book"></i> Docs</a></li>
-            <li><a href="#" id="mobileAboutBtnModal"><i class="fas fa-info-circle"></i> About</a></li>
-            <li><a href="#" id="mobileViewVersionsBtnModal"><i class="fas fa-code-branch"></i> Versions</a></li>
-            <li><a href="#" class="btn btn-secondary" id="mobileViewTosBtnModal">
+            <li><a href="#" id="mobileAboutBtnModal" data-modal="aboutModal"><i class="fas fa-info-circle"></i> About</a></li>
+            <li><a href="#" id="mobileViewVersionsBtnModal" data-modal="versionsModal"><i class="fas fa-code-branch"></i> Versions</a></li>
+            <li><a href="#" class="btn btn-secondary" id="mobileViewTosBtnModal" data-modal="tosModal">
                     <i class="fas fa-file-alt"></i> Terms Of Service
                 </a></li>
         </ul>
@@ -54,14 +54,14 @@
             <img loading="lazy"
                 src="https://cdn.discordapp.com/avatars/1364942161707274301/7f519ccadbd3ad84a1d735e91d77b609.webp?size=1024"
                 alt="Ormi Bot Logo" class="hero-logo animate__animated animate__pulse animate__infinite">
-    
+
             <h1 class="hero-title">Ormi Bot</h1>
-    
+
             <p class="tagline">Enhance your Discord server with
                 powerful tools and features</p>
-    
+
             <div class="action-buttons">
-                <a href="#" class="btn btn-secondary" id="tosBtnModal">
+                <a href="#" class="btn btn-secondary" id="tosBtnModal" data-modal="tosModal">
                     <i class="fas fa-file-contract"></i>
                     Terms of Service
                 </a>
@@ -721,7 +721,7 @@
                         bound by all terms contained herein.
                     </p>
                 </div>
-            
+
                 <div class="modal-body">
                     <h3>
                         <i class="fas fa-gavel"></i>
@@ -748,7 +748,7 @@
                         </li>
                     </ul>
                 </div>
-            
+
                 <div class="modal-body">
                     <h3>
                         <i class="fas fa-ban"></i>
@@ -781,7 +781,7 @@
                         <li>Impersonate the Service or its developers</li>
                     </ul>
                 </div>
-            
+
                 <div class="modal-body">
                     <h3>
                         <i class="fas fa-shield-alt"></i>
@@ -805,7 +805,7 @@
                         information.
                     </p>
                 </div>
-            
+
                 <div class="modal-body">
                     <h3>
                         <i class="fas fa-exclamation-triangle"></i>
@@ -823,7 +823,7 @@
                         use of the Service.
                     </p>
                 </div>
-            
+
                 <div class="modal-body">
                     <h3>
                         <i class="fas fa-sync-alt"></i>
@@ -835,7 +835,7 @@
                         modification, or constributing.
                     </p>
                 </div>
-            
+
                 <div class="modal-body">
                     <h3>
                         <i class="fas fa-balance-scale"></i>
@@ -853,7 +853,7 @@
                         </li>
                     </ul>
                 </div>
-            
+
                 <div class="modal-body">
                     <h3>
                         <i class="fas fa-gavel"></i>
