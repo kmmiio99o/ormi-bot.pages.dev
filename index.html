@@ -1,319 +1,710 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Ormi Bot - Discord Bot</title>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+        />
+        <meta property="og:title" content="Ormi Bot - Your Discord Assistant" />
+        <meta
+            property="og:description"
+            content="Ormi Bot is a versatile Discord bot with many features!"
+        />
+        <meta property="og:image" content="https://i.imgur.com/P1SZvO3.jpeg" />
+        <meta property="og:url" content="https://ormi-bot.pages.dev" />
+        <meta property="og:type" content="website" />
+        <link
+            rel="icon"
+            type="image/x-icon"
+            href="https://cdn.discordapp.com/avatars/1364942161707274301/7f519ccadbd3ad84a1d735e91d77b609.webp?size=1024"
+        />
+        <link rel="stylesheet" href="src/style.css" />
+    </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ormi Bot - Discord Bot</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    <meta property="og:title" content="Ormi Bot - Your Discord Assistant" />
-    <meta property="og:description" content="Ormi Bot is a versatile Discord bot with many features!" />
-    <meta property="og:image" content="https://i.imgur.com/P1SZvO3.jpeg" />
-    <meta property="og:url" content="https://ormi-bot.pages.dev" />
-    <meta property="og:type" content="website" />
-    <link rel="icon" type="image/x-icon"
-        href="https://cdn.discordapp.com/avatars/1364942161707274301/7f519ccadbd3ad84a1d735e91d77b609.webp?size=1024">
-    <link rel="stylesheet" href="src/style.css">
-</head>
-
-<body>
-    <header>
-        <div class="container navbar">
-            <div class="logo-container">
-                <img src="https://cdn.discordapp.com/avatars/1364942161707274301/7f519ccadbd3ad84a1d735e91d77b609.webp?size=1024"
-                    alt="Ormi Logo" class="logo">
-                <span class="logo-text">Ormi Bot</span>
+    <body>
+        <header>
+            <div class="container navbar">
+                <div class="logo-container">
+                    <img
+                        src="https://cdn.discordapp.com/avatars/1364942161707274301/7f519ccadbd3ad84a1d735e91d77b609.webp?size=1024"
+                        alt="Ormi Logo"
+                        class="logo"
+                    />
+                    <span class="logo-text">Ormi Bot</span>
+                </div>
+                <ul class="nav-links">
+                    <li>
+                        <a
+                            href="#"
+                            id="viewCommandsBtnModal"
+                            data-modal="commandsModal"
+                            ><i class="fas fa-terminal"></i> Commands</a
+                        >
+                    </li>
+                    <li>
+                        <a href="docs.html" id="viewDocsBtn"
+                            ><i class="fas fa-book"></i> Docs</a
+                        >
+                    </li>
+                    <li>
+                        <a href="#" id="aboutBtnModal" data-modal="aboutModal"
+                            ><i class="fas fa-info-circle"></i> About</a
+                        >
+                    </li>
+                    <li>
+                        <a
+                            href="#"
+                            id="viewVersionsBtnModal"
+                            data-modal="versionsModal"
+                            ><i class="fas fa-code-branch"></i> Versions</a
+                        >
+                    </li>
+                </ul>
+                <button
+                    class="hamburger"
+                    id="hamburger"
+                    aria-label="Toggle navigation menu"
+                >
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </div>
-            <ul class="nav-links">
-                <li><a href="#" id="viewCommandsBtnModal" data-modal="commandsModal"><i class="fas fa-terminal"></i> Commands</a></li>
-                <li><a href="docs.html" id="viewDocsBtn"><i class="fas fa-book"></i> Docs</a></li>
-                <li><a href="#" id="aboutBtnModal" data-modal="aboutModal"><i class="fas fa-info-circle"></i> About</a></li>
-                <li><a href="#" id="viewVersionsBtnModal" data-modal="versionsModal"><i class="fas fa-code-branch"></i> Versions</a></li>
+        </header>
+        <div class="mobile-menu" id="mobileMenu">
+            <ul class="mobile-menu-links">
+                <li>
+                    <a
+                        href="#"
+                        id="mobileViewCommandsBtnModal"
+                        data-modal="commandsModal"
+                        ><i class="fas fa-terminal"></i> Commands</a
+                    >
+                </li>
+                <li>
+                    <a href="docs.html" id="mobileViewDocsBtn"
+                        ><i class="fas fa-book"></i> Docs</a
+                    >
+                </li>
+                <li>
+                    <a href="#" id="mobileAboutBtnModal" data-modal="aboutModal"
+                        ><i class="fas fa-info-circle"></i> About</a
+                    >
+                </li>
+                <li>
+                    <a
+                        href="#"
+                        id="mobileViewVersionsBtnModal"
+                        data-modal="versionsModal"
+                        ><i class="fas fa-code-branch"></i> Versions</a
+                    >
+                </li>
+                <li>
+                    <a
+                        href="#"
+                        class="btn btn-secondary"
+                        id="mobileViewTosBtnModal"
+                        data-modal="tosModal"
+                    >
+                        <i class="fas fa-file-alt"></i> Terms Of Service
+                    </a>
+                </li>
             </ul>
-            <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
         </div>
-    </header>
-    <div class="mobile-menu" id="mobileMenu">
-        <ul class="mobile-menu-links">
-            <li><a href="#" id="mobileViewCommandsBtnModal" data-modal="commandsModal"><i class="fas fa-terminal"></i> Commands</a></li>
-            <li><a href="docs.html" id="mobileViewDocsBtn"><i class="fas fa-book"></i> Docs</a></li>
-            <li><a href="#" id="mobileAboutBtnModal" data-modal="aboutModal"><i class="fas fa-info-circle"></i> About</a></li>
-            <li><a href="#" id="mobileViewVersionsBtnModal" data-modal="versionsModal"><i class="fas fa-code-branch"></i> Versions</a></li>
-            <li><a href="#" class="btn btn-secondary" id="mobileViewTosBtnModal" data-modal="tosModal">
-                    <i class="fas fa-file-alt"></i> Terms Of Service
-                </a></li>
-        </ul>
-    </div>
-    <section class="hero">
-        <div class="hero-content">
-            <img loading="lazy"
-                src="https://cdn.discordapp.com/avatars/1364942161707274301/7f519ccadbd3ad84a1d735e91d77b609.webp?size=1024"
-                alt="Ormi Bot Logo" class="hero-logo animate__animated animate__pulse animate__infinite">
+        <section class="hero">
+            <div class="hero-content">
+                <img
+                    loading="lazy"
+                    src="https://cdn.discordapp.com/avatars/1364942161707274301/7f519ccadbd3ad84a1d735e91d77b609.webp?size=1024"
+                    alt="Ormi Bot Logo"
+                    class="hero-logo animate__animated animate__pulse animate__infinite"
+                />
 
-            <h1 class="hero-title">Ormi Bot</h1>
+                <h1 class="hero-title">Ormi Bot</h1>
 
-            <p class="tagline">Enhance your Discord server with
-                powerful tools and features</p>
+                <p class="tagline">
+                    Enhance your Discord server with powerful tools and features
+                </p>
 
-            <div class="action-buttons">
-                <a href="#" class="btn btn-secondary" id="tosBtnModal" data-modal="tosModal">
-                    <i class="fas fa-file-contract"></i>
-                    Terms of Service
-                </a>
-                <a href="https://discord.com/oauth2/authorize?client_id=1364942161707274301&permissions=1374859365590&integration_type=0&scope=bot+applications.commands" class="btn btn-primary"
-                    target="_blank">
-                    <i class="fab fa-discord"></i>
-                    Add to Discord
-                </a>
-            </div>
-        </div>
-    </section>
-    <section class="features">
-        <div class="container">
-            <h2 class="section-title">Powerful Features</h2>
-            <p class="section-subtitle">Everything you need to manage and entertain your community</p>
-            <div class="features-grid">
-                <div class="feature-card animate__animated animate__fadeIn">
-                    <div class="feature-icon">
-                        <i class="fas fa-gavel"></i>
-                    </div>
-                    <h3 class="feature-title">Advanced Moderation</h3>
-                    <p>Keep your server safe with powerful moderation tools including logging, warn system, and
-                        more.</p>
-                </div>
-                <div class="feature-card animate__animated animate__fadeIn animate-delay-1">
-                    <div class="feature-icon">
-                        <i class="fas fa-gamepad"></i>
-                    </div>
-                    <h3 class="feature-title">Fun & Entertainment</h3>
-                    <p>Engage your community with fun commands, games, and interactive features.</p>
-                </div>
-                <div class="feature-card animate__animated animate__fadeIn animate-delay-2">
-                    <div class="feature-icon">
-                        <i class="fas fa-cog"></i>
-                    </div>
-                    <h3 class="feature-title">Customization</h3>
-                    <p>Personalize your bot experience with customizable prefixes, roles, and welcome message.</p>
+                <div class="action-buttons">
+                    <a
+                        href="#"
+                        class="btn btn-secondary"
+                        id="tosBtnModal"
+                        data-modal="tosModal"
+                    >
+                        <i class="fas fa-file-contract"></i>
+                        Terms of Service
+                    </a>
+                    <a
+                        href="https://discord.com/oauth2/authorize?client_id=1364942161707274301&permissions=1374859365590&integration_type=0&scope=bot+applications.commands"
+                        class="btn btn-primary"
+                        target="_blank"
+                    >
+                        <i class="fab fa-discord"></i>
+                        Add to Discord
+                    </a>
                 </div>
             </div>
-        </div>
-    </section>
-    <footer>
-        <div class="container">
-            <div class="footer-links">
-                <a href="https://discord.gg/cYZPfXcBGB" target="_blank" class="footer-link">Support Server</a>
-                <a href="https://github.com/kmmiio99o/ormi" target="_blank" class="footer-link">GitHub</a>
-            </div>
-            <p class="copyright">© 2025 Ormi Bot. All rights reserved.</p>
-        </div>
-    </footer>
-    <div id="commandsModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title"><i class="fas fa-terminal"></i> Bot Commands</h2>
-                <button class="close-modal" aria-label="Close commands modal">&times;</button>
-            </div>
-            <div class="modal-body" id="commandsModalContent">
-                <div class="command-category">
-                    <h3 class="category-title"><i class="fas fa-info-circle"></i> Information</h3>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
-                        <div>
-                            <ul style="margin: 0; padding-left: 20px">
-                                <li style="margin-bottom: 6px"><span class="command-name">/userinfo [member]</span> - Shows detailed information about a user</li>
-                                <li style="margin-bottom: 6px"><span class="command-name">/serverinfo</span> - Displays comprehensive server statistics and details</li>
-                                <li style="margin-bottom: 6px"><span class="command-name">/ping</span> - Shows bot latency and connection quality with animations</li>
-                                <li style="margin-bottom: 6px"><span class="command-name">/uptime</span> - Shows how long the bot has been online with cute formatting</li>
-                                <li style="margin-bottom: 6px"><span class="command-name">/avatar [member]</span> - Shows user avatar with direct link</li>
-                                <li style="margin-bottom: 6px"><span class="command-name">/roleinfo &lt;role&gt;</span> - Shows detailed information about a role</li>
-                                <li style="margin-bottom: 6px"><span class="command-name">/emojiinfo &lt;emoji&gt;</span> - Shows emoji information (ID, creation date)</li>
-                                <li style="margin-bottom: 6px"><span class="command-name">/recentjoins</span> - Shows recently joined members (last 10)</li>
-                            </ul>
+        </section>
+        <section class="features">
+            <div class="container">
+                <h2 class="section-title">Powerful Features</h2>
+                <p class="section-subtitle">
+                    Everything you need to manage and entertain your community
+                </p>
+                <div class="features-grid">
+                    <div class="feature-card animate__animated animate__fadeIn">
+                        <div class="feature-icon">
+                            <i class="fas fa-gavel"></i>
                         </div>
+                        <h3 class="feature-title">Advanced Moderation</h3>
+                        <p>
+                            Keep your server safe with powerful moderation tools
+                            including logging, warn system, and more.
+                        </p>
                     </div>
-                </div>
-                <div class="command-category">
-                    <h3 class="category-title"><i class="fas fa-user-shield"></i> Moderation</h3>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
-                        <div>
-                            <ul style="margin: 0; padding-left: 20px">
-                                <li style="margin-bottom: 6px"><span class="command-name">/kick &lt;member&gt; [reason]</span> - Kicks a user from the server with confirmation</li>
-                                <li style="margin-bottom: 6px"><span class="command-name">/ban &lt;user_id&gt; [duration] [reason]</span> - Bans a user from the server permanently or temporarily</li>
-                                <li style="margin-bottom: 6px"><span class="command-name">/unban &lt;user_id&gt;</span> - Unbans a previously banned user</li>
-                                <li style="margin-bottom: 6px"><span class="command-name">/softban &lt;member&gt; [days] [reason]</span> - Bans and immediately unbans to delete messages</li>
-                                <li style="margin-bottom: 6px"><span class="command-name">/mute &lt;member&gt; [duration] [reason]</span> - Mutes a user for a specified time with timer</li>
-                                <li style="margin-bottom: 6px"><span class="command-name">/unmute &lt;member&gt;</span> - Unmutes a user with confirmation</li>
-                                <li style="margin-bottom: 6px"><span class="command-name">/warn &lt;member&gt; [reason]</span> - Gives a warning to a user with case ID</li>
-                                <li style="margin-bottom: 6px"><span class="command-name">/warnings &lt;member&gt;</span> - Shows a user's warnings with detailed info</li>
-                                <li style="margin-bottom: 6px"><span class="command-name">/clearwarns &lt;member&gt;</span> - Clears a user's warnings with confirmation</li>
-                                <li style="margin-bottom: 6px"><span class="command-name">/delwarn &lt;case_id&gt;</span> - Deletes a specific warning with verification</li>
-                                <li style="margin-bottom: 6px"><span class="command-name">/editcase &lt;case_id&gt; &lt;new_reason&gt;</span> - Edits the reason for a specific warning</li>
-                                <li style="margin-bottom: 6px"><span class="command-name">/case &lt;case_id&gt;</span> - Shows details about a specific warning</li>
-                                <li style="margin-bottom: 6px"><span class="command-name">/purge &lt;amount&gt; [user]</span> - Deletes messages (1-100) with user filter</li>
-                                <li style="margin-bottom: 6px"><span class="command-name">/slowmode &lt;seconds&gt;</span> - Sets slowmode for the channel (0-21600)</li>
-                                <li style="margin-bottom: 6px"><span class="command-name">/lock [reason]</span> - Locks the channel to prevent sending messages</li>
-                                <li style="margin-bottom: 6px"><span class="command-name">/unlock [reason]</span> - Unlocks a previously locked channel</li>
-                                <li style="margin-bottom: 6px"><span class="command-name">/nick &lt;member&gt; [nickname]</span> - Changes a user's nickname with preview</li>
-                                <li style="margin-bottom: 6px"><span class="command-name">/nuke</span> - Deletes all messages in the channel with safety check</li>
-                                <li style="margin-bottom: 6px"><span class="command-name">/fg [channel]</span> - Toggles file and GIF sending permissions for a channel</li>
-                                <li style="margin-bottom: 6px"><span class="command-name">/voicekick &lt;member&gt; [reason]</span> - Kicks a user from voice channel</li>
-                                <li style="margin-bottom: 6px"><span class="command-name">/voiceban &lt;member&gt; [reason]</span> - Prevents user from joining voice channels</li>
-                                <li style="margin-bottom: 6px"><span class="command-name">/voiceunban &lt;member&gt; [reason]</span> - Allows user to join voice channels again</li>
-                                <li style="margin-bottom: 6px"><span class="command-name">/massban &lt;ids&gt; [reason]</span> - Bans multiple users at once</li>
-                                <li style="margin-bottom: 6px"><span class="command-name">/hierarchy</span> - Shows server power hierarchy with visual ranking</li>
-                            </ul>
+                    <div
+                        class="feature-card animate__animated animate__fadeIn animate-delay-1"
+                    >
+                        <div class="feature-icon">
+                            <i class="fas fa-gamepad"></i>
                         </div>
+                        <h3 class="feature-title">Fun & Entertainment</h3>
+                        <p>
+                            Engage your community with fun commands, games, and
+                            interactive features.
+                        </p>
                     </div>
-                </div>
-                <div class="command-category">
-                    <h3 class="category-title"><i class="fas fa-smile"></i> Fun</h3>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
-                        <div>
-                            <ul style="margin: 0; padding-left: 20px">
-                                <li style="margin-bottom: 6px"><span class="command-name">/rate &lt;thing&gt;</span> - Rates something 1-10 with animated stars ✨</li>
-                                <li style="margin-bottom: 6px"><span class="command-name">/rps &lt;rock|paper|scissors&gt;</span> - Play rock-paper-scissors with cute animations</li>
-                                <li style="margin-bottom: 6px"><span class="command-name">/8ball &lt;question&gt;</span> - Ask the magic 8-ball a question with mystical responses</li>
-                                <li style="margin-bottom: 6px"><span class="command-name">/ascii &lt;text&gt;</span> - Converts text to beautiful ASCII art</li>
-                                <li style="margin-bottom: 6px"><span class="command-name">/random [min] [max]</span> - Generates random number with cute visualization</li>
-                                <li style="margin-bottom: 6px"><span class="command-name">/ship &lt;user1&gt; &lt;user2&gt;</span> - Ship two users together with compatibility percentage</li>
-                                <li style="margin-bottom: 6px"><span class="command-name">/howgay &lt;user&gt;</span> - Measures gay percentage with fun meter animation</li>
-                                <li style="margin-bottom: 6px"><span class="command-name">/simprate &lt;user&gt;</span> - Checks how much a user simps with cute rating</li>
-                                <li style="margin-bottom: 6px"><span class="command-name">/meme</span> - Get a random meme</li>
-                                <li style="margin-bottom: 6px"><span class="command-name">/joke</span> - Get a random joke</li>
-                                <li style="margin-bottom: 6px"><span class="command-name">/coinflip</span> - Flip a coin</li>
-                                <li style="margin-bottom: 6px"><span class="command-name">/roll [sides=6]</span> - Roll a dice</li>
-                                <li style="margin-bottom: 6px"><span class="command-name">/hug &lt;member&gt;</span> - Send virtual hug</li>
-                                <li style="margin-bottom: 6px"><span class="command-name">/slap &lt;member&gt;</span> - Virtual slap action</li>
-                            </ul>
+                    <div
+                        class="feature-card animate__animated animate__fadeIn animate-delay-2"
+                    >
+                        <div class="feature-icon">
+                            <i class="fas fa-cog"></i>
                         </div>
-                    </div>
-                </div>
-                <div class="command-category">
-                    <h3 class="category-title"><i class="fas fa-cog"></i> Configuration</h3>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
-                        <div>
-                            <ul style="margin: 0; padding-left: 20px">
-                                <li style="margin-bottom: 6px"><span class="command-name">/prefix &lt;prefix&gt;</span> - Changes the bot prefix for this server</li>
-                                <li style="margin-bottom: 6px"><span class="command-name">/slc &lt;channel&gt;</span> - Sets log channel for moderation actions</li>
-                                <li style="margin-bottom: 6px"><span class="command-name">/sdlc &lt;channel&gt;</span> - Sets deleted messages log channel</li>
-                                <li style="margin-bottom: 6px"><span class="command-name">/swc &lt;channel&gt;</span> - Sets welcome channel for new members</li>
-                                <li style="margin-bottom: 6px"><span class="command-name">/swm &lt;message&gt;</span> - Sets welcome message for new members</li>
-                                <li style="margin-bottom: 6px"><span class="command-name">/autorole &lt;role&gt;</span> - Sets role for new members automatically</li>
-                                <li style="margin-bottom: 6px"><span class="command-name">/color &lt;hex&gt;</span> - Shows color sample from HEX code</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="command-category">
-                    <h3 class="category-title"><i class="fas fa-tools"></i> Utility</h3>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
-                        <div>
-                            <ul style="margin: 0; padding-left: 20px">
-                                <li style="margin-bottom: 6px"><span class="command-name">/afk [reason]</span> - Sets your AFK status. The bot will notify users who mention you.</li>
-                                <li style="margin-bottom: 6px"><span class="command-name">/snipe</span> - Shows the last deleted message in the current channel.</li>
-                                <li style="margin-bottom: 6px"><span class="command-name">/invite</span> - Generates an invite link for the bot.</li>
-                                <li style="margin-bottom: 6px"><span class="command-name">/vote &lt;question&gt; &lt;options&gt;</span> - Creates a poll. Separate options with | (e.g., Option1 | Option2).</li>
-                            </ul>
-                        </div>
+                        <h3 class="feature-title">Customization</h3>
+                        <p>
+                            Personalize your bot experience with customizable
+                            prefixes, roles, and welcome message.
+                        </p>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <div id="aboutModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title"><i class="fas fa-info-circle"></i> About Ormi Bot</h2>
-                <button class="close-modal" aria-label="Close about modal">&times;</button>
+        </section>
+        <footer>
+            <div class="container">
+                <div class="footer-links">
+                    <a
+                        href="https://discord.gg/cYZPfXcBGB"
+                        target="_blank"
+                        class="footer-link"
+                        >Support Server</a
+                    >
+                    <a
+                        href="https://github.com/kmmiio99o/ormi"
+                        target="_blank"
+                        class="footer-link"
+                        >GitHub</a
+                    >
+                </div>
+                <p class="copyright">© 2025 Ormi Bot. All rights reserved.</p>
             </div>
-            <div class="modal-body" id="aboutModalContent">
-                <div class="about-grid">
-                    <div class="about-card">
-                        <div class="about-icon">
-                            <i class="fas fa-robot"></i>
-                        </div>
-                        <h3 class="about-title">What is Ormi?</h3>
-                        <div class="about-content">
-                            <p>Ormi is a powerful Discord bot that enhances your server with advanced moderation tools,
-                                entertaining features, and useful utilities. Completely free and constantly evolving.
-                            </p>
-                            <div style="margin-bottom: 20px">
-                                <h4
-                                    style="color: var(--light); margin-bottom: 10px; display: flex; align-items: center;">
-                                    <i class="fas fa-info-circle"
-                                        style="margin-right: 8px; color: var(--primary);"></i>Description
-                                </h4>
-                                <p style="margin: 0; line-height: 1.5; color: rgba(255, 255, 255, 0.8);">Ormi is a
-                                    powerful Discord bot that enhances your server with advanced moderation tools,
-                                    entertaining features, and useful utilities. Completely free and constantly
-                                    evolving.</p>
-                            </div>
-                            <div style="margin-bottom: 20px">
-                                <h4
-                                    style="color: var(--light); margin-bottom: 10px; display: flex; align-items: center;">
-                                    <i class="fas fa-cogs"
-                                        style="margin-right: 8px; color: var(--primary);"></i>Technical Info
-                                </h4>
-                                <ul style="margin: 0; padding-left: 20px; color: rgba(255, 255, 255, 0.8);">
-                                    <li style="margin-bottom: 8px"><strong>Version:</strong> V12.0.1 Beta -
-                                        Nebula Dawn <span style="color: #faa61a">(Beta)</span></li>
-                                    <li style="margin-bottom: 8px"><strong>Library:</strong> discord.js</li>
-                                    <li style="margin-bottom: 8px"><strong>Hosting:</strong> <span
-                                            style="color: #faa61a">Bot is fully operational and ready for use.</span>
+        </footer>
+        <div id="commandsModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title">
+                        <i class="fas fa-terminal"></i> Bot Commands
+                    </h2>
+                    <button
+                        class="close-modal"
+                        aria-label="Close commands modal"
+                    >
+                        &times;
+                    </button>
+                </div>
+                <div class="modal-body" id="commandsModalContent">
+                    <div class="command-category">
+                        <h3 class="category-title">
+                            <i class="fas fa-info-circle"></i> Information
+                        </h3>
+                        <div
+                            style="
+                                display: grid;
+                                grid-template-columns: repeat(
+                                    auto-fit,
+                                    minmax(250px, 1fr)
+                                );
+                                gap: 15px;
+                            "
+                        >
+                            <div>
+                                <ul style="margin: 0; padding-left: 20px">
+                                    <li style="margin-bottom: 6px">
+                                        <span class="command-name"
+                                            >/userinfo [member]</span
+                                        >
+                                        - Shows detailed information about a
+                                        user
+                                    </li>
+                                    <li style="margin-bottom: 6px">
+                                        <span class="command-name"
+                                            >/serverinfo</span
+                                        >
+                                        - Displays comprehensive server
+                                        statistics and details
+                                    </li>
+                                    <li style="margin-bottom: 6px">
+                                        <span class="command-name">/ping</span>
+                                        - Shows bot latency and connection
+                                        quality with animations
+                                    </li>
+                                    <li style="margin-bottom: 6px">
+                                        <span class="command-name"
+                                            >/uptime</span
+                                        >
+                                        - Shows how long the bot has been online
+                                        with cute formatting
+                                    </li>
+                                    <li style="margin-bottom: 6px">
+                                        <span class="command-name"
+                                            >/avatar [member]</span
+                                        >
+                                        - Shows user avatar with direct link
+                                    </li>
+                                    <li style="margin-bottom: 6px">
+                                        <span class="command-name"
+                                            >/roleinfo &lt;role&gt;</span
+                                        >
+                                        - Shows detailed information about a
+                                        role
+                                    </li>
+                                    <li style="margin-bottom: 6px">
+                                        <span class="command-name"
+                                            >/emojiinfo &lt;emoji&gt;</span
+                                        >
+                                        - Shows emoji information (ID, creation
+                                        date)
+                                    </li>
+                                    <li style="margin-bottom: 6px">
+                                        <span class="command-name"
+                                            >/recentjoins</span
+                                        >
+                                        - Shows recently joined members (last
+                                        10)
                                     </li>
                                 </ul>
                             </div>
                         </div>
                     </div>
-                    <div class="about-card">
-                        <div class="about-icon">
-                            <i class="fas fa-user"></i>
-                        </div>
-                        <h3 class="about-title">Developer</h3>
-                        <div class="about-content">
-                            <div style="display: flex; align-items: center; margin-bottom: 20px;">
-                                <div style="position: relative; width: 60px; height: 60px; margin-right: 15px;">
-                                    <div id="developerAvatarContainerModal"
-                                        style="width: 100%; height: 100%; border-radius: 50%; overflow: hidden; background: #747f8d;">
-                                        <img id="developerAvatarModal"
-                                            src="https://cdn.discordapp.com/avatars/879393496627306587/3d8dcfe1e684894e06da87cc75c79b2a.webp?size=1024"
-                                            alt="Developer Avatar"
-                                            style="width: 100%; height: 100%; object-fit: cover;">
-                                    </div>
-                                    <div id="developerStatusModal"
-                                        style="position: absolute; bottom: 0; right: 0; width: 18px; height: 18px; border-radius: 50%; border: 3px solid var(--dark); background: #747f8d;">
-                                    </div>
-                                </div>
-                                <div>
-                                    <h4 style="margin: 0; color: var(--light);">kmmiio99o.dev</h4>
-                                    <p id="discordStatusTextModal"
-                                        style="margin: 0; color: var(--gray); font-size: 0.9rem;">Status: Loading...</p>
-                                </div>
-                            </div>
-                            <div style="margin-bottom: 20px">
-                                <h4
-                                    style="color: var(--light); margin-bottom: 10px; display: flex; align-items: center;">
-                                    <i class="fas fa-laptop-code"
-                                        style="margin-right: 8px; color: var(--secondary);"></i>Experience
-                                </h4>
-                                <p style="margin: 0; line-height: 1.5; color: rgba(255, 255, 255, 0.8);">Most websites.
-                                    But know enough to type a good discord bot that is going to be totally free.</p>
-                            </div>
+                    <div class="command-category">
+                        <h3 class="category-title">
+                            <i class="fas fa-user-shield"></i> Moderation
+                        </h3>
+                        <div
+                            style="
+                                display: grid;
+                                grid-template-columns: repeat(
+                                    auto-fit,
+                                    minmax(250px, 1fr)
+                                );
+                                gap: 15px;
+                            "
+                        >
                             <div>
-                                <h4
-                                    style="color: var(--light); margin-bottom: 10px; display: flex; align-items: center;">
-                                    <i class="fas fa-envelope"
-                                        style="margin-right: 8px; color: var(--secondary);"></i>Contact
-                                </h4>
-                                <ul style="margin: 0; padding-left: 20px; color: rgba(255, 255, 255, 0.8);">
-                                    <li style="margin-bottom: 8px"><strong>Discord:</strong> kmmiio99o.dev</li>
-                                    <li style="margin-bottom: 8px"><strong>GitHub:</strong> <a
-                                            href="https://github.com/kmmiio99o" target="_blank"
-                                            style="color: var(--primary);">kmmiio99o</a></li>
+                                <ul style="margin: 0; padding-left: 20px">
+                                    <li style="margin-bottom: 6px">
+                                        <span class="command-name"
+                                            >/kick &lt;member&gt; [reason]</span
+                                        >
+                                        - Kicks a user from the server with
+                                        confirmation
+                                    </li>
+                                    <li style="margin-bottom: 6px">
+                                        <span class="command-name"
+                                            >/ban &lt;user_id&gt; [duration]
+                                            [reason]</span
+                                        >
+                                        - Bans a user from the server
+                                        permanently or temporarily
+                                    </li>
+                                    <li style="margin-bottom: 6px">
+                                        <span class="command-name"
+                                            >/unban &lt;user_id&gt;</span
+                                        >
+                                        - Unbans a previously banned user
+                                    </li>
+                                    <li style="margin-bottom: 6px">
+                                        <span class="command-name"
+                                            >/softban &lt;member&gt; [days]
+                                            [reason]</span
+                                        >
+                                        - Bans and immediately unbans to delete
+                                        messages
+                                    </li>
+                                    <li style="margin-bottom: 6px">
+                                        <span class="command-name"
+                                            >/mute &lt;member&gt; [duration]
+                                            [reason]</span
+                                        >
+                                        - Mutes a user for a specified time with
+                                        timer
+                                    </li>
+                                    <li style="margin-bottom: 6px">
+                                        <span class="command-name"
+                                            >/unmute &lt;member&gt;</span
+                                        >
+                                        - Unmutes a user with confirmation
+                                    </li>
+                                    <li style="margin-bottom: 6px">
+                                        <span class="command-name"
+                                            >/warn &lt;member&gt; [reason]</span
+                                        >
+                                        - Gives a warning to a user with case ID
+                                    </li>
+                                    <li style="margin-bottom: 6px">
+                                        <span class="command-name"
+                                            >/warnings &lt;member&gt;</span
+                                        >
+                                        - Shows a user's warnings with detailed
+                                        info
+                                    </li>
+                                    <li style="margin-bottom: 6px">
+                                        <span class="command-name"
+                                            >/clearwarns &lt;member&gt;</span
+                                        >
+                                        - Clears a user's warnings with
+                                        confirmation
+                                    </li>
+                                    <li style="margin-bottom: 6px">
+                                        <span class="command-name"
+                                            >/delwarn &lt;case_id&gt;</span
+                                        >
+                                        - Deletes a specific warning with
+                                        verification
+                                    </li>
+                                    <li style="margin-bottom: 6px">
+                                        <span class="command-name"
+                                            >/editcase &lt;case_id&gt;
+                                            &lt;new_reason&gt;</span
+                                        >
+                                        - Edits the reason for a specific
+                                        warning
+                                    </li>
+                                    <li style="margin-bottom: 6px">
+                                        <span class="command-name"
+                                            >/case &lt;case_id&gt;</span
+                                        >
+                                        - Shows details about a specific warning
+                                    </li>
+                                    <li style="margin-bottom: 6px">
+                                        <span class="command-name"
+                                            >/purge &lt;amount&gt; [user]</span
+                                        >
+                                        - Deletes messages (1-100) with user
+                                        filter
+                                    </li>
+                                    <li style="margin-bottom: 6px">
+                                        <span class="command-name"
+                                            >/slowmode &lt;seconds&gt;</span
+                                        >
+                                        - Sets slowmode for the channel
+                                        (0-21600)
+                                    </li>
+                                    <li style="margin-bottom: 6px">
+                                        <span class="command-name"
+                                            >/lock [reason]</span
+                                        >
+                                        - Locks the channel to prevent sending
+                                        messages
+                                    </li>
+                                    <li style="margin-bottom: 6px">
+                                        <span class="command-name"
+                                            >/unlock [reason]</span
+                                        >
+                                        - Unlocks a previously locked channel
+                                    </li>
+                                    <li style="margin-bottom: 6px">
+                                        <span class="command-name"
+                                            >/nick &lt;member&gt;
+                                            [nickname]</span
+                                        >
+                                        - Changes a user's nickname with preview
+                                    </li>
+                                    <li style="margin-bottom: 6px">
+                                        <span class="command-name">/nuke</span>
+                                        - Deletes all messages in the channel
+                                        with safety check
+                                    </li>
+                                    <li style="margin-bottom: 6px">
+                                        <span class="command-name"
+                                            >/fg [channel]</span
+                                        >
+                                        - Toggles file and GIF sending
+                                        permissions for a channel
+                                    </li>
+                                    <li style="margin-bottom: 6px">
+                                        <span class="command-name"
+                                            >/voicekick &lt;member&gt;
+                                            [reason]</span
+                                        >
+                                        - Kicks a user from voice channel
+                                    </li>
+                                    <li style="margin-bottom: 6px">
+                                        <span class="command-name"
+                                            >/voiceban &lt;member&gt;
+                                            [reason]</span
+                                        >
+                                        - Prevents user from joining voice
+                                        channels
+                                    </li>
+                                    <li style="margin-bottom: 6px">
+                                        <span class="command-name"
+                                            >/voiceunban &lt;member&gt;
+                                            [reason]</span
+                                        >
+                                        - Allows user to join voice channels
+                                        again
+                                    </li>
+                                    <li style="margin-bottom: 6px">
+                                        <span class="command-name"
+                                            >/massban &lt;ids&gt; [reason]</span
+                                        >
+                                        - Bans multiple users at once
+                                    </li>
+                                    <li style="margin-bottom: 6px">
+                                        <span class="command-name"
+                                            >/hierarchy</span
+                                        >
+                                        - Shows server power hierarchy with
+                                        visual ranking
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="command-category">
+                        <h3 class="category-title">
+                            <i class="fas fa-smile"></i> Fun
+                        </h3>
+                        <div
+                            style="
+                                display: grid;
+                                grid-template-columns: repeat(
+                                    auto-fit,
+                                    minmax(250px, 1fr)
+                                );
+                                gap: 15px;
+                            "
+                        >
+                            <div>
+                                <ul style="margin: 0; padding-left: 20px">
+                                    <li style="margin-bottom: 6px">
+                                        <span class="command-name"
+                                            >/rate &lt;thing&gt;</span
+                                        >
+                                        - Rates something 1-10 with animated
+                                        stars ✨
+                                    </li>
+                                    <li style="margin-bottom: 6px">
+                                        <span class="command-name"
+                                            >/rps
+                                            &lt;rock|paper|scissors&gt;</span
+                                        >
+                                        - Play rock-paper-scissors with cute
+                                        animations
+                                    </li>
+                                    <li style="margin-bottom: 6px">
+                                        <span class="command-name"
+                                            >/8ball &lt;question&gt;</span
+                                        >
+                                        - Ask the magic 8-ball a question with
+                                        mystical responses
+                                    </li>
+                                    <li style="margin-bottom: 6px">
+                                        <span class="command-name"
+                                            >/ascii &lt;text&gt;</span
+                                        >
+                                        - Converts text to beautiful ASCII art
+                                    </li>
+                                    <li style="margin-bottom: 6px">
+                                        <span class="command-name"
+                                            >/random [min] [max]</span
+                                        >
+                                        - Generates random number with cute
+                                        visualization
+                                    </li>
+                                    <li style="margin-bottom: 6px">
+                                        <span class="command-name"
+                                            >/ship &lt;user1&gt;
+                                            &lt;user2&gt;</span
+                                        >
+                                        - Ship two users together with
+                                        compatibility percentage
+                                    </li>
+                                    <li style="margin-bottom: 6px">
+                                        <span class="command-name"
+                                            >/howgay &lt;user&gt;</span
+                                        >
+                                        - Measures gay percentage with fun meter
+                                        animation
+                                    </li>
+                                    <li style="margin-bottom: 6px">
+                                        <span class="command-name"
+                                            >/simprate &lt;user&gt;</span
+                                        >
+                                        - Checks how much a user simps with cute
+                                        rating
+                                    </li>
+                                    <li style="margin-bottom: 6px">
+                                        <span class="command-name">/meme</span>
+                                        - Get a random meme
+                                    </li>
+                                    <li style="margin-bottom: 6px">
+                                        <span class="command-name">/joke</span>
+                                        - Get a random joke
+                                    </li>
+                                    <li style="margin-bottom: 6px">
+                                        <span class="command-name"
+                                            >/coinflip</span
+                                        >
+                                        - Flip a coin
+                                    </li>
+                                    <li style="margin-bottom: 6px">
+                                        <span class="command-name"
+                                            >/roll [sides=6]</span
+                                        >
+                                        - Roll a dice
+                                    </li>
+                                    <li style="margin-bottom: 6px">
+                                        <span class="command-name"
+                                            >/hug &lt;member&gt;</span
+                                        >
+                                        - Send virtual hug
+                                    </li>
+                                    <li style="margin-bottom: 6px">
+                                        <span class="command-name"
+                                            >/slap &lt;member&gt;</span
+                                        >
+                                        - Virtual slap action
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="command-category">
+                        <h3 class="category-title">
+                            <i class="fas fa-cog"></i> Configuration
+                        </h3>
+                        <div
+                            style="
+                                display: grid;
+                                grid-template-columns: repeat(
+                                    auto-fit,
+                                    minmax(250px, 1fr)
+                                );
+                                gap: 15px;
+                            "
+                        >
+                            <div>
+                                <ul style="margin: 0; padding-left: 20px">
+                                    <li style="margin-bottom: 6px">
+                                        <span class="command-name"
+                                            >/prefix &lt;prefix&gt;</span
+                                        >
+                                        - Changes the bot prefix for this server
+                                    </li>
+                                    <li style="margin-bottom: 6px">
+                                        <span class="command-name"
+                                            >/slc &lt;channel&gt;</span
+                                        >
+                                        - Sets log channel for moderation
+                                        actions
+                                    </li>
+                                    <li style="margin-bottom: 6px">
+                                        <span class="command-name"
+                                            >/sdlc &lt;channel&gt;</span
+                                        >
+                                        - Sets deleted messages log channel
+                                    </li>
+                                    <li style="margin-bottom: 6px">
+                                        <span class="command-name"
+                                            >/swc &lt;channel&gt;</span
+                                        >
+                                        - Sets welcome channel for new members
+                                    </li>
+                                    <li style="margin-bottom: 6px">
+                                        <span class="command-name"
+                                            >/swm &lt;message&gt;</span
+                                        >
+                                        - Sets welcome message for new members
+                                    </li>
+                                    <li style="margin-bottom: 6px">
+                                        <span class="command-name"
+                                            >/autorole &lt;role&gt;</span
+                                        >
+                                        - Sets role for new members
+                                        automatically
+                                    </li>
+                                    <li style="margin-bottom: 6px">
+                                        <span class="command-name"
+                                            >/color &lt;hex&gt;</span
+                                        >
+                                        - Shows color sample from HEX code
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="command-category">
+                        <h3 class="category-title">
+                            <i class="fas fa-tools"></i> Utility
+                        </h3>
+                        <div
+                            style="
+                                display: grid;
+                                grid-template-columns: repeat(
+                                    auto-fit,
+                                    minmax(250px, 1fr)
+                                );
+                                gap: 15px;
+                            "
+                        >
+                            <div>
+                                <ul style="margin: 0; padding-left: 20px">
+                                    <li style="margin-bottom: 6px">
+                                        <span class="command-name"
+                                            >/afk [reason]</span
+                                        >
+                                        - Sets your AFK status. The bot will
+                                        notify users who mention you.
+                                    </li>
+                                    <li style="margin-bottom: 6px">
+                                        <span class="command-name">/snipe</span>
+                                        - Shows the last deleted message in the
+                                        current channel.
+                                    </li>
+                                    <li style="margin-bottom: 6px">
+                                        <span class="command-name"
+                                            >/invite</span
+                                        >
+                                        - Generates an invite link for the bot.
+                                    </li>
+                                    <li style="margin-bottom: 6px">
+                                        <span class="command-name"
+                                            >/vote &lt;question&gt;
+                                            &lt;options&gt;</span
+                                        >
+                                        - Creates a poll. Separate options with
+                                        | (e.g., Option1 | Option2).
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -321,555 +712,1732 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div id="versionsModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title"><i class="fas fa-code-branch"></i> Version History</h2>
-                <button class="close-modal" aria-label="Close versions modal">&times;</button>
-            </div>
-            <div class="modal-body" id="versionsModalContent">
-                <div style="margin-top: 20px">
-                    <div style="margin-top: 20px">
-                        <div class="command-category animate__animated animate__fadeIn"
-                            style="background: rgba(114, 137, 218, 0.1); border: 2px solid #7289da;">
-                            <div class="feature-icon" style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: #7289da;">
-                                <i class="fas fa-gift" style="font-size: 1.8em; margin-right: -0.5em; color: #99aab5;"></i>
-                                <i class="fas fa-star"
-                                    style="font-size: 0.8em; position: relative; left: -0.7em; top: 0.6em; color: #f8c300;"></i>
-                                <i class="fas fa-broom"
-                                    style="font-size: 0.8em; position: relative; left: 0.5em; top: 0.3em; color: #7289da;"></i>
+        <div id="aboutModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title">
+                        <i class="fas fa-info-circle"></i> About Ormi Bot
+                    </h2>
+                    <button class="close-modal" aria-label="Close about modal">
+                        &times;
+                    </button>
+                </div>
+                <div class="modal-body" id="aboutModalContent">
+                    <div class="about-grid">
+                        <div class="about-card">
+                            <div class="about-icon">
+                                <i class="fas fa-robot"></i>
                             </div>
-                            <h3 class="category-title" style="text-align: center; color: #7289da;">V12.0.1 - Nebula Dawn</h3>
-                            <p style="text-align: center; color: #99aab5; font-size: 0.9rem; margin: -0.5rem 0 0.5rem 0; font-weight: 600;">
-                            Giveaway & Maintenance Update <span style="color: #faa61a">(Beta)</span></p>
-                            <ul class="command-list">
-                                <li class="command-item"><strong>Added giveaway cog</strong> — new module for managing giveaways (added to
-                                    <code>main.py</code>)</li>
-                                <li class="command-item"><strong>Code cleanup</strong> — minor improvements and optimizations</li>
-                            </ul>
+                            <h3 class="about-title">What is Ormi?</h3>
+                            <div class="about-content">
+                                <p>
+                                    Ormi is a powerful Discord bot that enhances
+                                    your server with advanced moderation tools,
+                                    entertaining features, and useful utilities.
+                                    Completely free and constantly evolving.
+                                </p>
+                                <div style="margin-bottom: 20px">
+                                    <h4
+                                        style="
+                                            color: var(--light);
+                                            margin-bottom: 10px;
+                                            display: flex;
+                                            align-items: center;
+                                        "
+                                    >
+                                        <i
+                                            class="fas fa-info-circle"
+                                            style="
+                                                margin-right: 8px;
+                                                color: var(--primary);
+                                            "
+                                        ></i
+                                        >Description
+                                    </h4>
+                                    <p
+                                        style="
+                                            margin: 0;
+                                            line-height: 1.5;
+                                            color: rgba(255, 255, 255, 0.8);
+                                        "
+                                    >
+                                        Ormi is a powerful Discord bot that
+                                        enhances your server with advanced
+                                        moderation tools, entertaining features,
+                                        and useful utilities. Completely free
+                                        and constantly evolving.
+                                    </p>
+                                </div>
+                                <div style="margin-bottom: 20px">
+                                    <h4
+                                        style="
+                                            color: var(--light);
+                                            margin-bottom: 10px;
+                                            display: flex;
+                                            align-items: center;
+                                        "
+                                    >
+                                        <i
+                                            class="fas fa-cogs"
+                                            style="
+                                                margin-right: 8px;
+                                                color: var(--primary);
+                                            "
+                                        ></i
+                                        >Technical Info
+                                    </h4>
+                                    <ul
+                                        style="
+                                            margin: 0;
+                                            padding-left: 20px;
+                                            color: rgba(255, 255, 255, 0.8);
+                                        "
+                                    >
+                                        <li style="margin-bottom: 8px">
+                                            <strong>Version:</strong> V12.0.1
+                                            Beta - Nebula Dawn
+                                            <span style="color: #faa61a"
+                                                >(Beta)</span
+                                            >
+                                        </li>
+                                        <li style="margin-bottom: 8px">
+                                            <strong>Library:</strong> discord.js
+                                        </li>
+                                        <li style="margin-bottom: 8px">
+                                            <strong>Hosting:</strong>
+                                            <span style="color: #faa61a"
+                                                >Bot is fully operational and
+                                                ready for use.</span
+                                            >
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
-                        <div class="command-category animate__animated animate__fadeIn"
-                        style="background: rgba(114, 137, 218, 0.1); border: 2px solid #7289da;">
-                        <div class="feature-icon" style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: #7289da;">
-                            <i class="fas fa-moon" style="font-size: 1.8em; margin-right: -0.5em; color: #99aab5;"></i>
-                            <i class="fas fa-star"
-                                style="font-size: 0.8em; position: relative; left: -0.7em; top: 0.6em; color: #f8c300;"></i>
-                            <i class="fas fa-code"
-                                style="font-size: 0.8em; position: relative; left: 0.5em; top: 0.3em; color: #7289da;"></i>
+                        <div class="about-card">
+                            <div class="about-icon">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <h3 class="about-title">Developer</h3>
+                            <div class="about-content">
+                                <div
+                                    style="
+                                        display: flex;
+                                        align-items: center;
+                                        margin-bottom: 20px;
+                                    "
+                                >
+                                    <div
+                                        style="
+                                            position: relative;
+                                            width: 60px;
+                                            height: 60px;
+                                            margin-right: 15px;
+                                        "
+                                    >
+                                        <div
+                                            id="developerAvatarContainerModal"
+                                            style="
+                                                width: 100%;
+                                                height: 100%;
+                                                border-radius: 50%;
+                                                overflow: hidden;
+                                                background: #747f8d;
+                                            "
+                                        >
+                                            <img
+                                                id="developerAvatarModal"
+                                                src="https://cdn.discordapp.com/avatars/879393496627306587/3d8dcfe1e684894e06da87cc75c79b2a.webp?size=1024"
+                                                alt="Developer Avatar"
+                                                style="
+                                                    width: 100%;
+                                                    height: 100%;
+                                                    object-fit: cover;
+                                                "
+                                            />
+                                        </div>
+                                        <div
+                                            id="developerStatusModal"
+                                            style="
+                                                position: absolute;
+                                                bottom: 0;
+                                                right: 0;
+                                                width: 18px;
+                                                height: 18px;
+                                                border-radius: 50%;
+                                                border: 3px solid var(--dark);
+                                                background: #747f8d;
+                                            "
+                                        ></div>
+                                    </div>
+                                    <div>
+                                        <h4
+                                            style="
+                                                margin: 0;
+                                                color: var(--light);
+                                            "
+                                        >
+                                            kmmiio99o.dev
+                                        </h4>
+                                        <p
+                                            id="discordStatusTextModal"
+                                            style="
+                                                margin: 0;
+                                                color: var(--gray);
+                                                font-size: 0.9rem;
+                                            "
+                                        >
+                                            Status: Loading...
+                                        </p>
+                                    </div>
+                                </div>
+                                <div style="margin-bottom: 20px">
+                                    <h4
+                                        style="
+                                            color: var(--light);
+                                            margin-bottom: 10px;
+                                            display: flex;
+                                            align-items: center;
+                                        "
+                                    >
+                                        <i
+                                            class="fas fa-laptop-code"
+                                            style="
+                                                margin-right: 8px;
+                                                color: var(--secondary);
+                                            "
+                                        ></i
+                                        >Experience
+                                    </h4>
+                                    <p
+                                        style="
+                                            margin: 0;
+                                            line-height: 1.5;
+                                            color: rgba(255, 255, 255, 0.8);
+                                        "
+                                    >
+                                        Most websites. But know enough to type a
+                                        good discord bot that is going to be
+                                        totally free.
+                                    </p>
+                                </div>
+                                <div>
+                                    <h4
+                                        style="
+                                            color: var(--light);
+                                            margin-bottom: 10px;
+                                            display: flex;
+                                            align-items: center;
+                                        "
+                                    >
+                                        <i
+                                            class="fas fa-envelope"
+                                            style="
+                                                margin-right: 8px;
+                                                color: var(--secondary);
+                                            "
+                                        ></i
+                                        >Contact
+                                    </h4>
+                                    <ul
+                                        style="
+                                            margin: 0;
+                                            padding-left: 20px;
+                                            color: rgba(255, 255, 255, 0.8);
+                                        "
+                                    >
+                                        <li style="margin-bottom: 8px">
+                                            <strong>Discord:</strong>
+                                            kmmiio99o.dev
+                                        </li>
+                                        <li style="margin-bottom: 8px">
+                                            <strong>GitHub:</strong>
+                                            <a
+                                                href="https://github.com/kmmiio99o"
+                                                target="_blank"
+                                                style="color: var(--primary)"
+                                                >kmmiio99o</a
+                                            >
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
-                        <h3 class="category-title" style="text-align: center; color: #7289da;">V11.1.2 - Midnight Starlight</h3>
-                        <p style="text-align: center; color: #99aab5; font-size: 0.9rem; margin: -0.5rem 0 0.5rem 0; font-weight: 600;">
-                            Security & Features Update <span style="color: #faa61a">(Beta)</span></p>
-                        <ul class="command-list">
-                            <li class="command-item"><strong>Added /eval command</strong> — allows owners to execute Python code directly within the bot (cog: <code>cogs/eval.py</code>)</li>
-                            <li class="command-item"><strong>Reworked /afk command</strong> — improved look and reliability</li>
-                        </ul>
-                    </div>
-                    <div class="command-category animate__animated animate__fadeIn"
-                        style="background: rgba(114, 137, 218, 0.1); border: 2px solid #7289da;">
-                        <div class="feature-icon"
-                            style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: #7289da;">
-                            <i class="fas fa-moon" style="font-size: 1.8em; margin-right: -0.5em; color: #99aab5;"></i>
-                            <i class="fas fa-star"
-                                style="font-size: 0.8em; position: relative; left: -0.7em; top: 0.6em; color: #f8c300;"></i>
-                            <i class="fas fa-code"
-                                style="font-size: 0.8em; position: relative; left: 0.5em; top: 0.3em; color: #7289da;"></i>
-                        </div>
-                        <h3 class="category-title" style="text-align: center; color: #7289da;">V11.1.1 - Midnight Starlight</h3>
-                        <p style="text-align: center; color: #99aab5; font-size: 0.9rem; margin: -0.5rem 0 0.5rem 0; font-weight: 600;">
-                            Hotfix <span style="color: #faa61a">(Beta)</span></p>
-                        <ul class="command-list">
-                            <li class="command-item"><strong>Improved /help command appearance</strong> — redesigned interface for better
-                                readability and user experience</li>
-                        </ul>
-                    </div>
-                        <div class="command-category animate__animated animate__fadeIn"
-                        style="background: rgba(114, 137, 218, 0.1); border: 2px solid #7289da;">
-                        <div class="feature-icon"
-                            style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: #7289da;">
-                            <i class="fas fa-moon" style="font-size: 1.8em; margin-right: -0.5em; color: #99aab5;"></i>
-                            <i class="fas fa-star"
-                                style="font-size: 0.8em; position: relative; left: -0.7em; top: 0.6em; color: #f8c300;"></i>
-                            <i class="fas fa-code"
-                                style="font-size: 0.8em; position: relative; left: 0.5em; top: 0.3em; color: #7289da;"></i>
-                        </div>
-                        <h3 class="category-title" style="text-align: center; color: #7289da;">V11.1.0 - Midnight Starlight</h3>
-                        <p
-                            style="text-align: center; color: #99aab5; font-size: 0.9rem; margin: -0.5rem 0 0.5rem 0; font-weight: 600;">
-                            Feauters Update <span style="color: #faa61a">(Beta)</span></p>
-                        <ul class="command-list">
-                            <li class="command-item"><strong>Complete rewrite of the website</strong> — modernized design and improved user experience</li>
-                            <li class="command-item"><strong>New commands added</strong> — /ship, /howgay, /simprate with fun interactive features</li>
-                            <li class="command-item"><strong>Improved /rate command</strong> — now with animated star ratings and better visuals</li>
-                            <li class="command-item"><strong>Fixed /help command</strong> — properly displays all available commands now</li>
-                        </ul>
-                    </div>
-                    <div class="command-category animate__animated animate__fadeIn"
-                        style="background: rgba(210, 146, 68, 0.1); border: 2px solid #d29244;">
-                        <div class="feature-icon"
-                            style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: #d29244;">
-                            <i class="fas fa-sun" style="font-size: 1.8em; margin-right: -0.5em; color: #e6a502;"></i>
-                            <i class="fas fa-cactus"
-                                style="font-size: 0.8em; position: relative; left: -0.7em; top: 0.6em; color: #5a8f3d;"></i>
-                            <i class="fas fa-flask"
-                                style="font-size: 0.8em; position: relative; left: 0.5em; top: 0.3em; color: #d29244;"></i>
-                        </div>
-                        <h3 class="category-title" style="text-align: center; color: #d29244;">V10.0.0 Experimental Beta
-                            - Desert Mirage</h3>
-                        <p
-                            style="text-align: center; color: #e6a502; font-size: 0.9rem; margin: -0.5rem 0 0.5rem 0; font-weight: 600;">
-                            Beta Release</p>
-                        <ul class="command-list">
-                            <li class="command-item"><strong>Total rewrite of the codebase</strong> — fewer commands for
-                                now, but more will be added over time.</li>
-                            <li class="command-item"><strong>Removed prefix commands</strong> — replaced with slash
-                                commands for easier use (prefix commands may return in the future).</li>
-                            <li class="command-item"><strong>Performance improvements</strong> — reduced RAM usage by
-                                32% for smoother operation.</li>
-                        </ul>
-                    </div>
-                    <div class="command-category animate__animated animate__fadeIn"
-                        style="background: rgba(88, 101, 242, 0.1); border-color: var(--primary);">
-                        <div class="feature-icon"
-                            style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: var(--primary);">
-                            <i class="fas fa-cloud" style="font-size: 1.8em; margin-right: -0.5em"></i>
-                            <i class="fas fa-bolt"
-                                style="font-size: 0.8em; position: relative; left: -0.7em; top: 0.6em; color: #5865f2;"></i>
-                            <i class="fas fa-check"
-                                style="font-size: 0.8em; position: relative; left: -0.7em; top: 0.6em; color: #57f287;"></i>
-                        </div>
-                        <h3 class="category-title" style="text-align: center; color: var(--primary)">v3.3.2 - Arctic
-                            Thunder Fix+</h3>
-                        <p
-                            style="text-align: center; color: #57f287; font-size: 0.9rem; margin: -0.5rem 0 0.5rem 0; font-weight: 600;">
-                            Stable Release</p>
-                        <ul class="command-list">
-                            <li class="command-item">Bot is now <span class="command-name">open-source</span>! Available
-                                on GitHub for contributions</li>
-                            <li class="command-item">Fixed ticket system issues and improved stability</li>
-                            <li class="command-item">Updated documentation for better developer experience</li>
-                        </ul>
-                    </div>
-                    <div class="command-category animate__animated animate__fadeIn animate-delay-1"
-                        style="background: rgba(88, 101, 242, 0.1); border-color: var(--primary);">
-                        <div class="feature-icon"
-                            style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: var(--primary);">
-                            <i class="fas fa-cloud" style="font-size: 1.8em; margin-right: -0.5em"></i>
-                            <i class="fas fa-bolt"
-                                style="font-size: 0.8em; position: relative; left: -0.7em; top: 0.6em; color: #5865f2;"></i>
-                            <i class="fas fa-plus"
-                                style="font-size: 0.8em; position: relative; left: -0.7em; top: 0.6em; color: #eff258;"></i>
-                        </div>
-                        <h3 class="category-title" style="text-align: center; color: var(--primary)">v3.3.1 - Arctic
-                            Thunder Fix</h3>
-                        <p
-                            style="text-align: center; color: #57f287; font-size: 0.9rem; margin: -0.5rem 0 0.5rem 0; font-weight: 600;">
-                            Stable Release</p>
-                        <ul class="command-list">
-                            <li class="command-item">Fixed the <span class="command-name">;giveaway</span> (create
-                                giveaways)</li>
-                            <li class="command-item">Added new command: <span class="command-name">;endgiveaway</span>
-                                (end giveaways)</li>
-                            <li class="command-item">Added new command: <span class="command-name">;rmdm</span>
-                                (reminder system)</li>
-                            <li class="command-item">Added new command: <span class="command-name">;translate</span>
-                                (text translation)</li>
-                        </ul>
-                    </div>
-                    <div class="command-category animate__animated animate__fadeIn animate-delay-2"
-                        style="background: rgba(88, 101, 242, 0.1); border-color: var(--primary);">
-                        <div class="feature-icon"
-                            style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: var(--primary);">
-                            <i class="fas fa-cloud" style="font-size: 1.8em; margin-right: -0.5em"></i>
-                            <i class="fas fa-bolt"
-                                style="font-size: 0.8em; position: relative; left: -0.7em; top: 0.6em; color: #5865f2;"></i>
-                        </div>
-                        <h3 class="category-title" style="text-align: center; color: var(--primary)">v3.3.0 - Arctic
-                            Thunder</h3>
-                        <p
-                            style="text-align: center; color: #57f287; font-size: 0.9rem; margin: -0.5rem 0 0.5rem 0; font-weight: 600;">
-                            Stable Release</p>
-                        <div
-                            style="background: rgba(250, 166, 26, 0.1); border-radius: 8px; padding: 10px; margin-bottom: 15px; border-left: 3px solid #faa61a;">
-                            <p
-                                style="text-align: center; color: #faa61a; font-size: 1.1rem; margin: 0; font-style: italic; font-weight: 600;">
-                                This will most likely be the final version, the bot is practically perfect.</p>
-                        </div>
-                        <ul class="command-list">
-                            <li class="command-item">Removed command: <span class="command-name">;translate</span> - Due
-                                to no one using it</li>
-                            <li class="command-item">Codebase optimized (reduced RAM usage by 5MB 😭)</li>
-                            <li class="command-item">Added new ticket commands: <span class="command-name">;ts</span>
-                                (ticket setup), <span class="command-name">;addstaff</span> (add staff to ticket), <span
-                                    class="command-name">;rmstaff</span> (remove staff from ticket), <span
-                                    class="command-name">;tlog</span> (ticket logs)</li>
-                            <li class="command-item">Optimized bot performance for hosting</li>
-                        </ul>
-                    </div>
-                    <div class="command-category animate__animated animate__fadeIn animate-delay-3"
-                        style="background: rgba(88, 101, 242, 0.1); border-color: var(--primary);">
-                        <div class="feature-icon"
-                            style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: var(--primary);">
-                            <i class="fas fa-snowflake" style="font-size: 1.5em"></i>
-                            <i class="fas fa-wind" style="font-size: 1.2em; margin-left: -0.3em; color: #a8d8ea;"></i>
-                        </div>
-                        <h3 class="category-title" style="text-align: center; color: var(--primary)">v3.2.1 - Arctic
-                            Storm</h3>
-                        <p
-                            style="text-align: center; color: #57f287; font-size: 0.9rem; margin: -0.5rem 0 0.5rem 0; font-weight: 600;">
-                            Stable Release</p>
-                        <div
-                            style="background: rgba(250, 166, 26, 0.1); border-radius: 8px; padding: 10px; margin-bottom: 15px; border-left: 3px solid #faa61a;">
-                            <p
-                                style="text-align: center; color: #faa61a; font-size: 1.1rem; margin: 0; font-style: italic; font-weight: 600;">
-                                This will most likely be the final version, the bot is practically perfect.</p>
-                        </div>
-                        <ul class="command-list">
-                            <li class="command-item">Removed command: <span class="command-name">;translate</span> - Due
-                                to no one using it</li>
-                            <li class="command-item">Codebase optimized (reduced RAM usage by 5MB 😭)</li>
-                            <li class="command-item">Improved command response speed</li>
-                            <li class="command-item">Fixed minor bugs</li>
-                        </ul>
-                    </div>
-                    <div class="command-category animate__animated animate__fadeIn animate-delay-4"
-                        style="background: rgba(255, 248, 231, 0.1); border-color: #d4c9a8;">
-                        <div class="feature-icon"
-                            style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: #5e5343;">
-                            <i class="fas fa-bolt"></i>
-                        </div>
-                        <h3 class="category-title" style="text-align: center; color: #ffffff">v3.0.1 - Arctic Blizzard
-                        </h3>
-                        <p
-                            style="text-align: center; color: #57f287; font-size: 0.9rem; margin: -0.5rem 0 0.5rem 0; font-weight: 600;">
-                            Stable Release</p>
-                        <p
-                            style="text-align: center; color: #faa61a; font-size: 0.9rem; margin: -0.5rem 0 1rem 0; font-style: italic;">
-                            Hotfix release: Optimizations and command cleanup</p>
-                        <ul class="command-list">
-                            <li class="command-item" style="color: #ffffff">Removed command: <span class="command-name"
-                                    style="color: #57f287">;translate</span> - Due to no one using it</li>
-                            <li class="command-item" style="color: #ffffff">Codebase optimized (reduced RAM usage by 5MB
-                                😭)</li>
-                            <li class="command-item" style="color: #ffffff">Improved command response speed</li>
-                            <li class="command-item" style="color: #ffffff">Fixed minor bugs</li>
-                        </ul>
-                    </div>
-                    <div class="command-category animate__animated animate__fadeIn animate-delay-5"
-                        style="background: rgba(235, 69, 158, 0.1); border-color: #eb459e;">
-                        <div class="feature-icon"
-                            style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: #eb459e;">
-                            <i class="fas fa-snowflake"></i>
-                        </div>
-                        <h3 class="category-title" style="text-align: center; color: #eb459e">v3.0.0 - Arctic Fox</h3>
-                        <p
-                            style="text-align: center; color: #eb459e; font-size: 0.9rem; margin: -0.5rem 0 0.5rem 0; font-weight: 600;">
-                            Stable Beta</p>
-                        <p
-                            style="text-align: center; color: #eb459e; font-size: 0.9rem; margin: -0.5rem 0 1rem 0; font-style: italic;">
-                            Major release: Introducing new version naming style inspired by Android</p>
-                        <ul class="command-list">
-                            <li class="command-item">New version naming convention with codenames (like android)</li>
-                            <li class="command-item">New command: <span class="command-name">;qr</span> - Generates QR
-                                code from text</li>
-                            <li class="command-item">New command: <span class="command-name">;ascii</span> - Converts
-                                text to ASCII art</li>
-                        </ul>
-                    </div>
-                    <div class="command-category animate__animated animate__fadeIn animate-delay-6"
-                        style="background: rgba(254, 231, 92, 0.1); border-color: #fee75c;">
-                        <div class="feature-icon"
-                            style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: #fee75c;">
-                            <i class="fas fa-flask"></i>
-                        </div>
-                        <h3 class="category-title" style="text-align: center; color: #fee75c">v2.16.0 - Beta Release
-                        </h3>
-                        <p
-                            style="text-align: center; color: #fee75c; font-size: 0.9rem; margin: -0.5rem 0 1rem 0; font-style: italic;">
-                            Experimental features</p>
-                        <div class="command-item"
-                            style="background: transparent; border-left: 3px solid #fee75c; padding-left: 20px; margin-bottom: 1rem;">
-                            <h4 style="color: var(--light); margin-bottom: 10px; font-size: 1.2rem;">Known issues:</h4>
-                            <ul style="margin: 0; padding-left: 20px">
-                                <li style="margin-bottom: 6px"><span class="command-name">• Stability:</span> Some
-                                    features may behave unpredictably</li>
-                                <li style="margin-bottom: 6px"><span class="command-name">• Performance:</span> Slight
-                                    lag during peak usage times</li>
-                            </ul>
-                            <p style="margin-top: 10px; font-style: italic; color: #fee75c;">(Due to time constraints
-                                during development, this release contains experimental features that require further
-                                testing)</p>
-                        </div>
-                        <ul class="command-list">
-                            <li class="command-item">New command: <span class="command-name">;greroll</span> -
-                                Re-selects giveaway winner</li>
-                            <li class="command-item">New command: <span class="command-name">;prefix</span> - Modifies
-                                bot command prefix for this server</li>
-                        </ul>
-                    </div>
-                    <div class="command-category animate__animated animate__fadeIn"
-                        style="background: rgba(87, 242, 135, 0.1); border-color: var(--secondary);">
-                        <div class="feature-icon"
-                            style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: var(--secondary);">
-                            <i class="fas fa-bell"></i>
-                        </div>
-                        <h3 class="category-title" style="text-align: center; color: var(--secondary)">v2.15.2</h3>
-                        <ul class="command-list">
-                            <li class="command-item">New command: <span class="command-name">;autorole</span> -
-                                Configures automatic role assignment for new members</li>
-                        </ul>
-                    </div>
-                    <div class="command-category animate__animated animate__fadeIn animate-delay-1"
-                        style="background: rgba(88, 101, 242, 0.1); border-color: var(--primary);">
-                        <div class="feature-icon"
-                            style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: var(--primary);">
-                            <i class="fas fa-code-merge"></i>
-                        </div>
-                        <h3 class="category-title" style="text-align: center; color: var(--primary)">v2.5.0</h3>
-                        <ul class="command-list">
-                            <li class="command-item">Added new command: <span class="command-name">;rr</span> (reaction
-                                roles)</li>
-                            <li class="command-item">New embed system with advanced customization</li>
-                            <li class="command-item">Performance optimizations and bug fixes</li>
-                        </ul>
-                    </div>
-                    <div class="command-category animate__animated animate__fadeIn animate-delay-1"
-                        style="background: rgba(87, 242, 135, 0.1); border-color: var(--secondary);">
-                        <div class="feature-icon"
-                            style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: var(--secondary);">
-                            <i class="fas fa-server"></i>
-                        </div>
-                        <h3 class="category-title" style="text-align: center; color: var(--secondary)">v2.4.0</h3>
-                        <ul class="command-list">
-                            <li class="command-item">Added new role management commands</li>
-                            <li class="command-item">Successfully migrated to new hosting provider</li>
-                            <li class="command-item">Performance improvements and optimizations</li>
-                        </ul>
-                    </div>
-                    <div class="command-category animate__animated animate__fadeIn animate-delay-2"
-                        style="background: rgba(237, 66, 69, 0.1); border-color: #ed4245;">
-                        <div class="feature-icon"
-                            style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: #ed4245;">
-                            <i class="fas fa-exclamation-triangle"></i>
-                        </div>
-                        <h3 class="category-title" style="text-align: center; color: #ed4245">v2.3.0</h3>
-                        <ul class="command-list">
-                            <li class="command-item">Removed music commands due to hosting limitations</li>
-                        </ul>
-                    </div>
-                    <div class="command-category animate__animated animate__fadeIn animate-delay-3"
-                        style="background: rgba(250, 166, 26, 0.1); border-color: #faa61a;">
-                        <div class="feature-icon"
-                            style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: #faa61a;">
-                            <i class="fas fa-bell"></i>
-                        </div>
-                        <h3 class="category-title" style="text-align: center; color: #faa61a">v2.2.0</h3>
-                        <ul class="command-list">
-                            <li class="command-item">Added mute role persistence</li>
-                            <li class="command-item">Preparing for new hosting provider migration</li>
-                            <li class="command-item">Improved system stability</li>
-                        </ul>
-                    </div>
-                    <div class="command-category animate__animated animate__fadeIn animate-delay-7"
-                        style="background: rgba(87, 242, 135, 0.1); border-color: var(--secondary);">
-                        <div class="feature-icon"
-                            style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: var(--secondary);">
-                            <i class="fas fa-scroll"></i>
-                        </div>
-                        <h3 class="category-title" style="text-align: center; color: var(--secondary)">v1.3.0</h3>
-                        <ul class="command-list">
-                            <li class="command-item">Advanced moderation logs</li>
-                            <li class="command-item">Custom welcome messages</li>
-                        </ul>
-                    </div>
-                    <div class="command-category animate__animated animate__fadeIn animate-delay-8"
-                        style="background: rgba(237, 66, 69, 0.1); border-color: #ed4245;">
-                        <div class="feature-icon"
-                            style="font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: #ed4245;">
-                            <i class="fas fa-exclamation-triangle"></i>
-                        </div>
-                        <h3 class="category-title" style="text-align: center; color: #ed4245">v1.0.0</h3>
-                        <ul class="command-list">
-                            <li class="command-item">Initial bot release</li>
-                            <li class="command-item">Core moderation commands</li>
-                            <li class="command-item">Basic utilities</li>
-                        </ul>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-    <div id="tosModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title"><i class="fas fa-file-alt"></i> Terms of Service</h2>
-                <button class="close-modal">&times;</button>
+        <div id="versionsModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title">
+                        <i class="fas fa-code-branch"></i> Version History
+                    </h2>
+                    <button
+                        class="close-modal"
+                        aria-label="Close versions modal"
+                    >
+                        &times;
+                    </button>
+                </div>
+                <div class="modal-body" id="versionsModalContent">
+                    <div style="margin-top: 20px">
+                        <div style="margin-top: 20px">
+                            <div
+                                class="command-category animate__animated animate__fadeIn"
+                                style="
+                                    background: rgba(114, 137, 218, 0.1);
+                                    border: 2px solid #7289da;
+                                "
+                            >
+                                <div
+                                    class="feature-icon"
+                                    style="
+                                        font-size: 2.5rem;
+                                        text-align: center;
+                                        margin-bottom: 1.5rem;
+                                        color: #7289da;
+                                    "
+                                >
+                                    <i
+                                        class="fas fa-gift"
+                                        style="
+                                            font-size: 1.8em;
+                                            margin-right: -0.5em;
+                                            color: #99aab5;
+                                        "
+                                    ></i>
+                                    <i
+                                        class="fas fa-star"
+                                        style="
+                                            font-size: 0.8em;
+                                            position: relative;
+                                            left: -0.7em;
+                                            top: 0.6em;
+                                            color: #f8c300;
+                                        "
+                                    ></i>
+                                    <i
+                                        class="fas fa-broom"
+                                        style="
+                                            font-size: 0.8em;
+                                            position: relative;
+                                            left: 0.5em;
+                                            top: 0.3em;
+                                            color: #7289da;
+                                        "
+                                    ></i>
+                                </div>
+                                <h3
+                                    class="category-title"
+                                    style="text-align: center; color: #7289da"
+                                >
+                                    V12.0.1 - Nebula Dawn
+                                </h3>
+                                <p
+                                    style="
+                                        text-align: center;
+                                        color: #99aab5;
+                                        font-size: 0.9rem;
+                                        margin: -0.5rem 0 0.5rem 0;
+                                        font-weight: 600;
+                                    "
+                                >
+                                    Giveaway & Maintenance Update
+                                    <span style="color: #faa61a">(Beta)</span>
+                                </p>
+                                <ul class="command-list">
+                                    <li class="command-item">
+                                        <strong>Added giveaway cog</strong> —
+                                        new module for managing giveaways (added
+                                        to <code>main.py</code>)
+                                    </li>
+                                    <li class="command-item">
+                                        <strong>Code cleanup</strong> — minor
+                                        improvements and optimizations
+                                    </li>
+                                </ul>
+                            </div>
+                            <div
+                                class="command-category animate__animated animate__fadeIn"
+                                style="
+                                    background: rgba(114, 137, 218, 0.1);
+                                    border: 2px solid #7289da;
+                                "
+                            >
+                                <div
+                                    class="feature-icon"
+                                    style="
+                                        font-size: 2.5rem;
+                                        text-align: center;
+                                        margin-bottom: 1.5rem;
+                                        color: #7289da;
+                                    "
+                                >
+                                    <i
+                                        class="fas fa-moon"
+                                        style="
+                                            font-size: 1.8em;
+                                            margin-right: -0.5em;
+                                            color: #99aab5;
+                                        "
+                                    ></i>
+                                    <i
+                                        class="fas fa-star"
+                                        style="
+                                            font-size: 0.8em;
+                                            position: relative;
+                                            left: -0.7em;
+                                            top: 0.6em;
+                                            color: #f8c300;
+                                        "
+                                    ></i>
+                                    <i
+                                        class="fas fa-code"
+                                        style="
+                                            font-size: 0.8em;
+                                            position: relative;
+                                            left: 0.5em;
+                                            top: 0.3em;
+                                            color: #7289da;
+                                        "
+                                    ></i>
+                                </div>
+                                <h3
+                                    class="category-title"
+                                    style="text-align: center; color: #7289da"
+                                >
+                                    V11.1.2 - Midnight Starlight
+                                </h3>
+                                <p
+                                    style="
+                                        text-align: center;
+                                        color: #99aab5;
+                                        font-size: 0.9rem;
+                                        margin: -0.5rem 0 0.5rem 0;
+                                        font-weight: 600;
+                                    "
+                                >
+                                    Security & Features Update
+                                    <span style="color: #faa61a">(Beta)</span>
+                                </p>
+                                <ul class="command-list">
+                                    <li class="command-item">
+                                        <strong>Added /eval command</strong> —
+                                        allows owners to execute Python code
+                                        directly within the bot (cog:
+                                        <code>cogs/eval.py</code>)
+                                    </li>
+                                    <li class="command-item">
+                                        <strong>Reworked /afk command</strong> —
+                                        improved look and reliability
+                                    </li>
+                                </ul>
+                            </div>
+                            <div
+                                class="command-category animate__animated animate__fadeIn"
+                                style="
+                                    background: rgba(114, 137, 218, 0.1);
+                                    border: 2px solid #7289da;
+                                "
+                            >
+                                <div
+                                    class="feature-icon"
+                                    style="
+                                        font-size: 2.5rem;
+                                        text-align: center;
+                                        margin-bottom: 1.5rem;
+                                        color: #7289da;
+                                    "
+                                >
+                                    <i
+                                        class="fas fa-moon"
+                                        style="
+                                            font-size: 1.8em;
+                                            margin-right: -0.5em;
+                                            color: #99aab5;
+                                        "
+                                    ></i>
+                                    <i
+                                        class="fas fa-star"
+                                        style="
+                                            font-size: 0.8em;
+                                            position: relative;
+                                            left: -0.7em;
+                                            top: 0.6em;
+                                            color: #f8c300;
+                                        "
+                                    ></i>
+                                    <i
+                                        class="fas fa-code"
+                                        style="
+                                            font-size: 0.8em;
+                                            position: relative;
+                                            left: 0.5em;
+                                            top: 0.3em;
+                                            color: #7289da;
+                                        "
+                                    ></i>
+                                </div>
+                                <h3
+                                    class="category-title"
+                                    style="text-align: center; color: #7289da"
+                                >
+                                    V11.1.1 - Midnight Starlight
+                                </h3>
+                                <p
+                                    style="
+                                        text-align: center;
+                                        color: #99aab5;
+                                        font-size: 0.9rem;
+                                        margin: -0.5rem 0 0.5rem 0;
+                                        font-weight: 600;
+                                    "
+                                >
+                                    Hotfix
+                                    <span style="color: #faa61a">(Beta)</span>
+                                </p>
+                                <ul class="command-list">
+                                    <li class="command-item">
+                                        <strong
+                                            >Improved /help command
+                                            appearance</strong
+                                        >
+                                        — redesigned interface for better
+                                        readability and user experience
+                                    </li>
+                                </ul>
+                            </div>
+                            <div
+                                class="command-category animate__animated animate__fadeIn"
+                                style="
+                                    background: rgba(114, 137, 218, 0.1);
+                                    border: 2px solid #7289da;
+                                "
+                            >
+                                <div
+                                    class="feature-icon"
+                                    style="
+                                        font-size: 2.5rem;
+                                        text-align: center;
+                                        margin-bottom: 1.5rem;
+                                        color: #7289da;
+                                    "
+                                >
+                                    <i
+                                        class="fas fa-moon"
+                                        style="
+                                            font-size: 1.8em;
+                                            margin-right: -0.5em;
+                                            color: #99aab5;
+                                        "
+                                    ></i>
+                                    <i
+                                        class="fas fa-star"
+                                        style="
+                                            font-size: 0.8em;
+                                            position: relative;
+                                            left: -0.7em;
+                                            top: 0.6em;
+                                            color: #f8c300;
+                                        "
+                                    ></i>
+                                    <i
+                                        class="fas fa-code"
+                                        style="
+                                            font-size: 0.8em;
+                                            position: relative;
+                                            left: 0.5em;
+                                            top: 0.3em;
+                                            color: #7289da;
+                                        "
+                                    ></i>
+                                </div>
+                                <h3
+                                    class="category-title"
+                                    style="text-align: center; color: #7289da"
+                                >
+                                    V11.1.0 - Midnight Starlight
+                                </h3>
+                                <p
+                                    style="
+                                        text-align: center;
+                                        color: #99aab5;
+                                        font-size: 0.9rem;
+                                        margin: -0.5rem 0 0.5rem 0;
+                                        font-weight: 600;
+                                    "
+                                >
+                                    Feauters Update
+                                    <span style="color: #faa61a">(Beta)</span>
+                                </p>
+                                <ul class="command-list">
+                                    <li class="command-item">
+                                        <strong
+                                            >Complete rewrite of the
+                                            website</strong
+                                        >
+                                        — modernized design and improved user
+                                        experience
+                                    </li>
+                                    <li class="command-item">
+                                        <strong>New commands added</strong> —
+                                        /ship, /howgay, /simprate with fun
+                                        interactive features
+                                    </li>
+                                    <li class="command-item">
+                                        <strong>Improved /rate command</strong>
+                                        — now with animated star ratings and
+                                        better visuals
+                                    </li>
+                                    <li class="command-item">
+                                        <strong>Fixed /help command</strong> —
+                                        properly displays all available commands
+                                        now
+                                    </li>
+                                </ul>
+                            </div>
+                            <div
+                                class="command-category animate__animated animate__fadeIn"
+                                style="
+                                    background: rgba(210, 146, 68, 0.1);
+                                    border: 2px solid #d29244;
+                                "
+                            >
+                                <div
+                                    class="feature-icon"
+                                    style="
+                                        font-size: 2.5rem;
+                                        text-align: center;
+                                        margin-bottom: 1.5rem;
+                                        color: #d29244;
+                                    "
+                                >
+                                    <i
+                                        class="fas fa-sun"
+                                        style="
+                                            font-size: 1.8em;
+                                            margin-right: -0.5em;
+                                            color: #e6a502;
+                                        "
+                                    ></i>
+                                    <i
+                                        class="fas fa-cactus"
+                                        style="
+                                            font-size: 0.8em;
+                                            position: relative;
+                                            left: -0.7em;
+                                            top: 0.6em;
+                                            color: #5a8f3d;
+                                        "
+                                    ></i>
+                                    <i
+                                        class="fas fa-flask"
+                                        style="
+                                            font-size: 0.8em;
+                                            position: relative;
+                                            left: 0.5em;
+                                            top: 0.3em;
+                                            color: #d29244;
+                                        "
+                                    ></i>
+                                </div>
+                                <h3
+                                    class="category-title"
+                                    style="text-align: center; color: #d29244"
+                                >
+                                    V10.0.0 Experimental Beta - Desert Mirage
+                                </h3>
+                                <p
+                                    style="
+                                        text-align: center;
+                                        color: #e6a502;
+                                        font-size: 0.9rem;
+                                        margin: -0.5rem 0 0.5rem 0;
+                                        font-weight: 600;
+                                    "
+                                >
+                                    Beta Release
+                                </p>
+                                <ul class="command-list">
+                                    <li class="command-item">
+                                        <strong
+                                            >Total rewrite of the
+                                            codebase</strong
+                                        >
+                                        — fewer commands for now, but more will
+                                        be added over time.
+                                    </li>
+                                    <li class="command-item">
+                                        <strong>Removed prefix commands</strong>
+                                        — replaced with slash commands for
+                                        easier use (prefix commands may return
+                                        in the future).
+                                    </li>
+                                    <li class="command-item">
+                                        <strong
+                                            >Performance improvements</strong
+                                        >
+                                        — reduced RAM usage by 32% for smoother
+                                        operation.
+                                    </li>
+                                </ul>
+                            </div>
+                            <div
+                                class="command-category animate__animated animate__fadeIn"
+                                style="
+                                    background: rgba(88, 101, 242, 0.1);
+                                    border-color: var(--primary);
+                                "
+                            >
+                                <div
+                                    class="feature-icon"
+                                    style="
+                                        font-size: 2.5rem;
+                                        text-align: center;
+                                        margin-bottom: 1.5rem;
+                                        color: var(--primary);
+                                    "
+                                >
+                                    <i
+                                        class="fas fa-cloud"
+                                        style="
+                                            font-size: 1.8em;
+                                            margin-right: -0.5em;
+                                        "
+                                    ></i>
+                                    <i
+                                        class="fas fa-bolt"
+                                        style="
+                                            font-size: 0.8em;
+                                            position: relative;
+                                            left: -0.7em;
+                                            top: 0.6em;
+                                            color: #5865f2;
+                                        "
+                                    ></i>
+                                    <i
+                                        class="fas fa-check"
+                                        style="
+                                            font-size: 0.8em;
+                                            position: relative;
+                                            left: -0.7em;
+                                            top: 0.6em;
+                                            color: #57f287;
+                                        "
+                                    ></i>
+                                </div>
+                                <h3
+                                    class="category-title"
+                                    style="
+                                        text-align: center;
+                                        color: var(--primary);
+                                    "
+                                >
+                                    v3.3.2 - Arctic Thunder Fix+
+                                </h3>
+                                <p
+                                    style="
+                                        text-align: center;
+                                        color: #57f287;
+                                        font-size: 0.9rem;
+                                        margin: -0.5rem 0 0.5rem 0;
+                                        font-weight: 600;
+                                    "
+                                >
+                                    Stable Release
+                                </p>
+                                <ul class="command-list">
+                                    <li class="command-item">
+                                        Bot is now
+                                        <span class="command-name"
+                                            >open-source</span
+                                        >! Available on GitHub for contributions
+                                    </li>
+                                    <li class="command-item">
+                                        Fixed ticket system issues and improved
+                                        stability
+                                    </li>
+                                    <li class="command-item">
+                                        Updated documentation for better
+                                        developer experience
+                                    </li>
+                                </ul>
+                            </div>
+                            <div
+                                class="command-category animate__animated animate__fadeIn animate-delay-1"
+                                style="
+                                    background: rgba(88, 101, 242, 0.1);
+                                    border-color: var(--primary);
+                                "
+                            >
+                                <div
+                                    class="feature-icon"
+                                    style="
+                                        font-size: 2.5rem;
+                                        text-align: center;
+                                        margin-bottom: 1.5rem;
+                                        color: var(--primary);
+                                    "
+                                >
+                                    <i
+                                        class="fas fa-cloud"
+                                        style="
+                                            font-size: 1.8em;
+                                            margin-right: -0.5em;
+                                        "
+                                    ></i>
+                                    <i
+                                        class="fas fa-bolt"
+                                        style="
+                                            font-size: 0.8em;
+                                            position: relative;
+                                            left: -0.7em;
+                                            top: 0.6em;
+                                            color: #5865f2;
+                                        "
+                                    ></i>
+                                    <i
+                                        class="fas fa-plus"
+                                        style="
+                                            font-size: 0.8em;
+                                            position: relative;
+                                            left: -0.7em;
+                                            top: 0.6em;
+                                            color: #eff258;
+                                        "
+                                    ></i>
+                                </div>
+                                <h3
+                                    class="category-title"
+                                    style="
+                                        text-align: center;
+                                        color: var(--primary);
+                                    "
+                                >
+                                    v3.3.1 - Arctic Thunder Fix
+                                </h3>
+                                <p
+                                    style="
+                                        text-align: center;
+                                        color: #57f287;
+                                        font-size: 0.9rem;
+                                        margin: -0.5rem 0 0.5rem 0;
+                                        font-weight: 600;
+                                    "
+                                >
+                                    Stable Release
+                                </p>
+                                <ul class="command-list">
+                                    <li class="command-item">
+                                        Fixed the
+                                        <span class="command-name"
+                                            >;giveaway</span
+                                        >
+                                        (create giveaways)
+                                    </li>
+                                    <li class="command-item">
+                                        Added new command:
+                                        <span class="command-name"
+                                            >;endgiveaway</span
+                                        >
+                                        (end giveaways)
+                                    </li>
+                                    <li class="command-item">
+                                        Added new command:
+                                        <span class="command-name">;rmdm</span>
+                                        (reminder system)
+                                    </li>
+                                    <li class="command-item">
+                                        Added new command:
+                                        <span class="command-name"
+                                            >;translate</span
+                                        >
+                                        (text translation)
+                                    </li>
+                                </ul>
+                            </div>
+                            <div
+                                class="command-category animate__animated animate__fadeIn animate-delay-2"
+                                style="
+                                    background: rgba(88, 101, 242, 0.1);
+                                    border-color: var(--primary);
+                                "
+                            >
+                                <div
+                                    class="feature-icon"
+                                    style="
+                                        font-size: 2.5rem;
+                                        text-align: center;
+                                        margin-bottom: 1.5rem;
+                                        color: var(--primary);
+                                    "
+                                >
+                                    <i
+                                        class="fas fa-cloud"
+                                        style="
+                                            font-size: 1.8em;
+                                            margin-right: -0.5em;
+                                        "
+                                    ></i>
+                                    <i
+                                        class="fas fa-bolt"
+                                        style="
+                                            font-size: 0.8em;
+                                            position: relative;
+                                            left: -0.7em;
+                                            top: 0.6em;
+                                            color: #5865f2;
+                                        "
+                                    ></i>
+                                </div>
+                                <h3
+                                    class="category-title"
+                                    style="
+                                        text-align: center;
+                                        color: var(--primary);
+                                    "
+                                >
+                                    v3.3.0 - Arctic Thunder
+                                </h3>
+                                <p
+                                    style="
+                                        text-align: center;
+                                        color: #57f287;
+                                        font-size: 0.9rem;
+                                        margin: -0.5rem 0 0.5rem 0;
+                                        font-weight: 600;
+                                    "
+                                >
+                                    Stable Release
+                                </p>
+                                <div
+                                    style="
+                                        background: rgba(250, 166, 26, 0.1);
+                                        border-radius: 8px;
+                                        padding: 10px;
+                                        margin-bottom: 15px;
+                                        border-left: 3px solid #faa61a;
+                                    "
+                                >
+                                    <p
+                                        style="
+                                            text-align: center;
+                                            color: #faa61a;
+                                            font-size: 1.1rem;
+                                            margin: 0;
+                                            font-style: italic;
+                                            font-weight: 600;
+                                        "
+                                    >
+                                        This will most likely be the final
+                                        version, the bot is practically perfect.
+                                    </p>
+                                </div>
+                                <ul class="command-list">
+                                    <li class="command-item">
+                                        Removed command:
+                                        <span class="command-name"
+                                            >;translate</span
+                                        >
+                                        - Due to no one using it
+                                    </li>
+                                    <li class="command-item">
+                                        Codebase optimized (reduced RAM usage by
+                                        5MB 😭)
+                                    </li>
+                                    <li class="command-item">
+                                        Added new ticket commands:
+                                        <span class="command-name">;ts</span>
+                                        (ticket setup),
+                                        <span class="command-name"
+                                            >;addstaff</span
+                                        >
+                                        (add staff to ticket),
+                                        <span class="command-name"
+                                            >;rmstaff</span
+                                        >
+                                        (remove staff from ticket),
+                                        <span class="command-name">;tlog</span>
+                                        (ticket logs)
+                                    </li>
+                                    <li class="command-item">
+                                        Optimized bot performance for hosting
+                                    </li>
+                                </ul>
+                            </div>
+                            <div
+                                class="command-category animate__animated animate__fadeIn animate-delay-3"
+                                style="
+                                    background: rgba(88, 101, 242, 0.1);
+                                    border-color: var(--primary);
+                                "
+                            >
+                                <div
+                                    class="feature-icon"
+                                    style="
+                                        font-size: 2.5rem;
+                                        text-align: center;
+                                        margin-bottom: 1.5rem;
+                                        color: var(--primary);
+                                    "
+                                >
+                                    <i
+                                        class="fas fa-snowflake"
+                                        style="font-size: 1.5em"
+                                    ></i>
+                                    <i
+                                        class="fas fa-wind"
+                                        style="
+                                            font-size: 1.2em;
+                                            margin-left: -0.3em;
+                                            color: #a8d8ea;
+                                        "
+                                    ></i>
+                                </div>
+                                <h3
+                                    class="category-title"
+                                    style="
+                                        text-align: center;
+                                        color: var(--primary);
+                                    "
+                                >
+                                    v3.2.1 - Arctic Storm
+                                </h3>
+                                <p
+                                    style="
+                                        text-align: center;
+                                        color: #57f287;
+                                        font-size: 0.9rem;
+                                        margin: -0.5rem 0 0.5rem 0;
+                                        font-weight: 600;
+                                    "
+                                >
+                                    Stable Release
+                                </p>
+                                <div
+                                    style="
+                                        background: rgba(250, 166, 26, 0.1);
+                                        border-radius: 8px;
+                                        padding: 10px;
+                                        margin-bottom: 15px;
+                                        border-left: 3px solid #faa61a;
+                                    "
+                                >
+                                    <p
+                                        style="
+                                            text-align: center;
+                                            color: #faa61a;
+                                            font-size: 1.1rem;
+                                            margin: 0;
+                                            font-style: italic;
+                                            font-weight: 600;
+                                        "
+                                    >
+                                        This will most likely be the final
+                                        version, the bot is practically perfect.
+                                    </p>
+                                </div>
+                                <ul class="command-list">
+                                    <li class="command-item">
+                                        Removed command:
+                                        <span class="command-name"
+                                            >;translate</span
+                                        >
+                                        - Due to no one using it
+                                    </li>
+                                    <li class="command-item">
+                                        Codebase optimized (reduced RAM usage by
+                                        5MB 😭)
+                                    </li>
+                                    <li class="command-item">
+                                        Improved command response speed
+                                    </li>
+                                    <li class="command-item">
+                                        Fixed minor bugs
+                                    </li>
+                                </ul>
+                            </div>
+                            <div
+                                class="command-category animate__animated animate__fadeIn animate-delay-4"
+                                style="
+                                    background: rgba(255, 248, 231, 0.1);
+                                    border-color: #d4c9a8;
+                                "
+                            >
+                                <div
+                                    class="feature-icon"
+                                    style="
+                                        font-size: 2.5rem;
+                                        text-align: center;
+                                        margin-bottom: 1.5rem;
+                                        color: #5e5343;
+                                    "
+                                >
+                                    <i class="fas fa-bolt"></i>
+                                </div>
+                                <h3
+                                    class="category-title"
+                                    style="text-align: center; color: #ffffff"
+                                >
+                                    v3.0.1 - Arctic Blizzard
+                                </h3>
+                                <p
+                                    style="
+                                        text-align: center;
+                                        color: #57f287;
+                                        font-size: 0.9rem;
+                                        margin: -0.5rem 0 0.5rem 0;
+                                        font-weight: 600;
+                                    "
+                                >
+                                    Stable Release
+                                </p>
+                                <p
+                                    style="
+                                        text-align: center;
+                                        color: #faa61a;
+                                        font-size: 0.9rem;
+                                        margin: -0.5rem 0 1rem 0;
+                                        font-style: italic;
+                                    "
+                                >
+                                    Hotfix release: Optimizations and command
+                                    cleanup
+                                </p>
+                                <ul class="command-list">
+                                    <li
+                                        class="command-item"
+                                        style="color: #ffffff"
+                                    >
+                                        Removed command:
+                                        <span
+                                            class="command-name"
+                                            style="color: #57f287"
+                                            >;translate</span
+                                        >
+                                        - Due to no one using it
+                                    </li>
+                                    <li
+                                        class="command-item"
+                                        style="color: #ffffff"
+                                    >
+                                        Codebase optimized (reduced RAM usage by
+                                        5MB 😭)
+                                    </li>
+                                    <li
+                                        class="command-item"
+                                        style="color: #ffffff"
+                                    >
+                                        Improved command response speed
+                                    </li>
+                                    <li
+                                        class="command-item"
+                                        style="color: #ffffff"
+                                    >
+                                        Fixed minor bugs
+                                    </li>
+                                </ul>
+                            </div>
+                            <div
+                                class="command-category animate__animated animate__fadeIn animate-delay-5"
+                                style="
+                                    background: rgba(235, 69, 158, 0.1);
+                                    border-color: #eb459e;
+                                "
+                            >
+                                <div
+                                    class="feature-icon"
+                                    style="
+                                        font-size: 2.5rem;
+                                        text-align: center;
+                                        margin-bottom: 1.5rem;
+                                        color: #eb459e;
+                                    "
+                                >
+                                    <i class="fas fa-snowflake"></i>
+                                </div>
+                                <h3
+                                    class="category-title"
+                                    style="text-align: center; color: #eb459e"
+                                >
+                                    v3.0.0 - Arctic Fox
+                                </h3>
+                                <p
+                                    style="
+                                        text-align: center;
+                                        color: #eb459e;
+                                        font-size: 0.9rem;
+                                        margin: -0.5rem 0 0.5rem 0;
+                                        font-weight: 600;
+                                    "
+                                >
+                                    Stable Beta
+                                </p>
+                                <p
+                                    style="
+                                        text-align: center;
+                                        color: #eb459e;
+                                        font-size: 0.9rem;
+                                        margin: -0.5rem 0 1rem 0;
+                                        font-style: italic;
+                                    "
+                                >
+                                    Major release: Introducing new version
+                                    naming style inspired by Android
+                                </p>
+                                <ul class="command-list">
+                                    <li class="command-item">
+                                        New version naming convention with
+                                        codenames (like android)
+                                    </li>
+                                    <li class="command-item">
+                                        New command:
+                                        <span class="command-name">;qr</span> -
+                                        Generates QR code from text
+                                    </li>
+                                    <li class="command-item">
+                                        New command:
+                                        <span class="command-name">;ascii</span>
+                                        - Converts text to ASCII art
+                                    </li>
+                                </ul>
+                            </div>
+                            <div
+                                class="command-category animate__animated animate__fadeIn animate-delay-6"
+                                style="
+                                    background: rgba(254, 231, 92, 0.1);
+                                    border-color: #fee75c;
+                                "
+                            >
+                                <div
+                                    class="feature-icon"
+                                    style="
+                                        font-size: 2.5rem;
+                                        text-align: center;
+                                        margin-bottom: 1.5rem;
+                                        color: #fee75c;
+                                    "
+                                >
+                                    <i class="fas fa-flask"></i>
+                                </div>
+                                <h3
+                                    class="category-title"
+                                    style="text-align: center; color: #fee75c"
+                                >
+                                    v2.16.0 - Beta Release
+                                </h3>
+                                <p
+                                    style="
+                                        text-align: center;
+                                        color: #fee75c;
+                                        font-size: 0.9rem;
+                                        margin: -0.5rem 0 1rem 0;
+                                        font-style: italic;
+                                    "
+                                >
+                                    Experimental features
+                                </p>
+                                <div
+                                    class="command-item"
+                                    style="
+                                        background: transparent;
+                                        border-left: 3px solid #fee75c;
+                                        padding-left: 20px;
+                                        margin-bottom: 1rem;
+                                    "
+                                >
+                                    <h4
+                                        style="
+                                            color: var(--light);
+                                            margin-bottom: 10px;
+                                            font-size: 1.2rem;
+                                        "
+                                    >
+                                        Known issues:
+                                    </h4>
+                                    <ul style="margin: 0; padding-left: 20px">
+                                        <li style="margin-bottom: 6px">
+                                            <span class="command-name"
+                                                >• Stability:</span
+                                            >
+                                            Some features may behave
+                                            unpredictably
+                                        </li>
+                                        <li style="margin-bottom: 6px">
+                                            <span class="command-name"
+                                                >• Performance:</span
+                                            >
+                                            Slight lag during peak usage times
+                                        </li>
+                                    </ul>
+                                    <p
+                                        style="
+                                            margin-top: 10px;
+                                            font-style: italic;
+                                            color: #fee75c;
+                                        "
+                                    >
+                                        (Due to time constraints during
+                                        development, this release contains
+                                        experimental features that require
+                                        further testing)
+                                    </p>
+                                </div>
+                                <ul class="command-list">
+                                    <li class="command-item">
+                                        New command:
+                                        <span class="command-name"
+                                            >;greroll</span
+                                        >
+                                        - Re-selects giveaway winner
+                                    </li>
+                                    <li class="command-item">
+                                        New command:
+                                        <span class="command-name"
+                                            >;prefix</span
+                                        >
+                                        - Modifies bot command prefix for this
+                                        server
+                                    </li>
+                                </ul>
+                            </div>
+                            <div
+                                class="command-category animate__animated animate__fadeIn"
+                                style="
+                                    background: rgba(87, 242, 135, 0.1);
+                                    border-color: var(--secondary);
+                                "
+                            >
+                                <div
+                                    class="feature-icon"
+                                    style="
+                                        font-size: 2.5rem;
+                                        text-align: center;
+                                        margin-bottom: 1.5rem;
+                                        color: var(--secondary);
+                                    "
+                                >
+                                    <i class="fas fa-bell"></i>
+                                </div>
+                                <h3
+                                    class="category-title"
+                                    style="
+                                        text-align: center;
+                                        color: var(--secondary);
+                                    "
+                                >
+                                    v2.15.2
+                                </h3>
+                                <ul class="command-list">
+                                    <li class="command-item">
+                                        New command:
+                                        <span class="command-name"
+                                            >;autorole</span
+                                        >
+                                        - Configures automatic role assignment
+                                        for new members
+                                    </li>
+                                </ul>
+                            </div>
+                            <div
+                                class="command-category animate__animated animate__fadeIn animate-delay-1"
+                                style="
+                                    background: rgba(88, 101, 242, 0.1);
+                                    border-color: var(--primary);
+                                "
+                            >
+                                <div
+                                    class="feature-icon"
+                                    style="
+                                        font-size: 2.5rem;
+                                        text-align: center;
+                                        margin-bottom: 1.5rem;
+                                        color: var(--primary);
+                                    "
+                                >
+                                    <i class="fas fa-code-merge"></i>
+                                </div>
+                                <h3
+                                    class="category-title"
+                                    style="
+                                        text-align: center;
+                                        color: var(--primary);
+                                    "
+                                >
+                                    v2.5.0
+                                </h3>
+                                <ul class="command-list">
+                                    <li class="command-item">
+                                        Added new command:
+                                        <span class="command-name">;rr</span>
+                                        (reaction roles)
+                                    </li>
+                                    <li class="command-item">
+                                        New embed system with advanced
+                                        customization
+                                    </li>
+                                    <li class="command-item">
+                                        Performance optimizations and bug fixes
+                                    </li>
+                                </ul>
+                            </div>
+                            <div
+                                class="command-category animate__animated animate__fadeIn animate-delay-1"
+                                style="
+                                    background: rgba(87, 242, 135, 0.1);
+                                    border-color: var(--secondary);
+                                "
+                            >
+                                <div
+                                    class="feature-icon"
+                                    style="
+                                        font-size: 2.5rem;
+                                        text-align: center;
+                                        margin-bottom: 1.5rem;
+                                        color: var(--secondary);
+                                    "
+                                >
+                                    <i class="fas fa-server"></i>
+                                </div>
+                                <h3
+                                    class="category-title"
+                                    style="
+                                        text-align: center;
+                                        color: var(--secondary);
+                                    "
+                                >
+                                    v2.4.0
+                                </h3>
+                                <ul class="command-list">
+                                    <li class="command-item">
+                                        Added new role management commands
+                                    </li>
+                                    <li class="command-item">
+                                        Successfully migrated to new hosting
+                                        provider
+                                    </li>
+                                    <li class="command-item">
+                                        Performance improvements and
+                                        optimizations
+                                    </li>
+                                </ul>
+                            </div>
+                            <div
+                                class="command-category animate__animated animate__fadeIn animate-delay-2"
+                                style="
+                                    background: rgba(237, 66, 69, 0.1);
+                                    border-color: #ed4245;
+                                "
+                            >
+                                <div
+                                    class="feature-icon"
+                                    style="
+                                        font-size: 2.5rem;
+                                        text-align: center;
+                                        margin-bottom: 1.5rem;
+                                        color: #ed4245;
+                                    "
+                                >
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                </div>
+                                <h3
+                                    class="category-title"
+                                    style="text-align: center; color: #ed4245"
+                                >
+                                    v2.3.0
+                                </h3>
+                                <ul class="command-list">
+                                    <li class="command-item">
+                                        Removed music commands due to hosting
+                                        limitations
+                                    </li>
+                                </ul>
+                            </div>
+                            <div
+                                class="command-category animate__animated animate__fadeIn animate-delay-3"
+                                style="
+                                    background: rgba(250, 166, 26, 0.1);
+                                    border-color: #faa61a;
+                                "
+                            >
+                                <div
+                                    class="feature-icon"
+                                    style="
+                                        font-size: 2.5rem;
+                                        text-align: center;
+                                        margin-bottom: 1.5rem;
+                                        color: #faa61a;
+                                    "
+                                >
+                                    <i class="fas fa-bell"></i>
+                                </div>
+                                <h3
+                                    class="category-title"
+                                    style="text-align: center; color: #faa61a"
+                                >
+                                    v2.2.0
+                                </h3>
+                                <ul class="command-list">
+                                    <li class="command-item">
+                                        Added mute role persistence
+                                    </li>
+                                    <li class="command-item">
+                                        Preparing for new hosting provider
+                                        migration
+                                    </li>
+                                    <li class="command-item">
+                                        Improved system stability
+                                    </li>
+                                </ul>
+                            </div>
+                            <div
+                                class="command-category animate__animated animate__fadeIn animate-delay-7"
+                                style="
+                                    background: rgba(87, 242, 135, 0.1);
+                                    border-color: var(--secondary);
+                                "
+                            >
+                                <div
+                                    class="feature-icon"
+                                    style="
+                                        font-size: 2.5rem;
+                                        text-align: center;
+                                        margin-bottom: 1.5rem;
+                                        color: var(--secondary);
+                                    "
+                                >
+                                    <i class="fas fa-scroll"></i>
+                                </div>
+                                <h3
+                                    class="category-title"
+                                    style="
+                                        text-align: center;
+                                        color: var(--secondary);
+                                    "
+                                >
+                                    v1.3.0
+                                </h3>
+                                <ul class="command-list">
+                                    <li class="command-item">
+                                        Advanced moderation logs
+                                    </li>
+                                    <li class="command-item">
+                                        Custom welcome messages
+                                    </li>
+                                </ul>
+                            </div>
+                            <div
+                                class="command-category animate__animated animate__fadeIn animate-delay-8"
+                                style="
+                                    background: rgba(237, 66, 69, 0.1);
+                                    border-color: #ed4245;
+                                "
+                            >
+                                <div
+                                    class="feature-icon"
+                                    style="
+                                        font-size: 2.5rem;
+                                        text-align: center;
+                                        margin-bottom: 1.5rem;
+                                        color: #ed4245;
+                                    "
+                                >
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                </div>
+                                <h3
+                                    class="category-title"
+                                    style="text-align: center; color: #ed4245"
+                                >
+                                    v1.0.0
+                                </h3>
+                                <ul class="command-list">
+                                    <li class="command-item">
+                                        Initial bot release
+                                    </li>
+                                    <li class="command-item">
+                                        Core moderation commands
+                                    </li>
+                                    <li class="command-item">
+                                        Basic utilities
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="modal-body">
-                <div class="modal-body">
-                    <h3>
-                        <i class="fas fa-check-circle"></i>
-                        1. Definitions and Acceptance
-                    </h3>
-                    <p>
-                        These Terms of Service ("Agreement") constitute a
-                        legally binding agreement between you ("User") and
-                        the developers ("We", "Us") of Ormi Bot ("Service").
-                        By accessing or using the Service, you acknowledge
-                        that you have read, understood, and agree to be
-                        bound by all terms contained herein.
-                    </p>
+        </div>
+        <div id="tosModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title">
+                        <i class="fas fa-file-alt"></i> Terms of Service
+                    </h2>
+                    <button class="close-modal">&times;</button>
                 </div>
-
                 <div class="modal-body">
-                    <h3>
-                        <i class="fas fa-gavel"></i>
-                        2. License Grant and Restrictions
-                    </h3>
-                    <p>
-                        Subject to compliance with this Agreement, we grant
-                        you a limited, non-exclusive, non-transferable,
-                        revocable license to use the Service for its
-                        intended purposes within Discord platform. This
-                        license does not include:
-                    </p>
-                    <ul>
-                        <li>
-                            Right to modify, reverse engineer, or create
-                            derivative works
-                        </li>
-                        <li>
-                            Commercial use without express written
-                            permission
-                        </li>
-                        <li>
-                            Distribution of the Service to third parties
-                        </li>
-                    </ul>
-                </div>
+                    <div class="modal-body">
+                        <h3>
+                            <i class="fas fa-check-circle"></i>
+                            1. Definitions and Acceptance
+                        </h3>
+                        <p>
+                            These Terms of Service ("Agreement") constitute a
+                            legally binding agreement between you ("User") and
+                            the developers ("We", "Us") of Ormi Bot ("Service").
+                            By accessing or using the Service, you acknowledge
+                            that you have read, understood, and agree to be
+                            bound by all terms contained herein.
+                        </p>
+                    </div>
 
-                <div class="modal-body">
-                    <h3>
-                        <i class="fas fa-ban"></i>
-                        3. Prohibited Conduct
-                    </h3>
-                    <p>
-                        You expressly agree not to engage in any of the
-                        following prohibited activities:
-                    </p>
-                    <ul>
-                        <li>
-                            Violate Discord's Terms of Service or Community
-                            Guidelines
-                        </li>
-                        <li>
-                            Use automated systems (bots, scripts, macros) to
-                            interact with the Service
-                        </li>
-                        <li>
-                            Exploit bugs or vulnerabilities for unauthorized
-                            access
-                        </li>
-                        <li>
-                            Harass, threaten, or discriminate against
-                            individuals or groups
-                        </li>
-                        <li>
-                            Distribute illegal, harmful, or NSFW content
-                        </li>
-                        <li>Impersonate the Service or its developers</li>
-                    </ul>
-                </div>
+                    <div class="modal-body">
+                        <h3>
+                            <i class="fas fa-gavel"></i>
+                            2. License Grant and Restrictions
+                        </h3>
+                        <p>
+                            Subject to compliance with this Agreement, we grant
+                            you a limited, non-exclusive, non-transferable,
+                            revocable license to use the Service for its
+                            intended purposes within Discord platform. This
+                            license does not include:
+                        </p>
+                        <ul>
+                            <li>
+                                Right to modify, reverse engineer, or create
+                                derivative works
+                            </li>
+                            <li>
+                                Commercial use without express written
+                                permission
+                            </li>
+                            <li>
+                                Distribution of the Service to third parties
+                            </li>
+                        </ul>
+                    </div>
 
-                <div class="modal-body">
-                    <h3>
-                        <i class="fas fa-shield-alt"></i>
-                        4. Data Protection and Privacy
-                    </h3>
-                    <p>
-                        The Service collects and processes the following
-                        data:
-                    </p>
-                    <ul>
-                        <li>Server IDs for configuration storage</li>
-                        <li>User IDs for command functionality</li>
-                        <li>
-                            Temporary message content for specific features
-                        </li>
-                    </ul>
-                    <p>
-                        All data is processed in accordance with our Privacy
-                        Policy and Discord's API Terms. We implement
-                        industry-standard security measures to protect your
-                        information.
-                    </p>
-                </div>
+                    <div class="modal-body">
+                        <h3>
+                            <i class="fas fa-ban"></i>
+                            3. Prohibited Conduct
+                        </h3>
+                        <p>
+                            You expressly agree not to engage in any of the
+                            following prohibited activities:
+                        </p>
+                        <ul>
+                            <li>
+                                Violate Discord's Terms of Service or Community
+                                Guidelines
+                            </li>
+                            <li>
+                                Use automated systems (bots, scripts, macros) to
+                                interact with the Service
+                            </li>
+                            <li>
+                                Exploit bugs or vulnerabilities for unauthorized
+                                access
+                            </li>
+                            <li>
+                                Harass, threaten, or discriminate against
+                                individuals or groups
+                            </li>
+                            <li>
+                                Distribute illegal, harmful, or NSFW content
+                            </li>
+                            <li>Impersonate the Service or its developers</li>
+                        </ul>
+                    </div>
 
-                <div class="modal-body">
-                    <h3>
-                        <i class="fas fa-exclamation-triangle"></i>
-                        5. Disclaimers and Limitations
-                    </h3>
-                    <p>
-                        THE SERVICE IS PROVIDED "AS IS" WITHOUT WARRANTIES
-                        OF ANY KIND. WE DISCLAIM ALL IMPLIED WARRANTIES
-                        INCLUDING MERCHANTABILITY, FITNESS FOR PARTICULAR
-                        PURPOSE, AND NON-INFRINGEMENT.
-                    </p>
-                    <p>
-                        In no event shall we be liable for any indirect,
-                        incidental, or consequential damages arising from
-                        use of the Service.
-                    </p>
-                </div>
+                    <div class="modal-body">
+                        <h3>
+                            <i class="fas fa-shield-alt"></i>
+                            4. Data Protection and Privacy
+                        </h3>
+                        <p>
+                            The Service collects and processes the following
+                            data:
+                        </p>
+                        <ul>
+                            <li>Server IDs for configuration storage</li>
+                            <li>User IDs for command functionality</li>
+                            <li>
+                                Temporary message content for specific features
+                            </li>
+                        </ul>
+                        <p>
+                            All data is processed in accordance with our Privacy
+                            Policy and Discord's API Terms. We implement
+                            industry-standard security measures to protect your
+                            information.
+                        </p>
+                    </div>
 
-                <div class="modal-body">
-                    <h3>
-                        <i class="fas fa-sync-alt"></i>
-                        6. Source Code Availability
-                    </h3>
-                    <p>
-                        Ormi Bot is an open-source project. The source code
-                        is proprietary and available for public viewing,
-                        modification, or constributing.
-                    </p>
-                </div>
+                    <div class="modal-body">
+                        <h3>
+                            <i class="fas fa-exclamation-triangle"></i>
+                            5. Disclaimers and Limitations
+                        </h3>
+                        <p>
+                            THE SERVICE IS PROVIDED "AS IS" WITHOUT WARRANTIES
+                            OF ANY KIND. WE DISCLAIM ALL IMPLIED WARRANTIES
+                            INCLUDING MERCHANTABILITY, FITNESS FOR PARTICULAR
+                            PURPOSE, AND NON-INFRINGEMENT.
+                        </p>
+                        <p>
+                            In no event shall we be liable for any indirect,
+                            incidental, or consequential damages arising from
+                            use of the Service.
+                        </p>
+                    </div>
 
-                <div class="modal-body">
-                    <h3>
-                        <i class="fas fa-balance-scale"></i>
-                        7. Modifications and Termination
-                    </h3>
-                    <p>We reserve the right to:</p>
-                    <ul>
-                        <li>Modify these terms at our discretion</li>
-                        <li>
-                            Discontinue the Service with reasonable notice
-                        </li>
-                        <li>
-                            Terminate access for violations of this
-                            Agreement
-                        </li>
-                    </ul>
-                </div>
+                    <div class="modal-body">
+                        <h3>
+                            <i class="fas fa-sync-alt"></i>
+                            6. Source Code Availability
+                        </h3>
+                        <p>
+                            Ormi Bot is an open-source project. The source code
+                            is proprietary and available for public viewing,
+                            modification, or constributing.
+                        </p>
+                    </div>
 
-                <div class="modal-body">
-                    <h3>
-                        <i class="fas fa-gavel"></i>
-                        8. Governing Law
-                    </h3>
-                    <p>
-                        This Agreement shall be governed by and construed in
-                        accordance with the laws of [Your Country/State],
-                        without regard to its conflict of law provisions.
-                    </p>
+                    <div class="modal-body">
+                        <h3>
+                            <i class="fas fa-balance-scale"></i>
+                            7. Modifications and Termination
+                        </h3>
+                        <p>We reserve the right to:</p>
+                        <ul>
+                            <li>Modify these terms at our discretion</li>
+                            <li>
+                                Discontinue the Service with reasonable notice
+                            </li>
+                            <li>
+                                Terminate access for violations of this
+                                Agreement
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="modal-body">
+                        <h3>
+                            <i class="fas fa-gavel"></i>
+                            8. Governing Law
+                        </h3>
+                        <p>
+                            This Agreement shall be governed by and construed in
+                            accordance with the laws of [Your Country/State],
+                            without regard to its conflict of law provisions.
+                        </p>
+                    </div>
                 </div>
             </div>
-            </div>
-            </div>
+        </div>
         <script src="src/script.js"></script>
-</body>
-
+    </body>
 </html>

@@ -1,3583 +1,826 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ORMI Bot - Documentation</title>
-    <link rel="stylesheet" href="src/banner.css">
-</head>
-<body>
-    <div class="banner">
-        <p>⚠️ This documentation is not yet fully updated. Please be aware that some information may be outdated or inaccurate.</p>
-    </div>
-<body>
-        <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-        />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap"
-            rel="stylesheet"
-        />
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Ormi Bot - Documentation</title>
         <link rel="stylesheet" href="src/dstyle.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        />
     </head>
     <body>
-        </div>
-        <div class="mobile-menu-toggle right floating-ball">
-            <i class="fas fa-bars"></i>
-        </div>
-
         <div class="sidebar">
-            <h2><i class="fas fa-robot"></i> Ormi-Bot</h2>
-
-            <div class="sidebar-footer">
-                <a href="index.html" class="home-button">
-                    <i class="fas fa-home"></i>
-                    <span>Main Website</span>
-                </a>
+            <div class="sidebar-header">
+                <a href="index.html" class="home-button"
+                    ><i class="fas fa-home"></i
+                ></a>
+                <h2><i class="fas fa-robot"></i> Ormi Bot</h2>
             </div>
-
-            <div class="category">
-                <div class="category-title">
-                    <i class="fas fa-home"></i>
-                    <span>Welcome</span>
-                    <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="subcategories">
-                    <div class="subcategory-content">
-                        <a href="#welcome" class="subcategory-link">About</a>
-                        <a href="#setup" class="subcategory-link"
-                            >Setup Guide</a
-                        >
+            <nav>
+                <div class="category">
+                    <div class="category-title">
+                        <i class="fas fa-star category-icon"></i>
+                        Getting Started
+                        <i class="fas fa-chevron-down"></i>
                     </div>
+                    <ul class="subcategories">
+                        <li>
+                            <a href="#welcome" class="subcategory-link"
+                                >Welcome</a
+                            >
+                        </li>
+                        <li>
+                            <a href="#setup" class="subcategory-link"
+                                >Setup Guide</a
+                            >
+                        </li>
+                        <li>
+                            <a href="#features" class="subcategory-link"
+                                >Features</a
+                            >
+                        </li>
+                    </ul>
                 </div>
-            </div>
-
-            <div class="category">
-                <div class="category-title">
-                    <i class="fas fa-info-circle"></i> Information
-                    <i class="fas fa-chevron-down"></i>
+                <div class="category">
+                    <div class="category-title">
+                        <i class="fas fa-info-circle category-icon"></i>
+                        Information
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <ul class="subcategories">
+                        <li>
+                            <a href="#userinfo" class="subcategory-link"
+                                >/userinfo</a
+                            >
+                        </li>
+                        <li>
+                            <a href="#serverinfo" class="subcategory-link"
+                                >/serverinfo</a
+                            >
+                        </li>
+                        <li>
+                            <a href="#ping" class="subcategory-link">/ping</a>
+                        </li>
+                        <li>
+                            <a href="#uptime" class="subcategory-link"
+                                >/uptime</a
+                            >
+                        </li>
+                        <li>
+                            <a href="#avatar" class="subcategory-link"
+                                >/avatar</a
+                            >
+                        </li>
+                        <li>
+                            <a href="#roleinfo" class="subcategory-link"
+                                >/roleinfo</a
+                            >
+                        </li>
+                        <li>
+                            <a href="#emojiinfo" class="subcategory-link"
+                                >/emojiinfo</a
+                            >
+                        </li>
+                        <li>
+                            <a href="#recentjoins" class="subcategory-link"
+                                >/recentjoins</a
+                            >
+                        </li>
+                    </ul>
                 </div>
-                <div class="subcategories">
-                    <a href="#userinfo" class="subcategory-link">;userinfo</a>
-                    <a href="#serverinfo" class="subcategory-link"
-                        >;serverinfo</a
-                    >
-                    <a href="#avatar" class="subcategory-link">;avatar</a>
-                    <a href="#roleinfo" class="subcategory-link">;roleinfo</a>
-                    <a href="#ping" class="subcategory-link">;ping</a>
-                    <a href="#emojiinfo" class="subcategory-link">;emojiinfo</a>
-                    <a href="#uptime" class="subcategory-link">;uptime</a>
-                    <a href="#recentjoins" class="subcategory-link"
-                        >;recentjoins</a
-                    >
-                    <a href="#hierarchy" class="subcategory-link">;hierarchy</a>
+                <div class="category">
+                    <div class="category-title">
+                        <i class="fas fa-user-shield category-icon"></i>
+                        Moderation
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <ul class="subcategories">
+                        <li>
+                            <a href="#kick" class="subcategory-link">/kick</a>
+                        </li>
+                        <li>
+                            <a href="#ban" class="subcategory-link">/ban</a>
+                        </li>
+                        <li>
+                            <a href="#unban" class="subcategory-link">/unban</a>
+                        </li>
+                        <li>
+                            <a href="#softban" class="subcategory-link"
+                                >/softban</a
+                            >
+                        </li>
+                        <li>
+                            <a href="#mute" class="subcategory-link">/mute</a>
+                        </li>
+                        <li>
+                            <a href="#unmute" class="subcategory-link"
+                                >/unmute</a
+                            >
+                        </li>
+                        <li>
+                            <a href="#warn" class="subcategory-link">/warn</a>
+                        </li>
+                        <li>
+                            <a href="#warnings" class="subcategory-link"
+                                >/warnings</a
+                            >
+                        </li>
+                        <li>
+                            <a href="#clearwarns" class="subcategory-link"
+                                >/clearwarns</a
+                            >
+                        </li>
+                        <li>
+                            <a href="#delwarn" class="subcategory-link"
+                                >/delwarn</a
+                            >
+                        </li>
+                        <li>
+                            <a href="#editcase" class="subcategory-link"
+                                >/editcase</a
+                            >
+                        </li>
+                        <li>
+                            <a href="#case" class="subcategory-link">/case</a>
+                        </li>
+                        <li>
+                            <a href="#purge" class="subcategory-link">/purge</a>
+                        </li>
+                        <li>
+                            <a href="#slowmode" class="subcategory-link"
+                                >/slowmode</a
+                            >
+                        </li>
+                        <li>
+                            <a href="#lock" class="subcategory-link">/lock</a>
+                        </li>
+                        <li>
+                            <a href="#unlock" class="subcategory-link"
+                                >/unlock</a
+                            >
+                        </li>
+                        <li>
+                            <a href="#nick" class="subcategory-link">/nick</a>
+                        </li>
+                        <li>
+                            <a href="#nuke" class="subcategory-link">/nuke</a>
+                        </li>
+                        <li>
+                            <a href="#fg" class="subcategory-link">/fg</a>
+                        </li>
+                         <li>
+                            <a href="#voicekick" class="subcategory-link"
+                                >/voicekick</a
+                            >
+                        </li>
+                        <li>
+                            <a href="#voiceban" class="subcategory-link"
+                                >/voiceban</a
+                            >
+                        </li>
+                        <li>
+                            <a href="#voiceunban" class="subcategory-link"
+                                >/voiceunban</a
+                            >
+                        </li>
+                        <li>
+                            <a href="#massban" class="subcategory-link"
+                                >/massban</a
+                            >
+                        </li>
+                        <li>
+                            <a href="#hierarchy" class="subcategory-link"
+                                >/hierarchy</a
+                            >
+                        </li>
+                        <li>
+                            <a href="#moderation-extra" class="subcategory-link">More Commands</a>
+                        </li>
+                    </ul>
                 </div>
-            </div>
-
-            <div class="category">
-                <div class="category-title">
-                    <i class="fas fa-shield-alt"></i> Moderation
-                    <i class="fas fa-chevron-down"></i>
+                <div class="category">
+                    <div class="category-title">
+                        <i class="fas fa-smile category-icon"></i> Fun
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <ul class="subcategories">
+                        <li>
+                            <a href="#rate" class="subcategory-link">/rate</a>
+                        </li>
+                        <li>
+                            <a href="#rps" class="subcategory-link">/rps</a>
+                        </li>
+                        <li>
+                            <a href="#8ball" class="subcategory-link">/8ball</a>
+                        </li>
+                        <li>
+                            <a href="#ascii" class="subcategory-link">/ascii</a>
+                        </li>
+                        <li>
+                            <a href="#random" class="subcategory-link">/random</a>
+                        </li>
+                        <li>
+                            <a href="#ship" class="subcategory-link">/ship</a>
+                        </li>
+                        <li>
+                            <a href="#howgay" class="subcategory-link">/howgay</a>
+                        </li>
+                        <li>
+                            <a href="#simprate" class="subcategory-link">/simprate</a>
+                        </li>
+                        <li>
+                            <a href="#meme" class="subcategory-link">/meme</a>
+                        </li>
+                        <li>
+                            <a href="#joke" class="subcategory-link">/joke</a>
+                        </li>
+                        <li>
+                            <a href="#coinflip" class="subcategory-link">/coinflip</a>
+                        </li>
+                        <li>
+                            <a href="#roll" class="subcategory-link">/roll</a>
+                        </li>
+                        <li>
+                            <a href="#hug" class="subcategory-link">/hug</a>
+                        </li>
+                        <li>
+                            <a href="#slap" class="subcategory-link">/slap</a>
+                        </li>
+                    </ul>
                 </div>
-                <div class="subcategories">
-                    <a href="#kick" class="subcategory-link">;kick</a>
-                    <a href="#ban" class="subcategory-link">;ban</a>
-                    <a href="#unban" class="subcategory-link">;unban</a>
-                    <a href="#mute" class="subcategory-link">;mute</a>
-                    <a href="#unmute" class="subcategory-link">;unmute</a>
-                    <a href="#warn" class="subcategory-link">;warn</a>
-                    <a href="#warnings" class="subcategory-link">;warnings</a>
-                    <a href="#clearwarns" class="subcategory-link"
-                        >;clearwarns</a
-                    >
-                    <a href="#delwarn" class="subcategory-link">;delwarn</a>
-                    <a href="#purge" class="subcategory-link">;purge</a>
-                    <a href="#nuke" class="subcategory-link">;nuke</a>
-                    <a href="#lock" class="subcategory-link">;lock</a>
-                    <a href="#unlock" class="subcategory-link">;unlock</a>
-                    <a href="#slowmode" class="subcategory-link">;slowmode</a>
-                    <a href="#fg" class="subcategory-link">;fg</a>
-                    <a href="#nick" class="subcategory-link">;nick</a>
-                    <a href="#case" class="subcategory-link">;case</a>
-                    <a href="#editcase" class="subcategory-link">;editcase</a>
+                <div class="category">
+                    <div class="category-title">
+                        <i class="fas fa-cog category-icon"></i> Configuration
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <ul class="subcategories">
+                        <li>
+                            <a href="#prefix" class="subcategory-link"
+                                >/prefix</a
+                            >
+                        </li>
+                        <li>
+                            <a href="#slc" class="subcategory-link">/slc</a>
+                        </li>
+                        <li>
+                            <a href="#sdlc" class="subcategory-link">/sdlc</a>
+                        </li>
+                        <li>
+                            <a href="#swc" class="subcategory-link">/swc</a>
+                        </li>
+                        <li>
+                            <a href="#swm" class="subcategory-link">/swm</a>
+                        </li>
+                        <li>
+                            <a href="#autorole" class="subcategory-link"
+                                >/autorole</a
+                            >
+                        </li>
+                        <li>
+                            <a href="#color" class="subcategory-link">/color</a>
+                        </li>
+                    </ul>
                 </div>
-            </div>
-
-            <div class="category">
-                <div class="category-title">
-                    <i class="fas fa-gamepad"></i> Fun
-                    <i class="fas fa-chevron-down"></i>
+                <div class="category">
+                    <div class="category-title">
+                        <i class="fas fa-tools category-icon"></i> Utility
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <ul class="subcategories">
+                        <li>
+                            <a href="#afk" class="subcategory-link">/afk</a>
+                        </li>
+                        <li>
+                            <a href="#snipe" class="subcategory-link">/snipe</a>
+                        </li>
+                        <li>
+                            <a href="#invite" class="subcategory-link">/invite</a>
+                        </li>
+                        <li>
+                            <a href="#vote" class="subcategory-link">/vote</a>
+                        </li>
+                    </ul>
                 </div>
-                <div class="subcategories">
-                    <a href="#ship" class="subcategory-link">;ship</a>
-                    <a href="#8ball" class="subcategory-link">;8ball</a>
-                    <a href="#hug" class="subcategory-link">;hug</a>
-                    <a href="#rate" class="subcategory-link">;rate</a>
-                    <a href="#rps" class="subcategory-link">;rps</a>
-                    <a href="#random" class="subcategory-link">;random</a>
-                    <a href="#slap" class="subcategory-link">;slap</a>
-                    <a href="#simprate" class="subcategory-link">;simprate</a>
-                    <a href="#howgay" class="subcategory-link">;howgay</a>
-                </div>
-            </div>
-
-            <div class="category">
-                <div class="category-title">
-                    <i class="fas fa-tools"></i> Utility
-                    <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="subcategories">
-                    <a href="#afk" class="subcategory-link">;afk</a>
-                    <a href="#snipe" class="subcategory-link">;snipe</a>
-                    <a href="#invite" class="subcategory-link">;invite</a>
-                    <a href="#embed" class="subcategory-link">;embed</a>
-                    <a href="#vote" class="subcategory-link">;vote</a>
-                    <a href="#lastfm" class="subcategory-link">;lastfm</a>
-                    <a href="#rmdm" class="subcategory-link">;rmdm</a>
-                    <a href="#ascii" class="subcategory-link">;ascii</a>
-                    <a href="#color" class="subcategory-link">;color</a>
-                    <a href="#remindme" class="subcategory-link">;remindme</a>
-                    <a href="#poll" class="subcategory-link">;vote</a>
-                </div>
-            </div>
-
-            <div class="category">
-                <div class="category-title">
-                    <i class="fas fa-cog"></i> Configuration
-                    <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="subcategories">
-                    <a href="#prefix" class="subcategory-link">;prefix</a>
-                    <a href="#slc" class="subcategory-link">;slc</a>
-                    <a href="#sdlc" class="subcategory-link">;sdlc</a>
-                    <a href="#swc" class="subcategory-link">;swc</a>
-                    <a href="#swm" class="subcategory-link">;swm</a>
-                    <a href="#say" class="subcategory-link">;say</a>
-                    <a href="#autorole" class="subcategory-link">;autorole</a>
-                </div>
-            </div>
-
-            <div class="category">
-                <div class="category-title">
-                    <i class="fas fa-user-tag"></i> Role Management
-                    <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="subcategories">
-                    <a href="#addrole" class="subcategory-link">;addrole</a>
-                    <a href="#rmrole" class="subcategory-link">;rmrole</a>
-                    <a href="#createrole" class="subcategory-link"
-                        >;createrole</a
-                    >
-                    <a href="#delrole" class="subcategory-link">;delrole</a>
-                    <a href="#editrole" class="subcategory-link">;editrole</a>
-                    <a href="#rr" class="subcategory-link">;rr</a>
-                </div>
-            </div>
-
-            <div class="category">
-                <div class="category-title">
-                    <i class="fas fa-gift"></i> Giveaway
-                    <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="subcategories">
-                    <a href="#giveaway" class="subcategory-link">;giveaway</a>
-                    <a href="#endgiveaway" class="subcategory-link"
-                        >;endgiveaway</a
-                    >
-                    <a href="#greroll" class="subcategory-link">;greroll</a>
-                </div>
-            </div>
-
-            <div class="category">
-                <div class="category-title">
-                    <i class="fas fa-ticket-alt"></i> Ticket
-                    <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="subcategories">
-                    <a href="#st" class="subcategory-link">;st</a>
-                    <a href="#addstaff" class="subcategory-link">;addstaff</a>
-                    <a href="#rmstaff" class="subcategory-link">;rmstaff</a>
-                    <a href="#tlog" class="subcategory-link">;tlog</a>
-                </div>
-            </div>
+            </nav>
+            <button class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
-
         <div class="main-content">
+            <button class="mobile-menu-toggle right">
+                <i class="fas fa-bars"></i>
+            </button>
+            <!-- Getting Started Section -->
             <section id="welcome" class="section active">
-                <div class="welcome-header">
-                    <h1>About Ormi-Bot</h1>
-                    <p>
-                        Your all-in-one Discord moderation and community
-                        management solution
-                    </p>
-                </div>
-                <div class="welcome-content">
-                    <div class="about-description">
-                        <div class="about-card">
-                            <h3>
-                                <i class="fas fa-rocket"></i> Why Choose
-                                Ormi-Bot?
-                            </h3>
-                            <p>
-                                Ormi-Bot combines powerful moderation tools with
-                                engaging community features to help you build
-                                and maintain a thriving Discord server.
-                            </p>
+                <h2>Welcome to Ormi Bot</h2>
+                <div class="welcome-container">
+                    <div class="welcome-card">
+                        <div class="welcome-header">
+                            <i class="fas fa-robot"></i>
+                            <h3>Your All-in-One Discord Bot</h3>
                         </div>
-
-                        <div class="feature-highlights">
-                            <div class="feature-block">
-                                <i class="fas fa-shield-alt"></i>
-                                <h4>Advanced Moderation</h4>
-                                <ul>
-                                    <li>Multi-level warning system</li>
-                                    <li>Automated moderation logs</li>
-                                </ul>
-                            </div>
-
-                            <div class="feature-block">
-                                <i class="fas fa-users"></i>
-                                <h4>Community Tools</h4>
-                                <ul>
-                                    <li>Reaction roles</li>
-                                    <li>Welcome messages</li>
-                                    <li>Giveaway system</li>
-                                </ul>
-                            </div>
-
-                            <div class="feature-block">
-                                <i class="fas fa-cog"></i>
-                                <h4>Easy Configuration</h4>
-                                <ul>
-                                    <li>Step-by-step setup</li>
-                                    <li>Detailed documentation</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="tech-specs">
-                            <h3>
-                                <i class="fas fa-server"></i> Technical
-                                Specifications
-                            </h3>
-                            <div class="specs-grid">
-                                <div>
-                                    <i class="fab fa-python"></i>
-                                    <p>Discord.py 2.5.2</p>
-                                </div>
-                                <div>
-                                    <i class="fas fa-bolt"></i>
-                                    <p>99.9% Uptime</p>
-                                </div>
-                                <div>
-                                    <i class="fas fa-lock"></i>
-                                    <p>Secure API</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="setup" class="section">
-                <div class="command-header">
-                    <h2>Setup Guide</h2>
-                </div>
-                <div class="command-content">
-                    <h3>Get Ormi-Bot in 4 Simple Steps</h3>
-
-                    <div class="setup-step">
-                        <div class="button-group">
+                        <p>
+                            Ormi Bot is designed to enhance your Discord server
+                            with powerful moderation tools, fun commands, and
+                            useful utilities. Whether you're running a gaming
+                            community, study group, or just hanging out with
+                            friends, Ormi Bot has everything you need.
+                        </p>
+                        <div class="welcome-buttons">
+                            <a href="#setup" class="welcome-button primary">
+                                <i class="fas fa-book"></i> Setup Guide
+                            </a>
                             <a
                                 href="https://discord.com/oauth2/authorize?client_id=1364942161707274301&permissions=2360593607&integration_type=0&scope=bot"
                                 target="_blank"
-                                class="btn btn-primary"
-                                id="inviteButton"
+                                class="welcome-button secondary"
                             >
-                                <i class="fas fa-robot"></i> Add to Server
-                            </a>
-                            <a
-                                href="https://discord.gg/cYZPfXcBGB"
-                                target="_blank"
-                                class="btn btn-secondary"
-                            >
-                                <i class="fas fa-question-circle"></i> Need
-                                Help?
+                                <i class="fas fa-plus"></i> Add to Server
                             </a>
                         </div>
-                        <p class="note">
-                            <i class="fas fa-exclamation-circle"></i> Requires
-                            all choosen by me permission
-                        </p>
                     </div>
-
-                    <div class="setup-step">
-                        <h4>2. Configure Permissions</h4>
-                        <p>
-                            After inviting, verify the bot has these critical
-                            permissions:
-                        </p>
-                        <ul>
-                            <li>
-                                <strong>Moderation:</strong> Kick, Ban, Manage
-                                Messages
-                            </li>
-                            <li>
-                                <strong>Utility:</strong> Manage Roles, Manage
-                                Channels
-                            </li>
-                            <li>
-                                <strong>General:</strong> Read Messages, Send
-                                Messages
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="setup-step">
-                        <h4>3. Basic Configuration</h4>
-                        <p>
-                            Run these essential commands to set up your server:
-                        </p>
-                        <div class="command-usage">
-                            <span class="command-code">;prefix !</span> - Change
-                            command prefix<br />
-                            <span class="command-code">;slc #mod-logs</span> -
-                            Set moderation log channel<br />
-                            <span class="command-code">;swc #welcome</span> -
-                            Set welcome channel
+                    <div class="features-grid">
+                        <div class="feature-box">
+                            <div class="feature-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h4>Moderation</h4>
+                            <p>
+                                Keep your server safe with powerful moderation
+                                commands
+                            </p>
                         </div>
-                    </div>
-
-                    <div class="setup-step">
-                        <h4>4. Test the Bot</h4>
-                        <p>Verify everything works with these test commands:</p>
-                        <div class="command-usage">
-                            <span class="command-code">;help</span> - View all
-                            commands<br />
-                            <span class="command-code">;ping</span> - Check bot
-                            latency<br />
-                            <span class="command-code">;serverinfo</span> - View
-                            server details
+                        <div class="feature-box">
+                            <div class="feature-icon">
+                                <i class="fas fa-smile"></i>
+                            </div>
+                            <h4>Fun Commands</h4>
+                            <p>
+                                Entertain your members with interactive games
+                                and activities
+                            </p>
                         </div>
-                    </div>
-
-                    <div class="setup-step">
-                        <h4>5. Advanced Setup (Optional to use)</h4>
-                        <p>Customize further with these features:</p>
-                        <ul>
-                            <li>
-                                Reaction roles (<span class="command-code"
-                                    >;rr</span
-                                >)
-                            </li>
-                            <li>
-                                Ticket system (<span class="command-code"
-                                    >;st</span
-                                >)
-                            </li>
-                        </ul>
+                        <div class="feature-box">
+                            <div class="feature-icon">
+                                <i class="fas fa-cog"></i>
+                            </div>
+                            <h4>Easy Setup</h4>
+                            <p>
+                                Configure your server with simple, intuitive
+                                commands
+                            </p>
+                        </div>
+                        <div class="feature-box">
+                            <div class="feature-icon">
+                                <i class="fas fa-tools"></i>
+                            </div>
+                            <h4>Utilities</h4>
+                            <p>
+                                Enhance your server with helpful utility
+                                functions
+                            </p>
+                        </div>
                     </div>
                 </div>
             </section>
-
+            <section id="setup" class="section">
+                <h2>Setup Guide</h2>
+                <div class="setup-container">
+                    <div class="setup-card">
+                        <div class="setup-step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h3>Invite the Bot</h3>
+                                <p>
+                                    Add Ormi Bot to your server using the invite
+                                    link below:
+                                </p>
+                                <a
+                                    href="https://discord.com/oauth2/authorize?client_id=1364942161707274301&permissions=2360593607&integration_type=0&scope=bot"
+                                    target="_blank"
+                                    class="setup-button"
+                                >
+                                    <i class="fas fa-plus-circle"></i> Add to
+                                    Discord
+                                </a>
+                            </div>
+                        </div>
+                        <div class="setup-step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h3>Set Up Logging</h3>
+                                <p>
+                                    Create dedicated channels for mod logs and
+                                    configure them:
+                                </p>
+                                <div class="command-example">
+                                    <code>/slc #mod-logs</code> - Set moderation
+                                    log channel
+                                </div>
+                                <div class="command-example">
+                                    <code>/sdlc #deleted-msgs</code> - Set
+                                    deleted messages log
+                                </div>
+                            </div>
+                        </div>
+                        <div class="setup-step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h3>Configure Welcome Messages</h3>
+                                <p>
+                                    Set up automatic welcome messages for new
+                                    members:
+                                </p>
+                                <div class="command-example">
+                                    <code>/swc #welcome</code> - Set welcome
+                                    channel
+                                </div>
+                                <div class="command-example">
+                                    <code
+                                        >/swm Welcome {user} to {server}!</code
+                                    >
+                                    - Set welcome message
+                                </div>
+                            </div>
+                        </div>
+                        <div class="setup-step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h3>Customize Auto-roles</h3>
+                                <p>
+                                    Automatically assign roles to new members:
+                                </p>
+                                <div class="command-example">
+                                    <code>/autorole @Member</code> - Set
+                                    auto-role for new members
+                                </div>
+                            </div>
+                        </div>
+                        <div class="setup-note">
+                            <i class="fas fa-info-circle"></i>
+                            <p>
+                                Need help? Join our
+                                <a
+                                    href="https://discord.gg/cYZPfXcBGB"
+                                    target="_blank"
+                                    >support server</a
+                                >
+                                for assistance.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
             <section id="features" class="section">
-                <div class="command-header">
-                    <h2>Features <i class="fas fa-cogs"></i></h2>
-                </div>
-                <div class="command-content">
-                    <div class="feature-item" data-aos="fade-right">
-                        <div class="feature-icon">
+                <h2>Features Overview</h2>
+                <div class="features-container">
+                    <div class="feature-category">
+                        <div class="feature-header">
                             <i class="fas fa-shield-alt"></i>
+                            <h3>Moderation System</h3>
                         </div>
-                        <h3>Moderation Tools</h3>
-                        <p>
-                            Keep your server safe with powerful moderation
-                            commands like kick, ban and mute.
-                        </p>
-                    </div>
-                    <div
-                        class="feature-item"
-                        data-aos="fade-right"
-                        data-aos-delay="100"
-                    >
-                        <div class="feature-icon">
-                            <i class="fas fa-gamepad"></i>
+                        <div class="feature-content">
+                            <ul>
+                                <li>
+                                    Advanced warning system with case management
+                                </li>
+                                <li>
+                                    Temporary and permanent bans, mutes, and
+                                    kicks
+                                </li>
+                                <li>
+                                    Bulk message deletion and channel management
+                                </li>
+                                <li>
+                                    Detailed logging for all moderation actions
+                                </li>
+                            </ul>
                         </div>
-                        <h3>Fun & Games</h3>
-                        <p>
-                            Engage your community with fun commands like 8ball,
-                            meme, and rps.
-                        </p>
                     </div>
-                    <div
-                        class="feature-item"
-                        data-aos="fade-right"
-                        data-aos-delay="200"
-                    >
-                        <div class="feature-icon">
+                    <div class="feature-category">
+                        <div class="feature-header">
+                            <i class="fas fa-smile"></i>
+                            <h3>Fun & Entertainment</h3>
+                        </div>
+                        <div class="feature-content">
+                            <ul>
+                                <li>Interactive games like RPS and 8ball</li>
+                                <li>Memes, jokes, and fun ratings</li>
+                                <li>Social commands like hug and ship</li>
+                                <li>Random generators for decisions</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="feature-category">
+                        <div class="feature-header">
                             <i class="fas fa-tools"></i>
+                            <h3>Utility Tools</h3>
                         </div>
-                        <h3>Utility</h3>
-                        <p>
-                            Make server management easier with utility commands
-                            like poll and remindme.
-                        </p>
+                        <div class="feature-content">
+                            <ul>
+                                <li>Server and user information commands</li>
+                                <li>AFK status management</li>
+                                <li>Message snipe for recent deletions</li>
+                                <li>Voting and polling system</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="feature-category">
+                        <div class="feature-header">
+                            <i class="fas fa-cog"></i>
+                            <h3>Server Configuration</h3>
+                        </div>
+                        <div class="feature-content">
+                            <ul>
+                                <li>Customizable welcome messages</li>
+                                <li>Advanced logging options</li>
+                                <li>Auto-role assignment</li>
+                                <li>Prefix customization</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </section>
 
-            <section id="fun" class="section">
-                <div class="command-header">
-                    <h2><i class="fas fa-gamepad"></i> Fun Commands</h2>
-                </div>
-            </section>
+             <!-- Unified Commands Section -->
+            <section id="commands" class="section">
+                <h2>All Commands</h2>
+                <p>Explore the full range of commands available in Ormi Bot, organized by category.</p>
 
-            <section id="ship" class="section">
-                <div class="command-header">
-                    <h2>;ship</h2>
-                    <span class="command-permission"
-                        >No permissions required</span
-                    >
-                </div>
-                <div class="command-content">
-                    <h3>Full Syntax:</h3>
-                    <span class="command-code">;ship @user1 @user2</span>
+                <div class="commands-container">
 
-                    <h3>Description:</h3>
-                    <p>
-                        Calculates compatibility between two users with a fun
-                        percentage score. Perfect for lighthearted community
-                        interactions and relationship jokes.
-                    </p>
-
-                    <h3>Parameters:</h3>
-                    <ul>
-                        <li><strong>@user1</strong>: First user to compare</li>
-                        <li><strong>@user2</strong>: Second user to compare</li>
-                    </ul>
-
-                    <h3>Example Usage:</h3>
-                    <span class="command-code">;ship @UserA @UserB</span><br />
-                    <span class="command-code">;ship @BestFriend @Crush</span>
-
-                    <h3>Required Permissions:</h3>
-                    <ul>
-                        <li>None - works for all users</li>
-                    </ul>
-
-                    <h3>Notes:</h3>
-                    <ul>
-                        <li>
-                            Results are randomly generated for entertainment
-                        </li>
-                        <li>Includes fun ship names based on usernames</li>
-                        <li>Works with user mentions or IDs</li>
-                        <li>Great for community bonding and fun activities</li>
-                    </ul>
-                </div>
-            </section>
-
-            <section id="8ball" class="section">
-                <div class="command-header">
-                    <h2>;8ball</h2>
-                    <span class="command-permission"
-                        >No permissions required</span
-                    >
-                </div>
-                <div class="command-content">
-                    <h3>Full Syntax:</h3>
-                    <span class="command-code">;8ball [question]</span>
-
-                    <h3>Description:</h3>
-                    <p>
-                        Provides mysterious answers to your yes/no questions.
-                        Great for decision-making games and fun interactions.
-                    </p>
-
-                    <h3>Parameters:</h3>
-                    <ul>
-                        <li>
-                            <strong>[question]</strong>: Your yes/no question
-                            (must end with ?)
-                        </li>
-                    </ul>
-
-                    <h3>Example Usage:</h3>
-                    <span class="command-code"
-                        >;8ball Will I win the lottery?</span
-                    ><br />
-                    <span class="command-code"
-                        >;8ball Should I order pizza tonight?</span
-                    >
-
-                    <h3>Required Permissions:</h3>
-                    <ul>
-                        <li>None - works for all users</li>
-                    </ul>
-
-                    <h3>Notes:</h3>
-                    <ul>
-                        <li>Has 20+ different possible responses</li>
-                        <li>Questions must end with a question mark</li>
-                        <li>
-                            Answers range from positive to negative to neutral
-                        </li>
-                        <li>Pure fun - not meant for serious decisions</li>
-                    </ul>
-                </div>
-            </section>
-
-            <section id="hug" class="section">
-                <div class="command-header">
-                    <h2>;hug</h2>
-                    <span class="command-permission"
-                        >No permissions required</span
-                    >
-                </div>
-                <div class="command-content">
-                    <h3>Full Syntax:</h3>
-                    <span class="command-code">;hug @user</span>
-
-                    <h3>Description:</h3>
-                    <p>
-                        Sends a warm virtual hug with cute animations. Boosts
-                        server positivity and creates friendly interactions
-                        between members.
-                    </p>
-
-                    <h3>Parameters:</h3>
-                    <ul>
-                        <li>
-                            <strong>@user</strong>: The member to hug (mention
-                            or ID)
-                        </li>
-                    </ul>
-
-                    <h3>Example Usage:</h3>
-                    <span class="command-code">;hug @BestFriend</span><br />
-                    <span class="command-code">;hug @NewMember</span> (welcome
-                    gesture)
-
-                    <h3>Required Permissions:</h3>
-                    <ul>
-                        <li>None - works for all users</li>
-                    </ul>
-
-                    <h3>Notes:</h3>
-                    <ul>
-                        <li>Includes 5+ different hug animations</li>
-                        <li>
-                            Great for welcoming new members or comforting
-                            friends
-                        </li>
-                        <li>Works in both servers and DMs</li>
-                        <li>Cannot hug yourself (bot will playfully refuse)</li>
-                    </ul>
-                </div>
-            </section>
-
-            <section id="rate" class="section">
-                <div class="command-header">
-                    <h2>;rate</h2>
-                    <span class="command-permission"
-                        >No permissions required</span
-                    >
-                </div>
-                <div class="command-content">
-                    <h3>Full Syntax:</h3>
-                    <span class="command-code">;rate [thing]</span>
-
-                    <h3>Description:</h3>
-                    <p>
-                        Gives a completely arbitrary 1-10 rating to anything.
-                        Pure fun with no logic - perfect for silly debates and
-                        laughs.
-                    </p>
-
-                    <h3>Parameters:</h3>
-                    <ul>
-                        <li>
-                            <strong>[thing]</strong>: What you want rated (text
-                            only)
-                        </li>
-                    </ul>
-
-                    <h3>Example Usage:</h3>
-                    <span class="command-code">;rate my outfit</span><br />
-                    <span class="command-code">;rate pineapple on pizza</span>
-
-                    <h3>Required Permissions:</h3>
-                    <ul>
-                        <li>None - works for all users</li>
-                    </ul>
-
-                    <h3>Notes:</h3>
-                    <ul>
-                        <li>Ratings are completely random</li>
-                        <li>Includes funny commentary with each rating</li>
-                        <li>Accepts any text input (within Discord limits)</li>
-                        <li>
-                            Great for breaking the ice or starting conversations
-                        </li>
-                    </ul>
-                </div>
-            </section>
-
-            <section id="rps" class="section">
-                <div class="command-header">
-                    <h2>;rps</h2>
-                    <span class="command-permission"
-                        >No permissions required</span
-                    >
-                </div>
-                <div class="command-content">
-                    <h3>Full Syntax:</h3>
-                    <span class="command-code">;rps [rock/paper/scissors]</span>
-
-                    <h3>Description:</h3>
-                    <p>
-                        Classic rock-paper-scissors game against the bot.
-                        Supports standard choices and custom variants for fun
-                        competitions.
-                    </p>
-
-                    <h3>Parameters:</h3>
-                    <ul>
-                        <li>
-                            <strong>[choice]</strong>: Your move (rock, paper,
-                            or scissors)
-                        </li>
-                    </ul>
-
-                    <h3>Example Usage:</h3>
-                    <span class="command-code">;rps rock</span><br />
-                    <span class="command-code">;rps paper</span><br />
-                    <span class="command-code">;rps scissors</span>
-
-                    <h3>Required Permissions:</h3>
-                    <ul>
-                        <li>None - works for all users</li>
-                    </ul>
-
-                    <h3>Notes:</h3>
-                    <ul>
-                        <li>
-                            Standard rules: rock beats scissors, scissors beat
-                            paper, paper beats rock
-                        </li>
-                        <li>
-                            Includes fun reaction animations for wins/losses
-                        </li>
-                        <li>Track your win/loss streak with the bot</li>
-                        <li>Great for quick games and server interactions</li>
-                    </ul>
-                </div>
-            </section>
-
-            <section id="random" class="section">
-                <div class="command-header">
-                    <h2>;random</h2>
-                    <span class="command-permission"
-                        >No permissions required</span
-                    >
-                </div>
-                <div class="command-content">
-                    <h3>Full Syntax:</h3>
-                    <span class="command-code">;random [min] [max]</span>
-
-                    <h3>Description:</h3>
-                    <p>
-                        Generates random numbers for decisions, games, or
-                        giveaways. Customize your range for different use cases.
-                    </p>
-
-                    <h3>Parameters:</h3>
-                    <ul>
-                        <li>
-                            <strong>[min]</strong>: Lowest possible number
-                            (default: 1)
-                        </li>
-                        <li>
-                            <strong>[max]</strong>: Highest possible number
-                            (default: 10)
-                        </li>
-                    </ul>
-
-                    <h3>Example Usage:</h3>
-                    <span class="command-code">;random 1 10</span> (basic
-                    range)<br />
-                    <span class="command-code">;random 100 1000</span> (custom
-                    range)<br />
-                    <span class="command-code">;random</span> (default 1-10)
-
-                    <h3>Required Permissions:</h3>
-                    <ul>
-                        <li>None - works for all users</li>
-                    </ul>
-
-                    <h3>Notes:</h3>
-                    <ul>
-                        <li>Supports negative numbers and decimals</li>
-                        <li>Maximum range: -1,000,000 to 1,000,000</li>
-                        <li>
-                            Great for deciding turns, picking winners, or RPG
-                            games
-                        </li>
-                        <li>
-                            Combine with
-                            <span class="command-code">;giveaway</span> for
-                            random selections
-                        </li>
-                    </ul>
-                </div>
-            </section>
-
-            <section id="slap" class="section">
-                <div class="command-header">
-                    <h2>;slap</h2>
-                    <span class="command-permission"
-                        >No permissions required</span
-                    >
-                </div>
-                <div class="command-content">
-                    <p>
-                        Delivers a virtual slap with fun animations. For joking
-                        interactions between friends.
-                    </p>
-                    <div class="command-usage">
-                        <h3>Usage:</h3>
-                        <span class="command-code">;slap @user</span>
+                    <!-- Information Category -->
+                    <div class="command-category">
+                        <h3 class="category-title"><i class="fas fa-info-circle"></i> Information</h3>
+                        <ul>
+                            <li>
+                                <span class="command-name">/userinfo [member]</span>
+                                <p>Shows detailed information about a user.</p>
+                            </li>
+                            <li>
+                                <span class="command-name">/serverinfo</span>
+                                <p>Displays comprehensive server statistics and details.</p>
+                            </li>
+                            <li>
+                                <span class="command-name">/ping</span>
+                                <p>Shows bot latency and connection quality with animations.</p>
+                            </li>
+                            <li>
+                                <span class="command-name">/uptime</span>
+                                <p>Shows how long the bot has been online with cute formatting.</p>
+                            </li>
+                            <li>
+                                <span class="command-name">/avatar [member]</span>
+                                <p>Shows user avatar with direct link.</p>
+                            </li>
+                            <li>
+                                <span class="command-name">/roleinfo <role></span>
+                                <p>Shows detailed information about a role.</p>
+                            </li>
+                            <li>
+                                <span class="command-name">/emojiinfo <emoji></span>
+                                <p>Shows emoji information (ID, creation date).</p>
+                            </li>
+                            <li>
+                                <span class="command-name">/recentjoins</span>
+                                <p>Shows recently joined members (last 10).</p>
+                            </li>
+                        </ul>
                     </div>
-                    <div class="command-example">
-                        <h3>Examples:</h3>
-                        <span class="command-code">;slap @Friend</span> (playful
-                        joke)<br />
-                        <span class="command-code">;slap @Rival</span> (friendly
-                        competition)
+
+                    <!-- Moderation Category -->
+                    <div class="command-category">
+                        <h3 class="category-title"><i class="fas fa-user-shield"></i> Moderation</h3>
+                        <ul>
+                            <li>
+                                <span class="command-name">/kick <member> [reason]</span>
+                                <p>Kicks a user from the server with confirmation.</p>
+                            </li>
+                            <li>
+                                <span class="command-name">/ban <user_id> [duration] [reason]</span>
+                                <p>Bans a user from the server permanently or temporarily.</p>
+                            </li>
+                            <li>
+                                <span class="command-name">/unban <user_id></span>
+                                <p>Unbans a previously banned user.</p>
+                            </li>
+                            <li>
+                                <span class="command-name">/softban <member> [days] [reason]</span>
+                                <p>Bans and immediately unbans to delete messages.</p>
+                            </li>
+                            <li>
+                                <span class="command-name">/mute <member> [duration] [reason]</span>
+                                <p>Mutes a user for a specified time with timer.</p>
+                            </li>
+                            <li>
+                                <span class="command-name">/unmute <member></span>
+                                <p>Unmutes a user with confirmation.</p>
+                            </li>
+                            <li>
+                                <span class="command-name">/warn <member> [reason]</span>
+                                <p>Gives a warning to a user with case ID.</p>
+                            </li>
+                            <li>
+                                <span class="command-name">/warnings <member></span>
+                                <p>Shows a user's warnings with detailed info.</p>
+                            </li>
+                            <li>
+                                <span class="command-name">/clearwarns <member></span>
+                                <p>Clears a user's warnings with confirmation.</p>
+                            </li>
+                            <li>
+                                <span class="command-name">/delwarn <case_id></span>
+                                <p>Deletes a specific warning with verification.</p>
+                            </li>
+                            <li>
+                                <span class="command-name">/editcase <case_id> <new_reason></span>
+                                <p>Edits the reason for a specific warning.</p>
+                            </li>
+                            <li>
+                                <span class="command-name">/case <case_id></span>
+                                <p>Shows details about a specific warning.</p>
+                            </li>
+                            <li>
+                                <span class="command-name">/purge <amount> [user]</span>
+                                <p>Deletes messages (1-100) with user filter.</p>
+                            </li>
+                            <li>
+                                <span class="command-name">/slowmode <seconds></span>
+                                <p>Sets slowmode for the channel (0-21600).</p>
+                            </li>
+                            <li>
+                                <span class="command-name">/lock [reason]</span>
+                                <p>Locks the channel to prevent sending messages.</p>
+                            </li>
+                            <li>
+                                <span class="command-name">/unlock [reason]</span>
+                                <p>Unlocks a previously locked channel.</p>
+                            </li>
+                            <li>
+                                <span class="command-name">/nick <member> [nickname]</span>
+                                <p>Changes a user's nickname with preview.</p>
+                            </li>
+                            <li>
+                                <span class="command-name">/nuke</span>
+                                <p>Deletes all messages in the channel with safety check.</p>
+                            </li>
+                            <li>
+                                <span class="command-name">/fg [channel]</span>
+                                <p>Toggles file and GIF sending permissions for a channel.</p>
+                            </li>
+                            <li>
+                                <span class="command-name">/voicekick <member> [reason]</span>
+                                <p>Kicks a user from voice channel.</p>
+                            </li>
+                            <li>
+                                <span class="command-name">/voiceban <member> [reason]</span>
+                                <p>Prevents user from joining voice channels.</p>
+                            </li>
+                            <li>
+                                <span class="command-name">/voiceunban <member> [reason]</span>
+                                <p>Allows user to join voice channels again.</p>
+                            </li>
+                            <li>
+                                <span class="command-name">/massban <ids> [reason]</span>
+                                <p>Bans multiple users at once.</p>
+                            </li>
+                            <li>
+                                <span class="command-name">/hierarchy</span>
+                                <p>Shows server power hierarchy with visual ranking.</p>
+                            </li>
+                        </ul>
                     </div>
-                </div>
-            </section>
 
-            <section id="simprate" class="section">
-                <div class="command-header">
-                    <h2>;simprate</h2>
-                    <span class="command-permission"
-                        >No permissions required</span
-                    >
-                </div>
-                <div class="command-content">
-                    <p>
-                        Measures someone's 'simp' level with a humorous
-                        percentage. All in good fun.
-                    </p>
-                    <div class="command-usage">
-                        <h3>Usage:</h3>
-                        <span class="command-code">;simprate @user</span>
+                    <!-- Fun Category -->
+                    <div class="command-category">
+                        <h3 class="category-title"><i class="fas fa-smile"></i> Fun</h3>
+                        <ul>
+                            <li>
+                                <span class="command-name">/rate <thing></span>
+                                <p>Rates something 1-10 with animated stars ✨.</p>
+                            </li>
+                            <li>
+                                <span class="command-name">/rps <rock|paper|scissors></span>
+                                <p>Play rock-paper-scissors with cute animations.</p>
+                            </li>
+                            <li>
+                                <span class="command-name">/8ball <question></span>
+                                <p>Ask the magic 8-ball a question with mystical responses.</p>
+                            </li>
+                            <li>
+                                <span class="command-name">/ascii <text></span>
+                                <p>Converts text to beautiful ASCII art.</p>
+                            </li>
+                            <li>
+                                <span class="command-name">/random [min] [max]</span>
+                                <p>Generates random number with cute visualization.</p>
+                            </li>
+                            <li>
+                                <span class="command-name">/ship <user1> <user2></span>
+                                <p>Ship two users together with compatibility percentage.</p>
+                            </li>
+                            <li>
+                                <span class="command-name">/howgay <user></span>
+                                <p>Measures gay percentage with fun meter animation.</p>
+                            </li>
+                            <li>
+                                <span class="command-name">/simprate <user></span>
+                                <p>Checks how much a user simps with cute rating.</p>
+                            </li>
+                            <li>
+                                <span class="command-name">/meme</span>
+                                <p>Get a random meme.</p>
+                            </li>
+                            <li>
+                                <span class="command-name">/joke</span>
+                                <p>Get a random joke.</p>
+                            </li>
+                            <li>
+                                <span class="command-name">/coinflip</span>
+                                <p>Flip a coin.</p>
+                            </li>
+                            <li>
+                                <span class="command-name">/roll [sides=6]</span>
+                                <p>Roll a dice.</p>
+                            </li>
+                            <li>
+                                <span class="command-name">/hug <member></span>
+                                <p>Send virtual hug.</p>
+                            </li>
+                            <li>
+                                <span class="command-name">/slap <member></span>
+                                <p>Virtual slap action.</p>
+                            </li>
+                        </ul>
                     </div>
-                    <div class="command-example">
-                        <h3>Examples:</h3>
-                        <span class="command-code">;simprate @Friend</span
-                        ><br />
-                        <span class="command-code">;simprate @Yourself</span>
-                        (self-roast)
+
+                    <!-- Configuration Category -->
+                    <div class="command-category">
+                        <h3 class="category-title"><i class="fas fa-cog"></i> Configuration</h3>
+                        <ul>
+                            <li>
+                                <span class="command-name">/prefix <prefix></span>
+                                <p>Changes the bot prefix for this server.</p>
+                            </li>
+                            <li>
+                                <span class="command-name">/slc <channel></span>
+                                <p>Sets log channel for moderation actions.</p>
+                            </li>
+                            <li>
+                                <span class="command-name">/sdlc <channel></span>
+                                <p>Sets deleted messages log channel.</p>
+                            </li>
+                            <li>
+                                <span class="command-name">/swc <channel></span>
+                                <p>Sets welcome channel for new members.</p>
+                            </li>
+                            <li>
+                                <span class="command-name">/swm <message></span>
+                                <p>Sets welcome message for new members.</p>
+                            </li>
+                            <li>
+                                <span class="command-name">/autorole <role></span>
+                                <p>Sets role for new members automatically.</p>
+                            </li>
+                            <li>
+                                <span class="command-name">/color <hex></span>
+                                <p>Shows color sample from HEX code.</p>
+                            </li>
+                        </ul>
                     </div>
-                </div>
-            </section>
 
-            <section id="howgay" class="section">
-                <div class="command-header">
-                    <h2>;howgay</h2>
-                    <span class="command-permission"
-                        >No permissions required</span
-                    >
-                </div>
-                <div class="command-content">
-                    <p>
-                        Generates a random 'gay percentage' score for fun. Not
-                        scientifically accurate.
-                    </p>
-                    <div class="command-usage">
-                        <h3>Usage:</h3>
-                        <span class="command-code">;howgay @user</span>
+                     <!-- Utility Category -->
+                     <div class="command-category">
+                        <h3 class="category-title"><i class="fas fa-tools"></i> Utility</h3>
+                        <ul>
+                            <li>
+                                <span class="command-name">/afk [reason]</span>
+                                <p>Sets your AFK status. The bot will notify users who mention you.</p>
+                            </li>
+                            <li>
+                                <span class="command-name">/snipe</span>
+                                <p>Shows the last deleted message in the current channel.</p>
+                            </li>
+                            <li>
+                                <span class="command-name">/invite</span>
+                                <p>Generates an invite link for the bot.</p>
+                            </li>
+                            <li>
+                                <span class="command-name">/vote <question> <options></span>
+                                <p>Creates a poll. Separate options with | (e.g., Option1 | Option2).</p>
+                            </li>
+                        </ul>
                     </div>
-                    <div class="command-example">
-                        <h3>Examples:</h3>
-                        <span class="command-code">;howgay @Friend</span><br />
-                        <span class="command-code">;howgay @RainbowUser</span>
-                    </div>
-                    <div class="command-note">
-                        <h3>Note:</h3>
-                        <p>
-                            This is purely for entertainment. Always use
-                            respectfully.
-                        </p>
-                    </div>
-                </div>
-            </section>
 
-            <section id="moderation" class="section">
-                <div class="command-header">
-                    <h2>
-                        <i class="fas fa-shield-alt"></i> Moderation Commands
-                    </h2>
-                </div>
-            </section>
+                </div> <!-- End of commands-container -->
+            </section> <!-- End of #commands section -->
 
-            <section id="kick" class="section">
-                <div class="command-header">
-                    <h2>;kick</h2>
-                    <span class="command-permission"
-                        >Required Permissions: Kick Members</span
-                    >
-                </div>
-                <div class="command-content">
-                    <h3>Full Syntax:</h3>
-                    <span class="command-code">;kick @user [reason]</span>
-
-                    <h3>Description:</h3>
-                    <p>
-                        Removes a member from the server temporarily. The user
-                        can rejoin with a valid invite link. Ideal for rule
-                        violations that don't require permanent removal.
-                    </p>
-
-                    <h3>Parameters:</h3>
-                    <ul>
-                        <li>
-                            <strong>@user</strong>: The member to kick (mention
-                            or ID)
-                        </li>
-                        <li>
-                            <strong>[reason]</strong>: Optional reason for the
-                            kick (visible in audit logs)
-                        </li>
-                    </ul>
-
-                    <h3>Example Usage:</h3>
-                    <span class="command-code"
-                        >;kick @Spammer Flooding general chat</span
-                    ><br />
-                    <span class="command-code"
-                        >;kick @Troll Repeated off-topic posts</span
-                    >
-
-                    <h3>Required Permissions:</h3>
-                    <ul>
-                        <li>
-                            Bot needs <strong>Kick Members</strong> permission
-                        </li>
-                        <li>
-                            Bot's highest role must be above the target user's
-                            highest role
-                        </li>
-                    </ul>
-
-                    <h3>Notes:</h3>
-                    <ul>
-                        <li>Kicked users can rejoin with an invite</li>
-                        <li>Always provide a clear reason for transparency</li>
-                        <li>
-                            Use <span class="command-code">;ban</span> for more
-                            severe cases
-                        </li>
-                        <li>Action is logged in server audit logs</li>
-                    </ul>
-                </div>
-            </section>
-
-            <section id="ban" class="section">
-                <div class="command-header">
-                    <h2>;ban</h2>
-                    <span class="command-permission"
-                        >Required Permissions: Ban Members</span
-                    >
-                </div>
-                <div class="command-content">
-                    <h3>Full Syntax:</h3>
-                    <span class="command-code">;ban @user [reason]</span>
-
-                    <h3>Description:</h3>
-                    <p>
-                        Permanently removes a user from the server. This action
-                        should be reserved for serious violations like
-                        harassment, scams, or malicious behavior.
-                    </p>
-
-                    <h3>Parameters:</h3>
-                    <ul>
-                        <li>
-                            <strong>@user</strong>: The member to ban (mention
-                            or ID)
-                        </li>
-                        <li>
-                            <strong>[reason]</strong>: Optional reason for the
-                            ban (visible in audit logs)
-                        </li>
-                    </ul>
-
-                    <h3>Example Usage:</h3>
-                    <span class="command-code"
-                        >;ban @Scammer Attempted phishing</span
-                    ><br />
-                    <span class="command-code"
-                        >;ban @Hacker Exploiting server vulnerabilities</span
-                    >
-
-                    <h3>Required Permissions:</h3>
-                    <ul>
-                        <li>
-                            Bot needs <strong>Ban Members</strong> permission
-                        </li>
-                        <li>
-                            Bot's highest role must be above the target user's
-                            highest role
-                        </li>
-                    </ul>
-
-                    <h3>Notes:</h3>
-                    <ul>
-                        <li>Banned users cannot rejoin unless unbanned</li>
-                        <li>
-                            Always document the reason in your moderation logs
-                        </li>
-                        <li>
-                            Bans can be reversed with
-                            <span class="command-code">;unban UserID</span>
-                        </li>
-                        <li>
-                            Consider temporary mutes/kicks for less severe cases
-                        </li>
-                        <li>Action is logged in server audit logs</li>
-                    </ul>
-                </div>
-            </section>
-
-            <section id="mute" class="section">
-                <div class="command-header">
-                    <h2>;mute</h2>
-                    <span class="command-permission"
-                        >Required Permissions: Moderate Members</span
-                    >
-                </div>
-                <div class="command-content">
-                    <h3>Full Syntax:</h3>
-                    <span class="command-code"
-                        >;mute @user [duration] [reason]</span
-                    >
-
-                    <h3>Description:</h3>
-                    <p>
-                        Temporarily restricts a user's ability to send messages.
-                        Useful for de-escalating conflicts or preventing spam
-                        during heated discussions.
-                    </p>
-
-                    <h3>Parameters:</h3>
-                    <ul>
-                        <li>
-                            <strong>@user</strong>: The member to mute (mention
-                            or ID)
-                        </li>
-                        <li>
-                            <strong>[duration]</strong>: Mute length (e.g., 30m,
-                            2h, 1d)
-                        </li>
-                        <li>
-                            <strong>[reason]</strong>: Optional reason for the
-                            mute
-                        </li>
-                    </ul>
-
-                    <h3>Example Usage:</h3>
-                    <span class="command-code"
-                        >;mute @NoisyUser 30m Excessive caps usage</span
-                    ><br />
-                    <span class="command-code"
-                        >;mute @Flamer 2h Personal attacks in #general</span
-                    >
-
-                    <h3>Required Permissions:</h3>
-                    <ul>
-                        <li>
-                            Bot needs
-                            <strong>Moderate Members</strong> permission
-                        </li>
-                        <li>
-                            Bot's highest role must be above the target user's
-                            highest role
-                        </li>
-                    </ul>
-
-                    <h3>Notes:</h3>
-                    <ul>
-                        <li>Duration defaults to 1 hour if not specified</li>
-                        <li>Maximum mute duration is 28 days</li>
-                        <li>
-                            Combine with a private message explaining the mute
-                        </li>
-                        <li>
-                            Use
-                            <span class="command-code">;unmute @user</span> to
-                            remove restrictions early
-                        </li>
-                        <li>Action is logged in server audit logs</li>
-                    </ul>
-                </div>
-            </section>
-
-            <section id="warn" class="section">
-                <div class="command-header">
-                    <h2>;warn</h2>
-                    <span class="command-permission"
-                        >Required Permissions: Kick Members</span
-                    >
-                </div>
-                <div class="command-content">
-                    <h3>Full Syntax:</h3>
-                    <span class="command-code">;warn @user [reason]</span>
-
-                    <h3>Description:</h3>
-                    <p>
-                        Issues a formal warning that's tracked in the user's
-                        record. Warnings help document patterns of behavior and
-                        can trigger automatic actions at certain thresholds.
-                    </p>
-
-                    <h3>Parameters:</h3>
-                    <ul>
-                        <li>
-                            <strong>@user</strong>: The member to warn (mention
-                            or ID)
-                        </li>
-                        <li>
-                            <strong>[reason]</strong>: Detailed explanation of
-                            the violation
-                        </li>
-                    </ul>
-
-                    <h3>Example Usage:</h3>
-                    <span class="command-code"
-                        >;warn @NewUser Minor language violation</span
-                    ><br />
-                    <span class="command-code"
-                        >;warn @Roleplayer NSFW content in SFW channels</span
-                    >
-
-                    <h3>Required Permissions:</h3>
-                    <ul>
-                        <li>
-                            Bot needs <strong>Kick Members</strong> permission
-                        </li>
-                        <li>
-                            Bot's highest role must be above the target user's
-                            highest role
-                        </li>
-                    </ul>
-
-                    <h3>Notes:</h3>
-                    <ul>
-                        <li>
-                            Warnings are permanently stored until manually
-                            cleared
-                        </li>
-                        <li>
-                            View warning history with
-                            <span class="command-code">;warnings @user</span>
-                        </li>
-                        <li>
-                            Manage warnings using
-                            <span class="command-code">;delwarn</span> or
-                            <span class="command-code">;clearwarns</span>
-                        </li>
-                        <li>
-                            Consider setting up automatic actions for repeated
-                            warnings
-                        </li>
-                        <li>Always include specific details in the reason</li>
-                    </ul>
-                </div>
-            </section>
-
-            <section id="purge" class="section">
-                <div class="command-header">
-                    <h2>;purge</h2>
-                    <span class="command-permission"
-                        >Required Permissions: Manage Messages</span
-                    >
-                </div>
-                <div class="command-content">
-                    <h3>Full Syntax:</h3>
-                    <span class="command-code">;purge [amount]</span>
-
-                    <h3>Description:</h3>
-                    <p>
-                        Bulk deletes messages from a channel. Perfect for
-                        cleaning up spam, off-topic discussions, or bot command
-                        clutter.
-                    </p>
-
-                    <h3>Parameters:</h3>
-                    <ul>
-                        <li>
-                            <strong>[amount]</strong>: Number of messages to
-                            delete (1-100)
-                        </li>
-                    </ul>
-
-                    <h3>Example Usage:</h3>
-                    <span class="command-code">;purge 20</span><br />
-                    <span class="command-code">;purge 100</span>
-
-                    <h3>Required Permissions:</h3>
-                    <ul>
-                        <li>
-                            Bot needs
-                            <strong>Manage Messages</strong> permission
-                        </li>
-                        <li>Must be used in a text channel</li>
-                    </ul>
-
-                    <h3>Notes:</h3>
-                    <ul>
-                        <li>Can only delete messages up to 14 days old</li>
-                        <li>
-                            For complete channel cleanup, use
-                            <span class="command-code">;nuke</span>
-                        </li>
-                        <li>Doesn't work on pinned messages</li>
-                        <li>Action is logged in server audit logs</li>
-                    </ul>
-                </div>
-            </section>
-
-            <section id="utility" class="section">
-                <div class="command-header">
-                    <h2><i class="fas fa-tools"></i> Utility Commands</h2>
-                </div>
-            </section>
-
-            <section id="remindme" class="section">
-                <div class="command-header">
-                    <h2>;remindme</h2>
-                    <span class="command-permission"
-                        >No permissions required</span
-                    >
-                </div>
-                <div class="command-content">
-                    <h3>Full Syntax:</h3>
-                    <span class="command-code">;remindme [time] [message]</span>
-
-                    <h3>Description:</h3>
-                    <p>
-                        Sets personalized reminders that ping you after a
-                        specified time. Works in both DMs and servers.
-                    </p>
-
-                    <h3>Parameters:</h3>
-                    <ul>
-                        <li>
-                            <strong>[time]</strong>: Duration (e.g., 30m, 2h,
-                            1d)
-                        </li>
-                        <li><strong>[message]</strong>: Reminder content</li>
-                    </ul>
-
-                    <h3>Example Usage:</h3>
-                    <span class="command-code"
-                        >;remindme 2h Check the laundry</span
-                    ><br />
-                    <span class="command-code"
-                        >;remindme 30m Meeting starts soon</span
-                    >
-
-                    <h3>Required Permissions:</h3>
-                    <ul>
-                        <li>None - works for all users</li>
-                    </ul>
-
-                    <h3>Notes:</h3>
-                    <ul>
-                        <li>Supports minutes (m), hours (h), and days (d)</li>
-                        <li>Maximum reminder duration: 1 year</li>
-                        <li>
-                            Reminder pings you in the channel/DM where it was
-                            set
-                        </li>
-                        <li>
-                            Use <span class="command-code">;rmdm</span> for
-                            DM-only reminders
-                        </li>
-                    </ul>
-                </div>
-            </section>
-
-            <section id="poll" class="section">
-                <div class="command-header">
-                    <h2>;poll</h2>
-                    <span class="command-permission"
-                        >No permissions required</span
-                    >
-                </div>
-                <div class="command-content">
-                    <h3>Full Syntax:</h3>
-                    <span class="command-code"
-                        >;poll "Question" "Option1" "Option2" ...</span
-                    >
-
-                    <h3>Description:</h3>
-                    <p>
-                        Creates a simple poll with up to 10 options. Users can
-                        vote by reacting to the message.
-                    </p>
-
-                    <h3>Parameters:</h3>
-                    <ul>
-                        <li>
-                            <strong>"Question"</strong>: The poll question
-                            (e.g., "Best programming language?").
-                        </li>
-                        <li>
-                            <strong>"Option1"</strong>,
-                            <strong>"Option2"</strong>, etc.: The choices for
-                            the poll (minimum 2).
-                        </li>
-                    </ul>
-
-                    <h3>Example Usage:</h3>
-                    <span class="command-code"
-                        >;poll "Favorite Color?" "Red" "Blue" "Green"</span
-                    >
-
-                    <h3>Notes:</h3>
-                    <ul>
-                        <li>Supports up to 10 options.</li>
-                        <li>Results are visible in real-time via reactions.</li>
-                    </ul>
-                </div>
-            </section>
-
-            <section id="avatar" class="section">
-                <div class="command-header">
-                    <h2>;avatar</h2>
-                    <span class="command-permission"
-                        >No permissions required</span
-                    >
-                </div>
-                <div class="command-content">
-                    <h3>Full Syntax:</h3>
-                    <span class="command-code">;avatar [@user]</span>
-
-                    <h3>Description:</h3>
-                    <p>
-                        Displays the avatar (profile picture) of a user in high
-                        resolution. If no user is specified, shows the avatar of
-                        the command executor.
-                    </p>
-
-                    <h3>Parameters:</h3>
-                    <ul>
-                        <li>
-                            <strong>[@user]</strong>: Optional user mention or
-                            ID (e.g., @User or 123456789012345678).
-                        </li>
-                    </ul>
-
-                    <h3>Example Usage:</h3>
-                    <span class="command-code">;avatar @User</span><br />
-                    <span class="command-code">;avatar</span> (shows your
-                    avatar)
-
-                    <h3>Notes:</h3>
-                    <ul>
-                        <li>Supports animated avatars (GIFs).</li>
-                        <li>Click the image to view it in full size.</li>
-                    </ul>
-                </div>
-            </section>
-
-            <section id="unban" class="section">
-                <div class="command-header">
-                    <h2>;unban</h2>
-                    <span class="command-permission"
-                        >Required Permissions: Ban Members</span
-                    >
-                </div>
-                <div class="command-content">
-                    <h3>Full Syntax:</h3>
-                    <span class="command-code">;unban UserID [reason]</span>
-
-                    <h3>Description:</h3>
-                    <p>
-                        Reverses a permanent ban, allowing the user to rejoin
-                        the server. Essential for correcting mistakes or
-                        welcoming reformed community members.
-                    </p>
-
-                    <h3>Parameters:</h3>
-                    <ul>
-                        <li>
-                            <strong>UserID</strong>: The Discord ID of the
-                            banned user (not username).
-                        </li>
-                        <li>
-                            <strong>[reason]</strong>: Optional explanation for
-                            the unban (visible in audit logs).
-                        </li>
-                    </ul>
-
-                    <h3>Example Usage:</h3>
-                    <span class="command-code"
-                        >;unban 123456789012345678 Mistaken identity</span
-                    ><br />
-                    <span class="command-code"
-                        >;unban 987654321098765432 After appeal review</span
-                    >
-
-                    <h3>Required Permissions:</h3>
-                    <ul>
-                        <li>
-                            Bot needs <strong>Ban Members</strong> permission.
-                        </li>
-                    </ul>
-
-                    <h3>Notes:</h3>
-                    <ul>
-                        <li>
-                            Find user IDs in your server's ban list or audit
-                            logs.
-                        </li>
-                        <li>Always document the reason for transparency.</li>
-                        <li>
-                            Consider sending a welcome message to the returning
-                            user.
-                        </li>
-                    </ul>
-                </div>
-            </section>
-
-            <section id="unmute" class="section">
-                <div class="command-header">
-                    <h2>;unmute</h2>
-                    <span class="command-permission"
-                        >Required Permissions: Moderate Members</span
-                    >
-                </div>
-                <div class="command-content">
-                    <h3>Full Syntax:</h3>
-                    <span class="command-code">;unmute @user [reason]</span>
-
-                    <h3>Description:</h3>
-                    <p>
-                        Removes message restrictions from a muted user before
-                        their timeout expires. Use when a user demonstrates
-                        improved behavior.
-                    </p>
-
-                    <h3>Parameters:</h3>
-                    <ul>
-                        <li>
-                            <strong>@user</strong>: The member to unmute
-                            (mention or ID).
-                        </li>
-                        <li>
-                            <strong>[reason]</strong>: Optional explanation for
-                            the unmute.
-                        </li>
-                    </ul>
-
-                    <h3>Example Usage:</h3>
-                    <span class="command-code"
-                        >;unmute @NoisyUser Apology accepted</span
-                    ><br />
-                    <span class="command-code"
-                        >;unmute @Flamer Mediation successful</span
-                    >
-
-                    <h3>Required Permissions:</h3>
-                    <ul>
-                        <li>
-                            Bot needs
-                            <strong>Moderate Members</strong> permission.
-                        </li>
-                    </ul>
-
-                    <h3>Notes:</h3>
-                    <ul>
-                        <li>
-                            Consider sending a DM explaining why the mute was
-                            lifted.
-                        </li>
-                        <li>
-                            Use <span class="command-code">;mute</span> to
-                            reapply restrictions if needed.
-                        </li>
-                    </ul>
-                </div>
-            </section>
-
-            <section id="warnings" class="section">
-                <div class="command-header">
-                    <h2>;warnings</h2>
-                    <span class="command-permission"
-                        >Required Permissions: Kick Members</span
-                    >
-                </div>
-                <div class="command-content">
-                    <h3>Full Syntax:</h3>
-                    <span class="command-code">;warnings @user</span>
-
-                    <h3>Description:</h3>
-                    <p>
-                        Displays all active warnings for a member, including
-                        dates and reasons. Essential for tracking behavior
-                        patterns.
-                    </p>
-
-                    <h3>Parameters:</h3>
-                    <ul>
-                        <li>
-                            <strong>@user</strong>: The member to check (mention
-                            or ID).
-                        </li>
-                    </ul>
-
-                    <h3>Example Usage:</h3>
-                    <span class="command-code">;warnings @RuleBreaker</span
-                    ><br />
-                    <span class="command-code"
-                        >;warnings 123456789012345678</span
-                    >
-
-                    <h3>Required Permissions:</h3>
-                    <ul>
-                        <li>
-                            Bot needs <strong>Kick Members</strong> permission.
-                        </li>
-                    </ul>
-
-                    <h3>Notes:</h3>
-                    <ul>
-                        <li>Warnings are stored until manually cleared.</li>
-                        <li>
-                            Use <span class="command-code">;clearwarns</span> to
-                            reset a user's warning count.
-                        </li>
-                    </ul>
-                </div>
-            </section>
-
-            <section id="clearwarns" class="section">
-                <div class="command-header">
-                    <h2>;clearwarns</h2>
-                    <span class="command-permission"
-                        >Required Permissions: Kick Members</span
-                    >
-                </div>
-                <div class="command-content">
-                    <h3>Full Syntax:</h3>
-                    <span class="command-code">;clearwarns @user</span>
-
-                    <h3>Description:</h3>
-                    <p>
-                        Resets all warnings for a member, effectively giving
-                        them a clean slate. Useful for reformed users or
-                        administrative corrections.
-                    </p>
-
-                    <h3>Parameters:</h3>
-                    <ul>
-                        <li>
-                            <strong>@user</strong>: The member to clear warnings
-                            for (mention or ID).
-                        </li>
-                    </ul>
-
-                    <h3>Example Usage:</h3>
-                    <span class="command-code">;clearwarns @ReformedUser</span
-                    ><br />
-                    <span class="command-code"
-                        >;clearwarns 123456789012345678</span
-                    >
-
-                    <h3>Required Permissions:</h3>
-                    <ul>
-                        <li>
-                            Bot needs <strong>Kick Members</strong> permission.
-                        </li>
-                    </ul>
-
-                    <h3>Notes:</h3>
-                    <ul>
-                        <li>This action cannot be undone.</li>
-                        <li>
-                            Consider documenting the reason for clearing
-                            warnings in your moderation logs.
-                        </li>
-                    </ul>
-                </div>
-            </section>
-
-            <section id="delwarn" class="section">
-                <div class="command-header">
-                    <h2>;delwarn</h2>
-                    <span class="command-permission"
-                        >Required Permissions: Kick Members</span
-                    >
-                </div>
-                <div class="command-content">
-                    <h3>Full Syntax:</h3>
-                    <span class="command-code">;delwarn @user [warningID]</span>
-
-                    <h3>Description:</h3>
-                    <p>
-                        Removes a specific warning from a user's record. Use to
-                        correct errors or outdated warnings.
-                    </p>
-
-                    <h3>Parameters:</h3>
-                    <ul>
-                        <li>
-                            <strong>@user</strong>: The member to remove a
-                            warning from (mention or ID).
-                        </li>
-                        <li>
-                            <strong>[warningID]</strong>: The ID of the warning
-                            to delete (found in
-                            <span class="command-code">;warnings</span> output).
-                        </li>
-                    </ul>
-
-                    <h3>Example Usage:</h3>
-                    <span class="command-code">;delwarn @User 3</span><br />
-                    <span class="command-code"
-                        >;delwarn 123456789012345678 5</span
-                    >
-
-                    <h3>Required Permissions:</h3>
-                    <ul>
-                        <li>
-                            Bot needs <strong>Kick Members</strong> permission.
-                        </li>
-                    </ul>
-
-                    <h3>Notes:</h3>
-                    <ul>
-                        <li>Warning IDs are sequential and unique per user.</li>
-                        <li>
-                            Use
-                            <span class="command-code">;warnings @user</span> to
-                            find the correct ID.
-                        </li>
-                    </ul>
-                </div>
-            </section>
-
-            <section id="nuke" class="section">
-                <div class="command-header">
-                    <h2>;nuke</h2>
-                    <span class="command-permission"
-                        >Required Permissions: Manage Channels</span
-                    >
-                </div>
-                <div class="command-content">
-                    <h3>Full Syntax:</h3>
-                    <span class="command-code">;nuke</span>
-
-                    <h3>Description:</h3>
-                    <p>
-                        Completely resets a channel by deleting all messages and
-                        creating a clean slate. Automatically creates a backup
-                        of deleted content for moderation review.
-                    </p>
-
-                    <h3>Parameters:</h3>
-                    <ul>
-                        <li>None - operates on the current channel.</li>
-                    </ul>
-
-                    <h3>Example Usage:</h3>
-                    <span class="command-code">;nuke</span> (after major spam
-                    attack)<br />
-                    <span class="command-code">;nuke</span> (to reset off-topic
-                    discussions)
-
-                    <h3>Required Permissions:</h3>
-                    <ul>
-                        <li>
-                            Bot needs
-                            <strong>Manage Channels</strong> permission.
-                        </li>
-                    </ul>
-
-                    <h3>Notes:</h3>
-                    <ul>
-                        <li>This action is irreversible.</li>
-                        <li>
-                            Consider using
-                            <span class="command-code">;purge</span> for partial
-                            cleanups.
-                        </li>
-                    </ul>
-                </div>
-            </section>
-
-            <section id="lock" class="section">
-                <div class="command-header">
-                    <h2>;lock</h2>
-                    <span class="command-permission"
-                        >Required Permissions: Manage Channels</span
-                    >
-                </div>
-                <div class="command-content">
-                    <h3>Full Syntax:</h3>
-                    <span class="command-code">;lock [reason]</span>
-
-                    <h3>Description:</h3>
-                    <p>
-                        Temporarily prevents all users from sending messages in
-                        a channel. Ideal for emergency situations or scheduled
-                        maintenance.
-                    </p>
-
-                    <h3>Parameters:</h3>
-                    <ul>
-                        <li>
-                            <strong>[reason]</strong>: Optional explanation for
-                            the lock (visible in channel).
-                        </li>
-                    </ul>
-
-                    <h3>Example Usage:</h3>
-                    <span class="command-code"
-                        >;lock Server maintenance in progress</span
-                    ><br />
-                    <span class="command-code"
-                        >;lock Pausing discussion during investigation</span
-                    >
-
-                    <h3>Required Permissions:</h3>
-                    <ul>
-                        <li>
-                            Bot needs
-                            <strong>Manage Channels</strong> permission.
-                        </li>
-                    </ul>
-
-                    <h3>Notes:</h3>
-                    <ul>
-                        <li>Always pair with an explanatory pinned message.</li>
-                        <li>
-                            Use <span class="command-code">;unlock</span> to
-                            restore access.
-                        </li>
-                    </ul>
-                </div>
-            </section>
-
-            <section id="unlock" class="section">
-                <div class="command-header">
-                    <h2>;unlock</h2>
-                    <span class="command-permission"
-                        >Required Permissions: Manage Channels</span
-                    >
-                </div>
-                <div class="command-content">
-                    <h3>Full Syntax:</h3>
-                    <span class="command-code">;unlock</span>
-
-                    <h3>Description:</h3>
-                    <p>
-                        Restores message permissions in a previously locked
-                        channel.
-                    </p>
-
-                    <h3>Parameters:</h3>
-                    <ul>
-                        <li>None - operates on the current channel.</li>
-                    </ul>
-
-                    <h3>Example Usage:</h3>
-                    <span class="command-code">;unlock</span> (after maintenance
-                    is complete)
-
-                    <h3>Required Permissions:</h3>
-                    <ul>
-                        <li>
-                            Bot needs
-                            <strong>Manage Channels</strong> permission.
-                        </li>
-                    </ul>
-
-                    <h3>Notes:</h3>
-                    <ul>
-                        <li>Consider announcing the unlock to users.</li>
-                    </ul>
-                </div>
-            </section>
-
-            <section id="slowmode" class="section">
-                <div class="command-header">
-                    <h2>;slowmode</h2>
-                    <span class="command-permission"
-                        >Required Permissions: Manage Channels</span
-                    >
-                </div>
-                <div class="command-content">
-                    <h3>Full Syntax:</h3>
-                    <span class="command-code">;slowmode [seconds]</span>
-
-                    <h3>Description:</h3>
-                    <p>
-                        Controls how frequently users can send messages in a
-                        channel. Helps prevent spam during active events or
-                        discussions.
-                    </p>
-
-                    <h3>Parameters:</h3>
-                    <ul>
-                        <li>
-                            <strong>[seconds]</strong>: Delay between messages
-                            (0-21600, where 0 disables slowmode).
-                        </li>
-                    </ul>
-
-                    <h3>Example Usage:</h3>
-                    <span class="command-code">;slowmode 5</span> (for active
-                    Q&A)<br />
-                    <span class="command-code">;slowmode 30</span> (for event
-                    channels)<br />
-                    <span class="command-code">;slowmode 0</span> (to disable)
-
-                    <h3>Required Permissions:</h3>
-                    <ul>
-                        <li>
-                            Bot needs
-                            <strong>Manage Channels</strong> permission.
-                        </li>
-                    </ul>
-
-                    <h3>Notes:</h3>
-                    <ul>
-                        <li>
-                            Combine with
-                            <span class="command-code">;lock</span> for complete
-                            conversation control during crises.
-                        </li>
-                    </ul>
-                </div>
-            </section>
-
-            <section id="fg" class="section">
-                <div class="command-header">
-                    <h2>;fg</h2>
-                    <span class="command-permission"
-                        >Required Permissions: Ban Members</span
-                    >
-                </div>
-                <div class="command-content">
-                    <h3>Full Syntax:</h3>
-                    <span class="command-code">;fg @user</span>
-
-                    <h3>Description:</h3>
-                    <p>
-                        Simulates a ban with a dramatic fake kick message.
-                        Designed for harmless pranks with trusted community
-                        members.
-                    </p>
-
-                    <h3>Parameters:</h3>
-                    <ul>
-                        <li>
-                            <strong>@user</strong>: The member to prank (mention
-                            or ID).
-                        </li>
-                    </ul>
-
-                    <h3>Example Usage:</h3>
-                    <span class="command-code">;fg @BestFriend</span> (April
-                    Fools' joke)<br />
-                    <span class="command-code">;fg @RegularUser</span> (with
-                    prior consent)
-
-                    <h3>Required Permissions:</h3>
-                    <ul>
-                        <li>
-                            Bot needs <strong>Ban Members</strong> permission.
-                        </li>
-                    </ul>
-
-                    <h3>Notes:</h3>
-                    <ul>
-                        <li>
-                            Never use this command during actual moderation
-                            actions - it undermines trust.
-                        </li>
-                    </ul>
-                </div>
-            </section>
-
-            <section id="nick" class="section">
-                <div class="command-header">
-                    <h2>;nick</h2>
-                    <span class="command-permission"
-                        >Required Permissions: Manage Nicknames</span
-                    >
-                </div>
-                <div class="command-content">
-                    <h3>Full Syntax:</h3>
-                    <span class="command-code">;nick @user [newNickname]</span>
-
-                    <h3>Description:</h3>
-                    <p>
-                        Modifies a user's server-specific nickname. Useful for
-                        enforcing naming conventions or playful community
-                        events.
-                    </p>
-
-                    <h3>Parameters:</h3>
-                    <ul>
-                        <li>
-                            <strong>@user</strong>: The member to rename
-                            (mention or ID).
-                        </li>
-                        <li>
-                            <strong>[newNickname]</strong>: The new nickname
-                            (leave empty to reset).
-                        </li>
-                    </ul>
-
-                    <h3>Example Usage:</h3>
-                    <span class="command-code">;nick @User123 ProperName</span>
-                    (enforcing rules)<br />
-                    <span class="command-code"
-                        >;nick @Streamer [LIVE] StreamerName</span
-                    >
-                    (event tagging)
-
-                    <h3>Required Permissions:</h3>
-                    <ul>
-                        <li>
-                            Bot needs
-                            <strong>Manage Nicknames</strong> permission.
-                        </li>
-                    </ul>
-
-                    <h3>Notes:</h3>
-                    <ul>
-                        <li>
-                            Always respect identity - avoid forced nicknames
-                            that might offend.
-                        </li>
-                        <li>
-                            Nicknames are server-specific and don't affect
-                            global usernames.
-                        </li>
-                    </ul>
-                </div>
-            </section>
-
-            <section id="case" class="section">
-                <div class="command-header">
-                    <h2>;case</h2>
-                    <span class="command-permission"
-                        >Required Permissions: Kick Members</span
-                    >
-                </div>
-                <div class="command-content">
-                    <h3>Full Syntax:</h3>
-                    <span class="command-code">;case [caseID]</span>
-
-                    <h3>Description:</h3>
-                    <p>
-                        Displays detailed information about a specific
-                        moderation action from your server's logs. Essential for
-                        reviewing past incidents and maintaining transparency.
-                    </p>
-
-                    <h3>Parameters:</h3>
-                    <ul>
-                        <li>
-                            <strong>[caseID]</strong>: The unique identifier of
-                            the moderation case.
-                        </li>
-                    </ul>
-
-                    <h3>Example Usage:</h3>
-                    <span class="command-code">;case 42</span> (view standard
-                    moderation case)<br />
-                    <span class="command-code">;case DM-15</span> (view
-                    DM-related incident)
-
-                    <h3>Required Permissions:</h3>
-                    <ul>
-                        <li>
-                            Bot needs <strong>Kick Members</strong> permission.
-                        </li>
-                    </ul>
-
-                    <h3>Notes:</h3>
-                    <ul>
-                        <li>
-                            Case IDs are automatically generated and can be
-                            found in audit logs or warning messages.
-                        </li>
-                        <li>
-                            Use <span class="command-code">;editcase</span> to
-                            update details.
-                        </li>
-                    </ul>
-                </div>
-            </section>
-
-            <section id="editcase" class="section">
-                <div class="command-header">
-                    <h2>;editcase</h2>
-                    <span class="command-permission"
-                        >Required Permissions: Kick Members</span
-                    >
-                </div>
-                <div class="command-content">
-                    <h3>Full Syntax:</h3>
-                    <span class="command-code"
-                        >;editcase [caseID] [newReason]</span
-                    >
-
-                    <h3>Description:</h3>
-                    <p>
-                        Modifies the details of an existing moderation record.
-                        Use to correct errors or add additional context to past
-                        actions.
-                    </p>
-
-                    <h3>Parameters:</h3>
-                    <ul>
-                        <li>
-                            <strong>[caseID]</strong>: The unique identifier of
-                            the case to edit.
-                        </li>
-                        <li>
-                            <strong>[newReason]</strong>: Updated explanation
-                            for the moderation action.
-                        </li>
-                    </ul>
-
-                    <h3>Example Usage:</h3>
-                    <span class="command-code"
-                        >;editcase 42 Updated evidence link</span
-                    ><br />
-                    <span class="command-code"
-                        >;editcase DM-15 Added user apology transcript</span
-                    >
-
-                    <h3>Required Permissions:</h3>
-                    <ul>
-                        <li>
-                            Bot needs <strong>Kick Members</strong> permission.
-                        </li>
-                    </ul>
-
-                    <h3>Notes:</h3>
-                    <ul>
-                        <li>
-                            All edits are logged with the moderator's name and
-                            timestamp.
-                        </li>
-                        <li>
-                            Avoid changing the original reason without
-                            documentation.
-                        </li>
-                    </ul>
-                </div>
-            </section>
-
-            <section id="afk" class="section">
-                <div class="command-header">
-                    <h2>;afk</h2>
-                    <span class="command-permission"
-                        >No permissions required</span
-                    >
-                </div>
-                <div class="command-content">
-                    <h3>Full Syntax:</h3>
-                    <span class="command-code">;afk [reason]</span>
-
-                    <h3>Description:</h3>
-                    <p>
-                        Sets your status as AFK (Away From Keyboard) with an
-                        optional reason. Automatically removes when you send a
-                        message.
-                    </p>
-
-                    <h3>Parameters:</h3>
-                    <ul>
-                        <li>
-                            <strong>[reason]</strong>: Optional explanation for
-                            your absence.
-                        </li>
-                    </ul>
-
-                    <h3>Example Usage:</h3>
-                    <span class="command-code">;afk Taking a break</span><br />
-                    <span class="command-code">;afk Sleeping</span>
-
-                    <h3>Required Permissions:</h3>
-                    <ul>
-                        <li>None - works for all users.</li>
-                    </ul>
-
-                    <h3>Notes:</h3>
-                    <ul>
-                        <li>AFK status is server-specific.</li>
-                        <li>
-                            Others will see your AFK status when mentioning you.
-                        </li>
-                    </ul>
-                </div>
-            </section>
-
-            <section id="snipe" class="section">
-                <div class="command-header">
-                    <h2>;snipe</h2>
-                    <span class="command-permission"
-                        >No permissions required</span
-                    >
-                </div>
-                <div class="command-content">
-                    <h3>Full Syntax:</h3>
-                    <span class="command-code">;snipe</span>
-
-                    <h3>Description:</h3>
-                    <p>
-                        Displays the most recently deleted message in the
-                        current channel. Useful for moderation and tracking
-                        deleted content.
-                    </p>
-
-                    <h3>Parameters:</h3>
-                    <ul>
-                        <li>None - operates in the current channel.</li>
-                    </ul>
-
-                    <h3>Example Usage:</h3>
-                    <span class="command-code">;snipe</span> (after a message is
-                    deleted)
-
-                    <h3>Required Permissions:</h3>
-                    <ul>
-                        <li>None - works for all users.</li>
-                    </ul>
-
-                    <h3>Notes:</h3>
-                    <ul>
-                        <li>
-                            Only works for messages deleted within the last 5
-                            minutes.
-                        </li>
-                        <li>
-                            Does not show messages deleted by bots or users with
-                            admin permissions.
-                        </li>
-                    </ul>
-                </div>
-            </section>
-
-            <section id="invite" class="section">
-                <div class="command-header">
-                    <h2>;invite</h2>
-                    <span class="command-permission"
-                        >No permissions required</span
-                    >
-                </div>
-                <div class="command-content">
-                    <h3>Full Syntax:</h3>
-                    <span class="command-code">;invite</span>
-
-                    <h3>Description:</h3>
-                    <p>
-                        Generates a permanent invite link to your server with
-                        default permissions.
-                    </p>
-
-                    <h3>Parameters:</h3>
-                    <ul>
-                        <li>None - generates a standard invite.</li>
-                    </ul>
-
-                    <h3>Example Usage:</h3>
-                    <span class="command-code">;invite</span> (to share your
-                    server)
-
-                    <h3>Required Permissions:</h3>
-                    <ul>
-                        <li>None - works for all users.</li>
-                    </ul>
-
-                    <h3>Notes:</h3>
-                    <ul>
-                        <li>
-                            Admins can create custom invite links with specific
-                            permissions in Discord settings.
-                        </li>
-                        <li>Invite links can be revoked in server settings.</li>
-                    </ul>
-                </div>
-            </section>
-
-            <section id="embed" class="section">
-                <div class="command-header">
-                    <h2>;embed</h2>
-                    <span class="command-permission"
-                        >Required Permissions: Manage Messages</span
-                    >
-                </div>
-                <div class="command-content">
-                    <h3>Full Syntax:</h3>
-                    <span class="command-code"
-                        >;embed "Title" | "Description" | #HEXColor | [imageURL]
-                        | [channel]</span
-                    >
-
-                    <h3>Description:</h3>
-                    <p>
-                        Creates rich embedded messages with custom titles,
-                        descriptions, colors and images.
-                    </p>
-
-                    <h3>Parameters:</h3>
-                    <ul>
-                        <li>
-                            <strong>"Title"</strong>: The embed's header text.
-                        </li>
-                        <li>
-                            <strong>"Description"</strong>: The main content of
-                            the embed.
-                        </li>
-                        <li>
-                            <strong>#HEXColor</strong>: The sidebar color (e.g.,
-                            #FF0000 for red).
-                        </li>
-                        <li>
-                            <strong>[imageURL]</strong>: Optional image to
-                            include in the embed.
-                        </li>
-                        <li>
-                            <strong>[channel]</strong>: Optional channel to send
-                            the embed to.
-                        </li>
-                    </ul>
-
-                    <h3>Example Usage:</h3>
-                    <span class="command-code"
-                        >;embed "Rules" | "1. Be respectful" | #FF0000 |
-                        #announcements</span
-                    >
-
-                    <h3>Required Permissions:</h3>
-                    <ul>
-                        <li>
-                            Bot needs
-                            <strong>Manage Messages</strong> permission.
-                        </li>
-                    </ul>
-
-                    <h3>Notes:</h3>
-                    <ul>
-                        <li>
-                            Use the pipe character (|) to separate parameters.
-                        </li>
-                        <li>Image URLs must be direct links to image files.</li>
-                    </ul>
-                </div>
-            </section>
-
-            <section id="vote" class="section">
-                <div class="command-header">
-                    <h2>;vote</h2>
-                    <span class="command-permission"
-                        >No permissions required</span
-                    >
-                </div>
-                <div class="command-content">
-                    <h3>Full Syntax:</h3>
-                    <span class="command-code">;vote [question]</span>
-
-                    <h3>Description:</h3>
-                    <p>
-                        Creates a simple yes/no poll with reactions for quick
-                        community feedback.
-                    </p>
-
-                    <h3>Parameters:</h3>
-                    <ul>
-                        <li>
-                            <strong>[question]</strong>: The poll question to
-                            ask.
-                        </li>
-                    </ul>
-
-                    <h3>Example Usage:</h3>
-                    <span class="command-code"
-                        >;vote Should we add more game channels?</span
-                    >
-
-                    <h3>Required Permissions:</h3>
-                    <ul>
-                        <li>None - works for all users.</li>
-                    </ul>
-
-                    <h3>Notes:</h3>
-                    <ul>
-                        <li>
-                            For multiple-choice polls, use
-                            <span class="command-code">;poll</span> instead.
-                        </li>
-                        <li>Results are visible to everyone in the channel.</li>
-                    </ul>
-                </div>
-            </section>
-
-            <section id="lastfm" class="section">
-                <div class="command-header">
-                    <h2>;lastfm</h2>
-                    <span class="command-permission"
-                        >No permissions required</span
-                    >
-                </div>
-                <div class="command-content">
-                    <h3>Full Syntax:</h3>
-                    <span class="command-code">;lastfm [username]</span>
-
-                    <h3>Description:</h3>
-                    <p>
-                        Displays music statistics from Last.fm including recent
-                        tracks and top artists.
-                    </p>
-
-                    <h3>Parameters:</h3>
-                    <ul>
-                        <li>
-                            <strong>[username]</strong>: Optional Last.fm
-                            username (uses linked account if omitted).
-                        </li>
-                    </ul>
-
-                    <h3>Example Usage:</h3>
-                    <span class="command-code">;lastfm DJOrmi</span><br />
-                    <span class="command-code">;lastfm</span> (for linked
-                    accounts)
-
-                    <h3>Required Permissions:</h3>
-                    <ul>
-                        <li>None - works for all users.</li>
-                    </ul>
-
-                    <h3>Notes:</h3>
-                    <ul>
-                        <li>
-                            Users must link their Last.fm account first with
-                            <span class="command-code"
-                                >;lastfm set [username]</span
-                            >.
-                        </li>
-                        <li>
-                            Shows listening history and musical preferences.
-                        </li>
-                    </ul>
-                </div>
-            </section>
-
-            <section id="rmdm" class="section">
-                <div class="command-header">
-                    <h2>;rmdm</h2>
-                    <span class="command-permission"
-                        >No permissions required</span
-                    >
-                </div>
-                <div class="command-content">
-                    <h3>Full Syntax:</h3>
-                    <span class="command-code">;rmdm [time] [message]</span>
-
-                    <h3>Description:</h3>
-                    <p>
-                        Sets a reminder that will be sent to you via DM after
-                        the specified time.
-                    </p>
-
-                    <h3>Parameters:</h3>
-                    <ul>
-                        <li>
-                            <strong>[time]</strong>: Duration until reminder
-                            (e.g., 30m, 2h, 1d).
-                        </li>
-                        <li>
-                            <strong>[message]</strong>: The reminder content.
-                        </li>
-                    </ul>
-
-                    <h3>Example Usage:</h3>
-                    <span class="command-code">;rmdm 2h Check the oven</span
-                    ><br />
-                    <span class="command-code">;rmdm 30m Take medication</span>
-
-                    <h3>Required Permissions:</h3>
-                    <ul>
-                        <li>None - works for all users.</li>
-                    </ul>
-
-                    <h3>Notes:</h3>
-                    <ul>
-                        <li>Supports minutes (m), hours (h), and days (d).</li>
-                        <li>Maximum reminder duration: 1 year.</li>
-                    </ul>
-                </div>
-            </section>
-
-            <section id="ascii" class="section">
-                <div class="command-header">
-                    <h2>;ascii</h2>
-                    <span class="command-permission"
-                        >No permissions required</span
-                    >
-                </div>
-                <div class="command-content">
-                    <h3>Full Syntax:</h3>
-                    <span class="command-code">;ascii [text]</span>
-
-                    <h3>Description:</h3>
-                    <p>
-                        Converts text to stylized ASCII art for decorative
-                        messages.
-                    </p>
-
-                    <h3>Parameters:</h3>
-                    <ul>
-                        <li>
-                            <strong>[text]</strong>: The text to convert (max 20
-                            characters).
-                        </li>
-                    </ul>
-
-                    <h3>Example Usage:</h3>
-                    <span class="command-code">;ascii Hello</span>
-
-                    <h3>Required Permissions:</h3>
-                    <ul>
-                        <li>None - works for all users.</li>
-                    </ul>
-
-                    <h3>Notes:</h3>
-                    <ul>
-                        <li>Best results with short words or initials.</li>
-                        <li>Supports A-Z, 0-9, and basic punctuation.</li>
-                    </ul>
-                </div>
-            </section>
-
-            <section id="color" class="section">
-                <div class="command-header">
-                    <h2>;color</h2>
-                    <span class="command-permission"
-                        >No permissions required</span
-                    >
-                </div>
-                <div class="command-content">
-                    <h3>Full Syntax:</h3>
-                    <span class="command-code">;color [HEX/name]</span>
-
-                    <h3>Description:</h3>
-                    <p>
-                        Displays a visual sample of a color from its HEX code or
-                        name.
-                    </p>
-
-                    <h3>Parameters:</h3>
-                    <ul>
-                        <li>
-                            <strong>[HEX/name]</strong>: Color in HEX format
-                            (e.g., #FF5733) or CSS color name (e.g.,
-                            "royalblue").
-                        </li>
-                    </ul>
-
-                    <h3>Example Usage:</h3>
-                    <span class="command-code">;color #FF5733</span><br />
-                    <span class="command-code">;color royalblue</span>
-
-                    <h3>Required Permissions:</h3>
-                    <ul>
-                        <li>None - works for all users.</li>
-                    </ul>
-
-                    <h3>Notes:</h3>
-                    <ul>
-                        <li>Supports all standard CSS color names.</li>
-                        <li>HEX codes must include the # symbol.</li>
-                    </ul>
-                </div>
-            </section>
-
-            <section id="configuration" class="section">
-                <div class="command-header">
-                    <h2><i class="fas fa-cog"></i> Configuration Commands</h2>
-                </div>
-            </section>
-
-            <section id="prefix" class="section">
-                <div class="command-header">
-                    <h2>;prefix</h2>
-                    <span class="command-permission"
-                        >Required Permissions: Administrator</span
-                    >
-                </div>
-                <div class="command-content">
-                    <h3>Full Syntax:</h3>
-                    <span class="command-code">;prefix [new_prefix]</span>
-
-                    <h3>Description:</h3>
-                    <p>
-                        Changes the bot's command prefix for this server. The
-                        prefix must be 1-3 characters long.
-                    </p>
-
-                    <h3>Parameters:</h3>
-                    <ul>
-                        <li>
-                            <strong>[new_prefix]</strong>: The new prefix to use
-                            (e.g., !, ?, $).
-                        </li>
-                    </ul>
-
-                    <h3>Example Usage:</h3>
-                    <span class="command-code">;prefix !</span><br />
-                    <span class="command-code">;prefix ?</span>
-
-                    <h3>Required Permissions:</h3>
-                    <ul>
-                        <li>
-                            Bot needs <strong>Administrator</strong> permission.
-                        </li>
-                    </ul>
-
-                    <h3>Notes:</h3>
-                    <ul>
-                        <li>
-                            Prefix changes don't affect the ;help command's
-                            prefix.
-                        </li>
-                        <li>
-                            Reset to default with
-                            <span class="command-code">;prefix ;</span>
-                        </li>
-                    </ul>
-                </div>
-            </section>
-
-            <section id="slc" class="section">
-                <div class="command-header">
-                    <h2>;slc</h2>
-                    <span class="command-permission"
-                        >Required Permissions: Administrator</span
-                    >
-                </div>
-                <div class="command-content">
-                    <h3>Full Syntax:</h3>
-                    <span class="command-code">;slc #channel</span>
-
-                    <h3>Description:</h3>
-                    <p>
-                        Sets the channel where moderation logs will be recorded.
-                        Essential for server administration.
-                    </p>
-
-                    <h3>Parameters:</h3>
-                    <ul>
-                        <li>
-                            <strong>#channel</strong>: The text channel for logs
-                            (mention required).
-                        </li>
-                    </ul>
-
-                    <h3>Example Usage:</h3>
-                    <span class="command-code">;slc #mod-logs</span>
-
-                    <h3>Required Permissions:</h3>
-                    <ul>
-                        <li>
-                            Bot needs <strong>Administrator</strong> permission.
-                        </li>
-                    </ul>
-
-                    <h3>Notes:</h3>
-                    <ul>
-                        <li>Logs include kicks, bans, mutes, and warnings.</li>
-                        <li>
-                            Disable with
-                            <span class="command-code">;slc disable</span>
-                        </li>
-                    </ul>
-                </div>
-            </section>
-
-            <section id="sdlc" class="section">
-                <div class="command-header">
-                    <h2>;sdlc</h2>
-                    <span class="command-permission"
-                        >Required Permissions: Administrator</span
-                    >
-                </div>
-                <div class="command-content">
-                    <h3>Full Syntax:</h3>
-                    <span class="command-code">;sdlc #channel</span>
-
-                    <h3>Description:</h3>
-                    <p>
-                        Configures where deleted message logs will be archived.
-                        Helps track rule violations.
-                    </p>
-
-                    <h3>Parameters:</h3>
-                    <ul>
-                        <li>
-                            <strong>#channel</strong>: The text channel for
-                            deleted message logs.
-                        </li>
-                    </ul>
-
-                    <h3>Example Usage:</h3>
-                    <span class="command-code">;sdlc #deleted-logs</span>
-
-                    <h3>Required Permissions:</h3>
-                    <ul>
-                        <li>
-                            Bot needs <strong>Administrator</strong> permission.
-                        </li>
-                    </ul>
-
-                    <h3>Notes:</h3>
-                    <ul>
-                        <li>
-                            Requires <strong>Manage Messages</strong> permission
-                            to track deletions.
-                        </li>
-                        <li>
-                            Disable with
-                            <span class="command-code">;sdlc disable</span>
-                        </li>
-                    </ul>
-                </div>
-            </section>
-
-            <section id="swc" class="section">
-                <div class="command-header">
-                    <h2>;swc</h2>
-                    <span class="command-permission"
-                        >Required Permissions: Administrator</span
-                    >
-                </div>
-                <div class="command-content">
-                    <h3>Full Syntax:</h3>
-                    <span class="command-code">;swc #channel</span>
-
-                    <h3>Description:</h3>
-                    <p>
-                        Designates the channel where welcome messages will be
-                        posted for new members.
-                    </p>
-
-                    <h3>Parameters:</h3>
-                    <ul>
-                        <li>
-                            <strong>#channel</strong>: The text channel for
-                            welcome messages (mention required).
-                        </li>
-                    </ul>
-
-                    <h3>Example Usage:</h3>
-                    <span class="command-code">;swc #welcome</span>
-
-                    <h3>Required Permissions:</h3>
-                    <ul>
-                        <li>
-                            Bot needs <strong>Administrator</strong> permission.
-                        </li>
-                    </ul>
-
-                    <h3>Notes:</h3>
-                    <ul>
-                        <li>
-                            Combine with
-                            <span class="command-code">;swm</span> to customize
-                            the welcome message.
-                        </li>
-                        <li>
-                            Disable with
-                            <span class="command-code">;swc disable</span>
-                        </li>
-                    </ul>
-                </div>
-            </section>
-
-            <section id="swm" class="section">
-                <div class="command-header">
-                    <h2>;swm</h2>
-                    <span class="command-permission"
-                        >Required Permissions: Administrator</span
-                    >
-                </div>
-                <div class="command-content">
-                    <h3>Full Syntax:</h3>
-                    <span class="command-code">;swm [message]</span>
-
-                    <h3>Description:</h3>
-                    <p>
-                        Customizes the welcome message template. Supports
-                        variables like {user} and {server}.
-                    </p>
-
-                    <h3>Parameters:</h3>
-                    <ul>
-                        <li>
-                            <strong>[message]</strong>: The welcome message
-                            template.
-                        </li>
-                    </ul>
-
-                    <h3>Example Usage:</h3>
-                    <span class="command-code"
-                        >;swm Welcome {user} to {server}!</span
-                    ><br />
-                    <span class="command-code"
-                        >;swm Enjoy your stay, {user}! Read rules in
-                        #rules</span
-                    >
-
-                    <h3>Required Permissions:</h3>
-                    <ul>
-                        <li>
-                            Bot needs <strong>Send Messages</strong> permission.
-                        </li>
-                    </ul>
-
-                    <h3>Notes:</h3>
-                    <ul>
-                        <li>
-                            Available variables: {user}, {server}, {memberCount}
-                        </li>
-                        <li>
-                            Reset to default with
-                            <span class="command-code">;swm reset</span>
-                        </li>
-                    </ul>
-                </div>
-            </section>
-
-            <section id="say" class="section">
-                <div class="command-header">
-                    <h2>;say</h2>
-                    <span class="command-permission"
-                        >Required Permissions: Administrator</span
-                    >
-                </div>
-                <div class="command-content">
-                    <h3>Full Syntax:</h3>
-                    <span class="command-code">;say [message]</span>
-
-                    <h3>Description:</h3>
-                    <p>
-                        Makes the bot send a message as if it wrote it. Supports
-                        embeds and formatting.
-                    </p>
-
-                    <h3>Parameters:</h3>
-                    <ul>
-                        <li>
-                            <strong>[message]</strong>: The content to send
-                            (supports Markdown).
-                        </li>
-                    </ul>
-
-                    <h3>Example Usage:</h3>
-                    <span class="command-code">;say Hello everyone!</span><br />
-                    <span class="command-code"
-                        >;say **Announcement:** Server maintenance tonight</span
-                    >
-
-                    <h3>Required Permissions:</h3>
-                    <ul>
-                        <li>
-                            Bot needs <strong>Administrator</strong> permission.
-                        </li>
-                    </ul>
-
-                    <h3>Notes:</h3>
-                    <ul>
-                        <li>
-                            Use responsibly - all messages are logged with the
-                            executor's name.
-                        </li>
-                        <li>
-                            For embeds, use
-                            <span class="command-code">;embed</span> instead.
-                        </li>
-                    </ul>
-                </div>
-            </section>
-
-            <section id="autorole" class="section">
-                <div class="command-header">
-                    <h2>;autorole</h2>
-                    <span class="command-permission"
-                        >Required Permissions: Administrator</span
-                    >
-                </div>
-                <div class="command-content">
-                    <h3>Full Syntax:</h3>
-                    <span class="command-code">;autorole @role</span>
-
-                    <h3>Description:</h3>
-                    <p>
-                        Sets a role to be automatically assigned to new members.
-                        The bot must have Manage Roles permission.
-                    </p>
-
-                    <h3>Parameters:</h3>
-                    <ul>
-                        <li>
-                            <strong>@role</strong>: The role to automatically
-                            assign (mention or ID).
-                        </li>
-                    </ul>
-
-                    <h3>Example Usage:</h3>
-                    <span class="command-code">;autorole @Member</span><br />
-                    <span class="command-code"
-                        >;autorole 123456789012345678</span
-                    >
-                    (using role ID)
-
-                    <h3>Required Permissions:</h3>
-                    <ul>
-                        <li>
-                            Bot needs <strong>Administrator</strong> and
-                            <strong>Manage Roles</strong> permissions.
-                        </li>
-                    </ul>
-
-                    <h3>Notes:</h3>
-                    <ul>
-                        <li>
-                            The bot's role must be higher than the target role
-                            in the hierarchy.
-                        </li>
-                        <li>
-                            Disable with
-                            <span class="command-code">;autorole disable</span>
-                        </li>
-                    </ul>
-                </div>
-            </section>
-
-            <section id="role-management" class="section">
-                <div class="command-header">
-                    <h2>
-                        <i class="fas fa-user-tag"></i> Role Management Commands
-                    </h2>
-                </div>
-            </section>
-
-            <section id="addrole" class="section">
-                <div class="command-header">
-                    <h2>;addrole</h2>
-                    <span class="command-permission"
-                        >Required Permissions: Manage Roles</span
-                    >
-                </div>
-                <div class="command-content">
-                    <p>
-                        Adds a specified role to a user. The bot's highest role
-                        must be above the target role.
-                    </p>
-                    <div class="command-usage">
-                        <h3>Usage:</h3>
-                        <span class="command-code">;addrole @user @role</span>
-                    </div>
-                    <div class="command-example">
-                        <h3>Examples:</h3>
-                        <span class="command-code">;addrole @User @VIP</span
-                        ><br />
-                        <span class="command-code"
-                            >;addrole 123456789012345678
-                            987654321098765432</span
-                        >
-                        (using IDs)
-                    </div>
-                </div>
-            </section>
-
-            <section id="rmrole" class="section">
-                <div class="command-header">
-                    <h2>;rmrole</h2>
-                    <span class="command-permission"
-                        >Required Permissions: Manage Roles</span
-                    >
-                </div>
-                <div class="command-content">
-                    <p>
-                        Removes a specified role from a user. Cannot remove
-                        roles higher than bot's highest role.
-                    </p>
-                    <div class="command-usage">
-                        <h3>Usage:</h3>
-                        <span class="command-code">;rmrole @user @role</span>
-                    </div>
-                    <div class="command-example">
-                        <h3>Examples:</h3>
-                        <span class="command-code">;rmrole @User @Muted</span
-                        ><br />
-                        <span class="command-code"
-                            >;rmrole 123456789012345678 987654321098765432</span
-                        >
-                        (using IDs)
-                    </div>
-                </div>
-            </section>
-
-            <section id="createrole" class="section">
-                <div class="command-header">
-                    <h2>;createrole</h2>
-                    <span class="command-permission"
-                        >Required Permissions: Manage Roles</span
-                    >
-                </div>
-                <div class="command-content">
-                    <p>
-                        Creates a new role with optional color (hex format). The
-                        new role will be at the bottom of hierarchy.
-                    </p>
-                    <div class="command-usage">
-                        <h3>Usage:</h3>
-                        <span class="command-code"
-                            >;createrole "Role Name" [#color]</span
-                        >
-                    </div>
-                    <div class="command-example">
-                        <h3>Examples:</h3>
-                        <span class="command-code">;createrole "VIP"</span
-                        ><br />
-                        <span class="command-code"
-                            >;createrole "Moderator" #FF0000</span
-                        >
-                    </div>
-                </div>
-            </section>
-
-            <section id="delrole" class="section">
-                <div class="command-header">
-                    <h2>;delrole</h2>
-                    <span class="command-permission"
-                        >Required Permissions: Manage Roles</span
-                    >
-                </div>
-                <div class="command-content">
-                    <p>
-                        Permanently deletes a role from the server. This action
-                        cannot be undone.
-                    </p>
-                    <div class="command-usage">
-                        <h3>Usage:</h3>
-                        <span class="command-code">;delrole @role</span>
-                    </div>
-                    <div class="command-example">
-                        <h3>Examples:</h3>
-                        <span class="command-code">;delrole @OldRole</span
-                        ><br />
-                        <span class="command-code"
-                            >;delrole 123456789012345678</span
-                        >
-                        (using role ID)
-                    </div>
-                    <div class="command-note">
-                        <h3>Warning:</h3>
-                        <p>
-                            All role permissions and assignments will be
-                            permanently lost.
-                        </p>
-                    </div>
-                </div>
-            </section>
-
-            <section id="editrole" class="section">
-                <div class="command-header">
-                    <h2>;editrole</h2>
-                    <span class="command-permission"
-                        >Required Permissions: Manage Roles</span
-                    >
-                </div>
-                <div class="command-content">
-                    <p>
-                        Modifies role properties including name, color, and
-                        icon. At least one parameter must be specified.
-                    </p>
-                    <div class="command-usage">
-                        <h3>Usage:</h3>
-                        <span class="command-code"
-                            >;editrole @role "New Name" [#color] [iconURL]</span
-                        >
-                    </div>
-                    <div class="command-example">
-                        <h3>Examples:</h3>
-                        <span class="command-code"
-                            >;editrole @Role "Updated Name"</span
-                        ><br />
-                        <span class="command-code"
-                            >;editrole @Role "" #00FF00</span
-                        >
-                        (changes only color)<br />
-                        <span class="command-code"
-                            >;editrole @Role "" ""
-                            https://example.com/icon.png</span
-                        >
-                        (changes only icon)
-                    </div>
-                </div>
-            </section>
-
-            <section id="rr" class="section">
-                <div class="command-header">
-                    <h2>;rr</h2>
-                    <span class="command-permission"
-                        >Required Permissions: Manage Roles</span
-                    >
-                </div>
-                <div class="command-content">
-                    <h3>Full Syntax:</h3>
-                    <span class="command-code"
-                        >;rr "Title" "Description" @role1 :emoji1: @role2
-                        :emoji2: ...</span
-                    >
-
-                    <h3>Description:</h3>
-                    <p>
-                        Creates a reaction role panel where users can
-                        self-assign roles by clicking reactions. Perfect for
-                        interest groups, notifications, or channel access
-                        management.
-                    </p>
-
-                    <h3>Parameters:</h3>
-                    <ul>
-                        <li>
-                            <strong>"Title"</strong>: Panel header (e.g., "Get
-                            Roles").
-                        </li>
-                        <li>
-                            <strong>"Description"</strong>: Brief explanation of
-                            the roles (e.g., "React to gain access").
-                        </li>
-                        <li>
-                            <strong>@role</strong>: Role to be assigned when
-                            reacted.
-                        </li>
-                        <li>
-                            <strong>:emoji:</strong>: Emoji associated with the
-                            role (e.g., :game_die: for @Gamers).
-                        </li>
-                    </ul>
-
-                    <h3>Example Usage:</h3>
-                    <span class="command-code"
-                        >;rr "Channel Access" "Select your interests:" @Gamers
-                        :game_die: @Music :musical_note: @Movies
-                        :film_frames:</span
-                    >
-
-                    <h3>Required Permissions:</h3>
-                    <ul>
-                        <li>
-                            Bot needs <strong>Manage Roles</strong> and
-                            <strong>Manage Messages</strong> permissions.
-                        </li>
-                        <li>
-                            Bot's role must be higher in hierarchy than assigned
-                            roles.
-                        </li>
-                    </ul>
-
-                    <h3>Notes:</h3>
-                    <ul>
-                        <li>
-                            Panel can be manually edited/deleted. (so normal
-                            moderator/administrator or owner can't do this)
-                        </li>
-                        <li>Users can remove reactions to lose roles.</li>
-                        <li>
-                            Emojis must be available on the server (standard
-                            Discord or custom server emojis).
-                        </li>
-                    </ul>
-                </div>
-            </section>
-
-            <section id="giveaway" class="section">
-                <div class="command-header">
-                    <h2>;giveaway</h2>
-                    <span class="command-permission"
-                        >Requires: Administrator</span
-                    >
-                </div>
-                <div class="command-content">
-                    <h3>Full Syntax:</h3>
-                    <span class="command-code"
-                        >;giveaway &lt;duration&gt; &lt;prize&gt;</span
-                    >
-
-                    <h3>Description:</h3>
-                    <p>Starts a new giveaway.</p>
-
-                    <h3>Parameters:</h3>
-                    <ul>
-                        <li>
-                            <code>&lt;duration&gt;</code>: The duration of the
-                            giveaway (e.g., 1d, 2h).
-                        </li>
-                        <li>
-                            <code>&lt;prize&gt;</code>: The prize for the
-                            giveaway.
-                        </li>
-                    </ul>
-
-                    <h3>Example Usage:</h3>
-                    <span class="command-code">;giveaway 1d Discord Nitro</span>
-
-                    <h3>Notes:</h3>
-                    <ul>
-                        <li>Only administrators can use this command.</li>
-                    </ul>
-                </div>
-            </section>
-
-            <section id="endgiveaway" class="section">
-                <div class="command-header">
-                    <h2>;endgiveaway</h2>
-                    <span class="command-permission"
-                        >Requires: Administrator</span
-                    >
-                </div>
-                <div class="command-content">
-                    <h3>Full Syntax:</h3>
-                    <span class="command-code"
-                        >;endgiveaway &lt;giveaway-id&gt;</span
-                    >
-
-                    <h3>Description:</h3>
-                    <p>Ends a giveaway early and selects a winner.</p>
-
-                    <h3>Parameters:</h3>
-                    <ul>
-                        <li>
-                            <code>&lt;giveaway-id&gt;</code>: The ID of the
-                            giveaway to end.
-                        </li>
-                    </ul>
-
-                    <h3>Example Usage:</h3>
-                    <span class="command-code">;endgiveaway 123456789</span>
-
-                    <h3>Notes:</h3>
-                    <ul>
-                        <li>Only administrators can use this command.</li>
-                    </ul>
-                </div>
-            </section>
-
-            <section id="greroll" class="section">
-                <div class="command-header">
-                    <h2>;greroll</h2>
-                    <span class="command-permission"
-                        >Requires: Administrator</span
-                    >
-                </div>
-                <div class="command-content">
-                    <h3>Full Syntax:</h3>
-                    <span class="command-code"
-                        >;greroll &lt;giveaway-id&gt;</span
-                    >
-
-                    <h3>Description:</h3>
-                    <p>Rerolls the winner of a giveaway.</p>
-
-                    <h3>Parameters:</h3>
-                    <ul>
-                        <li>
-                            <code>&lt;giveaway-id&gt;</code>: The ID of the
-                            giveaway to reroll.
-                        </li>
-                    </ul>
-
-                    <h3>Example Usage:</h3>
-                    <span class="command-code">;greroll 123456789</span>
-
-                    <h3>Notes:</h3>
-                    <ul>
-                        <li>Only administrators can use this command.</li>
-                    </ul>
-                </div>
-            </section>
-
-            <section id="ticket" class="section">
-                <div class="command-header">
-                    <h2><i class="fas fa-ticket-alt"></i> Ticket Commands</h2>
-                </div>
-            </section>
-
-            <section id="st" class="section">
-                <div class="command-header">
-                    <h2>;st</h2>
-                    <span class="command-permission"
-                        >Requires: Administrator</span
-                    >
-                </div>
-                <div class="command-content">
-                    <h3>Full Syntax:</h3>
-                    <span class="command-code">;st &lt;channel&gt;</span>
-
-                    <h3>Description:</h3>
-                    <p>Sets the channel where tickets will be created.</p>
-
-                    <h3>Parameters:</h3>
-                    <ul>
-                        <li>
-                            <code>&lt;channel&gt;</code>: The channel to set for
-                            ticket creation (mention or ID).
-                        </li>
-                    </ul>
-
-                    <h3>Example Usage:</h3>
-                    <span class="command-code">;st #create-ticket</span>
-
-                    <h3>Notes:</h3>
-                    <ul>
-                        <li>Only administrators can use this command.</li>
-                    </ul>
-                </div>
-            </section>
-
-            <section id="addstaff" class="section">
-                <div class="command-header">
-                    <h2>;addstaff</h2>
-                    <span class="command-permission"
-                        >Requires: Administrator</span
-                    >
-                </div>
-                <div class="command-content">
-                    <h3>Full Syntax:</h3>
-                    <span class="command-code">;addstaff &lt;user&gt;</span>
-
-                    <h3>Description:</h3>
-                    <p>Adds a user to the ticket support team.</p>
-
-                    <h3>Parameters:</h3>
-                    <ul>
-                        <li>
-                            <code>&lt;user&gt;</code>: The user to add (mention
-                            or ID).
-                        </li>
-                    </ul>
-
-                    <h3>Example Usage:</h3>
-                    <span class="command-code">;addstaff @Helper</span>
-
-                    <h3>Notes:</h3>
-                    <ul>
-                        <li>Only administrators can use this command.</li>
-                    </ul>
-                </div>
-            </section>
-
-            <section id="rmstaff" class="section">
-                <div class="command-header">
-                    <h2>;rmstaff</h2>
-                    <span class="command-permission"
-                        >Requires: Administrator</span
-                    >
-                </div>
-                <div class="command-content">
-                    <h3>Full Syntax:</h3>
-                    <span class="command-code">;rmstaff &lt;user&gt;</span>
-
-                    <h3>Description:</h3>
-                    <p>Removes a user from the ticket support team.</p>
-
-                    <h3>Parameters:</h3>
-                    <ul>
-                        <li>
-                            <code>&lt;user&gt;</code>: The user to remove
-                            (mention or ID).
-                        </li>
-                    </ul>
-
-                    <h3>Example Usage:</h3>
-                    <span class="command-code">;rmstaff @Helper</span>
-
-                    <h3>Notes:</h3>
-                    <ul>
-                        <li>Only administrators can use this command.</li>
-                    </ul>
-                </div>
-            </section>
-
-            <section id="tlog" class="section">
-                <div class="command-header">
-                    <h2>;tlog</h2>
-                    <span class="command-permission"
-                        >Requires: Send Messages</span
-                    >
-                </div>
-                <div class="command-content">
-                    <h3>Full Syntax:</h3>
-                    <span class="command-code">;tlog &lt;channel&gt;</span>
-
-                    <h3>Description:</h3>
-                    <p>Sets the channel where ticket logs will be recorded.</p>
-
-                    <h3>Parameters:</h3>
-                    <ul>
-                        <li>
-                            <code>&lt;channel&gt;</code>: The channel to set for
-                            ticket logs (mention or ID).
-                        </li>
-                    </ul>
-
-                    <h3>Example Usage:</h3>
-                    <span class="command-code">;tlog #ticket-logs</span>
-
-                    <h3>Notes:</h3>
-                    <ul>
-                        <li>Only administrators can use this command.</li>
-                    </ul>
-                </div>
-            </section>
-
-            <section id="serverinfo" class="section">
-                <div class="command-header">
-                    <h2>;serverinfo</h2>
-                    <span class="command-permission"
-                        >No permissions required</span
-                    >
-                </div>
-                <div class="command-content">
-                    <h3>Full Syntax:</h3>
-                    <span class="command-code">;serverinfo</span>
-
-                    <h3>Description:</h3>
-                    <p>
-                        Displays detailed information about the server,
-                        including member count, creation date, and roles.
-                    </p>
-
-                    <h3>Parameters:</h3>
-                    <ul>
-                        <li>None - operates in the current server.</li>
-                    </ul>
-
-                    <h3>Example Usage:</h3>
-                    <span class="command-code">;serverinfo</span>
-
-                    <h3>Notes:</h3>
-                    <ul>
-                        <li>
-                            Includes statistics like channels, boosts, and
-                            emojis.
-                        </li>
-                        <li>Embed is updated in real-time.</li>
-                    </ul>
-                </div>
-            </section>
-
-            <section id="ping" class="section">
-                <div class="command-header">
-                    <h2>;ping</h2>
-                    <span class="command-permission"
-                        >No permissions required</span
-                    >
-                </div>
-                <div class="command-content">
-                    <h3>Full Syntax:</h3>
-                    <span class="command-code">;ping</span>
-
-                    <h3>Description:</h3>
-                    <p>
-                        Checks the bot's latency and response time. Useful for
-                        testing if the bot is online.
-                    </p>
-
-                    <h3>Parameters:</h3>
-                    <ul>
-                        <li>None - returns the bot's ping in milliseconds.</li>
-                    </ul>
-
-                    <h3>Example Usage:</h3>
-                    <span class="command-code">;ping</span>
-
-                    <h3>Notes:</h3>
-                    <ul>
-                        <li>Latency under 100ms is excellent.</li>
-                        <li>Includes API and websocket ping.</li>
-                    </ul>
-                </div>
-            </section>
-
-            <section id="information" class="section">
-                <div class="command-header">
-                    <h2>
-                        <i class="fas fa-info-circle"></i> Information Commands
-                    </h2>
-                </div>
-            </section>
-
-            <section id="userinfo" class="section">
-                <div class="command-header">
-                    <h2>;userinfo</h2>
-                    <span class="command-permission"
-                        >No permissions required</span
-                    >
-                </div>
-                <div class="command-content">
-                    <h3>Full Syntax:</h3>
-                    <span class="command-code">;userinfo [member]</span>
-
-                    <h3>Description:</h3>
-                    <p>
-                        Displays detailed information about a user including
-                        join date, roles, and status.
-                    </p>
-
-                    <h3>Parameters:</h3>
-                    <ul>
-                        <li>
-                            <strong>[member]</strong>: Optional user mention or
-                            ID (defaults to command user)
-                        </li>
-                    </ul>
-
-                    <h3>Example Usage:</h3>
-                    <span class="command-code">;userinfo @User</span>
-                </div>
-            </section>
-
-            <section id="serverinfo" class="section">
-                <div class="command-header">
-                    <h2>;serverinfo</h2>
-                    <span class="command-permission"
-                        >No permissions required</span
-                    >
-                </div>
-                <div class="command-content">
-                    <h3>Full Syntax:</h3>
-                    <span class="command-code">;serverinfo</span>
-
-                    <h3>Description:</h3>
-                    <p>
-                        Displays server statistics including member count,
-                        channels, and creation date.
-                    </p>
-
-                    <h3>Example Usage:</h3>
-                    <span class="command-code">;serverinfo</span>
-                </div>
-            </section>
-
-            <section id="avatar" class="section">
-                <div class="command-header">
-                    <h2>;avatar</h2>
-                    <span class="command-permission"
-                        >No permissions required</span
-                    >
-                </div>
-                <div class="command-content">
-                    <h3>Full Syntax:</h3>
-                    <span class="command-code">;avatar [member]</span>
-
-                    <h3>Description:</h3>
-                    <p>
-                        Shows high-resolution user avatar with download option.
-                    </p>
-
-                    <h3>Parameters:</h3>
-                    <ul>
-                        <li>
-                            <strong>[member]</strong>: Optional user mention or
-                            ID
-                        </li>
-                    </ul>
-
-                    <h3>Example Usage:</h3>
-                    <span class="command-code">;avatar @User</span>
-                </div>
-            </section>
-
-            <section id="roleinfo" class="section">
-                <div class="command-header">
-                    <h2>;roleinfo</h2>
-                    <span class="command-permission"
-                        >No permissions required</span
-                    >
-                </div>
-                <div class="command-content">
-                    <h3>Full Syntax:</h3>
-                    <span class="command-code">;roleinfo &lt;role&gt;</span>
-
-                    <h3>Description:</h3>
-                    <p>
-                        Displays role information including permissions, color,
-                        and member count.
-                    </p>
-
-                    <h3>Parameters:</h3>
-                    <ul>
-                        <li>
-                            <strong>&lt;role&gt;</strong>: Role mention or name
-                        </li>
-                    </ul>
-
-                    <h3>Example Usage:</h3>
-                    <span class="command-code">;roleinfo @Moderator</span>
-                </div>
-            </section>
-
-            <section id="ping" class="section">
-                <div class="command-header">
-                    <h2>;ping</h2>
-                    <span class="command-permission"
-                        >No permissions required</span
-                    >
-                </div>
-                <div class="command-content">
-                    <h3>Full Syntax:</h3>
-                    <span class="command-code">;ping</span>
-
-                    <h3>Description:</h3>
-                    <p>Shows bot latency and API response times.</p>
-
-                    <h3>Example Usage:</h3>
-                    <span class="command-code">;ping</span>
-                </div>
-            </section>
-
-            <section id="emojiinfo" class="section">
-                <div class="command-header">
-                    <h2>;emojiinfo</h2>
-                    <span class="command-permission"
-                        >No permissions required</span
-                    >
-                </div>
-                <div class="command-content">
-                    <h3>Full Syntax:</h3>
-                    <span class="command-code">;emojiinfo :emoji:</span>
-
-                    <h3>Description:</h3>
-                    <p>
-                        Displays emoji metadata including ID, creation date, and
-                        uploader.
-                    </p>
-
-                    <h3>Parameters:</h3>
-                    <ul>
-                        <li>
-                            <strong>:emoji:</strong>: Server emoji (must be from
-                            current server)
-                        </li>
-                    </ul>
-
-                    <h3>Example Usage:</h3>
-                    <span class="command-code">;emojiinfo :pepe:</span>
-                </div>
-            </section>
-
-            <section id="uptime" class="section">
-                <div class="command-header">
-                    <h2>;uptime</h2>
-                    <span class="command-permission"
-                        >No permissions required</span
-                    >
-                </div>
-                <div class="command-content">
-                    <h3>Full Syntax:</h3>
-                    <span class="command-code">;uptime</span>
-
-                    <h3>Description:</h3>
-                    <p>Shows how long the bot has been continuously online.</p>
-
-                    <h3>Example Usage:</h3>
-                    <span class="command-code">;uptime</span>
-                </div>
-            </section>
-
-            <section id="recentjoins" class="section">
-                <div class="command-header">
-                    <h2>;recentjoins</h2>
-                    <span class="command-permission"
-                        >No permissions required</span
-                    >
-                </div>
-                <div class="command-content">
-                    <h3>Full Syntax:</h3>
-                    <span class="command-code">;recentjoins [limit]</span>
-
-                    <h3>Description:</h3>
-                    <p>
-                        Lists most recently joined members (default: last 10).
-                    </p>
-
-                    <h3>Parameters:</h3>
-                    <ul>
-                        <li>
-                            <strong>[limit]</strong>: Optional number of members
-                            to show (1-25)
-                        </li>
-                    </ul>
-
-                    <h3>Example Usage:</h3>
-                    <span class="command-code">;recentjoins 5</span>
-                </div>
-            </section>
-
-            <section id="hierarchy" class="section">
-                <div class="command-header">
-                    <h2>;hierarchy</h2>
-                    <span class="command-permission"
-                        >No permissions required</span
-                    >
-                </div>
-                <div class="command-content">
-                    <h3>Full Syntax:</h3>
-                    <span class="command-code">;hierarchy</span>
-
-                    <h3>Description:</h3>
-                    <p>
-                        Displays server role hierarchy with permission
-                        highlights.
-                    </p>
-
-                    <h3>Example Usage:</h3>
-                    <span class="command-code">;hierarchy</span>
-                </div>
-            </section>
+            <footer>
+                <p>&copy; 2023 Ormi Bot. All rights reserved.</p>
+            </footer>
         </div>
-
         <script src="src/dscript.js"></script>
-        <link
-            href="https://unpkg.com/aos@2.3.1/dist/aos.css"
-            rel="stylesheet"
-        />
-        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-        <script>
-            AOS.init({
-                duration: 800,
-                easing: "ease-in-out",
-                once: true,
-            });
-        </script>
     </body>
 </html>
