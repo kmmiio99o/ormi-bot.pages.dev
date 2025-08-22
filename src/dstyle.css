@@ -7,23 +7,23 @@
 }
 
 :root {
-    --primary-color: #5865f2;
-    --primary-dark: #4752c4;
-    --secondary-color: #36393f;
-    --background-color: #2f3136;
-    --sidebar-bg: #202225;
-    --text-color: #ffffff;
-    --text-muted: #a3a6aa;
-    --border-color: #42454a;
-    --hover-color: #3b3e45;
-    --active-color: #4d535a;
-    --command-bg: #292b2f;
+    --primary-color: #5e6cd8;
+    --primary-dark: #4c57b3;
+    --secondary-color: #2b2e31;
+    --background-color: #25272b;
+    --sidebar-bg: #181a1d;
+    --text-color: #e0e0e0;
+    --text-muted: #8c8f93;
+    --border-color: #33363a;
+    --hover-color: #303339;
+    --active-color: #40454c;
+    --command-bg: #222428;
     --scrollbar-thumb: #4a4d53;
     --scrollbar-track: #2e3035;
-    --card-bg: #36393f;
-    --card-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    --success-color: #43b581;
-    --warning-color: #faa61a;
+    --card-bg: #2b2e31;
+    --card-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    --success-color: #3a946b;
+    --warning-color: #c88515;
 }
 
 body {
@@ -288,8 +288,8 @@ footer {
     position: fixed;
     bottom: 30px;
     right: 30px;
-    width: 50px;
-    height: 50px;
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
     background-color: var(--primary-color);
     color: white;
@@ -302,10 +302,10 @@ footer {
     transform: translateY(20px);
     transition:
         opacity 0.3s,
-        transform 0.3s;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-    font-size: 24px;
-}
+        transform: 0.3s;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        font-size: 32px;
+    }
 
 .back-to-top.show {
     opacity: 1;
